@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  id: 1
+  country_code: 1
+  postal_code: 66614
+  latitude: MyString
+  longitude: MyString
+
+two:
+  id: 2
+  country_code: 3
+  postal_code: 40515
+  latitude: MyString
+  longitude: MyString

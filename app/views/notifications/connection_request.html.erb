@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+</head>
+<body>
+<%= image_tag("#{APP_URL}/images/email_signature.jpg", :alt=>"SitterScout.com") %>
+
+<div id="content">
+	<font face="Arial, Helvetica, Geneva">
+
+<p>Dear <%= @user_1.profile.full_name %>,</p>
+
+<p><%= link_to @user_2.profile.full_name, APP_URL + home_path %> has added you as a Connection on SitterScout. Click <%= link_to "here", "#{APP_URL + "/#{@user_1.profile.parent? ? "parents" : "sitters"}/#{@user_1.id}/connection_requests"}" %> to respond to this request.</p>
+
+<p>Thank you,</p>
+<p>The SitterScout Team</p>
+</font>
+</div>
+</body>
+</html>
+

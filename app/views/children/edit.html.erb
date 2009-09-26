@@ -1,0 +1,27 @@
+<h1>Editing child</h1>
+
+<%= error_messages_for :child %>
+
+<% form_for(@child) do |f| %>
+  <p>
+    <b>Name</b><br />
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <b>Age</b><br />
+    <%= f.text_field :age %>
+  </p>
+
+  <p>
+    <b>Parent</b><br />
+    <%= f.text_field :parent_id %>
+  </p>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @child %> |
+<%= link_to 'Back', children_path %>

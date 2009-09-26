@@ -1,0 +1,46 @@
+<div id="content" style="height: 800px;">
+	<% form_tag update_children_parent_path(current_user), :multipart =>true, :class => 'MainForm' do %>
+	<div class='box alt first_alt'>
+	<%= error_messages_for :parent %>
+	<%= error_messages_for :profile %>
+	<div>
+	<h2>Add Your Children</h2>
+	<p style="font-size: .8em;"></p>
+	<br />
+	<div>
+			<div style="width: 48%; padding-bottom: 55px;float: left; font-size: .8em;">
+
+			<h3>About Your Children</h3> (optional)
+			<table style="padding-bottom: 25px">
+				<tr>
+					<td>How many children do you have? </td>
+					<td>
+						<%= select_tag "number_of_children", options_for_select(0..6), :style => "width: 40px" %>
+					</td>
+				</tr>
+			</table>
+		   	<input type="hidden" id="children_shown" value="<%=0 %>">
+
+
+			<%= observe_field  "number_of_children", {
+				:url => insert_children_parent_path(current_user), 
+				:with => "'number_of_children=' + value + '&welcome=true' + '&children_shown=' + $('children_shown').value", 
+				500 => "alert('Sorry, there was an error.'); return false"} %>
+
+		 </div>
+
+
+	</div>
+
+</div>
+<div style="clear: both; margin-left: 41%; margin-top: 55px; cursor: pointer;" >
+	<%= link_to(image_tag('/images/Wizard/Previous_bttn.gif', :border => 0), welcome_parent_path(current_user)) %>
+	<%= image_submit_tag '/images/Wizard/Continue_bttn.gif' %></div>
+
+	</div>
+
+
+		<% end %>
+
+
+</div>

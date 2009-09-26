@@ -1,0 +1,29 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  babies: false
+  toddlers: false
+  preschoolers: false
+  schoolaged: false
+  cook: false
+  homework: false
+  bathe: false
+  kidstobed: false
+  entertain: false
+  transportation: false
+  max_mileage: 1
+  sitter_id: 1
+
+two:
+  babies: false
+  toddlers: false
+  preschoolers: false
+  schoolaged: false
+  cook: false
+  homework: false
+  bathe: false
+  kidstobed: false
+  entertain: false
+  transportation: false
+  max_mileage: 1
+  sitter_id: 1

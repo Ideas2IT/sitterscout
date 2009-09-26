@@ -1,0 +1,33 @@
+<%= render :partial => 'nav_menu', :locals => {:selected => "profile"} %>
+<div id="sub_menu_gradient">
+	<div class="sub_menu_gradient_center">
+		<%= render :partial => 'profile_menu' %>
+	</div>
+</div>
+<div id="content">
+<div class='box alt first_alt'>
+<%= error_messages_for :sitter %>
+<%= error_messages_for :user %>
+	<div style=' font-size: .8em; margin-top: 5px;'></div>
+<% form_tag sitter_path, :method => :put do %>
+<div class="splitcontentleft" style="font-size: .8em; margin-top: 10px;">
+		<div class="box tabular" style="margin-left: 30%">
+
+			<p><label for="email">Email</label><br/>
+			<%= text_field :user, :email %></p>
+
+			<p><label for="password">Password</label><br/>
+			<%= password_field :user, :password %></p>
+
+			<p><label for="password_confirmation">Confirm Password</label><br/>
+			<%= password_field :user, :password_confirmation %></p>
+
+
+		<%= image_submit_tag '/images/parent_home/SaveChanges_bttn.gif', :name => 'login_update', :style => "margin-left: 55px; margin-top: 15px;" %>
+		</div>
+</div>
+<% end %>
+</div>
+
+</div>
+<%#= render :partial => 'shared/profile_percentage' %>

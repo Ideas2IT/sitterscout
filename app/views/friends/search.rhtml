@@ -1,0 +1,33 @@
+<div>
+	<h2>Search Results</h2>
+	<p>
+		You search for a sitter in ZIP Code "<%= params[:search][:zip] %>". We found <%= @sitters.length rescue "Zero"%>  matches.
+	</p>
+</div>
+<% unless logged_in? %>
+<div>
+	Signup info here.
+</div>
+
+<% end %>
+
+<% if @sitters.length < 1 %>
+Your search yielded no results.
+<% else %>
+<div class="content">
+	<div id="sitters" style="float: left; width: 35%;">
+		
+				<table>
+                                  <tr>
+                                    <td>Name</td>
+                                    <td></td>
+                                    <td>Distance</td>
+                                    <td></td>
+                                  </tr>
+	<%= render :partial => 'search', :collection => @sitters %>
+				</table>
+		
+	</div>
+	<%= render :partial => '/shared/login_div' %>
+</div>
+<% end %>

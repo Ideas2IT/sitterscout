@@ -1,0 +1,55 @@
+<font style="font-size: .9em;">Would you like to receive notifications via text message?</font>
+<table style="padding-bottom: 25px">
+		<tr>
+			<td>
+			<!-- <%#= check_box :profile, :text_message, :onclick => 'toggle_cell_star(this);' %> Text Message -->
+			<%= radio_button :profile, :text_message, true %> Yes &nbsp;
+			<%= radio_button :profile, :text_message, false %> No
+
+			</td>
+			<td>
+				
+				<% if @current_action == 'my_profile' %>
+				 <% if @profile.text_message %>
+					<span id="text_message_span" style="color: #FF0000">(Enter cell phone # below)</span>
+				<% else %>
+					<span id="text_message_span" style="display: none; color: #FF0000">(Enter cell phone # below)</span>	
+				<% end %>
+				<% else %>
+				<span id="text_message_span" style="display: none; color: #FF0000">(Enter cell phone # below)</span>
+			<% end %>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">&nbsp;</td>
+		</tr>
+		<tr>
+			<td><%= label :user, :email, "Email Address:" %></td>
+			<td><%= text_field :user, :email, :style=>"margin-top: 5px"  %></td>
+		</tr>
+    <tr>
+			<td><%= label :profile, :daytime_phone, "Daytime Phone #:" %></td>
+			<td><%= text_field :profile, :datetime_phone, :style=>"margin-top: 5px"  %></td>
+		</tr>
+    <tr>
+			<td><%= label :profile, :evening_phone, "Evening Phone #:" %></td>
+			<td><%= text_field :profile, :evening_phone, :style=>"margin-top: 5px"  %></td>
+		</tr>
+    <tr>
+			<td><span id="cell_phone_name_label"><%= label :profile, :cell_phone, "Cell Phone #" %></span>
+					<% if @current_action == 'my_profile' %>
+					 <% if @profile.text_message %>
+					<span id="cell_phone_star" style="color: #FF0000">*</span>:</td>
+						<% else %>
+						<span id="cell_phone_star" style="display: none; color: #FF0000">*</span>:</td>
+						<% end %>
+					<% else %>
+					<span id="cell_phone_star" style="display: none; color: #FF0000">*</span>:</td>
+				<% end %>
+			<td><%= text_field :profile, :cell_phone, :style=>"margin-top: 5px"  %></td>
+		</tr>
+    <tr>
+			<td><span id="profile_cell_phone_carrier_label"><%= label :profile, :cell_phone_carrier, "Cellular Carrier:" %></span></td>
+			<td><%= collection_select :profile, :cell_carrier_id, CellCarrier.find(:all), :id, :name, {:prompt => true}, :style=> "width: 125px; margin-top: 5px;" %></td>
+		</tr>
+	</table>

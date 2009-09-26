@@ -1,0 +1,143 @@
+<div style="width: 18%; float: left;">
+	<%= image_tag(@user.avatar_photo_url, :class => "right" ) %>
+
+</div>
+<div style="width: 50%; float: left;">
+	<table style="padding-bottom: 25px">
+			<tr><td><strong><%= @profile.first_name + " " + @profile.last_name %></strong></td></tr>
+			<tr><td><%= @profile.address1 %></td></tr>
+			<tr><td><%= @profile.address2 %></td></tr>
+			<tr><td><%= @profile.city + ", " + State.find(@profile.state_id).name + " " + @profile.zipcode.to_s %></tr>
+			<tr><td> <%= link_to "View connections", url_for(:controller => 'connections', :action => 'show', :id => @user.id), :class => "lbOn-405-390" %>
+			| <%= link_to "Send message", compose_parent_path(current_user, :to_id => @user.id) %>
+			</td></tr>
+			</table>
+
+			<strong>Typical Availability: </strong>
+		<table cellpadding=0 cellspacing=0 style="margin-top: 5px;">
+			<tr>
+			<td><img src="/images/availability_header_left.gif"></td>
+			<td style="background-color: #c2448f; color: #FFFFFF; padding: 5px 7px;" align="center">Sundays</td>
+			<td style="background-color: #c2448f; color: #FFFFFF; padding: 5px 7px;" align="center">Mondays</td>
+			<td style="background-color: #c2448f; color: #FFFFFF; padding: 5px 7px;" align="center">Tuesdays</td>
+			<td style="background-color: #c2448f; color: #FFFFFF; padding: 5px 7px;" align="center">Wednesday</td>
+			<td style="background-color: #c2448f; color: #FFFFFF; padding: 5px 7px;" align="center">Thursdays</td>
+			<td style="background-color: #c2448f; color: #FFFFFF; padding: 5px 7px;" align="center">Fridays</td>
+			<td style="background-color: #c2448f; color: #FFFFFF; padding: 5px 7px;" align="center">Saturdays</td>
+			<td><img src="/images/availability_header_right.gif"></td>			
+		</tr>
+		<tr>
+			<td style="border-left: 1px solid #666666; border-bottom: 1px solid #666666;">&nbsp;</td>
+			<td align="center" style="border-bottom: 1px solid #666666; padding: 5px 5px 5px 0"><%=  @user.profile.sundays %></td>
+			<td align="center" style="border-left: 1px solid #666666; border-bottom: 1px solid #666666; padding: 5px"><%=  @user.profile.mondays %></td>
+			<td align="center" style="border-left: 1px solid #666666; border-bottom: 1px solid #666666; padding: 5px"><%=  @user.profile.tuesdays %></td>
+			<td align="center" style="border-left: 1px solid #666666; border-bottom: 1px solid #666666; padding: 5px"><%=  @user.profile.wednesdays %></td>
+			<td align="center" style="border-left: 1px solid #666666; border-bottom: 1px solid #666666; padding: 5px"><%=  @user.profile.thursdays %></td>
+			<td align="center" style="border-left: 1px solid #666666; border-bottom: 1px solid #666666; padding: 5px"><%=  @user.profile.fridays %></td>
+			<td align="center" colspan="2"style="border-left: 1px solid #666666; border-bottom: 1px solid #666666; border-right: 1px solid #666666; padding: 5px" ><%=  @user.profile.saturdays %></td>
+		</tr>
+
+		</table>
+		<br />
+	<table style="width: 400px">
+		<tr>
+			<td nowrap='nowrap'><strong>Profile Tags:</strong></td>
+			<td style="padding-left: 10px;"><%= @profile.tag_list %></td>
+		</tr>
+		<tr>
+			<td nowrap='nowrap'><strong><%= label :profile, :email, "Email Address:" %></strong></td>
+			<td style="padding-left: 10px;"><%= @user.email %></td>
+		</tr>
+    <tr>
+			<td nowrap='nowrap'><strong><%= label :profile, :daytime_phone, "Daytime Phone #:" %></strong></td>
+			<td style="padding-left: 10px;"><%= @profile.datetime_phone %></td>
+		</tr>
+    <tr>
+			<td nowrap='nowrap'><strong><%= label :profile, :evening_phone, "Evening Phone #:" %></strong></td>
+			<td style="padding-left: 10px;"><%= @profile.evening_phone %></td>
+		</tr>
+    <tr>
+			<td nowrap='nowrap'><strong><%= label :profile, :cell_phone, "Cell Phone #:" %></strong></td>
+			<td style="padding-left: 10px;"><%= @profile.cell_phone %></td>
+		</tr>
+		<tr>
+			<td nowrap='nowrap'><strong>Preferred Contact Methods: </strong></td>
+			<td style="padding-left: 10px;">
+			<% if @profile.email && @profile.text_message %>
+			Email, Text Message
+			<% elsif @profile.email %>
+			Email
+			<% elsif @profile.text_message %>
+			Test Message
+			<% end %>
+			</td>
+		</tr>
+		<tr>
+			<td>Cell Carrier:</td>
+			<td><%= @profile.cell_carrier.name  rescue "None Selected"  %></td>
+		</tr>
+		<tr>
+			<td colspan="2">&nbsp;</td>
+		</tr>
+		<tr>
+			<td nowrap='nowrap'><strong>Search Permissions:</strong></td>
+			<td style="padding-left: 10px;"><%= @profile.not_searchable ? "Shows Summary" : "Hides Summary" %></td>
+		</tr>
+		<tr>
+			<td nowrap='nowrap'><strong>Friend List Visibility:</strong></td>
+			<td style="padding-left: 10px;"><%= @profile.visible_to_everyone ? "Everyone" : "Only Their Friends" %></td>
+		</tr>
+	</table>
+	<br />
+	<table width="600">
+		<tr>
+			<td width="300">
+				<h2>I'm comfortable babysitting:</h2>
+				<ul style="list-style-position: inside; list-style-type: disc;">
+					<% if @user.skill.babies %> <li>Babies</li><% end %>
+					<% if @user.skill.toddlers %>  <li>Toddlers</li><% end %>
+					<% if @user.skill.preschoolers %>  <li>Pre-schoolers</li><% end %>
+					<% if @user.skill.schoolaged %>  <li>School Aged</li><% end %>
+					<% if @user.skill.specialneeds %>  <li>Special Needs Children</li><% end %>
+					<% if @user.skill.multiples %>  <li>Multiples (Twins, Triplets) </li><% end %>
+				</ul>
+			</td>
+			<td>
+				<h2>Own Transportation:</h2>
+				<% if @user.skill.transportation == 'true' %>
+					Yes
+				<% elsif @user.skill.transportation == 'sometimes' %>
+					Sometimes
+				<% else %>
+					No
+				<% end %><br /><br />
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<h2>Tasks I'm comfortable with:</h2>
+				<ul style="list-style-position: inside; list-style-type: disc;">
+				<% if @user.skill.cook %> <li>Cook meals </li><% end %>
+				<% if @user.skill.homework %> <li>Help with homework </li><% end %>
+				<% if @user.skill.bathe %> <li>Bathe kids </li><% end %>
+				<% if @user.skill.kidstobed %> <li>Get kids to bed </li><% end %>
+				<% if @user.skill.entertain %> <li>Play/entertain </li><% end %>
+				</ul>
+		</td>
+		<td>
+			<h2>Willing to travel:</h2>
+			Up to <%= @user.skill.max_mileage  %> miles<br />
+		</td>
+	</tr>
+	<tr>
+		<td colspan='2'>
+			<h2>Their Hourly Rate:</h2>
+			$<%= @user.profile.hourly_rate %>
+			<br /><br />
+			<h2>Their Description:</h2>
+			<%= @user.description %>
+		</td>
+	</tr>
+	</table>
+	<br /><br />
+</div>

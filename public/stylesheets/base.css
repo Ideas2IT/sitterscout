@@ -1,0 +1,170 @@
+body { background: #f8f8f9; margin: 0; padding: 0; height: 100%; fo/nt-family: "Verdana"; fo/nt-size: 15px; color: #6d6e71; font: 100%/1.25 "Verdana",sans-serif; }
+
+a, a.tooltip:visited, a:active { color: #C31880; text-decoration: none; }
+a:hover { border-bottom: none; }
+
+#header { height: 190px; width: 100%; background: url(../images/header-gradient.jpg) repeat-x; po/sition: fixed; }
+#headerwrapper { height: 190px; width: 800px; margin: 0 auto; }
+
+#mainlogo { height: 80px; width: 220px; margin: 35px 0 15px 0; background: url(../images/sitterscout-logo.png) no-repeat; positi/on: absolute; float: left; cursor: pointer; }
+#logorsign { height: 40px; width: 180px; backgr/ound: #999; color: #000; opac/ity: 0.5; margin: 45px 0 25px 0; float: right; text-align: center; line-height: 40px; font-size: 9px; }
+
+#footer { height: 28px; width: 100%; background: url(../images/footer-gradient.jpg) repeat-x; position: fixed; bottom: 0; right: 0; overflow: hidden; }
+#footer p { width: 800px; padding:0; margin: 0 auto; line-height: 28px; font-size: 11px; color: #111; }
+#footer a { color: #fff; }
+#footer a:hover { text-decoration: none; }
+
+#content { width: 800px; height: auto; margin: 5px auto 0 auto; }
+
+/*#content {
+	background-color: #F7F7F7;
+	color: #333333;
+	clear: both;
+	margin-left: 10px;
+	padding: 0 1em;
+	min-height: 500px;
+	width: 720px;
+
+	position:relative;	/* This fixes the IE7 overflow hidden bug 
+	overflow:hidden;		/* This chops off any overhanging divs 
+
+}
+*/
+#content .col1, .col2, .colmask, .leftmenu, .colleft
+{
+	background-color: #F7F7F7;
+	
+}
+
+
+#content p { line-height: 26px; }
+
+#content .col { width: 280px; margin-right: 40px; backg/round: pink; float: left; padding-bottom: 60px; padding-left: 100px; }
+.rightcol { margin: 0 !important; }
+
+.signupitsfree { background: url(../images/signupitsfree-lgbuttons.png); width: 240px; height: 40px; margin-left: -28px; margin-top: 25px; cursor: pointer; }
+.magenta { background-position: 0 0; }
+.magenta:hover { background-position: 0 -40px; }
+.green { background-position: 240px 0; }
+.green:hover { background-position: 240px -40px; }
+
+.learnmore { background: url(../images/learnmore-button.png); width: 140px; height: 30px; cursor: pointer; }
+.learnmore:hover { background-position: 0 -30px; }
+
+.loginsignup { background: url(../images/loginsignup-buttons.png); width: 76px; height: 20px; margin: 10px 0; cursor: pointer; }
+.loginsignup.carbon { background-position: 0 0; float: left; }
+.loginsignup.carbon:hover { background-position: 0 -20px; }
+.loginsignup.out { background-position: -152px 0; float: left; }
+.loginsignup.out:hover { background-position: -152px -20px; }
+.loginsignup.magenta { background-position: -76px 0; float: right; }
+.loginsignup.magenta:hover { background-position: -76px -20px; }
+
+#parentshead { background: url(../images/parents-heading.png); width: 170px; height: 40px; margin-top: 30px; }
+#sittershead { background: url(../images/sitters-heading.png); width: 170px; height: 40px; margin-top: 30px; }
+
+:focus { outline: none }
+
+
+
+
+/* navbar */
+#navbar { width: 720px; height: 60px; margin: 0 auto 0 auto; position: relative; top: 124px;}
+
+#globalnav { margin: 0; padding: 0; position: absolute; }
+#globalnav li { display: inline; }
+#globalnav li a { float: left; height: 0; padding-top: 60px; overflow: hidden; border: none !important; }
+#globalnav li a { background-image: url(../images/globalnav.png); _background-image: url(../images/globalnav.gif); background-repeat: no-repeat; }
+
+/* buttons */
+#globalnav li#home a { background-position: 0 -120px; width: 64px; }
+#globalnav li#works a { background-position: -64px -120px; width: 118px; }
+#globalnav li#about a { background-position: -182px -120px; width: 94px; }
+#globalnav li#faq a { background-position: -276px -120px; width: 60px; }
+
+/* buttons over state */
+#globalnav li#home a:hover { background-position: 0 -60px; width: 64px; }
+#globalnav li#works a:hover { background-position: -64px -60px; width: 118px; }
+#globalnav li#about a:hover { background-position: -182px -60px; width: 94px; }
+#globalnav li#faq a:hover { background-position: -276px -60px; width: 60px; }
+
+/* buttons selected */
+#navbar.home #globalnav li#home a { background-position: 0 0; width: 64px; }
+#navbar.works #globalnav li#works a { background-position: -64px 0; width: 118px; }
+#navbar.about #globalnav li#about a { background-position: -182px 0; width: 94px; }
+#navbar.faq #globalnav li#faq a { background-position: -276px 0; width: 60px; }
+
+
+#nav_header { width: 640px; height: 29px; position: relative: top: 180px; margin: 0 auto; margin-left: 0;}
+#dash_header {margin: 0; padding: 0; position: absolute;}
+#dash_header li { display: inline; }
+#dash_header li a { float: left; height: 0; margin-top: 1px; padding-top: 29px; overflow: hidden; border: none !important; }
+#dash_header li a { background-image: url(../images/dash-tabs.png); _background-image: url(../images/dash-tabs.png); background-repeat: no-repeat; }
+
+#dash_header li#schedule a { background-position: 0 -58px; width: 137px; }
+#dash_header li#sitter a { background-position: -137px -58px; width: 105px; }
+#dash_header li#friend a { background-position: -242px -58px; width: 111px; }
+#dash_header li#inbox a { background-position: -353px -58px; width: 68px; }
+#dash_header li#profile a { background-position: -421px -58px; width: 106px; }
+#dash_header li#invite a { background-position: -527px -58px; width: 116px; }
+#dash_header li#family a { background-position: -836px -58px; width: 116px; }
+#dash_header li#requests a { background-position: -643px -58px; width: 193px; }
+/*buttons over state*/
+#dash_header li#schedule a:hover { background-position: 0 -29px; width: 137px; }
+#dash_header li#sitter a:hover { background-position: -137px -29px; width: 105px; }
+#dash_header li#friend a:hover { background-position: -242px -29px; width: 111px; }
+#dash_header li#inbox a:hover { background-position: -353px -29px; width: 68px; }
+#dash_header li#profile a:hover { background-position: -421px -29px; width: 106px; }
+#dash_header li#invite a:hover { background-position: -527px -29px; width: 116px; }
+#dash_header li#family a:hover { background-position: -836px -29px; width: 116px; }
+#dash_header li#requests a:hover { background-position: -643px -29px; width: 193px; }
+/*selected*/
+#dash_header li#schedule.schedule a { background-position: 0 0; width: 137px; }
+#dash_header li#schedule.schedule a { margin-top: 1px; }
+#dash_header li#sitter.sitter a  { background-position: -137px 0; width: 105px; }
+#dash_header li#friend.friend a { background-position: -242px 0; width: 111px; }
+#dash_header li#inbox.inbox a { background-position: -353px 0; width: 68px; }
+#dash_header li#profile.profile a { background-position: -421px 0; width: 106px; }
+#dash_header li#invite.invite a { background-position: -527px 0; width: 116px; }
+#dash_header li#family.family a { background-position: -836px 0; width: 116px; }
+#dash_header li#requests.requests a { background-position: -643px 0; width: 193px; }
+/* searchbar */
+#searchbar { position: absolute; right: 0; width: auto; height: 60px; }
+#searchoptions { width: auto; height: 20px; margin-top: 40px; background: pink; font-size: 12px; line-height: 12px; }
+#searchfield { color: #999; width: 180px; height: 16px; line-height: 16px; margin-top: 16px; float: left; }
+#searchbutton { width: 32px; height: 22px; background: url(../images/search-button.png); float: left; margin-top: 16px; margin-left: 2px;}
+#searchbutton:hover { background-position: 0 -22px; }
+
+.faqbullet { background: url(../images/faqs-bulb.png); width: 30px; height: 48px; float: left; margin-left: -54px; margin-top: -14px; background-position: 0 -96px; cursor: pointer; }
+.faqbullet:hover { background-position: 0 -48px; }
+
+.faqanswered { background: url(../images/faqs-bulb.png); background-position: 0 0px; width: 30px; height: 48px; float: left; margin-left: -54px; margin-top: -14px; cursor: pointer; }
+
+#faqlist h4 { padding-bottom: 24px; font-size: 14px; line-height: 22px; }
+#faqlist p { font-size: 13px; }
+#faqlist div { cursor: pointer; }
+.answer { margin: -30px 0 30px 0; }
+
+#beta { background: url(../images/beta-graphite.png); width: 98px; height: 98px; position: fixed; left: 0; top: 0; }
+
+ul.howlist { margin: 0; padding: 0; list-style: square; color: lime; }
+ul.howlist li { padding-bottom: 8px; font-size: 14px; line-height: 20px;  }
+ul.howlist li span { color: #222; }
+
+ul.howlistb { margin: 0; padding: 0; list-style: square; color: #222; }
+ul.howlistb li { padding-bottom: 8px; font-size: 14px; line-height: 20px;  }
+
+
+#loginmenu { width: 150px; height: 213px; background: url(../images/loginmenu-bg.png); position: relative; z-index: 9999; left: 619px; top: -6px; display: none; padding: 14px 16px; }
+
+
+
+.logmenubutton { background: url(../images/loginmenu-buttons.png); height: 18px; cursor: pointer; m/argin: 14px 18px; }
+.logmenubutton.in { background-position: 0 0; width: 64px; margin-top: 10px; }
+.logmenubutton.in:hover { background-position: 0 -18px; }
+.logmenubutton.signup { background-position: -64px 0; width: 142px; bottom: 14px; position: absolute; }
+.logmenubutton.signup:hover { background-position: -64px -18px; }
+
+.loginmenuinput { color: #999; font-size: 11px; width: 142px; }
+
+#notice_error { margin: 35px; text-align: center; font-size: .8em;}
+#notice_notice { margin: 35px; text-align: center;font-size: .8em;}

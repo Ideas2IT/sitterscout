@@ -1,0 +1,454 @@
+*	{
+   padding:0;
+   margin:0;
+}
+/*
+body{
+	font-family: "Tahoma";
+	font-size: 11pt;
+	width: 960px;
+}
+
+a {
+	color: #BA1D7F; 
+}
+
+p {
+	font-family: 'Tahoma'; font-size: 10pt
+}
+*/
+
+span {
+	font-size: 1em;
+}
+
+span.accent_span{
+	font-family: "Verdana",sans-serif; font-size: 1.5em;
+}
+
+/***** Flash & error messages ****/
+#errorExplanation, div.flash, .nodata, .warning {
+    padding: 4px 4px 4px 4px;
+    margin-bottom: 12px;
+		border: 2px solid;
+}
+
+div.flash {
+	margin-top: 8px;
+	width: 737px;
+}
+
+div.flash.error, #errorExplanation {
+   	background-color: #ffe3e3;
+	border-color: #dd0000;
+	color: #550000;
+	margin-left: 10px;
+}
+
+div.flash.notice {
+	background-color: #dfffdf;
+	border-color: #9fcf9f;
+	color: #005f00;
+	margin-left: 10px;
+}
+
+#parent_header{
+	position: relative;
+	height: 10%;
+	width:100%;
+	margin-bottom: 10px;
+	background-image: url('/images/global/PinkTopBar_slice.jpg');
+	background-repeat: repeat-x	;
+	padding: 10px;
+}
+
+#sitter_header{
+	position: relative;
+	height: 10%;
+	width:100%;
+	margin-bottom: 10px;
+	background-image: url('/images/global/GreenTopBar_slice.jpg');
+	background-repeat: repeat-x	;
+	padding: 10px;
+}
+
+.logo {
+	position: relative;
+}
+
+.horiz_li ul li {
+	display: inline;
+}
+
+.top_bar{
+	font-size: 1em;
+	position: absolute;
+	padding: 3px;
+ 	right: 20px;
+	top: 1px;
+}
+
+.top_bar #nav_menu {
+	
+	color: #333333;
+}
+
+.top_bar ul{
+	padding: 3px;
+}
+
+.top_bar ul li {
+	padding-left: 5px;
+	padding-right: 5px;
+	display: inline;
+}
+
+.top_bar ul li a {
+	color: #666666;
+	text-decoration: none;
+}
+
+.top_bar ul#nav_menu li.selected a{
+	color: #333333;
+	text-decoration: none;
+}
+
+.top_bar ul li a:hover {
+	color: #333333;
+	text-decoration: none;
+}
+
+#setup_menu {
+  position: absolute; 
+	margin-top: 16px;
+	left: 420px;
+    
+}
+
+#setup_menu ul li {
+    right: 15px;
+    display: inline;
+}
+/*
+#side_bar{
+	margin-top: 55px;
+	text-align: left;
+	padding-right: 5px;
+	font-size: 8pt;
+	float: right;
+}
+*/
+
+#side_bar{
+	text-align: left;
+	font-size: 0.8em;
+	padding-right: 5px;
+	top: 112px;
+	position: absolute;
+	left: 815px;
+}
+
+.sitter_content{
+	clear: both;
+	
+	padding: 10px;
+	margin: 0;
+	margin-left: 10px;
+	border: 1px solid #ADACAD;
+	width: 720px;
+	background-color: #E5F1D5;
+}
+.sitter_main_content{
+	clear: both;
+	
+	padding: 10px;
+	margin: 0;
+	margin-left: 10px;
+	border: 1px solid #ADACAD;
+	width: 720px;
+	background-color: #E5F1D5;
+}
+.parent_main_content{
+
+	clear: both;
+	padding: 10px;
+	border: 1px solid #ADACAD;
+	margin: 0;
+	margin-left: 10px;
+	width: 720px;
+	background-color: #EFEFFF;
+	
+}
+
+
+.parent_content{
+	padding: 10px;
+	margin: 0;
+	margin-left: 10px;
+	width: 100%;
+	
+}
+#tabmenu {
+	margin: 0px 10px 0px 0px;
+	padding: 0px;
+	left: 20px;
+	position: relative;
+	height: 24px;
+	display: block;
+	width: auto;
+}
+
+#tabmenu li {
+	display: inline;
+}
+
+#tabmenu a, a.active {
+	text-decoration: none; 
+}
+
+#for_parents {
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+#for_parents h2  {
+	text-align: left;
+}
+
+
+
+.join_us{
+	text-align: center;
+	margin: 15px;
+}
+.home_pg_submenu {
+	font-family: "Verdana",sans-serif;
+	font-size: 1.1em;
+	margin: 0 60px 0 60px;
+}
+
+
+.submenu_data {
+	clear: both;
+	margin: 0;
+	height: 70px;
+	background-color: #D6CEEF;
+	border: 1px solid #9E74C6;
+	padding: 5px;
+}
+
+.submenu_data 	{
+	font-size: .8em;
+}
+.submenu_data input{
+/*	width: 100px;*/
+}
+
+.submenu_data p {
+	font-size: 1em;
+}
+
+.home_pg_submenu ul li {
+	font-size :0.9em;
+}
+
+#sub_menu_gradient {
+	width: 100%;
+	/*margin-left: -15px;*/
+	background-image: url('/images/2nd_lvl_nav_slice.gif');
+	background-repeat: repeat-x;
+	height: 25px;
+	padding-left: 15px;
+	
+}
+
+.sub_menu_gradient_center {
+	width: 800px; margin: 0 auto 0 auto;
+	
+}
+
+#sub_menu td {
+	margin-left: 5px;
+/*	display: inline;*/
+	font-size: 1.1em;
+	text-decoration: none;
+}
+
+#navigation {
+	margin: 0px 10px 0px 0px;
+	padding: 0px;
+	left: 10px;
+	position: relative;
+	height: 24px;
+	display: block;
+	width: auto;
+}
+.wrapper{
+	float: left;
+	margin-left: 10px;
+	width: 720px;
+	color: #333333;
+	
+}
+
+.login_wrapper{
+	float: left;
+	margin-left: 10px;
+	width: 900px;
+/*	color: #333333;*/
+}
+
+#new_login{
+	padding-top: 10px;
+	padding-left: 10px;
+}
+#signup{
+
+	float: left;
+	padding-top: 10px;
+	padding-left: 10px;
+}
+
+#signup #grad {
+ 	background-color: #F7F7F7;
+	
+}
+
+
+
+a.grey_link {
+	text-decoration: none;
+	font-size: .7em; color: #333333;
+}
+
+a:hover.grey_link{
+	text-decoration: none; 
+	color: #333333;
+	font-weight: bold;
+}
+
+a.grey_link_selected {
+	text-decoration: none;
+	font-size: .7em; 
+	color: #333333;
+	font-weight: bold;
+}
+	
+
+
+
+#terms {
+	color: #333333;
+	clear: both;
+	margin: auto;
+	padding: 0 1em;
+	min-height: 500px;
+/*	height: auto !important;*/
+/*	_height: 500px;*/
+	width: 720px;
+	
+
+}
+
+
+.clear {
+    clear:both;
+    height:1px;
+    overflow:hidden;
+  }
+
+div#wiz_step{
+	float: left; margin-left: 41%; margin-top: 25px;
+}
+
+
+
+/*---------- bubble tooltip -----------*/
+a.tt{
+    position:relative;
+    z-index:24;
+    color:#FFFFFF;
+	font-weight:bold;
+    text-decoration:none;
+
+}
+a.tt span{ display: none; }
+
+/*background:; ie hack, something must be changed in a for ie to execute it*/
+a.tt:hover{ z-index:25000; color: #FFFFFF; background:;}
+a.tt:hover span.tooltip{
+    display:block;
+    position:absolute;
+    top:0px; left:0;
+	padding: 15px 0 0 0;
+	width:200px;
+	color: #993300;
+    text-align: center;
+	filter: alpha(opacity:90);
+	KHTMLOpacity: 0.90;
+	MozOpacity: 0.90;
+	opacity: 0.90;
+}
+a.tt:hover span.top{
+	display: block;
+	padding: 30px 8px 0;
+    background: url(/images/bubble-new.gif) no-repeat top;
+}
+a.tt:hover span.middle{ /* different middle bg for stretch */
+	display: block;
+	padding: 0 8px; 
+	background: url(/images/bubble_filler-new.gif) repeat bottom; 
+}
+a.tt:hover span.bottom{
+	display: block;
+	padding:3px 8px 10px;
+	color: #548912;
+    background: url(/images/bubble-new.gif) no-repeat bottom;
+}
+
+
+/* <!-- */
+/* General styles */
+
+/* column container */
+.colmask {
+	position:relative;	/* This fixes the IE7 overflow hidden bug */
+	clear:both;
+	float:left;
+	width:100%;			/* width of whole page */
+	overflow:hidden;		/* This chops off any overhanging divs */
+}
+/* common column settings */
+.colright,
+.colmid,
+.colleft {
+	float:left;
+	width:100%;
+	position:relative;
+}
+.col1,
+.col2,
+.col3 {
+	float:left;
+	position:relative;
+	padding:0 0 1em 0;
+	overflow:hidden;
+}
+/* 2 Column (left menu) settings */
+.leftmenu {
+	background:#F7F7F7;		/* right column background colour */
+}
+.leftmenu .colleft {
+	right:75%;			/* right column width */
+
+}
+.leftmenu .col1 {
+	width:35%;			/* right column content width */
+	left:142%;			/* 100% plus left column left padding */
+}
+.leftmenu .col2 {
+	width:65%;			/* left column content width (column width minus left and right padding) */
+	left:40%;			/* (right column left and right padding) plus (left column left padding) */
+}

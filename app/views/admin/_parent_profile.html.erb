@@ -1,0 +1,96 @@
+<div style="width: 18%; float: left;">
+	<%= image_tag(@user.avatar_photo_url, :class => "right" ) %>
+	
+</div>
+<div style="width: 50%; float: left;">
+	<table style="padding-bottom: 25px">
+			<tr><td><strong><%= @profile.first_name + " " + @profile.last_name %></strong></td></tr>
+			<tr><td><%= @profile.address1 %></td></tr>
+			<tr><td><%= @profile.address2 %></td></tr>
+			<tr><td><%= @profile.city + ", " + State.find(@profile.state_id).name + " " + @profile.zipcode.to_s %></tr>
+			<tr><td> <%= link_to "View connections", url_for(:controller => 'connections', :action => 'show', :id => @user.id), :class => "lbOn-405-390" %>
+			| <%= link_to "Send message", compose_parent_path(current_user, :to_id => @user.id) %>
+			</td></tr>
+
+
+		</table>	
+
+
+	<table>
+		<tr>
+			<td nowrap='nowrap'><strong>Profile Tags:</strong></td>
+			<td style="padding-left: 10px;"><%= @profile.tag_list %></td>
+		</tr>
+		<tr>
+			<td nowrap='nowrap'><strong><%= label :profile, :email, "Email Address:" %></strong></td>
+			<td style="padding-left: 10px;"><%= @user.email %></td>
+		</tr>
+    <tr>
+			<td nowrap='nowrap'><strong><%= label :profile, :daytime_phone, "Daytime Phone #:" %></strong></td>
+			<td style="padding-left: 10px;"><%= @profile.datetime_phone %></td>
+		</tr>
+    <tr>
+			<td nowrap='nowrap'><strong><%= label :profile, :evening_phone, "Evening Phone #:" %></strong></td>
+			<td style="padding-left: 10px;"><%= @profile.evening_phone %></td>
+		</tr>
+    <tr>
+			<td nowrap='nowrap'><strong><%= label :profile, :cell_phone, "Cell Phone #:" %></strong></td>
+			<td style="padding-left: 10px;"><%= @profile.cell_phone %></td>
+		</tr>
+		<tr>
+			<td nowrap='nowrap'><strong>Preferred Contact Methods: </strong></td>
+			<td style="padding-left: 10px;">
+			<% if @profile.email && @profile.text_message %>
+			Email, Text Message
+			<% elsif @profile.email %>
+			Email
+			<% elsif @profile.text_message %>
+			Test Message
+			<% end %>
+			</td>
+		</tr>
+		<tr>
+			<td>Cell Carrier:</td>
+			<td><%= @profile.cell_carrier.name  rescue "None Selected"  %></td>
+		</tr>
+		<tr>
+			<td colspan="2">&nbsp;</td>
+		</tr>
+		<tr>
+			<td nowrap='nowrap'><strong>Search Permissions:</strong></td>
+			<td style="padding-left: 10px;"><%= @profile.not_searchable ? "Shows Summary" : "Hides Summary" %></td>
+		</tr>
+		<tr>
+			<td nowrap='nowrap'><strong>Friend List Visibility:</strong></td>
+			<td style="padding-left: 10px;"><%= @profile.visible_to_everyone ? "Everyone" : "Only Their Friends" %></td>
+		</tr>
+		<tr>
+			<td colspan="2">&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="2">Number of Children:&nbsp;&nbsp; <%= @user.children.length %></td>
+		</tr>
+		<tr>
+			<td>Children:</td><td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<table style="margin-top: 5px;">
+				<% @user.children.each_with_index do |a, i| 
+					age = (Time.now.to_date - a.age.to_date) / 365 %>
+					<tr>
+						<td style="padding-left: 20px"><%=a.name %></td>
+						<td style="padding-left: 20px">Age:
+								<% if age.to_f < 1.0 %>
+									<%= (age.to_f * 12).to_i.to_s + " Mos." %>
+								<%	else %>
+									<%= age.to_i.to_s  %>
+								<% end %>
+						</td>
+					</tr>
+					<%	end  %>
+				</table>
+			</td>
+		</tr>
+	</table>
+</div>

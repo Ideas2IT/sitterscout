@@ -1,0 +1,17 @@
+
+					<tr>
+						<td>
+						<%= image_tag(search.avatar_photo_url(:thumb), :class => "right" ) %>
+                                              </td>
+                                              <td valign="top">
+<%= search.profile.first_name %><%= search.profile.last_name.to_s.first + "." %><br/>
+<strong>Profile Tags:</strong><%= search.profile.tags %>
+						<%= link_to "More", '#' %></td>
+                                                
+                                                <td valign="top">1 mile</td>
+                                             
+                                                <td valign="top">
+                                                  <%= link_to "Add to Your Sitters" %><br />
+                                                  <%= link_to "View Connections" %>
+                                                </td>
+					</tr>

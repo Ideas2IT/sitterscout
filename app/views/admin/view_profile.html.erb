@@ -1,0 +1,14 @@
+<div id="content">
+	<div id="sub_menu_gradient">
+		<%= render :partial => 'admin_menu' %>
+	</div>
+	
+	<% if @user.is_a?Parent %>
+		<%= render :partial => 'parent_profile' %>
+	<% else %>
+		<%= render :partial => 'sitter_profile' %>
+	<% end %>
+
+</div>
+
+<%#= render :partial => 'admin_info' %>

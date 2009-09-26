@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+</head>
+<body>
+<%= image_tag("#{APP_URL}/images/email_signature.jpg", :alt=>"SitterScout.com") %>
+
+<font face="Arial, Helvetica, Geneva">
+
+<p>Welcome to SitterScout!</p><br /> 
+
+<p>Your parents have given their approval for you to be become a part of the SitterScout community.</p>
+
+<p>Click <%= link_to "here", APP_URL + dashboard_sitter_path(@sitter) %> to visit the SitterScout home page. Once you have logged in with the user name and password you created, you can start making connections on SitterScout and soon be able to get more babysitting jobs.</p>
+
+<p>If you ever have anything you need to tell us, or want to suggest a way to improve SitterScout, send us an e-mail at (feedback@sitterscout.com).</p>
+
+<p>If you have a question, please feel free to contact us any time by sending an e-mail to (info@sitterscout.com).</p>
+
+<p>Thank you,</p>
+<p>The SitterScout Team</p>
+</font>
+</body>
+</html>

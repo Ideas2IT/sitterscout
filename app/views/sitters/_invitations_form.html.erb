@@ -1,0 +1,17 @@
+<% 5.times do |i| %>
+
+<% input_name_prefix = "invitation[invite_#{i.to_s}]" %>
+<% input_id_prefix = "invitation_invite_#{i.to_s}"%>
+
+<div id="invitations-<%= i %>-container" class="invitations-container">
+	<label for="<%= input_id_prefix  %>_number" style=" font-size: 9pt;">Name:</label>
+	<input type="text" name="<%= input_name_prefix %>[name]" id="<%= input_id_prefix %>_name" size="20" <%#= "value=\"#{form.name}\"" if form %> />
+&nbsp;&nbsp;&nbsp;
+	<label for="<%= input_id_prefix %>_email_address" style=" font-size: 9pt;">Email Address:</label>
+	<input type="text" name="<%= input_name_prefix %>[email_address]" id="<%= input_id_prefix %>_email_address" size="20" <%#= "value=\"#{form.email}\"" if form %> />
+&nbsp;&nbsp;&nbsp;
+<%= radio_button_tag "#{input_name_prefix}[friendsitters]", "sitters", true  %><font style=" font-size: 9pt;"> Sitter</font>&nbsp;&nbsp;&nbsp;<%= radio_button_tag "#{input_name_prefix}[friendsitters]", "friends"  %><font style=" font-size: 9pt;"> Parent</font>
+	
+</div>
+<% end %>
+

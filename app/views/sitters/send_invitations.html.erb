@@ -1,0 +1,15 @@
+
+<%= render :partial => 'nav_menu' %>
+
+<div id="sub_menu_gradient">
+	
+</div>
+
+<div id="content" style="height: 550px;">
+
+<%= render :partial => 'shared/send_invites' %>
+		<h3>Please add notifications@sitterscout.com to your e-mail contacts so that you will be sure to receive your requests and messages.</h3>
+<%= link_to image_tag("HaveFun_bttn.gif", :border => 0), dashboard_sitter_path(current_user) %>
+</div>
+
+<%#= render :partial => 'shared/profile_percentage' %>

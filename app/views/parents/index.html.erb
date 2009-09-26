@@ -1,0 +1,125 @@
+<div id='content' style=' padding-top: 50px;'>
+
+<div class='col' style='background: url(images/parents-art.png) no-repeat;'>
+	<div id='parentshead'></div>
+	<p>SitterScout helps parents find reliable babysitters by connecting with their friends. We&#39;ll make booking your sitter a snap, so you&#39;ll never have to play phone tag with your babysitters again.</p>
+	<div class='learnmore'></div>
+	<div class='signupitsfree magenta'></div>
+</div>
+
+<div class='col rightcol' style='background: url(images/sitters-art.png) no-repeat;'>
+	<div id='sittershead'></div>
+	<p>Get more babysitting jobs through the families you know. You decide how you want to be contacted so you&#39;ll never miss out on an opportunity.<br /><br /></p>
+	<div class='learnmore'></div>
+	<div class='signupitsfree green'></div>
+</div>
+
+</div>
+
+<!-- <div class="wrapper">
+	
+<div class="nav_header">
+	<ul>
+		<li id="selected"><%#= link_to image_tag('/images/parent_home/tab_parents.gif', :border => 0), parents_path %></li>
+		<li><%#= link_to image_tag('/images/sitter_home/tab_sitters.gif', :border => 0), sitters_path %></li>
+	</ul>
+</div>
+
+	<div class="parent_main_content" style="height: 450px;">
+		<p style=" font-size: 11pt;">
+			SitterScout helps parents find reliable babysitters by connecting with their friends.</p>
+		<p style=" font-size: 11pt;">
+			We'll make booking your sitter a snap, so you'll never have to play phone tag with your babysitters again.
+		</p>
+		<br/>
+	
+		<div id="for_parents">
+		<p style="font-family:'Tahoma'; font-size: 14pt; text-align: left;">
+			<strong>Here's how it works:</strong>
+		</p>
+		<%#= render :partial => 'parent' %>
+		</div>
+		<div class="join_us">
+		   <%#= link_to image_tag('parent_home/JoinSS_button.gif', :border => 0), new_parent_path %>
+		</div>	
+		</div>
+		<div style="position: absolute; top:475px; left:2%;">
+		<div class="home_pg_submenu" id="find_sitter">
+			<div class="nav_header">
+			      <ul>
+			        <li id="selected">
+						<%#= link_to image_tag('global/FindASitter_active.gif', :border => 0), "#",  :onclick => "Element.show('find_sitter'); Element.hide('find_friend'); return false;" %></li>
+			        <li>
+						<%#= link_to image_tag('global/AreYourFriends_inactive.gif', :border => 0), "#",  :onclick => "Element.show('find_friend'); Element.hide('find_sitter'); return false;"
+					 	        %>
+					</li>
+
+			      </ul>
+			</div>
+			<div class="submenu_data" style="width: 600px;">	
+					<p style=" font-size: 9pt;">
+						We take your offline community of friends and babysitters online and book your sitters
+						for you – no more waiting around for a sitter to call you back.
+					</p>
+							<%# form_tag url_for(:controller => 'search', :action => 'index') do |f| %>
+			
+							<div style='padding-left: 25%;'>
+							<table>
+								<tr>
+											<td></td>
+									<td><strong><%#= label(:search, :zip, "Search by:", :style => " font-size: 11pt;") %></strong></td>
+									<td><%#= text_field(:search, :zip, :value => "Zip code", :onfocus=> "if(this.value=='Zip code')this.value=''", :size => "20") %> </td>
+							
+									<td><%#= image_submit_tag("global/Search_bttn_pink.gif") %></td>
+								</tr>
+							</table>
+							</div>
+				
+		
+					<%# end %>
+			</div>
+
+		</div>
+        <div class="home_pg_submenu" id="find_friend" style="display: none;">
+		<div class="nav_header">
+			  <ul >
+		        <li><%#= link_to image_tag('global/FindASitter_inactive.gif', :border => 0), "#",  :onclick => "Element.hide('find_friend'); Element.show('find_sitter'); return false;" %></li>
+		        <li id="selected">
+				<%#= link_to image_tag('global/AreYourFriends_active.gif', :border => 0), "#",  :onclick => "Element.show('find_sitter'); Element.hide('find_friend'); return false;"
+				 	        %>
+				</li>
+
+		      </ul>
+		</div>
+					<div class="submenu_data" style="width: 600px;">
+							<p style=" font-size: 9pt;">
+								Find your friends and create your network of babysitters.
+							</p>
+										<%# form_tag url_for(:controller => 'search', :action => 'index') do |f| %>
+									
+													<div style='padding-left: 25%;'>
+														<table>
+															<tr>
+																		<td></td>
+																<td><strong><%#= label(:search, :zip, "Friend's name:", :style => " font-size: 11pt;") %>	</strong></td>
+																<td>	<%#= text_field(:search, :friend, :value => "Search for a friend", :onfocus=> "if(this.value=='Search for a friend')this.value=''", :size => "20") %></td>
+
+																<td><%#= image_submit_tag("global/Search_bttn_pink.gif") %></td>
+															</tr>
+												
+														</table>
+													</div>
+					
+							<%# end %>
+					</div>
+		
+		</div>
+<!-- end home-pg-submenu -->
+		</div>
+
+		
+
+
+	
+</div>
+			<%#= render :partial => '/shared/login_div' %> -->

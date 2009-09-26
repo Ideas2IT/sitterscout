@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+</head>
+<body>
+<%= image_tag("#{APP_URL}/images/email_signature.jpg", :alt=>"SitterScout.com") %>
+
+<p>Dear <%= @recipient %>,</p>
+
+<p><%= @sender_name %> has sent you a message on SitterScout.</p>
+
+<p>“<%= @message %>”</p>
+
+<p>Click <%= link_to "here", APP_URL + "/message/reply?message_id=#{@message_id}&from_messages=1" %> to reply to this message.</p>
+
+<p>Thank you,</p>
+
+<p>The SitterScout Team</p>
+
+</body>
+</html>

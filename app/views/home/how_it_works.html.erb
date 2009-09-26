@@ -1,0 +1,66 @@
+<% content_for :nav_bar do %>
+<div id='navbar' <%= current_page?(:controller => "home", :action => "index") ? "class='home'" : nil %><%= current_page?(:controller => 'home', :action => "how_it_works") ? "class='works'" : nil %><%= current_page?(:controller => "home", :action => "about_us") ? "class='about'" : nil %><%= current_page?(:controller => "home", :action => "faq") ? "class='faq'" : nil %>>
+
+
+	<ul id='globalnav'>
+		<li id="home" <%= current_page?(:controller => "parents", :action => "index") ? "class='selected'" : nil %>><%= link_to("home", home_page_path) %></li>
+		<li id="works"><%= link_to("works", how_it_works_path) %></li>
+		<li id="about"><%= link_to("about", about_us_path) %></li>
+		<li id="faq"><%= link_to("faq", :controller => 'home', :action => 'faq') %></li>
+	</ul>
+
+
+	<div id='searchbar' style='backg/round: #999; z-index: 900;'>
+		<% form_tag "/search", :name => 'search_form' do %>
+		<input id='searchfield' type="text" name="search" id="search" value="Search by name or zip code" size='40' onFocus="if(this.value=='Search by name or zip code'){this.value=''; this.style.color='#000';};" onBlur="if(this.value==''){this.value='Search by name or zip code'; this.style.color='#999'; }"/>
+		<div id='searchbutton' onclick="document.search_form.submit();"></div>
+		<% end %>
+
+	</div>		
+</div>
+<% end %>
+<div id='content' style='height: 500px; background: url(images/banner-howitworks-d.png) no-repeat; padding-top: 180px;'>
+
+<div id='parenthow' class='col' style='marg/in-left: -50px; padding-left: 60px; bac/kground: pink;'>
+	<div id='parentshead'></div>
+
+	<p>We understand that the life of a parent is <a href="" title="Just testing tooltips in this section to. Want to make sure it works.">hectic</a>. You have more important things to do than call around trying to track down a babysitter. SitterScout is here to help. When you need a sitter, we do the work for you, so you never have to pick up the phone.</p>
+	
+	<p>Here&#39;s how it works:</p>
+	
+	<ul class='howlistb'>
+		<li><span>Create a SitterScout profile &#8211; provide as much or as little information as you choose</span></li>
+		<li><span>Control your privacy &#8211; select whether others can search for you, who can see your information, and who can contact you</span></li>
+		<li><span>Build your network &#8211; add the friends and sitters you know and trust who are already on SitterScout to your network, or invite others to join</span></li>
+		<li><span>Tell us when you need a babysitter and which sitters you&#39;d like to request</span></li>
+		<li><span>We send an email or text message to the sitters you select and let you know when they respond (we&#39;ll even send a reminder to you and your sitter 48 hours before the scheduled job)</span></li>
+	</ul>
+	
+	<p>We are different from other online babysitting services &#8211; SitterScout is all about connecting you with new sitters through a network of friends and neighbors you trust. When you invite new friends to join, you&#39;ll see which sitters they are using and as a result, expand your list of sitters.</p>
+
+	<div class='signupitsfree magenta' onclick="location.href='/parents/new';"></div>
+
+</div>
+
+<div class='col rightcol' style='padding-left: 60px; backg/round: pink;'>
+	<div id='sittershead'></div>
+
+	<p>Do you love to babysit? Would you like to meet more families through a trusted community of friends and neighbors? Do you find it difficult to find the time to return a phone call? Sitter Scout is here to help!</p>
+	
+	<p>SitterScout sends job requests to you via text message or e-mail (no phone calls to return) and makes it easy for you to reply. You tell us how you want to be reached and we&#39;ll take care of the rest.</p>
+	
+	<ul class='howlistb'>
+		<li><span>Control your privacy &#8211; select whether others can search for you, who can see your information and who can contact you</span></li>
+		<li><span>Create a SitterScout profile &#8211; provide as much or as little information as you choose</span></li>
+		<li><span>Build your network &#8211; add the families you babysit for who are already on SitterScout to your network, or invite others to join</span></li>
+		<li><span>Get more babysitting opportunities &#8211; whenever a family from your network needs a sitter, they make a request and we contact you</span></li>
+	</ul>
+	
+	<p>SitterScout is simply the easiest way for you to connect with the families you know and trust.</p>
+
+	<div class='signupitsfree green' onclick="location.href='/sitters/new'; "></div>
+</div>
+
+
+</div>
+

@@ -1,0 +1,54 @@
+
+<div id="content">
+
+<div style="width: 18%; float: left;">
+	<%= image_tag(@user.avatar_photo_url, :class => "right" ) %>
+	<table>
+			<tr><td> <%= link_to "View #{@user.profile.full_name} connections", view_connections_parent_path(@user) %>
+		</td></tr>
+		<tr><td> <%= link_to "Send #{@user.profile.full_name} a message", inbox_parent_path(current_user) %>
+		</td></tr>
+	</table>
+
+</div>
+<div style="width: 50%; float: left;">
+	<table style="padding-bottom: 25px">
+			<tr><td><strong><%= @profile.first_name + " " + @profile.last_name %></strong></td></tr>
+			<tr><td><%= @profile.address1 %></td></tr>
+			<tr><td><%= @profile.address2 %></td></tr>
+			<tr><td><%= @profile.city + ", " + State.find(@profile.state_id).name + " " + @profile.zipcode.to_s %></tr>
+
+
+		</table>	
+
+
+	<table>
+		<tr><td><strong>Profile Tags:</strong></td><td><%= @profile.tag_list %></tr>
+		<tr><td><strong><%= label :profile, :email, "Email Address:" %></strong></td><td>
+		<%= @user.email %></td></tr>
+                <tr><td><strong><%= label :profile, :daytime_phone, "Daytime Phone #:" %></strong></td><td>
+		<%= @profile.datetime_phone %></td></tr>
+                <tr><td><strong><%= label :profile, :evening_phone, "Evening Phone #:" %></strong></td><td>
+		<%= @profile.evening_phone %></td></tr>
+                <tr><td><strong><%= label :profile, :cell_phone, "Cell Phone #:" %></strong></td><td>
+		<%= @profile.cell_phone %></td></tr>
+		
+	</table>
+
+	<table>
+		<tr>
+			<td>Number of Children:</td><td align="left"><%= @user.children.length %></td>
+		</tr>
+		<tr>
+			<td>Children's Birthdays</td><td><%= @user.children.map{|a| [a.age.to_s + " & "]} %></td>
+		</tr>
+		
+	
+	</table>
+
+</div>
+
+
+</div>
+
+	<div style="top: 450px; position: absolute; margin-left: 18%; color: #8F8F8F;  font-size: 10pt; width: 960px;"> <%= link_to "< Back to \"Your Friends\"", friends_parent_path(current_user) %></div>

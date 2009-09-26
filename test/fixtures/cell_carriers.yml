@@ -1,0 +1,25 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: ATT
+  email_suffix: "mobile.att.net"
+
+two:
+  name: Verizon
+  email_suffix: "vtext.com"
+
+three:
+  name: T-Mobile
+  email_suffix: "tmomail.com"
+ 
+four:
+  name: Sprint
+  email_suffix: "messaging.sprintpcs.com"
+ 
+four:
+  name: Nextel
+  email_suffix: "page.nextel.com" 
+  
+five:
+  name: Other
+  email_suffix: "other.com"

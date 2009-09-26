@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+</head>
+<body>
+<%= image_tag("#{APP_URL}/images/email_signature.jpg", :alt=>"SitterScout.com") %>
+
+<font face="Arial, Helvetica, Geneva">
+
+<p>To the parents of <%= @sitter.profile.full_name %>,</p>
+
+<p><%= @sitter.profile.full_name %> is interested in joining SitterScout, an online community that helps parents connect with babysitters. Because your child is under 18, we need your consent.</p>
+
+<p>At SitterScout babysitters build an online network of trusted families. When those families make a babysitting request <%= @sitter.profile.full_name %> is contacted by text message or e-mail. As a parent, you can choose to be notified whenever <%= @sitter.profile.full_name %> is asked to babysit and/or when a new parent wants to join her
+network.</p>
+
+<p>Your child’s full profile information is restricted to the members of your child’s network. Your child controls whether or not they want to be searchable on SitterScout and who can see their list of connections. Click <%= link_to "here", APP_URL + url_for(:controller => 'consenting_parent', :action => 'index') %> to learn more and give <%= @sitter.profile.full_name %> permission to join the SitterScout community.</p>
+
+<p>If you have any questions, please contact us at info@sitterscout.com.</p>
+
+<p>Thank you,</p>
+<p>The SitterScout Team</p>
+
+<p>SitterScout is simply the easiest way for babysitters to connect with the families they know and trust.</p>
+</font>
+</body>
+</html>

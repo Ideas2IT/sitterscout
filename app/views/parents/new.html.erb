@@ -1,0 +1,308 @@
+<div id='content'>
+	<%= error_messages_for :parent %>
+	<div class="login_wrapper">
+		<h3  style="padding-left: 45px;">Create your login information:</h3>
+		<p style="padding-left: 45px;">(All fields are required)</p><br />
+		
+		<div id="user_type_toggle"  style="padding-left: 65px;">
+			<div id="parent_type_toggle" style="display: inline; padding-right: 35px;">
+				<%= radio_button_tag "account_type", "parent", true, {:onclick => "Element.show('parent');Element.hide('sitter')"} %>&nbsp; <label for="account_type_parent"><strong>I am a Parent</strong></label>
+			</div>
+			<div id="parent_type_toggle" style="display: inline;">
+				<%= radio_button_tag "account_type", "sitter", false, {:onclick => "Element.show('sitter');Element.hide('parent')"}  %>&nbsp; <label for="account_type_sitter"><strong>I am a Sitter</strong></label>
+			</div>	
+		</div>
+		<div id="signup" style="padding: 25px 45px;">
+
+			<div id="grad">
+					<div id="parent" style="padding: 5px;">
+		
+						<% form_for :parent, :url => parents_path do |f| -%>		
+							<table>
+							<tr>
+								<td>
+									<label for="email"><span id="parent_email_label">Email Address:</span></label>
+								</td>
+								<td>
+									<%= f.text_field :email %>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2"><span>This email address will be our primary way of contacting you.</span></td>
+							</tr>
+							<tr>
+								<td colspan="2">&nbsp;</td>
+							</tr>
+							<tr>
+								<td colspan="2"><span>Your password is case sensitive and must be at least 6 characters long.</span></td>
+							</tr>
+							<tr>
+								<td><label for="password"><span id="parent_password_label">Create password:</span></label></td>
+								<td><%= f.password_field :password %></td>
+							</tr>
+							<tr>
+									<td><label for="password_confirmation"><span id="parent_password_confirmation_label">Confirm password:</span></label></td>
+								  <td><%= f.password_field :password_confirmation %></td>
+							</tr>
+							</table>
+						<br />
+					    <p style="margin-bottom: 5px;">
+								<%= f.check_box :terms_of_use %><label for="terms_of_use"> I have read and agree with the <strong><%= link_to "Terms of Use", "#{APP_URL}/tou", :target =>"_blank" %></strong> of this website.</label>
+							</p>
+							
+							<p style="margin-bottom: 5px;"><%= check_box_tag "profile[old_enough]" %> <%= f.label "birthdate",  "I verify that I am 13 years of age or older." %></p>
+							<br />
+							<input type="submit" id="parent_hidden_submit" style="display: none;">		
+								<div><%= show_simple_captcha %></div>
+								<br />							
+														
+								
+	<div style="margin-left: 150px; width: 100px; cursor: pointer;" onclick="check_parent()"><%= image_tag "JoinNow_bttn.gif" %></div>
+					
+						<% end -%>
+						
+					</div>
+					
+				<div id="sitter" style="display: none; padding: 5px;">
+					
+					<% form_for :sitter, :url => sitters_path do |f| -%>
+					<table>
+					<tr>
+						<td>
+							<label for="email"><span id="sitter_email_label">Email Address:</span></label>
+						</td>
+						<td>
+							<%= f.text_field :email %>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2"><span>This email address will be our primary way of contacting you.</span></td>
+					</tr>
+					<tr>
+						<td colspan="2">&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="2"><span>Your password is case sensitive and must be at least 6 characters long.</span></td>
+					</tr>
+					<tr>
+						<td>
+							<label for="password"><span id="sitter_password_label">Create password:</span></label>
+						</td>
+						<td>
+							<%= f.password_field :password %>
+						</td>
+					</tr>
+
+						<tr><td><label for="password_confirmation"><span id="sitter_password_confirmation_label">Confirm password:</label></td>
+						<td><%= f.password_field :password_confirmation %></td></tr>
+
+					</table>
+					<table id="parent_consent" style="display:none;">
+						<tr><td colspan="2">
+							For your protection, sitters under 18 must have parental <br />consent. Please provide your name
+							and one of your parents' <br />names and email address below.<br />
+						</td></tr>
+					<tr><td><label for="minor_first_name"><span id="minor_first_name_label">Your First Name:</span></label></td><td>
+					<%= text_field_tag "minor_first_name" %></td></tr>
+
+					<tr><td><label for="minor_last_name"><span id="minor_last_name_label">Your Last Name:</span></label></td>
+					<td><%= text_field_tag "minor_last_name" %></td></tr>
+					<tr><td colspan="2">&nbsp;</td></tr>
+						<tr><td><label for="parents_name"><span id="parents_name_label">Parent's Name:</span></label></td>
+						<td><%= text_field_tag "parents_name" %></td></tr>
+						<tr><td><label for="parents_email"><span id="parents_email_label">Parent's Email:</span></label></td>
+						<td><%= text_field_tag "parents_email" %></td></tr>
+					</table>
+
+
+					<br />
+			        <p><%= f.check_box :terms_of_use %>  <label for="terms_of_use">I have read and agree with the <strong><%= link_to "Terms of Use", "#{APP_URL}/tou", :target =>"_blank" %></strong> of this website.</label>
+					</p>
+					<br />
+					<p style="margin-bottom: 5px;"><%= f.label "birthdate",  "Birthday: (You must be at least 13 years old to sign up.)" %><br/>
+					<p><%= f.date_select :birthday, :start_year => 75.years.ago.year, :end_year => Time.now.year-13, :default => {:year => "1990", :day => "1", :month => "1"}, :order => [:month, :day, :year] %></p>
+					<br />
+						<div><%= show_simple_captcha %></div>
+							<input type="submit" id="hidden_submit" style="display: none;">						
+								<% end -%>
+								<br />
+							<div style="margin-left: 150px;"><span onclick="check_age();" style="cursor: pointer;"><%= image_tag "JoinNow_bttn.gif" %></span></div>
+					
+				</div>
+			</div>
+		</div>
+
+
+
+	</div>
+	</div>
+		<script type="text/javascript">
+		
+		function check_parent()
+		{
+			
+			$('parent_email_label').style.color = "#000000";
+			$('parent_password_label').style.color = "#000000";
+			$('parent_password_confirmation_label').style.color = "#000000";
+			$('flash_notice').innerHTML = '';
+			
+			var fail;
+			if($('parent_email').value == '')
+			{
+				$('parent_email_label').style.color = "#FF0000"
+				fail = true;
+			}
+			
+			if($('parent_password').value == '')
+			{
+				$('parent_password_label').style.color = "#FF0000"
+				fail = true;
+			}
+			
+			if($('parent_password_confirmation').value == '')
+			{
+				$('parent_password_confirmation_label').style.color = "#FF0000"
+				fail = true;
+			}
+			
+			if(fail)
+			{
+					$('flash_notice').innerHTML = '<div id="notice_error">Oops. You’re missing something. Please review the fields in red.</div>';
+
+						path_to_root_dir = "<%= APP_URL %>/";
+						var myBox = new GlassBox();
+						myBox.init( 'notice_error', '360px', '100px', 'hidden', 'facebookstyle', true, true );
+						myBox.lbo( false, 0.01 ); 
+						myBox.appear(5000);
+			}
+			else if($('parent_terms_of_use').checked == false)
+			{
+				$('flash_notice').innerHTML = '<div id="notice_error">Please Agree to the Terms of Use</div>';
+									path_to_root_dir = "<%= APP_URL %>/";
+									var myBox = new GlassBox();
+									myBox.init( 'notice_error', '360px', '100px', 'hidden', 'facebookstyle', true, true );
+									myBox.lbo( false, 0.01 ); 
+									myBox.appear(5000);
+			}
+			else if($('profile[old_enough]').checked == false)
+			{
+				$('flash_notice').innerHTML = '<div id="notice_error">Please Verify Your Age</div>';
+									path_to_root_dir = "<%= APP_URL %>/";
+									var myBox = new GlassBox();
+									myBox.init( 'notice_error', '360px', '100px', 'hidden', 'facebookstyle', true, true );
+									myBox.lbo( false, 0.01 ); 
+									myBox.appear(5000);
+			}
+			else
+			{
+				$('parent_hidden_submit').click();
+			}
+			
+		}
+
+		function check_age()
+		{
+			var month = $('sitter_birthday_2i').value;
+			var day = $('sitter_birthday_3i').value;
+			var year = $('sitter_birthday_1i').value;
+
+			$('minor_first_name_label').style.color = "#000000";
+			$('minor_last_name_label').style.color = "#000000";
+			$('parents_name_label').style.color = "#000000";
+			$('parents_email_label').style.color = "#000000";
+			$('sitter_email_label').style.color = "#000000";
+			$('sitter_password_label').style.color = "#000000";
+			$('sitter_password_confirmation_label').style.color = "#000000";
+			$('flash_notice').innerHTML = '';
+
+			var fail;
+			if($('sitter_email').value == '')
+			{
+				$('sitter_email_label').style.color = "#FF0000"
+				fail = true;
+			}
+
+			if($('sitter_password').value == '')
+			{
+				$('sitter_password_label').style.color = "#FF0000"
+				fail = true;
+			}
+
+			if($('sitter_password_confirmation').value == '')
+			{
+				$('sitter_password_confirmation_label').style.color = "#FF0000"
+				fail = true;
+			}
+
+			if(<%=Time.now.year %> - year < 18 || ( <%=Time.now.year %> - year == 18 && <%=Time.now.month %> <= month && <%=Time.now.day %> < day))
+			{
+
+				if($('parent_consent').visible())
+				{
+				 	if (!validate($('parents_email').value))
+					{
+						$('parents_email_label').style.color = "#FF0000";
+						fail = true;
+					}
+
+					if($('minor_first_name').value == '')
+					{
+						$('minor_first_name_label').style.color = "#FF0000";
+						fail = true;
+					}
+
+					if($('minor_last_name').value == '')
+					{
+						$('minor_last_name_label').style.color = "#FF0000";
+						fail = true;
+					}
+
+					if($('parents_name').value == '')
+					{
+						$('parents_name_label').style.color = "#FF0000";
+						fail = true;
+					}
+
+				}
+				else
+				{
+					$('parent_consent').show();
+					return false;
+				}
+
+			} 
+
+				if(fail == true)
+				{
+					$('flash_notice').innerHTML = '<div id="notice_error">Oops. You’re missing something. Please review the fields in red.</div>';
+										path_to_root_dir = "<%= APP_URL %>/";
+										var myBox = new GlassBox();
+										myBox.init( 'notice_error', '360px', '100px', 'hidden', 'facebookstyle', true, true );
+										myBox.lbo( false, 0.01 ); 
+										myBox.appear(5000);
+					return false;
+				}
+				else if($('sitter_terms_of_use').checked == false)
+				{
+					$('flash_notice').innerHTML = '<div id="notice_error">Please Agree to the Terms of Use</div>';
+										path_to_root_dir = "<%= APP_URL %>/";
+										var myBox = new GlassBox();
+										myBox.init( 'notice_error', '360px', '100px', 'hidden', 'facebookstyle', true, true );
+										myBox.lbo( false, 0.01 ); 
+										myBox.appear(5000);
+					return false;
+				}
+				else
+				{
+					$('hidden_submit').click()
+				}
+
+		}
+		function validate(email) {
+		   var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+		   if(reg.test(email) == false) {
+		      return false;
+		   }
+		return true;
+		}
+	</script>

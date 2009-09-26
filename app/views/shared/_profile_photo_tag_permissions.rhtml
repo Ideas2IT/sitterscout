@@ -1,0 +1,54 @@
+	<table style="padding-bottom: 25px; font-size: .8em;">
+		<tr>
+			<td colspan='2'>
+				<h3>Upload Photo</h3>
+			
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<%= image_tag(@user.avatar_photo_url, :class => "right" ) %>
+			
+			</td>
+			<td>	You can upload a GIF, JPG, or PNG <br /><%= file_field :avatar, :uploaded_data, :size => "20", :style => "margin: 5px 0;" %><br />
+               <%=check_box_tag "photo_permission" %> I certify that I have the right to distribute this picture and that it does not violate the <%= link_to "Terms of Use", "/tou", :target=>'blank' %>.
+				
+			</td>
+		</tr>
+		<tr>
+			<td colspan='2'><h3>Profile Tags</h3> (optional) &nbsp;</td>
+		
+		</tr>
+		<tr>
+			<td colspan="2">Adding profile tags will help you connect with people you know. Think about the ways you connect with friends offline (e.g., school, church, clubs) and list them here, separated by commas.
+			</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan='2'>
+			
+			<%= text_area_tag "profile[tag_list]", @profile.tag_list, :cols => '40' %>
+				</td>
+		</tr>
+		</table>
+			<table style="padding-bottom: 25px; font-size: .8em;">	
+		<tr>
+			<td><h3>Search Permissions</h3></td><td></td>
+		</tr>
+		<tr>
+			<td>People outside your network may try to find you.  Will you give SitterScout your permission to display a summary of your profile in our search results? (your name, photo, zip code, and profile tags)</td><td></td>
+		</tr>
+		<tr>
+			<td style="padding-top: 5px;"><%= radio_button :profile, :not_searchable, true %>&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;<%= radio_button :profile,  :not_searchable, false%>&nbsp;No</td><td></td>
+		</tr>
+		</table>
+			<table style="padding-bottom: 25px; font-size: .8em">
+                <tr>
+                  <td>Who should be able to view your list of friends & sitters?</td><td></td>
+                </tr>
+		<tr>
+			<td>
+			<p><%= radio_button :profile, :visible_to_everyone, true %> Everyone </p>
+			<p><%= radio_button :profile, :visible_to_everyone, false %> Only my friends and their friends</p></td><td></td>
+		</tr>
+	</table>

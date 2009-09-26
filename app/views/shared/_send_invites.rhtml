@@ -1,0 +1,33 @@
+<%= flash[:notice] %>
+<div style="margin-left: 15px;">
+<h3>Thank you for inviting your friends to join SitterScout!</h3><br /><br />
+
+<% unless @names.blank? %>
+<h4>You have invited the following people:</h4>
+<div style="font-size: .8em;">
+<%= @names.join("<br />") %> 
+</div>
+<% end %>
+<br />
+<br />
+	
+<% unless @users.size < 1 %>
+
+<h4>The following people are already part of the SitterScout Community</h4>
+<table style="font-size: .8em;">
+<% @users.each do |user| %>
+	<% unless user.profile.nil? %>
+	<tr>
+		<td><%= user.profile.first_name %>&nbsp;<%= user.profile.last_name %></td>
+		<td style="padding-left: 50px"><%= user.profile.parent? ? (link_to "Add to Your Friends", url_for(:controller => 'connections', :action => 'add_friend', :id => user.id), :class => "lbOn-300-260") : (link_to "Add to Your Sitters", url_for(:controller => 'connections', :action => 'add_friend', :id => user.id), :class => "lbOn-300-260")  %></td>
+	</tr>
+	<% end %>
+<% end %>
+</table>
+<br />
+
+
+<% end %>
+</div>
+<br />
+<br />

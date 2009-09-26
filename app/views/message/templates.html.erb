@@ -1,0 +1,19 @@
+<fieldset class="cornerbox_34_grn-col">
+	<div class="top"><h2>Manage Saved Messages</h2></div>
+	<table class="fieldsetish" cellspacing="0">
+		<tbody>
+			<% @message_templates.each_with_index do |message_template, index| %>
+				<tr class="<%= cycle("even", "odd") -%> data_4">
+					<td class="data_3"><%= link_to(message_template.name, :controller => :message, :action => :template_form, :id => message_template.id) %></td>
+					<td class="data_3"><%= link_to(image_tag("btn_edit_large.gif", :alt => "Edit"), :controller => :message, :action => :template_form, :id => message_template.id) %></td>
+					<td class="data_3"><%= link_to(image_tag("btn_delete_large.gif", :alt => "Delete"), :controller => :message, :action => :delete_template, :id => message_template.id) %></td>
+				</tr>
+			<% end %>
+			<% if @message_templates.size < 5 %>
+				<tr class="<%= cycle("even", "odd") -%> data_4">
+					<td class="data_3" colspan="3"><%= link_to "Add a new Saved Message", :controller => :message, :action => :template_form %></td>
+				</tr>
+		    <% end %>
+		</tbody>
+	</table>
+</fieldset>

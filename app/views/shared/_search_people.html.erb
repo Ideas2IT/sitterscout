@@ -1,0 +1,45 @@
+
+<div style="width: 380px; height: 85px; float: left; border: 1px #AFAFAF solid; background-color: #FFF; margin-top: 5px;">
+
+		<div style="width: 54px; float: left; padding: 5px; ">
+			<%= image_tag((search_people.parent? ? search_people.parent.avatar_photo_url(:thumb) : search_people.sitter.avatar_photo_url(:thumb)), :class => "right") %>
+		</div>
+
+		<div style="float:left; width: 310px;">
+			<strong style=' font-size: 1em;'><%= search_people.first_name rescue nil %>&nbsp;<%= search_people.sitter? ? (truncate(search_people.last_name, 2, '.') rescue nil) : (search_people.last_name rescue nil) %></strong>
+			<br />
+				<div style=' font-size: .7em;'><%= search_people.city rescue nil %>, <%= search_people.state.name rescue nil %></div>
+
+			<font style=' font-size: .7em;'>Profile Tags:
+			<%= truncate(search_people.profile.tag_list.to_s, 25, "...") rescue nil %>
+			
+						<% if(search_people.profile.tag_list.to_s.size > 25) %>
+							<%= link_to "More", "#", :onmouseover =>"TagToTip('#{search_people.id}_tip', ABOVE, true, BALLOON, true)", :onmouseout => "UnTip()", :style => "color: #C21D7F;" %>
+							<div id="<%= search_people.id %>_tip" style="display: none;"><%= search_people.profile.tag_list.to_s %></div>
+	
+						<% end rescue nil %><br />
+			<%
+			
+				if params[:action_verbiage] == "Friends"
+					action = 'add_friend'
+				elsif params[:action_verbiage] == "Sitters"
+					action = 'add_sitter'
+				else
+					action = 'add_friend'
+				end
+			
+			%>
+			> 
+			 <%= link_to "Add to Your #{params[:action_verbiage]}", url_for(:controller => "connections", :action => action, :id => (search_people.parent? ? search_people.parent.id : search_people.sitter.id)), :class => "lbOn-300-270" %>
+					<% if current_user.connected?(search_people.parent? ? search_people.parent : search_people.sitter) %>
+			  
+			&nbsp; > 
+			<%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => (search_people.parent? ? search_people.parent.id : search_people.sitter.id)), :class => "lbOn-405-390" %>
+			<% end %></font>	
+			
+		</div>
+
+</div>
+<script type="text/javascript">
+	initialize();
+</script>

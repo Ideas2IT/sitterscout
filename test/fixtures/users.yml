@@ -1,0 +1,1295 @@
+---
+admin:
+  id: 400
+  login: siteadmin-sittercout-com
+  email: siteadmin@sittercout.com
+  description:
+  avatar_id: nil
+  crypted_password: ca8ab20f2e5133d364e76a594d5cfe1513f21c50 
+  salt: 821a37dedffda3cd1ed3a87b615edc0e2076cb6f 
+  created_at: 2008-10-29 13:14:29 
+  updated_at: 2008-10-29 13:14:29 
+  remember_token: 
+  remember_token_expires_at: 
+  stylesheet:
+  view_count: 0 
+  vendor: false
+  activation_code: 
+  activated_at: 2008-10-29 17:14:29
+  state_id: 
+  metro_area_id: 
+  login_slug: siteadmin-sittercout-com 
+  notify_friend_requests: true 
+  notify_community_news: true
+  country_id: 
+  last_login_at: 2008-10-29 13:14:29
+  zip: 
+  birthday: 1983-10-29 
+  gender: 
+  profile_public: true
+  role_id: 1
+  type: 
+  account_type: 
+  aasm_state: new_account
+  terms_of_use: true
+  minor: false
+  consenting_parent_id: 
+user_00037: 
+  salt: 0c44a0ba94b9d20c7fcbcc073beceb3e9904a819
+  last_login_at: 2008-09-18 03:11:09 +00:00
+  zip: 
+  updated_at: 2008-09-18 03:11:09 +00:00
+  terms_of_use: true
+  activated_at: 
+  crypted_password: 69e635cb8e82ff9f34ba1bc9b4ffc95728daaabf
+  stylesheet: 
+  consenting_parent_id: 
+  type: Sitter
+  role_id: 2
+  remember_token_expires_at: 
+  country_id: 
+  activation_code: 00d0ca89a2b7b9f399dd06209186d47f84ed4598
+  login_slug: gig-sitterscout-com
+  id: 37
+  gender: 
+  avatar_id: 
+  account_type: 
+  aasm_state: new_account
+  description: 
+  remember_token: 
+  metro_area_id: 
+  birthday: 1994-01-01
+  vendor: false
+  notify_friend_requests: true
+  state_id: 
+  profile_public: true
+  notify_community_news: true
+  login: gig-sitterscout-com
+  view_count: 0
+  minor: false
+  email: gig@sitterscout.com
+  created_at: 2008-09-18 03:11:09 +00:00
+user_with_state_as_new_account: 
+  salt: e02d71dd5ced3810b6d7c518eacae6db02252950
+  last_login_at: 2008-09-22 16:21:08 +00:00
+  zip: 
+  updated_at: 2008-09-22 16:21:41 +00:00
+  terms_of_use: true
+  activated_at: 2008-09-15 17:37:52 +00:00
+  crypted_password: ba2924610545736d61e73afc368f432b86366ecc
+  stylesheet: 
+  consenting_parent_id: 
+  type: Parent
+  role_id: 3
+  remember_token_expires_at: 
+  country_id: 
+  activation_code: 
+  login_slug: meredithrielly-yahoo-com
+  gender: 
+  avatar_id: 
+  account_type: 
+  aasm_state: add_friends
+  description: I am a super fun babysitter who really loves kids.  I have over 10 years of experience with babysitting.
+  remember_token: 
+  metro_area_id: 
+  birthday: 1990-01-01
+  vendor: false
+  notify_friend_requests: true
+  state_id: 
+  profile_public: true
+  notify_community_news: true
+  login: meredithrielly-yahoo-com
+  view_count: 0
+  minor: false
+  email: meredithrielly@yahoo.com
+  created_at: 2008-09-15 17:37:52 +00:00
+user_00027: 
+  salt: f4b96a61e3710a4e3a8f07ae082fd770f6f6ac94
+  last_login_at: 2008-09-17 18:15:58 +00:00
+  zip: 
+  updated_at: 2008-09-17 18:27:13 +00:00
+  terms_of_use: true
+  activated_at: 2008-09-17 18:15:58 +00:00
+  crypted_password: ec131937c5042362ae5fef1aa7ef8bd37826c72d
+  stylesheet: 
+  consenting_parent_id: 
+  type: Parent
+  role_id: 3
+  remember_token_expires_at: 
+  country_id: 
+  activation_code: 
+  login_slug: julie-sitterscout-com
+  gender: 
+  avatar_id: 
+  account_type: 
+  aasm_state: complete
+  description: 
+  remember_token: 
+  metro_area_id: 
+  birthday: 1983-09-17
+  vendor: false
+  notify_friend_requests: true
+  state_id: 
+  profile_public: true
+  notify_community_news: true
+  login: julie-sitterscout-com
+  view_count: 0
+  minor: false
+  email: julie@sitterscout.com
+  created_at: 2008-09-17 18:15:58 +00:00
+user_00016: 
+  salt: 471540e67339ed428a09d2b4389bfb666fbfb1f9
+  last_login_at: 2008-09-15 21:22:38 +00:00
+  zip: 
+  updated_at: 2008-09-15 21:59:44 +00:00
+  terms_of_use: true
+  activated_at: 2008-09-15 21:22:38 +00:00
+  crypted_password: 998c5f18f6a25d9c1005ef40faab35b5ce4b734f
+  stylesheet: 
+  consenting_parent_id: 
+  type: Parent
+  role_id: 3
+  remember_token_expires_at: 
+  country_id: 
+  activation_code: 
+  login_slug: d-sitterscout-com
+  gender: 
+  avatar_id: 
+  account_type: 
+  aasm_state: complete
+  description: 
+  remember_token: 
+  metro_area_id: 
+  birthday: 1983-09-15
+  vendor: false
+  notify_friend_requests: true
+  state_id: 
+  profile_public: true
+  notify_community_news: true
+  login: d-sitterscout-com
+  view_count: 0
+  minor: false
+  email: d@sitterscout.com
+  created_at: 2008-09-15 21:22:38 +00:00
+user_00038: 
+  salt: 05510e75ef3bc96a9a408868ab51858b99584f67
+  last_login_at: 2008-09-22 21:38:05 +00:00
+  zip: 
+  updated_at: 2008-09-22 21:47:27 +00:00
+  terms_of_use: true
+  activated_at: 2008-09-18 03:13:54 +00:00
+  crypted_password: b079ade35897e0d68dccc0f85364e7e7a951b3ab
+  stylesheet: 
+  consenting_parent_id: 
+  type: Sitter
+  role_id: 2
+  remember_token_expires_at: 
+  country_id: 
+  activation_code: 
+  login_slug: georgia-sitterscout-com
+  id: 38
+  gender: 
+  avatar_id: 
+  account_type: 
+  aasm_state: complete
+  description: ""
+  remember_token: 
+  metro_area_id: 
+  birthday: 1990-01-01
+  vendor: false
+  notify_friend_requests: true
+  state_id: 
+  profile_public: true
+  notify_community_news: true
+  login: georgia-sitterscout-com
+  view_count: 0
+  minor: false
+  email: georgia@sitterscout.com
+  created_at: 2008-09-18 03:13:54 +00:00
+user_00039: 
+  salt: ee18ca0da0086fc39cb84e9d56de18f8afcb1fcb
+  last_login_at: 2008-09-18 04:43:13 +00:00
+  zip: 
+  updated_at: 2008-09-18 04:44:31 +00:00
+  terms_of_use: true
+  activated_at: 2008-09-18 03:29:22 +00:00
+  crypted_password: e858e352f6d8b078e3e9e63e951cea5ce5ed9e43
+  stylesheet: 
+  consenting_parent_id: 
+  type: Sitter
+  role_id: 2
+  remember_token_expires_at: 
+  country_id: 
+  activation_code: 
+  login_slug: helen-sitterscout-com
+  id: 39
+  gender: 
+  avatar_id: 
+  account_type: 
+  aasm_state: complete
+  description: 
+  remember_token: 
+  metro_area_id: 
+  birthday: 1990-01-01
+  vendor: false
+  notify_friend_requests: true
+  state_id: 
+  profile_public: true
+  notify_community_news: true
+  login: helen-sitterscout-com
+  view_count: 0
+  minor: false
+  email: helen@sitterscout.com
+  created_at: 2008-09-18 03:29:22 +00:00
+user_00017: 
+  salt: d84816611e1e30a1afa91748544616c0eea5fe0b
+  last_login_at: 2008-09-15 22:00:58 +00:00
+  zip: 
+  updated_at: 2008-09-17 17:08:35 +00:00
+  terms_of_use: true
+  activated_at: 2008-09-17 17:08:35 +00:00
+  crypted_password: dddff6d8badd32506784f20457eb861371a02dd8
+  stylesheet: 
+  consenting_parent_id: 996332878
+  type: Sitter
+  role_id: 2
+  remember_token_expires_at: 
+  country_id: 
+  activation_code: 
+  login_slug: billrielly-yahoo-com
+  id: 17
+  gender: 
+  avatar_id: 
+  account_type: 
+  aasm_state: 
+  description: 
+  remember_token: 
+  metro_area_id: 
+  birthday: 1994-01-01
+  vendor: false
+  notify_friend_requests: true
+  state_id: 
+  profile_public: false
+  notify_community_news: true
+  login: billrielly-yahoo-com
+  view_count: 0
+  minor: true
+  email: billrielly@yahoo.com
+  created_at: 2008-09-15 22:00:58 +00:00
+patrick: 
+  salt: 5ae145bd676dd26a6ab3cb78175f47ea8394bcdc
+  last_login_at: 2008-09-22 14:15:26 +00:00
+  zip: 
+  updated_at: 2008-09-22 17:22:07 +00:00
+  terms_of_use: true
+  activated_at: 2008-09-11 18:42:19 +00:00
+  crypted_password: 04a5432f85ec493d69a3aa4e9655afcd05557d1e
+  stylesheet: 
+  consenting_parent_id: 
+  type: Parent
+  role_id: 3
+  remember_token_expires_at: 
+  country_id: 
+  activation_code: 
+  login_slug: pkenney-pmkenney-com
+  id: 6
+  gender: 
+  avatar_id: 
+  account_type: 
+  aasm_state: complete
+  description: 
+  remember_token: 
+  metro_area_id: 
+  birthday: 1983-09-11
+  vendor: false
+  notify_friend_requests: true
+  state_id: 
+  profile_public: true
+  notify_community_news: true
+  login: pkenney-pmkenney-com
+  view_count: 0
+  minor: false
+  email: pkenney@pmkenney.com
+  created_at: 2008-09-11 18:42:19 +00:00
+user_00028: 
+  salt: e9fb7383e8c6776d7e6bda9d6c36411a8bce1479
+  last_login_at: 2008-09-17 18:16:13 +00:00
+  zip: 
+  updated_at: 2008-09-17 18:18:08 +00:00
+  terms_of_use: true
+  activated_at: 2008-09-17 18:16:13 +00:00
+  crypted_password: 953257a53e38665bba42434838cddb256b088fe6
+  stylesheet: 
+  consenting_parent_id: 
+  type: Parent
+  role_id: 3
+  remember_token_expires_at: 
+  country_id: 
+  activation_code: 
+  login_slug: pattip-sitterscout-com
+  id: 28
+  gender: 
+  avatar_id: 
+  account_type: 
+  aasm_state: welcome
+  description: 
+  remember_token: 
+  metro_area_id: 
+  birthday: 1983-09-17
+  vendor: false
+  notify_friend_requests: true
+  state_id: 
+  profile_public: true
+  notify_community_news: true
+  login: pattip-sitterscout-com
+  view_count: 0
+  minor: false
+  email: pattip@sitterscout.com
+  created_at: 2008-09-17 18:16:13 +00:00
+user_00040: 
+  salt: 392ae67061db089392e1f9d896583fb7a42e402b
+  last_login_at: 2008-09-22 17:22:41 +00:00
+  zip: 
+  updated_at: 2008-09-22 17:25:44 +00:00
+  terms_of_use: true
+  activated_at: 2008-09-18 04:11:46 +00:00
+  crypted_password: 883ada3aaa61c978f3bf7f525e83bfd95d0fc386
+  stylesheet: 
+  consenting_parent_id: 
+  type: Sitter
+  role_id: 2
+  remember_token_expires_at: 
+  country_id: 
+  activation_code: 
+  login_slug: ivy-sitterscout-com
+  id: 40
+  gender: 
+  avatar_id: 
+  account_type: 
+  aasm_state: complete
+  description: 
+  remember_token: 
+  metro_area_id: 
+  birthday: 1990-01-01
+  vendor: false
+  notify_friend_requests: true
+  state_id: 
+  profile_public: true
+  notify_community_news: true
+  login: ivy-sitterscout-com
+  view_count: 0
+  minor: false
+  email: ivy@sitterscout.com
+  created_at: 2008-09-18 04:11:46 +00:00
+user_00041: 
+  salt: 3826b4eb763b9234dce27bc26fcb8b2996d7fc87
+  last_login_at: 2008-09-18 17:15:26 +00:00
+  zip: 
+  updated_at: 2008-09-18 17:16:28 +00:00
+  terms_of_use: true
+  activated_at: 2008-09-18 17:15:26 +00:00
+  crypted_password: 09d7619c9231ca3e17c3ff7eb0567c0a76a06894
+  stylesheet: 
+  consenting_parent_id: 
+  type: Sitter
+  role_id: 2
+  remember_token_expires_at: 
+  country_id: 
+  activation_code: 
+  login_slug: megan-sitterscout-com
+  id: 41
+  gender: 
+  avatar_id: 
+  account_type: 
+  aasm_state: welcome
+  description: 
+  remember_token: 
+  metro_area_id: 
+  birthday: 1990-01-01
+  vendor: false
+  notify_friend_requests: true
+  state_id: 
+  profile_public: true
+  notify_community_news: true
+  login: megan-sitterscout-com
+  view_count: 0
+  minor: false
+  email: megan@sitterscout.com
+  created_at: 2008-09-18 17:15:26 +00:00
+user_00029: 
+  salt: f2efffb044cf6d34f5ed43b3dd175b2ed224e854
+  last_login_at: 2008-09-17 22:36:49 +00:00
+  zip: 
+  updated_at: 2008-09-17 22:39:32 +00:00
+  terms_of_use: true
+  activated_at: 2008-09-17 18:27:44 +00:00
+  crypted_password: 6f6e82a8d653f19aa8e076f9862921963299b4bf
+  stylesheet: 
+  consenting_parent_id: 
+  type: Sitter
+  role_id: 2
+  remember_token_expires_at: 
+  country_id: 
+  activation_code: 
+  login_slug: alexa-sitterscout-com
+  id: 29
+  gender: 
+  avatar_id: 
+  account_type: 
+  aasm_state: complete
+  description: 
+  remember_token: 
+  metro_area_id: 
+  birthday: 1990-01-01
+  vendor: false
+  notify_friend_requests: true
+  state_id: 
+  profile_public: true
+  notify_community_news: true
+  login: alexa-sitterscout-com
+  view_count: 0
+  minor: false
+  email: alexa@sitterscout.com
+  created_at: 2008-09-17 18:27:44 +00:00
+user_00007: 
+  salt: 961dea03cfe259821949147b45ad5e9f425d630c
+  last_login_at: 2008-09-22 16:22:29 +00:00
+  zip: 
+  updated_at: 2008-09-22 16:25:16 +00:00
+  terms_of_use: true
+  activated_at: 2008-09-11 18:47:08 +00:00
+  crypted_password: dbd1234e9d8cd660bcc5997895c8585c0653885f
+  stylesheet: 
+  consenting_parent_id: 
+  type: Parent
+  role_id: 3
+  remember_token_expires_at: 
+  country_id: 
+  activation_code: 
+  login_slug: hgrielly-yahoo-com
+  id: 7
+  gender: 
+  avatar_id: 
+  account_type: 
+  aasm_state: complete
+  description: 
+  remember_token: 
+  metro_area_id: 
+  birthday: 1983-09-11
+  vendor: false
+  notify_friend_requests: true
+  state_id: 
+  profile_public: true
+  notify_community_news: true
+  login: hgrielly-yahoo-com
+  view_count: 0
+  minor: false
+  email: hgrielly@yahoo.com
+  created_at: 2008-09-11 18:47:08 +00:00
+user_00018: 
+  salt: b5edbfd7a32b5626abcddc6672769b6dc1b3b04b
+  last_login_at: 2008-09-15 22:07:30 +00:00
+  zip: 
+  updated_at: 2008-09-15 22:07:30 +00:00
+  terms_of_use: true
+  activated_at: 
+  crypted_password: 07c85062e13612e27a692bc7018916f2c25eaad7
+  stylesheet: 
+  consenting_parent_id: 996332879
+  type: Sitter
+  role_id: 2
+  remember_token_expires_at: 
+  country_id: 
+  activation_code: f0093ca29bbabfbd4c440ae0319a61d90512bfed
+  login_slug: williamrielly-hotmail-com
+  id: 18
+  gender: 
+  avatar_id: 
+  account_type: 
+  aasm_state: 
+  description: 
+  remember_token: 
+  metro_area_id: 
+  birthday: 1994-01-01
+  vendor: false
+  notify_friend_requests: true
+  state_id: 
+  profile_public: false
+  notify_community_news: true
+  login: williamrielly-hotmail-com
+  view_count: 0
+  minor: true
+  email: williamrielly@hotmail.com
+  created_at: 2008-09-15 22:07:30 +00:00
+user_00030: 
+  salt: 097915f2528177615f995acc7d0497d6461874d3
+  last_login_at: 2008-09-22 21:35:57 +00:00
+  zip: 
+  updated_at: 2008-09-22 21:37:54 +00:00
+  terms_of_use: true
+  activated_at: 2008-09-17 19:42:07 +00:00
+  crypted_password: ca3b30ee2c02d31001ac9eb8cdf524a406bc59a9
+  stylesheet: 
+  consenting_parent_id: 
+  type: Parent
+  role_id: 3
+  remember_token_expires_at: 
+  country_id: 
+  activation_code: 
+  login_slug: allison-sitterscout-com
+  id: 30
+  gender: 
+  avatar_id: 
+  account_type: 
+  aasm_state: complete
+  description: 
+  remember_token: 
+  metro_area_id: 
+  birthday: 1983-09-17
+  vendor: false
+  notify_friend_requests: true
+  state_id: 
+  profile_public: true
+  notify_community_news: true
+  login: allison-sitterscout-com
+  view_count: 0
+  minor: false
+  email: allison@sitterscout.com
+  created_at: 2008-09-17 19:42:07 +00:00
+user_00031: 
+  salt: 25798b56f7222f1763b015ee100b17e42d27b0a5
+  last_login_at: 2008-09-22 21:39:02 +00:00
+  zip: 
+  updated_at: 2008-09-22 21:39:02 +00:00
+  terms_of_use: true
+  activated_at: 2008-09-17 21:56:08 +00:00
+  crypted_password: be1782cba2f19b5bd2b6eadb3c306cb847f58b86
+  stylesheet: 
+  consenting_parent_id: 
+  type: Parent
+  role_id: 3
+  remember_token_expires_at: 
+  country_id: 
+  activation_code: 
+  login_slug: Becka-sitterscout-com
+  id: 31
+  gender: 
+  avatar_id: 
+  account_type: 
+  aasm_state: complete
+  description: 
+  remember_token: 
+  metro_area_id: 
+  birthday: 1983-09-17
+  vendor: false
+  notify_friend_requests: true
+  state_id: 
+  profile_public: true
+  notify_community_news: true
+  login: Becka-sitterscout-com
+  view_count: 0
+  minor: false
+  email: Becka@sitterscout.com
+  created_at: 2008-09-17 21:56:08 +00:00
+user_00019: 
+  salt: 1c39e059493fe05970902f77d7fee35d15afbcda
+  last_login_at: 2008-09-15 22:57:30 +00:00
+  zip: 
+  updated_at: 2008-09-16 02:41:34 +00:00
+  terms_of_use: true
+  activated_at: 2008-09-15 22:57:30 +00:00
+  crypted_password: 4a1a0da53c3dc680384a066678a26c7fb278f820
+  stylesheet: 
+  consenting_parent_id: 
+  type: Sitter
+  role_id: 2
+  remember_token_expires_at: 
+  country_id: 
+  activation_code: 
+  login_slug: f-sitterscout-com
+  id: 19
+  gender: 
+  avatar_id: 
+  account_type: 
+  aasm_state: complete
+  description: I am the best babysitter ever!
+  remember_token: 
+  metro_area_id: 
+  birthday: 1990-01-01
+  vendor: false
+  notify_friend_requests: true
+  state_id: 
+  profile_public: true
+  notify_community_news: true
+  login: f-sitterscout-com
+  view_count: 0
+  minor: false
+  email: f@sitterscout.com
+  created_at: 2008-09-15 22:57:30 +00:00
+user_00008: 
+  salt: f8ebbcde6c84dc1bcac8781c0fc76e122b357ec8
+  last_login_at: 2008-09-19 02:58:15 +00:00
+  zip: 
+  updated_at: 2008-09-19 02:58:15 +00:00
+  terms_of_use: true
+  activated_at: 2008-09-11 19:01:17 +00:00
+  crypted_password: 8d1a2c54310c4bf8ea57957225bd12c12a37e3fe
+  stylesheet: 
+  consenting_parent_id: 
+  type: Sitter
+  role_id: 2
+  remember_token_expires_at: 
+  country_id: 
+  activation_code: 
+  login_slug: patrick-glific-com
+  id: 8
+  gender: 
+  avatar_id: 
+  account_type: 
+  aasm_state: complete
+  description: I'm cool.
+  remember_token: 
+  metro_area_id: 
+  birthday: 1974-01-01
+  vendor: false
+  notify_friend_requests: true
+  state_id: 
+  profile_public: true
+  notify_community_news: true
+  login: patrick-glific-com
+  view_count: 0
+  minor: false
+  email: patrick@glific.com
+  created_at: 2008-09-11 19:01:17 +00:00
+user_00020: 
+  salt: 303f3bd6c57dace7a643118c4617775ea9eefff0
+  last_login_at: 2008-09-16 01:45:55 +00:00
+  zip: 
+  updated_at: 2008-09-16 01:45:55 +00:00
+  terms_of_use: true
+  activated_at: 
+  crypted_password: a278a004ef253138920b1138b68c8bcad6d624c5
+  stylesheet: 
+  consenting_parent_id: 996332880
+  type: Sitter
+  role_id: 2
+  remember_token_expires_at: 
+  country_id: 
+  activation_code: f800a87e1926e57ab0de8e182b275709bc618cf9
+  login_slug: ksipkenney-gmail-com
+  id: 20
+  gender: 
+  avatar_id: 
+  account_type: 
+  aasm_state: 
+  description: 
+  remember_token: 
+  metro_area_id: 
+  birthday: 1994-01-01
+  vendor: false
+  notify_friend_requests: true
+  state_id: 
+  profile_public: false
+  notify_community_news: true
+  login: ksipkenney-gmail-com
+  view_count: 0
+  minor: true
+  email: ksipkenney@gmail.com
+  created_at: 2008-09-16 01:45:55 +00:00
+user_00042: 
+  salt: 9b5113d487ca93867d8fe8965712170838b237ef
+  last_login_at: 2008-09-19 18:24:24 +00:00
+  zip: 
+  updated_at: 2008-09-19 18:24:24 +00:00
+  terms_of_use: true
+  activated_at: 
+  crypted_password: f1543c8fea3ab83dbdd0a869ae4882f17772fa95
+  stylesheet: 
+  consenting_parent_id: 
+  type: Sitter
+  role_id: 2
+  remember_token_expires_at: 
+  country_id: 
+  activation_code: 1ffd078b017dae7f36b5195a27a152826eccd444
+  login_slug: june-sitterscout-com
+  id: 42
+  gender: 
+  avatar_id: 
+  account_type: 
+  aasm_state: new_account
+  description: 
+  remember_token: 
+  metro_area_id: 
+  birthday: 1994-01-01
+  vendor: false
+  notify_friend_requests: true
+  state_id: 
+  profile_public: true
+  notify_community_news: true
+  login: june-sitterscout-com
+  view_count: 0
+  minor: false
+  email: june@sitterscout.com
+  created_at: 2008-09-19 18:24:24 +00:00
+user_00043: 
+  salt: 9d9a4111cd5f526bc66af996d3c6c30034d2c150
+  last_login_at: 2008-09-22 21:12:44 +00:00
+  zip: 
+  updated_at: 2008-09-22 21:20:24 +00:00
+  terms_of_use: true
+  activated_at: 2008-09-22 21:12:44 +00:00
+  crypted_password: 35510fb121b5fcb4f6c870f1c70a25197043e75c
+  stylesheet: 
+  consenting_parent_id: 
+  type: Sitter
+  role_id: 2
+  remember_token_expires_at: 
+  country_id: 
+  activation_code: 
+  login_slug: kristy-sitterscout-com
+  id: 43
+  gender: 
+  avatar_id: 
+  account_type: 
+  aasm_state: complete
+  description: I am a fabulous sitter!!
+  remember_token: 
+  metro_area_id: 
+  birthday: 1990-01-01
+  vendor: false
+  notify_friend_requests: true
+  state_id: 
+  profile_public: true
+  notify_community_news: true
+  login: kristy-sitterscout-com
+  view_count: 0
+  minor: false
+  email: kristy@sitterscout.com
+  created_at: 2008-09-22 21:12:44 +00:00
+user_00021: 
+  salt: 90f673995a4c8a17da427cad6d95012beb610fd2
+  last_login_at: 2008-09-16 15:11:49 +00:00
+  zip: 
+  updated_at: 2008-09-16 15:11:49 +00:00
+  terms_of_use: true
+  activated_at: 2008-09-16 15:11:49 +00:00
+  crypted_password: ae537aac22b72d36031baa94d08ea6d0b121ad25
+  stylesheet: 
+  consenting_parent_id: 
+  type: Sitter
+  role_id: 2
+  remember_token_expires_at: 
+  country_id: 
+  activation_code: 
+  login_slug: bebe-sitterscout-com
+  id: 21
+  gender: 
+  avatar_id: 
+  account_type: 
+  aasm_state: 
+  description: 
+  remember_token: 
+  metro_area_id: 
+  birthday: 1990-01-01
+  vendor: false
+  notify_friend_requests: true
+  state_id: 
+  profile_public: true
+  notify_community_news: true
+  login: bebe-sitterscout-com
+  view_count: 0
+  minor: false
+  email: bebe@sitterscout.com
+  created_at: 2008-09-16 15:11:49 +00:00
+user_00010: 
+  salt: 8e2b34b146b4f3017102e8a26b0c99e98078d95e
+  last_login_at: 2008-09-12 14:19:10 +00:00
+  zip: 
+  updated_at: 2008-09-12 15:30:20 +00:00
+  terms_of_use: true
+  activated_at: 2008-09-12 14:19:10 +00:00
+  crypted_password: 6e43a906b1cee4f8f20179d0aa0e3ad28da9b0f7
+  stylesheet: 
+  consenting_parent_id: 
+  type: Parent
+  role_id: 3
+  remember_token_expires_at: 
+  country_id: 
+  activation_code: 
+  login_slug: b-sitterscout-com
+  id: 10
+  gender: 
+  avatar_id: 
+  account_type: 
+  aasm_state: complete
+  description: 
+  remember_token: 
+  metro_area_id: 
+  birthday: 1983-09-12
+  vendor: false
+  notify_friend_requests: true
+  state_id: 
+  profile_public: true
+  notify_community_news: true
+  login: b-sitterscout-com
+  view_count: 0
+  minor: false
+  email: b@sitterscout.com
+  created_at: 2008-09-12 14:19:10 +00:00
+user_00009: 
+  salt: ff265becfe2edeb205f58a73a1ee1771ea4df07a
+  last_login_at: 2008-09-15 03:23:46 +00:00
+  zip: 
+  updated_at: 2008-09-15 15:39:00 +00:00
+  terms_of_use: true
+  activated_at: 2008-09-11 19:02:38 +00:00
+  crypted_password: 8f10280bdde2f7e95b1434822099e4467e0461a0
+  stylesheet: 
+  consenting_parent_id: 
+  type: Parent
+  role_id: 3
+  remember_token_expires_at: 
+  country_id: 
+  activation_code: 
+  login_slug: a-sitterscout-com
+  id: 9
+  gender: 
+  avatar_id: 
+  account_type: 
+  aasm_state: complete
+  description: 
+  remember_token: 
+  metro_area_id: 
+  birthday: 1983-09-11
+  vendor: false
+  notify_friend_requests: true
+  state_id: 
+  profile_public: true
+  notify_community_news: true
+  login: a-sitterscout-com
+  view_count: 0
+  minor: false
+  email: a@sitterscout.com
+  created_at: 2008-09-11 19:02:38 +00:00
+user_00032: 
+  salt: e19fed985f5ca0dca021dccf14b6357f9011dd1d
+  last_login_at: 2008-09-22 19:59:52 +00:00
+  zip: 
+  updated_at: 2008-09-22 20:17:51 +00:00
+  terms_of_use: true
+  activated_at: 2008-09-17 22:17:09 +00:00
+  crypted_password: 26cae1d3787aad20b585eb379b1b3f9510feb26e
+  stylesheet: 
+  consenting_parent_id: 
+  type: Parent
+  role_id: 3
+  remember_token_expires_at: 
+  country_id: 
+  activation_code: 
+  login_slug: cindy-sitterscout-com
+  id: 32
+  gender: 
+  avatar_id: 
+  account_type: 
+  aasm_state: complete
+  description: 
+  remember_token: 
+  metro_area_id: 
+  birthday: 1983-09-17
+  vendor: false
+  notify_friend_requests: true
+  state_id: 
+  profile_public: true
+  notify_community_news: true
+  login: cindy-sitterscout-com
+  view_count: 0
+  minor: false
+  email: cindy@sitterscout.com
+  created_at: 2008-09-17 22:17:09 +00:00
+user_00033: 
+  salt: caa53f070a25fda809f9ff531e8e656c09be79c8
+  last_login_at: 2008-09-17 22:20:43 +00:00
+  zip: 
+  updated_at: 2008-09-17 22:26:22 +00:00
+  terms_of_use: true
+  activated_at: 2008-09-17 22:20:43 +00:00
+  crypted_password: 3700c543a3b0ee4fc13589f403d48655624a4fd6
+  stylesheet: 
+  consenting_parent_id: 
+  type: Parent
+  role_id: 3
+  remember_token_expires_at: 
+  country_id: 
+  activation_code: 
+  login_slug: diane-sittescout-com
+  id: 33
+  gender: 
+  avatar_id: 
+  account_type: 
+  aasm_state: complete
+  description: 
+  remember_token: 
+  metro_area_id: 
+  birthday: 1983-09-17
+  vendor: false
+  notify_friend_requests: true
+  state_id: 
+  profile_public: true
+  notify_community_news: true
+  login: diane-sittescout-com
+  view_count: 0
+  minor: false
+  email: diane@sittescout.com
+  created_at: 2008-09-17 22:20:43 +00:00
+user_00011: 
+  salt: 6dcf6196ef2cff76a74833eebd12e3418783a5aa
+  last_login_at: 2008-09-12 15:30:56 +00:00
+  zip: 
+  updated_at: 2008-09-12 15:30:56 +00:00
+  terms_of_use: true
+  activated_at: 2008-09-12 15:30:56 +00:00
+  crypted_password: c7e113ebe04efe71ac233e38c72d9c495af681e4
+  stylesheet: 
+  consenting_parent_id: 
+  type: Parent
+  role_id: 3
+  remember_token_expires_at: 
+  country_id: 
+  activation_code: 
+  login_slug: c-sitterscout-com
+  id: 11
+  gender: 
+  avatar_id: 
+  account_type: 
+  aasm_state: new_account
+  description: 
+  remember_token: 
+  metro_area_id: 
+  birthday: 1983-09-12
+  vendor: false
+  notify_friend_requests: true
+  state_id: 
+  profile_public: true
+  notify_community_news: true
+  login: c-sitterscout-com
+  view_count: 0
+  minor: false
+  email: c@sitterscout.com
+  created_at: 2008-09-12 15:30:56 +00:00
+user_00022: 
+  salt: f8fd13a8ea869d5af5c2b9fec4f8499aca742ce0
+  last_login_at: 2008-09-17 15:13:57 +00:00
+  zip: 
+  updated_at: 2008-09-17 15:13:57 +00:00
+  terms_of_use: true
+  activated_at: 
+  crypted_password: c590694d96f182ff83eecedd99d301eacee9e5b5
+  stylesheet: 
+  consenting_parent_id: 
+  type: Sitter
+  role_id: 2
+  remember_token_expires_at: 
+  country_id: 
+  activation_code: 8b11e2a65249382e69f59f22273d1c4d78ce7764
+  login_slug: z-sitterscout-com
+  id: 22
+  gender: 
+  avatar_id: 
+  account_type: 
+  aasm_state: 
+  description: 
+  remember_token: 
+  metro_area_id: 
+  birthday: 1994-01-01
+  vendor: false
+  notify_friend_requests: true
+  state_id: 
+  profile_public: true
+  notify_community_news: true
+  login: z-sitterscout-com
+  view_count: 0
+  minor: false
+  email: z@sitterscout.com
+  created_at: 2008-09-17 15:13:57 +00:00
+user_00023: 
+  salt: 9034754fca5e8a6fac43e64312e68b87e2ebce05
+  last_login_at: 2008-09-17 17:03:29 +00:00
+  zip: 
+  updated_at: 2008-09-17 17:03:29 +00:00
+  terms_of_use: true
+  activated_at: 
+  crypted_password: f44a4d3132c50c09e63cb28a99b4d6f967288b23
+  stylesheet: 
+  consenting_parent_id: 996332881
+  type: Sitter
+  role_id: 2
+  remember_token_expires_at: 
+  country_id: 
+  activation_code: 8a0d093be368841b19f679fbbc8c07a097ab2b1c
+  login_slug: sitter-sitterscout-com
+  id: 23
+  gender: 
+  avatar_id: 
+  account_type: 
+  aasm_state: new_account
+  description: 
+  remember_token: 
+  metro_area_id: 
+  birthday: 1994-01-01
+  vendor: false
+  notify_friend_requests: true
+  state_id: 
+  profile_public: false
+  notify_community_news: true
+  login: sitter-sitterscout-com
+  view_count: 0
+  minor: true
+  email: sitter@sitterscout.com
+  created_at: 2008-09-17 17:03:29 +00:00
+user_00034: 
+  salt: 7c004d5b81775d69f8d7dae408d3b9276982b138
+  last_login_at: 2008-09-22 19:38:13 +00:00
+  zip: 
+  updated_at: 2008-09-22 21:38:54 +00:00
+  terms_of_use: true
+  activated_at: 2008-09-17 22:29:08 +00:00
+  crypted_password: 83f7831525e6606238c836ac103aa6eb69510d4b
+  stylesheet: 
+  consenting_parent_id: 
+  type: Parent
+  role_id: 3
+  remember_token_expires_at: 
+  country_id: 
+  activation_code: 
+  login_slug: ellen-sitterscout-com
+  id: 34
+  gender: 
+  avatar_id: 
+  account_type: 
+  aasm_state: complete
+  description: 
+  remember_token: 
+  metro_area_id: 
+  birthday: 1983-09-17
+  vendor: false
+  notify_friend_requests: true
+  state_id: 
+  profile_public: true
+  notify_community_news: true
+  login: ellen-sitterscout-com
+  view_count: 0
+  minor: false
+  email: ellen@sitterscout.com
+  created_at: 2008-09-17 22:29:08 +00:00
+user_00035: 
+  salt: 86a2051abce1d14ee365ebc8084e4cc9c6e43cab
+  last_login_at: 2008-09-22 21:09:07 +00:00
+  zip: 
+  updated_at: 2008-09-22 21:11:59 +00:00
+  terms_of_use: true
+  activated_at: 2008-09-17 22:51:41 +00:00
+  crypted_password: 9a2ccb117b36332ba39da7b3642769e99a40bc55
+  stylesheet: 
+  consenting_parent_id: 
+  type: Sitter
+  role_id: 2
+  remember_token_expires_at: 
+  country_id: 
+  activation_code: 
+  login_slug: felicia-sitterscout-com
+  id: 35
+  gender: 
+  avatar_id: 
+  account_type: 
+  aasm_state: complete
+  description: ""
+  remember_token: 
+  metro_area_id: 
+  birthday: 1990-01-01
+  vendor: false
+  notify_friend_requests: true
+  state_id: 
+  profile_public: true
+  notify_community_news: true
+  login: felicia-sitterscout-com
+  view_count: 0
+  minor: false
+  email: felicia@sitterscout.com
+  created_at: 2008-09-17 22:51:41 +00:00
+user_00013: 
+  salt: 8203572f97b4dfde6d3a4ceb4fb7bd7fc965475a
+  last_login_at: 2008-09-12 18:25:28 +00:00
+  zip: 
+  updated_at: 2008-09-12 18:32:38 +00:00
+  terms_of_use: true
+  activated_at: 2008-09-12 18:25:28 +00:00
+  crypted_password: a187864026095f8135650b41a3081b2d4e86327f
+  stylesheet: 
+  consenting_parent_id: 
+  type: Sitter
+  role_id: 2
+  remember_token_expires_at: 
+  country_id: 
+  activation_code: 
+  login_slug: rh-23-gmail-com
+  id: 13
+  gender: 
+  avatar_id: 
+  account_type: 
+  aasm_state: complete
+  description: I only babysit Programmers
+  remember_token: 
+  metro_area_id: 
+  birthday: 1985-02-03
+  vendor: false
+  notify_friend_requests: true
+  state_id: 
+  profile_public: true
+  notify_community_news: true
+  login: rh-23-gmail-com
+  view_count: 0
+  minor: false
+  email: rh0023@gmail.com
+  created_at: 2008-09-12 18:25:28 +00:00
+user_00014: 
+  salt: f9ec657705b67d5db70cfbf45d041d88a6333d05
+  last_login_at: 2008-09-17 03:04:49 +00:00
+  zip: 
+  updated_at: 2008-09-17 03:05:21 +00:00
+  terms_of_use: true
+  activated_at: 2008-09-15 16:07:22 +00:00
+  crypted_password: d319c177b5c6529cc5bc8ba77290ffcbb2f8526b
+  stylesheet: 
+  consenting_parent_id: 
+  type: Parent
+  role_id: 3
+  remember_token_expires_at: 
+  country_id: 
+  activation_code: 
+  login_slug: liamrielly-yahoo-com
+  id: 14
+  gender: 
+  avatar_id: 
+  account_type: 
+  aasm_state: complete
+  description: 
+  remember_token: 
+  metro_area_id: 
+  birthday: 1983-09-15
+  vendor: false
+  notify_friend_requests: true
+  state_id: 
+  profile_public: true
+  notify_community_news: true
+  login: liamrielly-yahoo-com
+  view_count: 0
+  minor: false
+  email: liamrielly@yahoo.com
+  created_at: 2008-09-15 16:07:22 +00:00
+user_00025: 
+  salt: e4e17ad8a440c86b5ed153fa7139cc90536405ae
+  last_login_at: 2008-09-17 18:08:05 +00:00
+  zip: 
+  updated_at: 2008-09-17 18:11:44 +00:00
+  terms_of_use: true
+  activated_at: 2008-09-17 18:08:05 +00:00
+  crypted_password: 55ea7f0b6f296b31ec97b408fb32c6b76af94b75
+  stylesheet: 
+  consenting_parent_id: 
+  type: Parent
+  role_id: 3
+  remember_token_expires_at: 
+  country_id: 
+  activation_code: 
+  login_slug: ksipkenney2-gmail-com
+  id: 25
+  gender: 
+  avatar_id: 
+  account_type: 
+  aasm_state: complete
+  description: 
+  remember_token: 
+  metro_area_id: 
+  birthday: 1983-09-17
+  vendor: false
+  notify_friend_requests: true
+  state_id: 
+  profile_public: true
+  notify_community_news: true
+  login: ksipkenney2-gmail-com
+  view_count: 0
+  minor: false
+  email: ksipkenney2@gmail.com
+  created_at: 2008-09-17 18:08:05 +00:00
+user_00036: 
+  salt: 60404e22d15b7740a2e5b1bb9ad6dcf8662bd708
+  last_login_at: 2008-09-18 03:03:09 +00:00
+  zip: 
+  updated_at: 2008-09-18 03:03:09 +00:00
+  terms_of_use: true
+  activated_at: 
+  crypted_password: cdc0bcd81e62cf91a8d3e53a8c50d4d96fd31cc2
+  stylesheet: 
+  consenting_parent_id: 
+  type: Sitter
+  role_id: 2
+  remember_token_expires_at: 
+  country_id: 
+  activation_code: b69852fcad01d9b49e14edc668200175163294ea
+  login_slug: gigi-sitterscout-com
+  id: 36
+  gender: 
+  avatar_id: 
+  account_type: 
+  aasm_state: new_account
+  description: 
+  remember_token: 
+  metro_area_id: 
+  birthday: 1994-01-01
+  vendor: false
+  notify_friend_requests: true
+  state_id: 
+  profile_public: true
+  notify_community_news: true
+  login: gigi-sitterscout-com
+  view_count: 0
+  minor: false
+  email: gigi@sitterscout.com
+  created_at: 2008-09-18 03:03:09 +00:00
+suspended_user:
+  id: 401
+  login: siteadmin2-sittercout-com
+  email: siteadmin2@sittercout.com
+  description:
+  avatar_id: nil
+  crypted_password: ca8ab20f2e5133d364e76a594d5cfe1513f21c50 
+  salt: 821a37dedffda3cd1ed3a87b615edc0e2076cb6f 
+  created_at: 2008-10-29 13:14:29 
+  updated_at: 2008-10-29 13:14:29 
+  remember_token: 
+  remember_token_expires_at: 
+  stylesheet:
+  view_count: 0 
+  vendor: false
+  activation_code: 
+  activated_at: 2008-10-29 17:14:29
+  state_id: 
+  metro_area_id: 
+  login_slug: siteadmin2-sittercout-com 
+  notify_friend_requests: true 
+  notify_community_news: true
+  country_id: 
+  last_login_at: 2008-10-29 13:14:29
+  zip: 
+  birthday: 1983-10-29 
+  gender: 
+  profile_public: true
+  role_id: 1
+  type: 
+  account_type: 
+  aasm_state: new_account
+  terms_of_use: true
+  minor: false
+  consenting_parent_id:
+  suspended: true
+

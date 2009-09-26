@@ -1,0 +1,28 @@
+<p>
+  <b>Parent:</b>
+  <%=h @job.parent_id %>
+</p>
+
+<p>
+  <b>Sitter:</b>
+  <%=h @job.sitter_id %>
+</p>
+
+<p>
+  <b>Created at:</b>
+  <%=h @job.created_at %>
+</p>
+
+<p>
+  <b>Updated at:</b>
+  <%=h @job.updated_at %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @job.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_job_path(@job) %> |
+<%= link_to 'Back', jobs_path %>

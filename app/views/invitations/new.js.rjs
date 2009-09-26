@@ -1,0 +1,2 @@
+page.call "Application.Invitation.hide_add_button", params[:index].to_i - 1
+page.insert_html :bottom, "invitations-container", :partial => "form"

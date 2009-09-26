@@ -1,0 +1,51 @@
+<div id="content">
+	<div id="sub_menu_gradient">
+		<%= render :partial => 'admin_menu' %>
+	</div>
+	<br />
+	<span style="font-weight: bold;">User Stats</span>
+	<table cellspacing=0 style="margin: 5px 0 0 5px;">
+	<tr>
+		<td align="right" style="border: 1px solid #000000; padding: 4px;">	
+			Parents:
+			</td>
+			<td  align="right" style="border-top: 1px solid #000000; border-right: 1px solid #000000;  border-bottom: 1px solid #000000; padding: 4px;">
+			<%= @total_parents %>
+		</td>
+	</tr>
+	<tr>
+		<td align="right" style="border-left: 1px solid #000000; border-right: 1px solid #000000; border-bottom: 1px solid #000000; padding: 4px;">
+			Sitters:
+		</td>
+		<td align="right" style=" border-bottom: 1px solid #000000; border-right: 1px solid #000000; padding: 4px;">	
+			<%= @total_sitters %>
+		</td>
+	</tr>
+	<tr>
+		<td align="right" style="border-left: 1px solid #000000; border-right: 1px solid #000000; border-bottom: 1px solid #000000; padding: 4px;">
+			Approved Minor Sitters:
+		</td>
+		<td align="right" style=" border-bottom: 1px solid #000000; border-right: 1px solid #000000; padding: 4px;">	
+			<%= @approved_minor_sitters %>
+		</td>
+	</tr>
+	<tr>
+		<td align="right" style="border-left: 1px solid #000000; border-right: 1px solid #000000; border-bottom: 1px solid #000000; padding: 4px;">
+			Declined Minor Sitters:
+		</td>
+		<td align="right" style=" border-bottom: 1px solid #000000; border-right: 1px solid #000000; padding: 4px;">	
+			<%= @declined_minor_sitters %>
+		</td>
+	</tr>
+	<tr>
+		<td align="right" style="border-left: 1px solid #000000; border-right: 1px solid #000000; border-bottom: 1px solid #000000; padding: 4px;">
+			Minor Sitters Awaiting Response:
+		</td>
+		<td align="right" style=" border-bottom: 1px solid #000000; border-right: 1px solid #000000; padding: 4px;">	
+			<%= @minor_sitters_awaiting_response %>
+		</td>
+	</tr>
+  </table>
+</div>
+
+<%#= render :partial => 'admin_info' %>

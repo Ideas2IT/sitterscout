@@ -1,0 +1,71 @@
+<div class="wrapper">
+<div style="padding: 20px"><h1>Search Results</h1>
+<% unless logged_in? %>
+<div>
+<%= link_to image_tag("JoinNow_bttn.gif", :border => 0), signup_path %>	Signup info here.
+</div>
+
+<% end %>
+
+<div>
+
+	<p style="font: 'Tahoma'; font-size: 12pt;">
+		<strong>Displaying <%= @sitters.length rescue "0"%> results<%= params[:search][:zip].blank? ? "." : " in ZIP code " + params[:search][:zip] %></strong>
+	</p>
+</div>
+
+
+<% if @sitters.length < 1 %>
+Your search yielded no results.
+<% else %>
+<div >
+	<% for search in @sitters %>
+	<% unless search.nil? %>
+	<div class="horiz_li" style="border: 1px #AFAFAF solid; background-color: #F7F7F7; padding: 5px; margin-bottom: 5px; width: 100%; height: 150px">
+		<div style="float: left;">
+				<%= image_tag(search.avatar_photo_url(:thumb), :class => "right" ) %>			
+			</div>
+			<div style="float:left;">
+
+				<table>
+					<tr>
+						<td>
+							Name:
+						</td>
+						<td>
+							<strong><%= search.profile.first_name %>&nbsp;<%= search.profile.last_name.to_s.first + "."  %></strong>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Distance:
+						</td>
+						<td>
+							<%= search.profile.distance_from(params[:search][:zip]).to_i rescue 0 %> miles
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							Profile Tags:	
+						</td>
+						<td><%= search.profile.tags.collect(&:name).join(", ") %></td>
+					</tr>
+
+				</table>
+			</div>
+			<div style="float:right;">
+	          > <%= link_to "Add to Your Sitters", url_for(:controller => 'parents', :action => 'add_sitter', :id => search.id),:class => "submodal-600-400", :style => 'padding-bottom: 5px; padding-right: 10px; border-bottom: 1px #AFAFAF solid;' %><br />
+	          > <%= link_to "View Connections", parent_connection_parent_path(search.id), :class => "submodal-600-400", :style => 'padding-bottom: 5px; padding-right: 10px; border-bottom: 1px #AFAFAF solid;' %>
+	        </div>
+	</div>
+
+	<% end %>
+	<% end %>
+	
+</div>
+<% end %>
+
+</div>
+</div>
+			<%= render :partial => '/shared/login_div' %>

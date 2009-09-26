@@ -1,0 +1,147 @@
+<% perRow = perRow || 4 %>
+<div class="message-connections-container">
+	<fieldset class="cornerbox_34_ltgrn-ltgrn">
+		<div class="top"></div>
+		<div class="content clearfix">
+			<% form_tag({:controller => :message, :action => :connections}, {:method => :get, :id => 'message-connections-form-form'}) do -%>
+				<%= hidden_field_tag(:type, @type) %>
+				<% if @type == "winks" %>
+					<label for="wink_type"><%= image_tag "title_show.gif", :alt => "Show:" %></label>
+					<%= select_tag("wink_type", options_for_select([["Received", "received"], ["Sent", "sent"]], @wink_type)) %>
+				<% end %>
+				<label for="message-connections-form-sort"><%= image_tag "title_sort-by.gif", :alt => "Sort By:" %></label>
+				<%= select_tag("sort", options_for_select([["Most Recent", "most_recent"], ["Username", "nickname"], ["Your Turn", "your_turn"], ["Their Turn", "their_turn"]], @sort)) %>
+			<% end -%>
+			<%= observe_form('message-connections-form-form', {:function => "this.element.submit();"}) %>
+		</div>
+	</fieldset>
+
+	<% if @connections.size == 0 %>
+		<div class="cornerbox_34_ltgrn-ltgrn">
+			<div class="top"></div>
+			<div class="content">
+				<% case @type
+					when "winks" %>
+						<% case @wink_type
+							when "received" %>
+								You haven't received any winks yet, but we're sure they're on their way.
+							<% when "sent" %>
+								You haven't sent any winks yet!
+						<% end %>
+					<% when "favorites" %>
+						You haven't found any favorites yet, start by searching for profiles. You're bound to find someone.
+					<% else %>
+						You haven't made any connections yet, start by searching for profiles. You're bound to find someone.
+				<% end %>
+			</div>
+		</div>
+	<% end %>
+	
+	<div class="pagination clearfix">
+		<span class="floatL">Listing <%= (@connections.size > 0) ? (@page - 1) * @page_size + 1 : 0 %> to <%= [(@page * @page_size), @connections_size].min %> of <%= @connections_size %></span>
+		<% if @page_size > 1 %>
+			<%= will_paginate @connections, 
+					:list_mode => true, 
+					:id => "pagination", 
+					:prev_label => '&lt; Prev', 
+					:next_label   => 'Next &gt;'
+				%>
+		<% end %>
+	</div>
+	
+	<% if @connections.size > 0 %>
+		<div class="gallery_results clearfix">
+			<% @connections.each_index do |i| %>
+				<% connection = @connections.at(i) %>
+					<%# unless connection[:user].is_admin? %>
+					<%
+					if (connection[:user].gender == 1)
+						hisher = "His"
+						himher = "Him"
+						heshe = "He"
+					else
+						hisher = "Her"
+						himher = "Her"
+						heshe = "She"
+					end
+					%>
+				<div class="result clearfix">
+					<h3>
+						<%
+						case @type
+						when "winks"
+							url = {:controller => :message, :action => :delete_winks, :user_id => connection[:user].id}
+							onclick = nil
+						when "favorites"
+							url = {:controller => :profile, :action => :delete_favorites, :user_id => connection[:user].id}
+							onclick = nil
+						else
+							url = {:controller => :message, :action => :delete_connection, :user_id => connection[:user].id}
+							onclick = "return confirm('Deleting a connection deletes all of your messages, winks, and favorites with this person, are you sure you want to do this?');"
+						end
+						%>
+						<span class="remove"><%= link_to("X", url, {:onclick => onclick}) %></span><%= link_to(connection[:user].nickname,  profile_from_connections_url(:nickname => connection[:user].nickname)) %>
+					</h3>
+					<div class="info <%= connection[:user].is_premium? ? 'premium' : ''%> clearfix">
+						<%= link_to(image_tag(connection[:user].photo_wrapper(connection[:user].lead_photo, :thumb, connection[:user].gender), :alt => "Photo of " + connection[:user].nickname, :class => (connection[:user].is_premium? ? 'premium' : 'basic')),  profile_from_connections_url(:nickname => connection[:user].nickname)) %>
+							
+						<span class="<%= (connection[:sent] == false || connection[:type] == 'Favorite' ? ("your") : "their") %>_turn"><%= (connection[:sent] == true ? (hisher) : "Your") %> Turn</span>
+						<ul>
+							<li>
+								<% case connection[:type]
+									when "Message"
+									%>
+										<%= (connection[:sent] == true ? ("You emailed " + himher.downcase) : (heshe + " emailed you")) %>
+									<%
+									when "Wink"
+									%>
+										<%= (connection[:sent] == true ? ("You winked at " + himher.downcase) : (heshe + " winked at you")) %>
+									<%
+									when "Favorite"
+									%>
+										<%= (connection[:sent] ? (heshe + " favorited you") : ("You favorited " + himher.downcase) ) %>
+								<% end %>
+							</li>
+							<li>
+								<%= today_yesterday_or_xago(connection[:obj].created_at, true).capitalize %>
+							</li>
+							<li>
+								<% case connection[:type]
+									when "Message"
+									%>
+										<%= (connection[:sent] == true ? link_to("More like " + himher, :controller => :profile, :action => :similar, :nickname => connection[:user].nickname) : link_to("Send a Message", :controller => :message, :action => :reply, :message_id => connection[:obj].id)) %>
+									<%
+									when "Wink"
+									%>
+										<%= (connection[:sent] == true ? link_to("More like " + himher, :controller => :profile, :action => :similar, :nickname => connection[:user].nickname) : link_to("Send a Message", :controller => :message, :action => :compose, :nickname => connection[:user].nickname)) %>
+									<%
+									when "Favorite"
+									%>
+										<%= link_to("More like " + himher, :controller => :profile, :action => :similar, :nickname => connection[:user].nickname) %>
+								<% end %>
+							</li>
+						</ul>
+					</div>
+				</div>	
+					<% if (i + 1) % perRow == 0 %>
+						<br style="clear: both;" />
+					<% end %>
+				<%# end %>
+			<% end %>
+		</div>
+	<% end %>
+
+	<% if @connections_size > (@page_size / 2) %>
+		<div class="pagination clearfix">
+			<div class="floatL">Listing <%= (@connections.size > 0) ? (@page - 1) * @page_size + 1 : 0 %> to <%= [(@page * @page_size), @connections_size].min %> of <%= @connections_size %></div>
+			<% if @page_size > 1 %>
+			<%= will_paginate @connections, 
+					:list_mode => true, 
+					:id => "pagination", 
+					:prev_label => '&lt; Prev', 
+					:next_label   => 'Next &gt;'
+				%>
+		<% end %>
+		</div>
+	<% end %>
+</div>

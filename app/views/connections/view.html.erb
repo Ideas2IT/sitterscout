@@ -1,0 +1,52 @@
+<% if logged_in? %>
+<div style="width: 400px;">
+	<% @families.each do |friend| %>
+	<% unless friend.profile.nil? %>
+		<div style="width: 100%; height: 85px; float: left; border: 1px #AFAFAF solid; background-color: #FFF;">
+
+				<div style="width: 80px; float: left; padding: 5px; ">
+					<%= image_tag(friend.avatar_photo_url, :class => "right" ) %>
+				</div>
+
+				<div style="float:left;">
+					<strong style=' font-size: 13pt;'><%= friend.profile.first_name %>&nbsp;<%= friend.profile.last_name %></strong>
+					<br />
+						<div style=' font-size: 11pt;'><%= friend.profile.city %>, <%= friend.profile.state.name %></div>
+	
+					<font style=' font-size: 11pt;'>Profile Tags:
+					<%= friend.profile.tags.collect(&:name).join(", ") %>
+					<%= link_to "More", '#' %><br />
+					> <%= link_to "Add to Your Families", url_for(:controller => 'sitters', :action => 'add_family', :id => friend.id), :class => "submodal-600-400" %></font>	
+					
+				</div>
+
+		</div>	
+	  <% end %>	
+	<% end %>
+	<% @sitters.each do |friend| %>
+		<% unless friend.profile.nil? %>
+		<div style="width: 100%; height: 85px; float: left; border: 1px #AFAFAF solid; background-color: #FFF;">
+
+				<div style="width: 80px; float: left; padding: 5px; ">
+					<%= image_tag(friend.avatar_photo_url, :class => "right" ) %>
+				</div>
+
+				<div style="float:left;">
+					<strong style=' font-size: 13pt;'><%= friend.profile.first_name %>&nbsp;<%= friend.profile.last_name %></strong>
+					<br />
+						<div style=' font-size: 11pt;'><%= friend.profile.city %>, <%= friend.profile.state.name %></div>
+	
+					<font style=' font-size: 11pt;'>Profile Tags:
+					<%= friend.profile.tags.collect(&:name).join(", ") %>
+					<%= link_to "More", '#' %><br />
+					> <%= link_to "Add to Your Families", url_for(:controller => 'sitters', :action => 'add_family', :id => friend.id), :class => "submodal-600-400" %></font>	
+					
+				</div>
+
+		</div>		
+		<% end %>
+	<% end %>
+</div>
+<% else %>
+Please login
+<% end %>

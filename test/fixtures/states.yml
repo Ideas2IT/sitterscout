@@ -1,0 +1,154 @@
+--- 
+state_00049: 
+  name: WV
+  id: 49
+state_00027: 
+  name: MT
+  id: 27
+state_00005: 
+  name: CA
+  id: 5
+state_00016: 
+  name: IA
+  id: 16
+state_00038: 
+  name: OR
+  id: 38
+state_00050: 
+  name: WI
+  id: 50
+state_00051: 
+  name: WY
+  id: 51
+state_00039: 
+  name: PA
+  id: 39
+state_00017: 
+  name: KS
+  id: 17
+state_00006: 
+  name: CO
+  id: 6
+state_00028: 
+  name: NE
+  id: 28
+state_00040: 
+  name: RI
+  id: 40
+state_00041: 
+  name: SC
+  id: 41
+state_00029: 
+  name: NV
+  id: 29
+state_00007: 
+  name: CT
+  id: 7
+state_00018: 
+  name: KY
+  id: 18
+state_00030: 
+  name: NH
+  id: 30
+state_00019: 
+  name: LA
+  id: 19
+state_00008: 
+  name: DE
+  id: 8
+state_00031: 
+  name: NJ
+  id: 31
+state_00009: 
+  name: DC
+  id: 9
+state_00020: 
+  name: ME
+  id: 20
+state_00042: 
+  name: SD
+  id: 42
+state_00043: 
+  name: TN
+  id: 43
+state_00021: 
+  name: MD
+  id: 21
+state_00010: 
+  name: FL
+  id: 10
+state_00032: 
+  name: NM
+  id: 32
+state_00033: 
+  name: NY
+  id: 33
+state_00011: 
+  name: GA
+  id: 11
+state_00022: 
+  name: MA
+  id: 22
+state_00044: 
+  name: TX
+  id: 44
+state_00045: 
+  name: UT
+  id: 45
+state_00023: 
+  name: MI
+  id: 23
+state_00001: 
+  name: AL
+  id: 1
+state_00012: 
+  name: HI
+  id: 12
+state_00034: 
+  name: NC
+  id: 34
+state_00035: 
+  name: ND
+  id: 35
+state_00013: 
+  name: ID
+  id: 13
+state_00002: 
+  name: AK
+  id: 2
+state_00024: 
+  name: MN
+  id: 24
+state_00046: 
+  name: VT
+  id: 46
+state_00047: 
+  name: VA
+  id: 47
+state_00025: 
+  name: MS
+  id: 25
+state_00003: 
+  name: AZ
+  id: 3
+state_00014: 
+  name: IL
+  id: 14
+state_00036: 
+  name: OH
+  id: 36
+state_00037: 
+  name: OK
+  id: 37
+state_00015: 
+  name: IN
+  id: 15
+state_00004: 
+  name: AR
+  id: 4
+state_00026: 
+  name: MO
+  id: 26
+state_00048: 
+  name: WA
+  id: 48

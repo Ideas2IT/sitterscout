@@ -1,0 +1,25 @@
+<%= render :partial => 'nav_menu',  :locals => {:selected => "profile"} %>
+<div id="sub_menu_gradient">
+	<div class="sub_menu_gradient_center">
+		<%= render :partial => 'profile_menu' %>
+	</div>
+</div>
+
+<div id="content">
+<div class='box alt first_alt'>
+<%= error_messages_for :user %>
+<div style="margin-top: 75px; font-size: .7em;">
+<% form_tag profile_path(current_user.profile.id), :method => 'put' do %>
+
+	<%= render :partial => 'availability' %>
+
+	<div style="clear: both; margin-left: 42%;">
+		<br /><br />
+	<%= image_submit_tag '/images/parent_home/SaveChanges_bttn.gif', :style => "margin-top: 50px;"%>
+	</div>
+</div>
+<% end %>
+
+</div>
+</div>
+<%#= render :partial => 'shared/profile_percentage' %>

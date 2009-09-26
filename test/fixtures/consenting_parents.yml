@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  email: MyString
+  underaged_sitter_id: 4
+  approved: true
+
+two:
+  name: MyString
+  email: MyString
+  underaged_sitter_id: 5
+  approved: false

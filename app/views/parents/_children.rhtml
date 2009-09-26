@@ -1,0 +1,11 @@
+<% if !current_user.children.nil? %>
+	<% current_user.children.each_with_index do |c, i| %>
+		<div id="child_<%= i %>">
+			Child's Name &nbsp;<%= text_field_tag "child[#{i}][name]", c.name %>
+			Child's Age <%= select_tag "child[#{i}][age]", options_for_select(["1-6 mos.", "6-12 mos.","2 yrs.", "3 yrs.", "4 yrs.","5 yrs."], c.age	) %>
+		</div>
+	<% end %>
+
+<% end %>
+
+

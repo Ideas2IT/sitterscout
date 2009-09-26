@@ -1,0 +1,20 @@
+<% begin
+
+if t.nil? 
+		t = '0'
+	end 
+rescue 
+	t = '0'
+end
+	
+	%>
+
+<div id="child_<%= t %>" style="margin-bottom: 5px;">
+	<p>Child's Name &nbsp;<%= text_field_tag "child[#{t}][name]", '', :style => "margin-right: 5px;" %>
+	<% if !params[:welcome].blank? %>
+	<%="<br />"%>
+	<% end %>
+	<% age = ("January 1, " + Time.now.to_date.year.to_s).to_date	%></p>
+	<p>Child's Birth Date <%= date_select "child[#{t}]", "age", :start_year => 20.years.ago.year, :end_year => Time.now.year, :default => {:year => age.to_date.year, :day => age.to_date.day, :month => age.to_date.month}, :order => [:month, :day, :year] %></p>
+	<%#= select_tag "child[#{t}][age]", "<option>1-6 mos.</option><option>6-12 mos.</option><option>2 yrs.</option><option>3 yrs.</option><option>4 yrs.</option><option>5 yrs.</option>" %>
+</div>

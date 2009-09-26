@@ -1,0 +1,10 @@
+<%
+	current_link = '<img src="/images/pink_arrow.png" id="ras">'
+%>
+<table id="sub_menu">
+	<tr>
+  <td width="<%= ("index" == @current_action) ? '50' : '40' %>"><%= ("index" == @current_action) ? current_link : '' %><%= link_to "Home", {:action => 'index', :controller => 'admin'},:class => ("index" == @current_action) ? "grey_link_selected" : "grey_link" %></td>
+	<td width="<%= ("search" == @current_action) ? '105' : '90' %>"><%= ("search" == @current_action) ? current_link : '' %><%= link_to "Search Users", url_for(:controller => 'admin', :action => 'search', :id => current_user.id),:class => ("search" == @current_action) ? "grey_link_selected" : "grey_link" %></td>
+	<td width="<%= ("compose" == @current_action) ? '175' : '200' %>"><%= ("compose" == @current_action) ? current_link : '' %><%= link_to "Compose Site Message", url_for(:controller => 'admin', :action => 'compose', :id => current_user.id), :class => ("compose" == @current_action) ? "grey_link_selected" : "grey_link"	 %></td>
+	</tr>
+</table>

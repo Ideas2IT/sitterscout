@@ -1,0 +1,26 @@
+<h1>Listing zip_codes</h1>
+
+<table>
+  <tr>
+    <th>Country code</th>
+    <th>Postal code</th>
+    <th>Latitude</th>
+    <th>Longitude</th>
+  </tr>
+
+<% for zip_code in @zip_codes %>
+  <tr>
+    <td><%=h zip_code.country_code %></td>
+    <td><%=h zip_code.postal_code %></td>
+    <td><%=h zip_code.latitude %></td>
+    <td><%=h zip_code.longitude %></td>
+    <td><%= link_to 'Show', zip_code %></td>
+    <td><%= link_to 'Edit', edit_zip_code_path(zip_code) %></td>
+    <td><%= link_to 'Destroy', zip_code, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New zip_code', new_zip_code_path %>

@@ -1,0 +1,155 @@
+<div id="content" style="height: 800px;">
+	<% form_tag parent_path(current_user), :method => 'put', :multipart =>true, :class => 'MainForm' do %>
+	<div class='box alt first_alt'>
+		<%= error_messages_for :parent %>
+		<%= error_messages_for :profile %>
+	<div>
+		<h2>Create Your Profile</h2>
+		<p style="font-size: .8em;">Tell us a little about yourself and then start building your SitterScout Network. Your profile information will only be visible to the friends and sitters that you add to your network. (<span style="color: #FF0000">*</span> Required Fields)</p>
+		<br />
+	<div>
+		<div style="width: 48%; float: left; font-size: .8em;">
+			<%= render :partial => 'shared/profile_details' %>
+			<%= render :partial => 'shared/profile_contact_address_and_numbers' %>
+	 </div>
+		<div style="width: 45%; float: left;">
+			<%= render :partial => 'shared/profile_photo_tag_permissions' %>
+		</div>
+	</div>
+
+</div>
+<div style="clear: both; margin-left: 41%; margin-top: 25px; cursor: pointer;" onclick="validate();">
+	<%= image_tag '/images/Wizard/Continue_bttn.gif' %>
+</div>
+	</div>
+
+	<input type="submit" name="profile_setup" id="profile_submit" style="display: none;"  />
+
+		<% end %>
+
+	<script type="text/javascript">
+	function validate()
+	{
+		$("profile_first_name_label").style.color = "#000000";
+		$("profile_last_name_label").style.color = "#000000";
+		$("profile_address1_label").style.color = "#000000";
+		$("profile_city_label").style.color = "#000000";
+		$("profile_zipcode_label").style.color = "#000000";
+		$('flash_notice').innerHTML = '';
+
+		var fail = false;
+
+		if($('profile_first_name').value == '')
+		{
+			$('profile_first_name_label').style.color = "#FF0000";
+			fail = true;
+		}
+
+		if($('profile_last_name').value == '')
+		{
+			$('profile_last_name_label').style.color = "#FF0000";
+			fail = true;
+		}
+
+		if($('profile_address1').value == '')
+		{
+			$('profile_address1_label').style.color = "#FF0000";
+			fail = true;
+		}	
+		
+		if($('profile_cell_carrier_id').value == '' && $('profile_cell_phone').value != '')
+		{
+			$('profile_cell_phone_carrier_label').style.color = "#FF0000";
+			fail = true;
+		}
+
+		
+
+		if($('profile_city').value == '')
+		{
+			$('profile_city_label').style.color = "#FF0000";
+			fail = true;
+		}
+
+		if(!validate_zip($('profile_zipcode').value))
+		{
+			$('profile_zipcode_label').style.color = "#FF0000";
+			fail = true;
+		}
+
+		if($('profile_text_message_true').checked && $('profile_cell_phone').value == '')
+		{
+			$('cell_phone_name_label').style.color = "#FF0000";
+			fail = true;
+		}
+
+		if($('avatar_uploaded_data').value != '' && !$('photo_permission').checked)
+		{
+			$('flash_notice').innerHTML = '<div id="notice_error">Please certify that you have the right to distribute this picture and that it does not violate the Terms of Use.</div>';
+			
+			path_to_root_dir = "<%= APP_URL %>/";
+			var myBox = new GlassBox();
+			myBox.init( 'notice_error', '360px', '100px', 'hidden', 'facebookstyle', true, true );
+			myBox.lbo( false, 0.01 ); 
+			myBox.appear(5000);
+			return false;
+		}
+
+		if(fail)
+		{
+			$('flash_notice').innerHTML = '<div id="notice_error">Oops. You’re missing something. Please review the fields in red.</div>';
+
+				path_to_root_dir = "<%= APP_URL %>/";
+				var myBox = new GlassBox();
+				myBox.init( 'notice_error', '360px', '100px', 'hidden', 'facebookstyle', true, true );
+				myBox.lbo( false, 0.01 ); 
+				myBox.appear(5000);
+		}
+		else
+		{
+			$('profile_submit').click();
+		}
+
+
+	}
+
+	function validate_zip(field)
+	{
+
+		var valid = "0123456789";
+		var hyphencount = 0;
+
+		if (field.length!=5) 
+		{
+			return false;
+		}
+
+		for (var i=0; i < field.length; i++) 
+		{
+			temp = "" + field.substring(i, i+1);
+			if (valid.indexOf(temp) == "-1")
+			{
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+
+	function toggle_cell_star(box)
+	{
+
+		if(box.checked)
+		{
+			$('cell_phone_star').show()
+			$('text_message_span').show()
+		}
+		else
+		{
+			$('cell_phone_star').hide()
+			$('text_message_span').hide()
+		}
+	}
+	</script>
+</div>

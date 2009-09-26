@@ -1,0 +1,581 @@
+--- 
+friendship_00106: 
+  status: requested
+  accepted_at: 
+  initiator: false
+  id: 106
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 9
+  friend_id: 31
+  created_at: 2008-09-22 20:43:54 +00:00
+friendship_00084: 
+  status: accepted
+  accepted_at: 2008-09-18 04:44:54 +00:00
+  initiator: false
+  id: 84
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 40
+  friend_id: 39
+  created_at: 2008-09-18 04:44:27 +00:00
+friendship_00062: 
+  status: accepted
+  accepted_at: 2008-09-17 22:39:14 +00:00
+  initiator: false
+  id: 62
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 29
+  friend_id: 32
+  created_at: 2008-09-17 22:19:41 +00:00
+friendship_00051: 
+  status: accepted
+  accepted_at: 2008-09-17 22:38:02 +00:00
+  initiator: true
+  id: 51
+  hide_connection: true
+  friendship_status_id: 
+  user_id: 30
+  friend_id: 29
+  created_at: 2008-09-17 19:49:34 +00:00
+friendship_00073: 
+  status: accepted
+  accepted_at: 2008-09-18 04:30:18 +00:00
+  initiator: true
+  id: 73
+  hide_connection: true
+  friendship_status_id: 
+  user_id: 34
+  friend_id: 35
+  created_at: 2008-09-18 04:29:58 +00:00
+friendship_00095: 
+  status: pending
+  accepted_at: 
+  initiator: true
+  id: 95
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 32
+  friend_id: 15
+  created_at: 2008-09-22 16:27:26 +00:00
+friendship_00096: 
+  status: requested
+  accepted_at: 
+  initiator: false
+  id: 96
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 15
+  friend_id: 32
+  created_at: 2008-09-22 16:27:26 +00:00
+friendship_00074: 
+  status: accepted
+  accepted_at: 2008-09-18 04:30:18 +00:00
+  initiator: false
+  id: 74
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 35
+  friend_id: 34
+  created_at: 2008-09-18 04:29:58 +00:00
+friendship_00052: 
+  status: accepted
+  accepted_at: 2008-09-17 22:38:02 +00:00
+  initiator: false
+  id: 52
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 29
+  friend_id: 30
+  created_at: 2008-09-17 19:49:34 +00:00
+friendship_00041: 
+  status: pending
+  accepted_at: 
+  initiator: true
+  id: 41
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 8
+  friend_id: 7
+  created_at: 2008-09-17 18:54:05 +00:00
+friendship_00085: 
+  status: pending
+  accepted_at: 
+  initiator: true
+  id: 85
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 6
+  friend_id: 25
+  created_at: 2008-09-19 02:56:16 +00:00
+friendship_00107: 
+  status: pending
+  accepted_at: 
+  initiator: true
+  id: 107
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 43
+  friend_id: 31
+  created_at: 2008-09-22 21:17:34 +00:00
+friendship_00108: 
+  status: requested
+  accepted_at: 
+  initiator: false
+  id: 108
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 31
+  friend_id: 43
+  created_at: 2008-09-22 21:17:34 +00:00
+friendship_00086: 
+  status: requested
+  accepted_at: 
+  initiator: false
+  id: 86
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 25
+  friend_id: 6
+  created_at: 2008-09-19 02:56:16 +00:00
+friendship_00042: 
+  status: requested
+  accepted_at: 
+  initiator: false
+  id: 42
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 7
+  friend_id: 8
+  created_at: 2008-09-17 18:54:05 +00:00
+friendship_00075: 
+  status: accepted
+  accepted_at: 2008-09-18 04:36:10 +00:00
+  initiator: true
+  id: 75
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 35
+  friend_id: 40
+  created_at: 2008-09-18 04:35:32 +00:00
+friendship_00097: 
+  status: pending
+  accepted_at: 
+  initiator: true
+  id: 97
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 30
+  friend_id: 9
+  created_at: 2008-09-22 19:29:24 +00:00
+friendship_00098: 
+  status: requested
+  accepted_at: 
+  initiator: false
+  id: 98
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 9
+  friend_id: 30
+  created_at: 2008-09-22 19:29:24 +00:00
+friendship_00076: 
+  status: accepted
+  accepted_at: 2008-09-18 04:36:10 +00:00
+  initiator: false
+  id: 76
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 40
+  friend_id: 35
+  created_at: 2008-09-18 04:35:32 +00:00
+friendship_00065: 
+  status: accepted
+  accepted_at: 2008-09-18 04:40:08 +00:00
+  initiator: true
+  id: 65
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 38
+  friend_id: 30
+  created_at: 2008-09-18 03:27:52 +00:00
+friendship_00087: 
+  status: pending
+  accepted_at: 
+  initiator: true
+  id: 87
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 8
+  friend_id: 25
+  created_at: 2008-09-19 02:56:50 +00:00
+friendship_00109: 
+  status: pending
+  accepted_at: 
+  initiator: true
+  id: 109
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 43
+  friend_id: 32
+  created_at: 2008-09-22 21:17:44 +00:00
+friendship_00110: 
+  status: requested
+  accepted_at: 
+  initiator: false
+  id: 110
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 32
+  friend_id: 43
+  created_at: 2008-09-22 21:17:44 +00:00
+friendship_00088: 
+  status: requested
+  accepted_at: 
+  initiator: false
+  id: 88
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 25
+  friend_id: 8
+  created_at: 2008-09-19 02:56:50 +00:00
+friendship_00066: 
+  status: accepted
+  accepted_at: 2008-09-18 04:40:08 +00:00
+  initiator: false
+  id: 66
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 30
+  friend_id: 38
+  created_at: 2008-09-18 03:27:52 +00:00
+friendship_00077: 
+  status: accepted
+  accepted_at: 2008-09-18 04:40:21 +00:00
+  initiator: true
+  id: 77
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 39
+  friend_id: 30
+  created_at: 2008-09-18 04:38:08 +00:00
+friendship_00099: 
+  status: accepted
+  accepted_at: 2008-09-22 19:31:57 +00:00
+  initiator: true
+  id: 99
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 30
+  friend_id: 32
+  created_at: 2008-09-22 19:31:32 +00:00
+friendship_00100: 
+  status: accepted
+  accepted_at: 2008-09-22 19:31:57 +00:00
+  initiator: false
+  id: 100
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 32
+  friend_id: 30
+  created_at: 2008-09-22 19:31:32 +00:00
+friendship_00078: 
+  status: accepted
+  accepted_at: 2008-09-18 04:40:21 +00:00
+  initiator: false
+  id: 78
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 30
+  friend_id: 39
+  created_at: 2008-09-18 04:38:08 +00:00
+friendship_00045: 
+  status: accepted
+  accepted_at: 2008-09-17 19:08:39 +00:00
+  initiator: true
+  id: 45
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 7
+  friend_id: 29
+  created_at: 2008-09-17 19:08:17 +00:00
+friendship_00067: 
+  status: accepted
+  accepted_at: 2008-09-18 04:32:32 +00:00
+  initiator: true
+  id: 67
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 35
+  friend_id: 31
+  created_at: 2008-09-18 03:36:43 +00:00
+friendship_00089: 
+  status: pending
+  accepted_at: 
+  initiator: true
+  id: 89
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 6
+  friend_id: 8
+  created_at: 2008-09-19 02:57:29 +00:00
+friendship_00111: 
+  status: pending
+  accepted_at: 
+  initiator: true
+  id: 111
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 43
+  friend_id: 35
+  created_at: 2008-09-22 21:18:21 +00:00
+friendship_00112: 
+  status: requested
+  accepted_at: 
+  initiator: false
+  id: 112
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 35
+  friend_id: 43
+  created_at: 2008-09-22 21:18:21 +00:00
+friendship_00090: 
+  status: requested
+  accepted_at: 
+  initiator: false
+  id: 90
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 8
+  friend_id: 6
+  created_at: 2008-09-19 02:57:29 +00:00
+friendship_00068: 
+  status: accepted
+  accepted_at: 2008-09-18 04:32:32 +00:00
+  initiator: false
+  id: 68
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 31
+  friend_id: 35
+  created_at: 2008-09-18 03:36:43 +00:00
+friendship_00046: 
+  status: accepted
+  accepted_at: 2008-09-17 19:08:39 +00:00
+  initiator: false
+  id: 46
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 29
+  friend_id: 7
+  created_at: 2008-09-17 19:08:17 +00:00
+friendship_00057: 
+  status: accepted
+  accepted_at: 2008-09-17 22:39:02 +00:00
+  initiator: true
+  id: 57
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 31
+  friend_id: 29
+  created_at: 2008-09-17 22:08:00 +00:00
+friendship_00079: 
+  status: accepted
+  accepted_at: 2008-09-18 04:40:48 +00:00
+  initiator: true
+  id: 79
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 39
+  friend_id: 35
+  created_at: 2008-09-18 04:39:10 +00:00
+friendship_00101: 
+  status: accepted
+  accepted_at: 2008-09-22 20:43:22 +00:00
+  initiator: true
+  id: 101
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 30
+  friend_id: 31
+  created_at: 2008-09-22 19:37:30 +00:00
+friendship_00102: 
+  status: accepted
+  accepted_at: 2008-09-22 20:43:22 +00:00
+  initiator: false
+  id: 102
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 31
+  friend_id: 30
+  created_at: 2008-09-22 19:37:30 +00:00
+friendship_00080: 
+  status: accepted
+  accepted_at: 2008-09-18 04:40:48 +00:00
+  initiator: false
+  id: 80
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 35
+  friend_id: 39
+  created_at: 2008-09-18 04:39:10 +00:00
+friendship_00058: 
+  status: accepted
+  accepted_at: 2008-09-17 22:39:02 +00:00
+  initiator: false
+  id: 58
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 29
+  friend_id: 31
+  created_at: 2008-09-17 22:08:00 +00:00
+friendship_00069: 
+  status: accepted
+  accepted_at: 2008-09-18 03:47:55 +00:00
+  initiator: true
+  id: 69
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 32
+  friend_id: 7
+  created_at: 2008-09-18 03:44:43 +00:00
+friendship_00091: 
+  status: pending
+  accepted_at: 
+  initiator: true
+  id: 91
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 6
+  friend_id: 10
+  created_at: 2008-09-22 14:58:55 +00:00
+friendship_00092: 
+  status: requested
+  accepted_at: 
+  initiator: false
+  id: 92
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 10
+  friend_id: 6
+  created_at: 2008-09-22 14:58:55 +00:00
+friendship_00070: 
+  status: accepted
+  accepted_at: 2008-09-18 03:47:55 +00:00
+  initiator: false
+  id: 70
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 7
+  friend_id: 32
+  created_at: 2008-09-18 03:44:43 +00:00
+friendship_00081: 
+  status: accepted
+  accepted_at: 2008-09-18 04:43:56 +00:00
+  initiator: true
+  id: 81
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 38
+  friend_id: 39
+  created_at: 2008-09-18 04:42:25 +00:00
+friendship_00103: 
+  status: pending
+  accepted_at: 
+  initiator: true
+  id: 103
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 35
+  friend_id: 32
+  created_at: 2008-09-22 19:59:14 +00:00
+friendship_00104: 
+  status: requested
+  accepted_at: 
+  initiator: false
+  id: 104
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 32
+  friend_id: 35
+  created_at: 2008-09-22 19:59:14 +00:00
+friendship_00082: 
+  status: accepted
+  accepted_at: 2008-09-18 04:43:56 +00:00
+  initiator: false
+  id: 82
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 39
+  friend_id: 38
+  created_at: 2008-09-18 04:42:25 +00:00
+friendship_00071: 
+  status: accepted
+  accepted_at: 2008-09-18 04:32:45 +00:00
+  initiator: true
+  id: 71
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 34
+  friend_id: 31
+  created_at: 2008-09-18 04:29:48 +00:00
+friendship_00093: 
+  status: accepted
+  accepted_at: 2008-09-22 16:21:29 +00:00
+  initiator: true
+  id: 93
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 7
+  friend_id: 15
+  created_at: 2008-09-22 16:20:49 +00:00
+friendship_00094: 
+  status: accepted
+  accepted_at: 2008-09-22 16:21:29 +00:00
+  initiator: false
+  id: 94
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 15
+  friend_id: 7
+  created_at: 2008-09-22 16:20:49 +00:00
+friendship_00072: 
+  status: accepted
+  accepted_at: 2008-09-18 04:32:45 +00:00
+  initiator: false
+  id: 72
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 31
+  friend_id: 34
+  created_at: 2008-09-18 04:29:48 +00:00
+friendship_00061: 
+  status: accepted
+  accepted_at: 2008-09-17 22:39:14 +00:00
+  initiator: true
+  id: 61
+  hide_connection: true
+  friendship_status_id: 
+  user_id: 32
+  friend_id: 29
+  created_at: 2008-09-17 22:19:41 +00:00
+friendship_00083: 
+  status: accepted
+  accepted_at: 2008-09-18 04:44:54 +00:00
+  initiator: true
+  id: 83
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 39
+  friend_id: 40
+  created_at: 2008-09-18 04:44:27 +00:00
+friendship_00105: 
+  status: pending
+  accepted_at: 
+  initiator: true
+  id: 105
+  hide_connection: false
+  friendship_status_id: 
+  user_id: 31
+  friend_id: 9
+  created_at: 2008-09-22 20:43:54 +00:00

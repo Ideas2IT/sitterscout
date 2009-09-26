@@ -1,0 +1,74 @@
+<div id="content" style="height: 700px;font-size: .8em;">
+	
+<h3>Your Skills & Availability </h3><br/>
+<div>	
+	<div style="float: left; margin-right: 50px;">
+	<h4>Children you’re comfortable babysitting:</h4>
+		<% form_tag create_skills_sitter_path(current_user) do |t| %>
+
+			<%= check_box :skill, :babies %> Babies<br />
+			<%= check_box :skill, :toddlers %> Toddlers<br />
+			<%= check_box :skill, :preschoolers %> Pre-schoolers<br />
+			<%= check_box :skill, :schoolaged %> School Aged<br />
+			<%= check_box :skill, :specialneeds %> Special Needs Children<br />
+			<%= check_box :skill, :multiples %> Multiples (Twins, Triplets)<br /><br />
+
+			<h4>Select the task(s) you're comfortable with:</h4>
+
+			<%= check_box :skill, :cook %> Cook meals<br />
+			<%= check_box :skill, :homework %> Help with homework<br />
+			<%= check_box :skill, :bathe %> Bathe kids<br />
+			<%= check_box :skill, :kidstobed %> Get kids to bed<br />
+			<%= check_box :skill, :entertain %> Play/entertain<br />
+	</div>
+<div>	
+<div>
+			<h4>Do you have your own transportation?</h4>
+			<%= radio_button :skill, :transportation, "true" %> Yes &nbsp;
+			<%= radio_button :skill, :transportation, "false" %> No &nbsp;
+			<%= radio_button :skill, :transportation, "sometimes" %> Sometimes
+</div>
+<br />
+		<div>
+				<h4>How far are you willing to travel?</h4>
+			<%= radio_button :skill, :max_mileage, 3 %> Up to 3 miles<br />
+			<%= radio_button :skill, :max_mileage, 6 %> Up to 6 miles<br />
+			<%= radio_button :skill, :max_mileage, 15 %> Up to 15 miles<br />
+		</div>
+	</div>
+</div>
+<div>
+	<br/>
+		<h4>Enter your hourly rate</h4>
+		$<%= text_field :profile, :hourly_rate %>
+		<br /><br />		<br /><br />		<br /><br />
+		<p>Enter a short description of yourself. Parents will see this when
+		they perform a search. (250 - max. amount of characters)</p>
+		<%= text_area :user, :description, :style => 'width: 100%; height: 100px;', :onkeypress => 'check()' %>
+</div>
+	<br />
+	<div style="margin-left: auto; margin-right: auto; width: 800px;">
+		<h4>When are you usually available to babysit?</h4>
+		<%= render :partial => 'availability' %>
+	</div>
+
+	<div style="margin: 50px auto 50px auto; width: 300px;">
+		<%= link_to(image_tag('/images/Wizard/Previous_bttn.gif', :border => 0), welcome_sitter_path(current_user)) %>
+	<%= image_submit_tag '/images/Wizard/Continue_bttn.gif' %>
+
+	</div>
+</div>
+</div>
+
+<% end %>
+
+<script type="text/javascript">
+	function check() {
+		var user_desc = $('user_description');
+		if(user_desc.value.length > 250) {
+			user_desc.value = user_desc.value.substr(0, 250);
+		}
+	}
+	
+	
+</script>

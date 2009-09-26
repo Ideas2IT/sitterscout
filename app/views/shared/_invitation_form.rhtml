@@ -1,0 +1,17 @@
+	<strong>Invite Your Friends & Sitters</strong>
+	With SitterScout, it’s the more, the merrier. The more connections you have on SitterScout, the more connections you
+	can make – and that means finding a reliable babysitter when you need one. skip >
+	<br />	<br />
+	
+<% form_tag send_invitations_parent_path(current_user) do %>
+<div id="invitations-container">
+<%= render :partial => '/invitations/form' %>
+
+</div>
+<br /><br />
+Default Message:<br />
+<%= check_box_tag "invitations", true %> Check this box to add a custom message.<br />
+<%= text_area(:invitations, :body, :size => "80x15", :text => "default") %>
+	<br />
+<%= submit_tag "Invite" %> <%= submit_tag "Skip" %>
+<% end %>

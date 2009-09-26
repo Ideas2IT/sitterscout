@@ -1,0 +1,117 @@
+<% content_for :nav_bar do %>
+<div id='navbar' <%= current_page?(:controller => "home", :action => "index") ? "class='home'" : nil %><%= current_page?(:controller => 'home', :action => "how_it_works") ? "class='works'" : nil %><%= current_page?(:controller => "home", :action => "about_us") ? "class='about'" : nil %><%= current_page?(:controller => "home", :action => "faq") ? "class='faq'" : nil %>>
+
+
+	<ul id='globalnav'>
+		<li id="home" <%= current_page?(:controller => "parents", :action => "index") ? "class='selected'" : nil %>><%= link_to("home", home_page_path) %></li>
+		<li id="works"><%= link_to("works", how_it_works_path) %></li>
+		<li id="about"><%= link_to("about", about_us_path) %></li>
+		<li id="faq"><%= link_to("faq", :controller => 'home', :action => 'faq') %></li>
+	</ul>
+
+
+	<div id='searchbar' style='backg/round: #999; z-index: 900;'>
+		<% form_tag "/search", :name => 'search_form' do %>
+		<input id='searchfield' type="text" name="search" id="search" value="Search by name or zip code" size='40' onFocus="if(this.value=='Search by name or zip code'){this.value=''; this.style.color='#000';};" onBlur="if(this.value==''){this.value='Search by name or zip code'; this.style.color='#999'; }"/>
+		<div id='searchbutton' onclick="document.search_form.submit();"></div>
+		<% end %>
+
+	</div>		
+</div>
+<% end %>
+<script type="text/javascript">
+
+	/* for togglein faq answers */
+	function tog(obj) {
+		// var el = document.getElementById(obj);
+		// 	if ( el.style.display != 'none' ) {
+		// 		el.parentNode.childNodes[1].className = 'faqbullet';
+		// 	}
+		// 	else {
+		// 		el.parentNode.childNodes[1].className = 'faqanswered';
+		// 	}
+
+		Element.toggle(obj);
+	}
+</script>
+<div id='content' style='height: 500px; background: url(images/banner-faqs-d.png) no-repeat; padding-top: 180px;'>
+
+<div id='faqlist' style='width: 480px; margin: 0 auto;'>
+	<div onclick='tog("answer1");'>
+		<div class='faqbullet'></div>
+		<h4>What does it cost?</h4>
+		<div id='answer1' class='answer' style='display: none;'>
+			<p>SitterScout is currently a free service.</p>
+		</div>
+	</div>
+	<br />
+	<div onclick='tog("answer2");'>
+		<div class='faqbullet'></div>
+		<h4>Do you screen the babysitters on SitterScout?</h4>
+		<div id='answer2' class='answer' style='display: none;'>
+			<p>No. SitterScout is a community where you can meet new babysitters through the friends and neighbors you trust. We recommend exploring your network of friends to see which sitters they use and who each sitter is connected to. Then ask for personal referrals from those families who use the sitter. Ask lots of questions about the babysitters your friends are using: Are they reliable? On time? Trustworthy? Is there anything else you should know?</p>
+		</div>
+	</div>
+	<br />
+	<div onclick='tog("answer3");'>
+		<div class='faqbullet'></div>
+		<h4>Who will be able to view my information?</h4>
+		<div id='answer3' class='answer' style='display: none;'>
+			<p>It’s up to you.  Only people who are part of your network will be able to see your profile information and you choose who can become part of your network.   You decide if you want to be searchable and who can see your list of connections.</p> 
+		</div>
+	</div>
+	<br />
+	<div onclick='tog("answer4");'>
+		<div class='faqbullet'></div>
+		<h4>I am a babysitter.  Who can contact me?</h4>
+		<div id='answer4' class='answer' style='display: none;'>
+			<p>Only people who are members of your network can send you messages or contact you for babysitting jobs.</p> 
+			
+		</div>
+	</div>
+	<br />
+	<div onclick='tog("answer5");'>
+		<div class='faqbullet'></div>
+		<h4>My daughter wants to sign up as a sitter, but I need to know more.  What is SitterScout?</h4>
+		<div id='answer5' class='answer' style='display: none;'>
+			<p>SitterScout helps connect parents and babysitters who already know each other.  We also help parents and sitters make new connections through mutual friends.  </p> 
+			<br />
+			<p>SitterScout makes it easy for parents to contact sitters when they need them, so sitters can have more babysitting opportunities and earn more money. (That also means that parents of babysitters will be fielding fewer phone calls from frantic parents trying to find a babysitter.) </p> 
+			<br />
+			<p>Sitters control their privacy.  SitterScout lets our members determine whether others online can search for them and who can view their list of connections.  </p> 
+			<br />
+			<p>Only those members whom sitters have accepted as part of their network will be able to contact them and request them for babysitting jobs.  We strongly recommend that sitters only add people to their networks if they know and trust them in the offline world.  </p> 
+			<br />
+
+			<p>We want to keep you in the loop.  If you are the parent of a babysitter, you can choose to receive email notifications each time your child receives a babysitting request or adds someone new to their network.  </p> 
+			
+		</div>
+	</div>
+	<br />	
+	<div onclick='tog("answer6");'>
+		<div class='faqbullet'></div>
+		<h4>Why can’t I find babysitters in my area?</h4>
+		<div id='answer6' class='answer' style='display: none;'>
+			<p>SitterScout is a new, growing community and we may not have a lot of members in your area. We will grow quickly if our
+			members invite their friends, neighbors and babysitters to join. The more members, the better the odds you’ll be able to find
+			a babysitter when you need one!</p>
+			
+		</div>
+	</div>
+	<br />
+	<div onclick='tog("answer7");'>
+		<div class='faqbullet'></div>
+		<h4>What if I want to keep my connection to a sitter private?</h4>
+		<div id='answer7' class='answer' style='display: none;'>
+			<p>If you’ve got a sitter that you just can’t share, you can check “Hide Sitter” next to their name in the ‘Your Sitters’ list on the
+			dashboard. Once you check this box, your sitter will not appear in your list of Connections.</p>
+			
+		</div>
+	</div>
+</div>
+
+<p>&nbsp;</p>
+
+
+
+</div>

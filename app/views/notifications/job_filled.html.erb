@@ -1,0 +1,17 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+</head>
+<body>
+<%= image_tag("#{APP_URL}/images/email_signature.jpg", :alt=>"SitterScout.com") %>
+
+<p>Dear <%= @sitter.profile.full_name %>,</p>
+
+<p>Request for a babysitter on <%= @job.date_from.strftime("%B %d, %Y") %> from <%= @job.date_from.strftime("%I:%M %p") %> to <%= @job.date_to.strftime("%I:%M %p") %> has been filled.   Thanks and have a great day!</p>
+
+<p>The SitterScout Team</p>
+
+</body>
+</html>

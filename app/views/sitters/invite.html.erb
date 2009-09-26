@@ -1,0 +1,42 @@
+
+<div id="content" style="height: 700px;">
+<strong style='font-size: 1.5em;'>Thank You for joining the SitterScout Community</strong>
+<br /><br />
+	<span style="font-weight: bolder;">Invite Your Friends & the Families You Babysit For</span>
+	<br /><br />
+	<p>With SitterScout it’s the more, the merrier.  The more families you have on SitterScout, the more jobs you can get.</p>
+<br />	
+<% form_tag send_invitations_sitter_path(current_user) do |form| %>
+<div id="invitations-container">
+	<% 5.times do |i| %>
+
+	<% input_name_prefix = "invitation[invite_#{i.to_s}]" %>
+	<% input_id_prefix = "invitation_invite_#{i.to_s}"%>
+
+	<div id="invitations-<%= i %>-container" class="invitations-container">
+		<label for="<%= input_id_prefix  %>_number" style="font-size: .7em;">Name:</label>
+		<input type="text" name="<%= input_name_prefix %>[name]" id="<%= input_id_prefix %>_name" size="20" <%#= "value=\"#{form.name}\"" if form %> />
+	&nbsp;&nbsp;&nbsp;
+		<label for="<%= input_id_prefix %>_email_address" style="font-size: .7em;">Email Address:</label>
+		<input type="text" name="<%= input_name_prefix %>[email_address]" id="<%= input_id_prefix %>_email_address" size="20" <%#= "value=\"#{form.email}\"" if form %> />
+	&nbsp;&nbsp;&nbsp;
+	<%= radio_button_tag "#{input_name_prefix}[friendsitters]", "friends"  %><font style="font-size: .7em;"> Parent</font>&nbsp;&nbsp;&nbsp;<%= radio_button_tag "#{input_name_prefix}[friendsitters]", "sitters"  %><font style="font-size: .7em;"> Sitter</font>
+
+	</div>
+	<% end %>
+
+
+</div>
+<br /><br />
+<%= check_box_tag "invitations_box", true %> Check this box to add a custom message.<br />
+<%= text_area(:invitations, :body, :size => "80x15", :text => "default") %>
+	<br /><br />
+<div style="margin-left: 30%;">
+<%= link_to(image_tag('/images/Wizard/Previous_bttn.gif', :border => 0), your_friends_sitter_path(current_user)) %>&nbsp;
+<%= image_submit_tag "/images/parent_home/Submit_bttn.gif" %> 
+<%= submit_tag "Skip" %>
+</div>
+
+<% end %>
+
+</div>

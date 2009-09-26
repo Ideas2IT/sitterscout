@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+</head>
+<body>
+<%= image_tag("#{APP_URL}/images/email_signature.jpg", :alt=>"SitterScout.com") %>
+<font face="Arial, Helvetica, Geneva">
+
+<p>To the parents of <%= @sitter.profile.full_name %>,</p>
+
+<p> <%= @sitter.profile.full_name %> has added <%= @accepted_user.profile.full_name %> to their network on SitterScout.</p>
+
+<p>This message has been sent to you because you chose to be notified of all of <%= @sitter.profile.full_name %>’s new network requests. To change these settings at any time, click <%= link_to "here", APP_URL + url_for(:controller => 'consenting_parent', :action => 'index') %>.</p>
+
+<p>Thank you,</p>
+<p>The SitterScout Team</p>
+
+</font>
+</body>
+</html>

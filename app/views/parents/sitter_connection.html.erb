@@ -1,0 +1,6 @@
+<h2><%= @sitter.profile.full_name rescue nil %>'s connections</h2>
+<fieldset>
+	<table>
+		<%= render :partial => 'shared/known_people', :collection => @sitters %>
+	</table>
+</fieldset>

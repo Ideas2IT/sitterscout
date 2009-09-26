@@ -1,0 +1,18 @@
+
+
+<div style="margin: 50px 0 0 180px; font-size: .7em">
+	<table>
+		<tr><td colspan='2'><h3>Upload Photo (optional)</h3></td></tr>
+		<tr>
+				<td>
+<%= image_tag(current_user.avatar_photo_url, :class => "right", :style => "border: 2px solid #FFFFFF;" ) %>
+				</td>
+				<td>
+You can upload a GIF, JPG, or PNG <br />
+<%= file_field :avatar, :uploaded_data, :size => "20", :style => "margin: 5px;"  %><br />
+<%=check_box_tag "photo_permission" %> I certify that I have the right to distribute<br /> this picture and that it does not violate the <%= link_to "Terms of Use", "/tou", :target=>'blank' %>.
+
+				</td>
+			</td>
+		</table>
+</div>

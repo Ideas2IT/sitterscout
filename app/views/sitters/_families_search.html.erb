@@ -1,0 +1,20 @@
+	<div style="width: 300px; height: 85px; float: left; border: 1px #AFAFAF solid; background-color: #FFF;">
+
+			<div style="width: 54px; float: left; padding: 5px; ">
+				<%= image_tag(families_search.parent.avatar_photo_url(:thumb), :class => "right" ) %>
+			</div>
+
+			<div style="float:left; width: 100px;">
+				<strong style=' font-size: 13pt;'><%= families_search.first_name rescue nil %>&nbsp;<%= families_search.last_name rescue nil%></strong>
+				<br />
+					<div style=' font-size: 11pt;'><%= families_search.city rescue nil %>, <%= families_search.state.name rescue nil %></div>
+
+				<font style=' font-size: 11pt;'>Profile Tags:
+				<%= families_search.profile.tag_list rescue nil %>
+				<%= link_to "More", '#' %><br />
+				> <%= link_to "Add to Your Families", url_for(:controller => 'sitters', :action => 'add_family', :id => families_search.parent.id), :class => "submodal-600-400" %>  
+			&nbsp;	> <%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => families_search.parent.id), :class => "submodal-400-400" %></font>	
+				
+			</div>
+
+	</div>

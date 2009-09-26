@@ -1,0 +1,835 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: ParentsController</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">ParentsController</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/app/controllers/parents_controller_rb.html">
+                app/controllers/parents_controller.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                <a href="ApplicationController.html">
+                ApplicationController
+               </a>
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000220">activate</a>&nbsp;&nbsp;
+      <a href="#M000225">add_sitter</a>&nbsp;&nbsp;
+      <a href="#M000229">admin_or_current_user_required</a>&nbsp;&nbsp;
+      <a href="#M000211">create</a>&nbsp;&nbsp;
+      <a href="#M000219">create_friendship_with_inviter</a>&nbsp;&nbsp;
+      <a href="#M000212">dashboard</a>&nbsp;&nbsp;
+      <a href="#M000214">destroy</a>&nbsp;&nbsp;
+      <a href="#M000210">edit</a>&nbsp;&nbsp;
+      <a href="#M000222">inbox</a>&nbsp;&nbsp;
+      <a href="#M000207">index</a>&nbsp;&nbsp;
+      <a href="#M000218">my_profile</a>&nbsp;&nbsp;
+      <a href="#M000209">new</a>&nbsp;&nbsp;
+      <a href="#M000223">profile</a>&nbsp;&nbsp;
+      <a href="#M000221">schedule_sitter</a>&nbsp;&nbsp;
+      <a href="#M000227">setup_locations_for</a>&nbsp;&nbsp;
+      <a href="#M000228">setup_locations_for_public_search</a>&nbsp;&nbsp;
+      <a href="#M000226">setup_metro_areas_for_cloud</a>&nbsp;&nbsp;
+      <a href="#M000208">show</a>&nbsp;&nbsp;
+      <a href="#M000224">sitter_search</a>&nbsp;&nbsp;
+      <a href="#M000213">update</a>&nbsp;&nbsp;
+      <a href="#M000215">welcome</a>&nbsp;&nbsp;
+      <a href="#M000216">your_friends</a>&nbsp;&nbsp;
+      <a href="#M000217">your_sitters</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000220" class="method-detail">
+        <a name="M000220"></a>
+
+        <div class="method-heading">
+          <a href="#M000220" class="method-signature">
+          <span class="method-name">activate</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000220-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000220-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/parents_controller.rb, line 176</span>
+176:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">activate</span>
+177:       <span class="ruby-ivar">@parent</span> = <span class="ruby-constant">Parent</span>.<span class="ruby-identifier">find_by_activation_code</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>])
+178:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@parent</span> <span class="ruby-keyword kw">and</span> <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">activate</span>
+179:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">current_user</span> = <span class="ruby-ivar">@parent</span>
+180:         <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">role</span> = <span class="ruby-constant">Role</span>.<span class="ruby-identifier">find_by_name</span>(<span class="ruby-value str">&quot;parent&quot;</span>)
+181:         <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">save</span>
+182:         <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">welcome_parent_path</span>(<span class="ruby-ivar">@parent</span>) <span class="ruby-comment cmt">#welcome_photo_user_path(@user)</span>
+183:         <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>] = <span class="ruby-value str">&quot;Thanks for activating your account!&quot;</span> 
+184:         <span class="ruby-keyword kw">return</span>
+185:       <span class="ruby-keyword kw">end</span>
+186:       <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:error</span>] = <span class="ruby-node">&quot;Account activation failed. Your account may already be active. Try logging in or e-mail #{AppConfig.support_email} for help.&quot;</span>
+187:       <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">signup_path</span>     
+188:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000225" class="method-detail">
+        <a name="M000225"></a>
+
+        <div class="method-heading">
+          <a href="#M000225" class="method-signature">
+          <span class="method-name">add_sitter</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000225-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000225-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/parents_controller.rb, line 209</span>
+209:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">add_sitter</span>
+210:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">logged_in?</span>
+211:         <span class="ruby-constant">Parent</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">id</span>).<span class="ruby-identifier">sitters</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Sitter</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>])
+212:       <span class="ruby-keyword kw">else</span>
+213:         <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+214:           <span class="ruby-identifier">format</span>.<span class="ruby-identifier">js</span> <span class="ruby-keyword kw">do</span>
+215:             <span class="ruby-identifier">render</span> <span class="ruby-identifier">:update</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">page</span><span class="ruby-operator">|</span>
+216:               <span class="ruby-comment cmt">#page.flash[:notice] = &quot;Must be logged in to add sitters.&quot;</span>
+217:               <span class="ruby-identifier">page</span>.<span class="ruby-identifier">redirect_to</span>(<span class="ruby-identifier">home_page_path</span>)
+218:             <span class="ruby-keyword kw">end</span>
+219:           <span class="ruby-keyword kw">end</span>
+220:           <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> {}
+221:         <span class="ruby-keyword kw">end</span>
+222:       <span class="ruby-keyword kw">end</span>
+223:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000211" class="method-detail">
+        <a name="M000211"></a>
+
+        <div class="method-heading">
+          <a href="#M000211" class="method-signature">
+          <span class="method-name">create</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+POST /Parents POST /Parents.xml
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000211-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000211-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/parents_controller.rb, line 52</span>
+52:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create</span>
+53:     <span class="ruby-ivar">@parent</span> = <span class="ruby-constant">Parent</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:parent</span>])
+54:     <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">role</span> = <span class="ruby-constant">Role</span>[<span class="ruby-identifier">:parent</span>]
+55:     <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">save!</span>
+56:       <span class="ruby-identifier">create_friendship_with_inviter</span>(<span class="ruby-ivar">@parent</span>, <span class="ruby-identifier">params</span>)
+57:       <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>] = <span class="ruby-node">&quot;Thanks for signing up! You should receive an e-mail confirmation shortly at #{@parent.email}&quot;</span>
+58:       <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">signup_completed_user_path</span>(<span class="ruby-ivar">@parent</span>)
+59:     <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">RecordInvalid</span>
+60:       <span class="ruby-identifier">render</span> <span class="ruby-identifier">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'new'</span>
+61:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000219" class="method-detail">
+        <a name="M000219"></a>
+
+        <div class="method-heading">
+          <a href="#M000219" class="method-signature">
+          <span class="method-name">create_friendship_with_inviter</span><span class="method-args">(user, options = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000219-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000219-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/parents_controller.rb, line 163</span>
+163:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create_friendship_with_inviter</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">options</span> = {})
+164:       <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:inviter_code</span>].<span class="ruby-identifier">blank?</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:inviter_id</span>].<span class="ruby-identifier">blank?</span>
+165:         <span class="ruby-identifier">friend</span> = <span class="ruby-constant">Parent</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:inviter_id</span>])
+166:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">friend</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">friend</span>.<span class="ruby-identifier">valid_invite_code?</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:inviter_code</span>])
+167:           <span class="ruby-identifier">accepted</span> = <span class="ruby-constant">FriendshipStatus</span>[<span class="ruby-identifier">:accepted</span>]
+168:           <span class="ruby-ivar">@friendship</span> = <span class="ruby-constant">Friendship</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">:user_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">friend</span>.<span class="ruby-identifier">id</span>, <span class="ruby-identifier">:friend_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">id</span>,<span class="ruby-identifier">:friendship_status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">accepted</span>, <span class="ruby-identifier">:initiator</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span>)
+169:           <span class="ruby-identifier">reverse_friendship</span> = <span class="ruby-constant">Friendship</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">:user_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">id</span>, <span class="ruby-identifier">:friend_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">friend</span>.<span class="ruby-identifier">id</span>, <span class="ruby-identifier">:friendship_status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">accepted</span> )
+170:           <span class="ruby-ivar">@friendship</span>.<span class="ruby-identifier">save</span>
+171:           <span class="ruby-identifier">reverse_friendship</span>.<span class="ruby-identifier">save</span>
+172:         <span class="ruby-keyword kw">end</span>
+173:       <span class="ruby-keyword kw">end</span>
+174:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000212" class="method-detail">
+        <a name="M000212"></a>
+
+        <div class="method-heading">
+          <a href="#M000212" class="method-signature">
+          <span class="method-name">dashboard</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000212-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000212-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/parents_controller.rb, line 64</span>
+64:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">dashboard</span>
+65:     <span class="ruby-ivar">@sitters</span> = <span class="ruby-constant">Sitter</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:all</span>)
+66:     <span class="ruby-ivar">@j</span> = <span class="ruby-constant">Parent</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>]).<span class="ruby-identifier">jobs</span>
+67:     <span class="ruby-identifier">render</span> <span class="ruby-identifier">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'schedule_sitter'</span>
+68:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000214" class="method-detail">
+        <a name="M000214"></a>
+
+        <div class="method-heading">
+          <a href="#M000214" class="method-signature">
+          <span class="method-name">destroy</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+DELETE /Parents/1 DELETE /Parents/1.xml
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000214-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000214-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/parents_controller.rb, line 120</span>
+120:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">destroy</span>
+121:     <span class="ruby-ivar">@parent</span> = <span class="ruby-constant">Parent</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>])
+122:     <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">destroy</span>
+123: 
+124:     <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+125:       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span>(<span class="ruby-identifier">parents_url</span>) }
+126:       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span>  { <span class="ruby-identifier">head</span> <span class="ruby-identifier">:ok</span> }
+127:     <span class="ruby-keyword kw">end</span>
+128:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000210" class="method-detail">
+        <a name="M000210"></a>
+
+        <div class="method-heading">
+          <a href="#M000210" class="method-signature">
+          <span class="method-name">edit</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+GET /Parents/1/edit
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000210-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000210-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/parents_controller.rb, line 46</span>
+46:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">edit</span>
+47:     <span class="ruby-ivar">@Parent</span> = <span class="ruby-constant">Parent</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>])
+48:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000222" class="method-detail">
+        <a name="M000222"></a>
+
+        <div class="method-heading">
+          <a href="#M000222" class="method-signature">
+          <span class="method-name">inbox</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000222-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000222-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/parents_controller.rb, line 197</span>
+197:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">inbox</span>
+198:       
+199:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000207" class="method-detail">
+        <a name="M000207"></a>
+
+        <div class="method-heading">
+          <a href="#M000207" class="method-signature">
+          <span class="method-name">index</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+GET /Parents GET /Parents.xml
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000207-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000207-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/parents_controller.rb, line 7</span>
+ 7:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">index</span>
+ 8:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">logged_in?</span>
+ 9:       <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">role</span>.<span class="ruby-identifier">name</span>
+10:       <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;sitter&quot;</span>
+11:         <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">dashboard_sitter_path</span>(<span class="ruby-identifier">current_user</span>)  
+12:       <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;parent&quot;</span>
+13:         <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">dashboard_parent_path</span>(<span class="ruby-identifier">current_user</span>)
+14:       <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;admin&quot;</span>
+15:         <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">dashboard_admin_path</span>(<span class="ruby-identifier">current_user</span>)      
+16:       <span class="ruby-keyword kw">end</span>
+17:     <span class="ruby-keyword kw">end</span>
+18: 
+19:     <span class="ruby-ivar">@metro_areas</span>, <span class="ruby-ivar">@states</span> = <span class="ruby-identifier">setup_locations_for_public_search</span>
+20:     
+21:     
+22:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000218" class="method-detail">
+        <a name="M000218"></a>
+
+        <div class="method-heading">
+          <a href="#M000218" class="method-signature">
+          <span class="method-name">my_profile</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000218-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000218-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/parents_controller.rb, line 152</span>
+152:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">my_profile</span>
+153:     <span class="ruby-ivar">@parent</span> = <span class="ruby-constant">Parent</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>])
+154:     <span class="ruby-ivar">@user</span> = <span class="ruby-ivar">@parent</span>
+155:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">profile</span>.<span class="ruby-identifier">nil?</span>
+156:       <span class="ruby-ivar">@profile</span> = <span class="ruby-constant">Profile</span>.<span class="ruby-identifier">new</span>
+157:     <span class="ruby-keyword kw">else</span>
+158:       <span class="ruby-ivar">@profile</span> = <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">profile</span>
+159:     <span class="ruby-keyword kw">end</span>
+160:     <span class="ruby-ivar">@metro_areas</span>, <span class="ruby-ivar">@states</span> = <span class="ruby-identifier">setup_locations_for</span>(<span class="ruby-ivar">@parent</span>)
+161:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000209" class="method-detail">
+        <a name="M000209"></a>
+
+        <div class="method-heading">
+          <a href="#M000209" class="method-signature">
+          <span class="method-name">new</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+GET /Parents/<a href="ParentsController.html#M000209">new</a> GET
+/Parents/new.xml
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000209-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000209-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/parents_controller.rb, line 37</span>
+37:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">new</span>
+38:     <span class="ruby-identifier">page_title</span> = <span class="ruby-value str">&quot;&quot;</span>
+39:     <span class="ruby-ivar">@parent</span> = <span class="ruby-constant">Parent</span>.<span class="ruby-identifier">new</span>( {<span class="ruby-identifier">:birthday</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Date</span>.<span class="ruby-identifier">parse</span>((<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span> <span class="ruby-operator">-</span> <span class="ruby-value">25</span>.<span class="ruby-identifier">years</span>).<span class="ruby-identifier">to_s</span>) }.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:parent</span>] <span class="ruby-operator">||</span> {}) )
+40:     <span class="ruby-ivar">@inviter_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>]
+41:     <span class="ruby-ivar">@inviter_code</span> = <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:code</span>]
+42:      
+43:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000223" class="method-detail">
+        <a name="M000223"></a>
+
+        <div class="method-heading">
+          <a href="#M000223" class="method-signature">
+          <span class="method-name">profile</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000223-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000223-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/parents_controller.rb, line 201</span>
+201:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">profile</span>
+202:       
+203:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000221" class="method-detail">
+        <a name="M000221"></a>
+
+        <div class="method-heading">
+          <a href="#M000221" class="method-signature">
+          <span class="method-name">schedule_sitter</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000221-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000221-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/parents_controller.rb, line 192</span>
+192:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">schedule_sitter</span>
+193:      <span class="ruby-ivar">@sitters</span> = <span class="ruby-constant">Sitter</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:all</span>)
+194:      <span class="ruby-ivar">@j</span> = <span class="ruby-constant">Parent</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>]).<span class="ruby-identifier">jobs</span>
+195:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000208" class="method-detail">
+        <a name="M000208"></a>
+
+        <div class="method-heading">
+          <a href="#M000208" class="method-signature">
+          <span class="method-name">show</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+GET /Parents/1 GET /Parents/1.xml
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000208-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000208-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/parents_controller.rb, line 26</span>
+26:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">show</span>
+27:     <span class="ruby-ivar">@Parent</span> = <span class="ruby-constant">Parent</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>])
+28: 
+29:     <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span> 
+30:       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> <span class="ruby-comment cmt"># show.html.erb</span>
+31:       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span>  { <span class="ruby-identifier">render</span> <span class="ruby-identifier">:xml</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@Parent</span> }
+32:     <span class="ruby-keyword kw">end</span>
+33:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000224" class="method-detail">
+        <a name="M000224"></a>
+
+        <div class="method-heading">
+          <a href="#M000224" class="method-signature">
+          <span class="method-name">sitter_search</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000224-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000224-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/parents_controller.rb, line 205</span>
+205:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">sitter_search</span>
+206:     
+207:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000213" class="method-detail">
+        <a name="M000213"></a>
+
+        <div class="method-heading">
+          <a href="#M000213" class="method-signature">
+          <span class="method-name">update</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+PUT /Parents/1 PUT /Parents/1.xml
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000213-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000213-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/parents_controller.rb, line 72</span>
+ 72:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">update</span>
+ 73:     <span class="ruby-ivar">@parent</span> = <span class="ruby-constant">Parent</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>])
+ 74:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">profile</span>.<span class="ruby-identifier">nil?</span>
+ 75:       <span class="ruby-ivar">@profile</span> = <span class="ruby-constant">Profile</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:profile</span>])
+ 76:     <span class="ruby-keyword kw">else</span>
+ 77:       <span class="ruby-ivar">@profile</span> = <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">profile</span>
+ 78:     <span class="ruby-keyword kw">end</span>
+ 79:     
+ 80:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:profile_setup</span>]
+ 81:       <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+ 82:        <span class="ruby-comment cmt"># @profile.state_id = params[:state][:id]</span>
+ 83:         <span class="ruby-ivar">@profile</span>.<span class="ruby-identifier">save</span>
+ 84:         <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">profile</span> = <span class="ruby-ivar">@profile</span>
+ 85:          <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>]) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@profile</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:profile</span>])
+ 86:           <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>] = <span class="ruby-value str">'Parent was successfully updated.'</span>
+ 87:           <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span>(<span class="ruby-identifier">your_friends_parent_path</span>(<span class="ruby-identifier">current_user</span>)) }
+ 88:           <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span>  { <span class="ruby-identifier">head</span> <span class="ruby-identifier">:ok</span> }
+ 89:         <span class="ruby-keyword kw">else</span>
+ 90:           <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;edit&quot;</span> }
+ 91:           <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span>  { <span class="ruby-identifier">render</span> <span class="ruby-identifier">:xml</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">errors</span>, <span class="ruby-identifier">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:unprocessable_entity</span> }
+ 92:         <span class="ruby-keyword kw">end</span>
+ 93:       <span class="ruby-keyword kw">end</span>
+ 94:       
+ 95:   
+ 96:     <span class="ruby-keyword kw">else</span>
+ 97:       
+ 98: 
+ 99:       <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+100:         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:parent</span>])
+101:           <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>] = <span class="ruby-value str">'Parent was successfully updated.'</span>
+102:           <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span>(<span class="ruby-ivar">@parent</span>) }
+103:           <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span>  { <span class="ruby-identifier">head</span> <span class="ruby-identifier">:ok</span> }
+104:         <span class="ruby-keyword kw">else</span>
+105:           <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;edit&quot;</span> }
+106:           <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span>  { <span class="ruby-identifier">render</span> <span class="ruby-identifier">:xml</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">errors</span>, <span class="ruby-identifier">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:unprocessable_entity</span> }
+107:         <span class="ruby-keyword kw">end</span>
+108:       <span class="ruby-keyword kw">end</span>
+109:     
+110:     <span class="ruby-keyword kw">end</span>
+111: 
+112:     
+113:     
+114:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000215" class="method-detail">
+        <a name="M000215"></a>
+
+        <div class="method-heading">
+          <a href="#M000215" class="method-signature">
+          <span class="method-name">welcome</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000215-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000215-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/parents_controller.rb, line 131</span>
+131:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">welcome</span>
+132:     <span class="ruby-ivar">@parent</span> = <span class="ruby-constant">Parent</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>])
+133:     <span class="ruby-ivar">@user</span> = <span class="ruby-ivar">@parent</span>
+134:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">profile</span>.<span class="ruby-identifier">nil?</span>
+135:       <span class="ruby-ivar">@profile</span> = <span class="ruby-constant">Profile</span>.<span class="ruby-identifier">new</span>
+136:     <span class="ruby-keyword kw">else</span>
+137:       <span class="ruby-ivar">@profile</span> = <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">profile</span>
+138:     <span class="ruby-keyword kw">end</span>
+139:     <span class="ruby-ivar">@metro_areas</span>, <span class="ruby-ivar">@states</span> = <span class="ruby-identifier">setup_locations_for</span>(<span class="ruby-ivar">@parent</span>)
+140:   
+141:     <span class="ruby-ivar">@avatar</span> = <span class="ruby-constant">Photo</span>.<span class="ruby-identifier">new</span>
+142:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000216" class="method-detail">
+        <a name="M000216"></a>
+
+        <div class="method-heading">
+          <a href="#M000216" class="method-signature">
+          <span class="method-name">your_friends</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000216-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000216-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/parents_controller.rb, line 144</span>
+144:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">your_friends</span>
+145:    <span class="ruby-ivar">@friends</span> = <span class="ruby-constant">Parent</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:all</span>)
+146:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000217" class="method-detail">
+        <a name="M000217"></a>
+
+        <div class="method-heading">
+          <a href="#M000217" class="method-signature">
+          <span class="method-name">your_sitters</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000217-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000217-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/parents_controller.rb, line 148</span>
+148:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">your_sitters</span>
+149:    <span class="ruby-ivar">@sitters</span> = <span class="ruby-constant">Sitter</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:all</span>)
+150:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Protected Instance methods</h3>
+
+      <div id="method-M000229" class="method-detail">
+        <a name="M000229"></a>
+
+        <div class="method-heading">
+          <a href="#M000229" class="method-signature">
+          <span class="method-name">admin_or_current_user_required</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000229-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000229-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/parents_controller.rb, line 250</span>
+250:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">admin_or_current_user_required</span>
+251:       <span class="ruby-identifier">current_user</span> <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">admin?</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@is_current_user</span>) <span class="ruby-operator">?</span> <span class="ruby-keyword kw">true</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">access_denied</span>     
+252:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000227" class="method-detail">
+        <a name="M000227"></a>
+
+        <div class="method-heading">
+          <a href="#M000227" class="method-signature">
+          <span class="method-name">setup_locations_for</span><span class="method-args">(user)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000227-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000227-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/parents_controller.rb, line 233</span>
+233:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">setup_locations_for</span>(<span class="ruby-identifier">user</span>)
+234:       <span class="ruby-identifier">metro_areas</span> = []
+235:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">state</span>
+236:         <span class="ruby-identifier">metro_areas</span> = <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">state</span>.<span class="ruby-identifier">metro_areas</span>
+237:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">country</span>
+238:         <span class="ruby-identifier">metro_areas</span> = <span class="ruby-identifier">user</span>.<span class="ruby-identifier">country</span>.<span class="ruby-identifier">metro_areas</span>
+239:       <span class="ruby-keyword kw">end</span>
+240:       <span class="ruby-identifier">states</span> = <span class="ruby-identifier">user</span>.<span class="ruby-identifier">country</span>.<span class="ruby-identifier">eql?</span>(<span class="ruby-constant">Country</span>.<span class="ruby-identifier">get</span>(<span class="ruby-identifier">:us</span>)) <span class="ruby-operator">?</span> <span class="ruby-constant">State</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:all</span>) <span class="ruby-operator">:</span> []    
+241:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">metro_areas</span>, <span class="ruby-identifier">states</span>
+242:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000228" class="method-detail">
+        <a name="M000228"></a>
+
+        <div class="method-heading">
+          <a href="#M000228" class="method-signature">
+          <span class="method-name">setup_locations_for_public_search</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000228-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000228-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/parents_controller.rb, line 244</span>
+244:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">setup_locations_for_public_search</span>
+245:       <span class="ruby-identifier">metro_areas</span> = []
+246:       <span class="ruby-identifier">states</span> = <span class="ruby-constant">State</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:all</span>)
+247:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">metro_areas</span>, <span class="ruby-identifier">states</span>
+248:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000226" class="method-detail">
+        <a name="M000226"></a>
+
+        <div class="method-heading">
+          <a href="#M000226" class="method-signature">
+          <span class="method-name">setup_metro_areas_for_cloud</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000226-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000226-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/parents_controller.rb, line 228</span>
+228:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">setup_metro_areas_for_cloud</span>
+229:       <span class="ruby-ivar">@metro_areas_for_cloud</span> = <span class="ruby-constant">MetroArea</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:all</span>, <span class="ruby-identifier">:conditions</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;users_count &gt; 0&quot;</span>, <span class="ruby-identifier">:order</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;users_count DESC&quot;</span>, <span class="ruby-identifier">:limit</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">100</span>)
+230:       <span class="ruby-ivar">@metro_areas_for_cloud</span> = <span class="ruby-ivar">@metro_areas_for_cloud</span>.<span class="ruby-identifier">sort_by</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">m</span><span class="ruby-operator">|</span> <span class="ruby-identifier">m</span>.<span class="ruby-identifier">name</span>}
+231:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

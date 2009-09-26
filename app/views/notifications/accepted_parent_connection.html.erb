@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+</head>
+<body>
+<%= image_tag("#{APP_URL}/images/email_signature.jpg", :alt=>"SitterScout.com") %>
+<font face="Arial, Helvetica, Geneva">
+<p>Dear <%= @recipient.profile.full_name %>,</p>
+
+<p><%= @sender.profile.full_name %> has accepted your connection request. Click <%= link_to "here", APP_URL + view_profile_parent_path(@sender.id) %> to view <%= @sender.profile.full_name %>'s profile and start networking your way to more nights out.</p>
+
+<p>If you have friends who could use a faster and easier way to find a babysitter, tell them about SitterScout.</p>
+
+<p>Happy Scouting!</p>
+
+<p>The SitterScout Team</p>
+
+</font>
+</body>
+</html>

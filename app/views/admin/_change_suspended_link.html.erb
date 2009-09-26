@@ -1,0 +1,5 @@
+<% unless @user.suspended %>
+| <%= link_to_remote "Suspend User", :url => url_for(:controller => 'admin', :action => 'suspend_user', :id => @user.id), :confirm => 'Are you sure you want to suspend this user?' %>
+<% else %>
+| <%= link_to_remote "Unsuspend User", :url => url_for(:controller => 'admin', :action => 'unsuspend_user', :id => @user.id), :confirm => 'Are you sure you want to Unsuspend this user?' %>
+<% end %>

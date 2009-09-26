@@ -1,0 +1,76 @@
+<div id="content" style="width: 950px;height: 550px;">	
+
+<span style='font-size: 1.5em;'>Create Your Families Network</span>
+<div style='font-size: .8em; margin-top: 10px;'>
+	Find the families you babysit for who are already on SitterScout and start networking your way to more jobs. Just click on the Add to Families link and we will send them a confirmation e-mail. 
+</div>
+<br />
+<strong style=' font-size: 1.1em; font-weight: bold'>Families You May Know:</strong>
+
+<div style="margin: 10px;">
+	<div style="border: 1px #AFAFAF solid; background-color: #E9EDFE; padding: 5px; width: 420px; height: 285px; float: left; margin-right:20px;	 overflow-y: auto;">
+		<div style='font-size: .9em; margin-bottom: 4px;'>SitterScout has identified the following parent(s) based on your ZIP code and profile tags.</div>
+		<% @families.each do |friend| %>
+			<div style="width: 98%; height: 85px; float: left; border: 1px #AFAFAF solid; background-color: #FFF; margin-bottom: 4px;">
+
+					<div style="width: 80px; float: left; padding: 5px; ">
+						<%= image_tag(friend.avatar_photo_url(:thumb), :class => "right" ) %>
+					</div>
+
+					<div style="float:left;">
+						<strong style='font-size: 1em;'><%= friend.profile.first_name rescue nil %>&nbsp;<%= friend.profile.last_name rescue nil%></strong>
+						<br />
+							<div style='font-size: .7em;'><%= friend.profile.city rescue nil %>, <%= friend.profile.state.name rescue nil %></div>
+		
+						<font style='font-size: .6em;'>Profile Tags:
+						<%= truncate(friend.profile.tag_list.to_s, 25, "...") rescue nil %>
+						<% if(friend.profile.tag_list.to_s.size > 25) %>
+						<%= link_to "More", "#", :onmouseover =>"TagToTip('#{friend.id}_tip', ABOVE, true, BALLOON, true)", :onmouseout => "UnTip()", :style => "color: #C21D7F;" %>
+						<div id="<%= friend.id %>_tip" style="display: none;"><%= friend.profile.tag_list.to_s %></div>
+									<% end %><br />
+						> <%= link_to "Add to Your Families", url_for(:controller => 'connections', :action => 'add_friend', :id => friend.id), :class => "lbOn-300-270" %> 
+							<% if current_user.connected?(friend) %>
+						 
+					&nbsp;	> <%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => friend.id), :class => "lbOn-405-390" %>
+					<% end %></font>	
+						
+					</div>
+
+			</div>		
+		<% end %>
+	</div>
+
+	
+	<div id="families_search" style="float: left; width: 450px; margin-top: -30px;">
+			<span style='font-size: 1.1em; font-weight: bold;'>Search For Other Families:</span>
+			<div style="margin-top: 5px">
+		<% form_remote_tag :url => search_families_sitter_path(current_user), :loading => "Element.show('spinner');", :complete => "Element.hide('spinner');" do %>
+            <%= text_field :user, :search %>
+						<%= hidden_field_tag :action_verbiage, "Families" %>
+
+		<%= image_submit_tag "/images/Wizard/Search_bttn_purple.gif" %>	
+		<% end %>
+		<div id="families_results" style="background-color: #E9EDFE; padding: 5px; overflow-y: auto; width: 420px; height: 260px; display: none; border: 1px #AFAFAF solid; margin-top: 5px;">
+
+        </div>
+			</div>
+	</div>
+  
+</div>
+<div style="margin-left: 39%; margin-top: 350px;">
+
+<% form_tag update_families_sitter_path(current_user) do %>
+<%= link_to(image_tag('/images/Wizard/Previous_bttn.gif', :border => 0), your_skills_sitter_path(current_user)) %>
+<%= image_submit_tag '/images/Wizard/Continue_bttn.gif' %>
+
+	
+
+
+<% end %>
+
+</div>
+</div>
+
+
+
+

@@ -1,0 +1,46 @@
+<%= render :partial => 'nav_menu', :locals => {:selected => "profile"} %>
+
+<div id="sub_menu_gradient">
+	<div class="sub_menu_gradient_center">
+		<%= render :partial => 'profile_menu' %>
+	</div>
+<div>
+<div id="content">
+
+	<div class='box alt first_alt'>
+		<div style="margin-top: 20px; font-size: .8em;">
+			Sitters will able to learn about your family and decide if they are qualified. You may enter as much or as little information as you feel comfortable with.
+		</div>
+		<div style="margin-bottom:10px; margin-top: 15px; font-size: .8em;" >
+		How many children do you have? <%= select_tag "number_of_children", options_for_select(1..6, @children.count) %>
+		</div>
+		<%= observe_field :number_of_children, :url => insert_children_parent_path(current_user) ,
+		     :frequency => 2,
+		     :with => "'number_of_children=' + value + '&children_shown=' + $('children_shown').value"
+		     %>
+				<input type="hidden" id="children_shown" value="<%=@children.count %>">
+<% form_tag update_my_children_parent_path(current_user) do  %>		
+	<% if @children.blank? %>
+		<%= render :partial => 'child' %>
+	<%	else	
+	 @children.each_with_index do |c, i| %>
+		<div id="child_<%= i %>" style="margin-bottom: 5px; font-size: .8em;">
+			Child's Name &nbsp;<%= text_field_tag "child[#{i}][name]", c.name, :style=> "margin-right: 5px;" %>
+			<% if c.age.nil?
+				c.age = "January 1, 2000".to_date
+			end
+				%>
+			Child's Birth Date <%= date_select "child[#{i}]", "age", :start_year => 20.years.ago.year, :end_year => Time.now.year, :default => {:year => c.age.to_date.year, :day => c.age.to_date.day, :month => c.age.to_date.month}, :order => [:month, :day, :year] %>
+			<%#= select_tag "child[#{i}][age]", options_for_select(["1-6 mos.", "6-12 mos.","2 yrs.", "3 yrs.", "4 yrs.","5 yrs."], c.age	) %>
+		</div>
+	<% end 
+		end %>
+		<div style="position: absolute; margin-left: 800px;top: 275px;">
+				<%= render :partial => '/shared/share_a_sale' %>
+				</div>
+	</div>
+	<div style="margin-top: 25px; margin-left: 36%;">
+<%= image_submit_tag '/images/parent_home/SaveChanges_bttn.gif' %>
+</div>
+<% end %>
+</div>

@@ -1,0 +1,152 @@
+<div class="message-history-container">
+	<div class="clearfix">
+		<%=
+		render :partial => "profile/user_view",
+			:locals => {
+				:user_view => @partner
+			}
+		%>
+	</div>
+			<div class="message-history-messages-container">
+				<fieldset class="cornerbox_34_grn-col">
+					<div class="top"><h2>Messages</h2></div>	
+						<div class="content clearfix">
+							<dl class="clearfix">
+								<dt>
+									Sent
+								</dt>
+								<dd>
+									<table cellspacing="0" class="data">
+										<thead>
+											<tr>
+												<th class="contact-history">
+													Subject
+												</th>
+												<th>
+													Date
+												</th>
+											</tr>
+										</thead>
+										<tbody>
+											<% @sent_messages.each { |message| %>
+												<tr>
+													<td class="contact-history">
+														<%= h(message.subject) %>
+													</td>
+													<td>
+														<%= today_yesterday_or_xago(message.created_at, true).capitalize %>
+													</td>
+												</tr>
+											<% } %>
+										</tbody>
+									</table>
+								</dd>
+							</dl>
+						</div>
+						<div class="content clearfix">
+							<dl class="clearfix">
+								<dt>
+									Received
+								</dt>
+								<dd>
+									<table cellspacing="0" class="data">
+										<thead>
+											<tr>
+												<th class="contact-history">
+													Subject
+												</th>
+												<th>
+													Date
+												</th>
+											</tr>
+										</thead>
+										<tbody>
+											<% @received_messages.each { |message| %>
+												<tr>
+													<td class="contact-history">
+														<%= h(message.subject) %>
+													</td>
+													<td>
+														<%= today_yesterday_or_xago(message.created_at, true).capitalize %>
+													</td>
+												</tr>
+											<% } %>
+										</tbody>
+									</table>
+								</dd>
+							</dl>
+						</div>
+				</fieldset>
+			</div>
+			<div class="message-history-winks-container">
+				<fieldset class="cornerbox_34_grn-col">
+					<div class="top"><h2>Winks</h2></div>
+			
+						<div class="content clearfix">
+							<dl class="clearfix">
+								<dt>
+									Sent
+								</dt>
+								<dd>
+									<table cellspacing="0" class="data">
+										<tbody>
+											<% @sent_winks.each { |wink| %>
+												<tr>
+													<td>
+														<%= today_yesterday_or_xago(wink.created_at, true).capitalize%> 
+													</td>
+												</tr>
+											<% } %>
+										</tbody>
+									</table>
+								</dd>
+							</dl>
+						</div>
+						<div class="content clearfix">
+							<dl class="clearfix">
+								<dt>
+									Received
+								</dt>
+								<dd>
+									<table cellspacing="0" class="data">
+										<tbody>
+											<% @received_winks.each { |wink| %>
+												<tr>
+													<td>
+														<%= today_yesterday_or_xago(wink.created_at, true).capitalize %>
+													</td>
+												</tr>
+											<% } %>
+										</tbody>
+									</table>
+								</dd>
+							</dl>
+						</div>
+				</fieldset>
+			</div>
+			<div class="message-history-favorites-container">
+				<fieldset class="cornerbox_34_grn-col">
+					<div class="top"><h2>Favorites</h2></div>
+					<div class="content clearfix">
+						<dl class="clearfix">
+							<dt>
+								Added
+							</dt>
+							<dd>
+								<table cellspacing="0" class="data">
+									<tbody>
+										<% @favorites.each { |favorite| %>
+											<tr>
+												<td>
+													<%= today_yesterday_or_xago(favorite.created_at, true).capitalize %>
+												</td>
+											</tr>
+										<% } %>
+									</tbody>
+								</table>
+							</dd>
+						</dl>
+					</div>
+				</fieldset>
+			</div>
+</div>

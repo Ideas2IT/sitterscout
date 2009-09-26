@@ -1,0 +1,1633 @@
+--- 
+metro_area_00187: 
+  name: Portland
+  country_id: 207
+  id: 187
+  users_count: 0
+  state_id: 20
+metro_area_00268: 
+  name: Winston Salem
+  country_id: 207
+  id: 268
+  users_count: 0
+  state_id: 34
+metro_area_00188: 
+  name: Portland
+  country_id: 207
+  id: 188
+  users_count: 0
+  state_id: 38
+metro_area_00269: 
+  name: Worcester
+  country_id: 207
+  id: 269
+  users_count: 0
+  state_id: 22
+metro_area_00189: 
+  name: Poughkeepsie
+  country_id: 207
+  id: 189
+  users_count: 0
+  state_id: 33
+metro_area_00001: 
+  name: Abilene
+  country_id: 207
+  id: 1
+  users_count: 0
+  state_id: 44
+metro_area_00002: 
+  name: Akron
+  country_id: 207
+  id: 2
+  users_count: 0
+  state_id: 36
+metro_area_00003: 
+  name: Albany
+  country_id: 207
+  id: 3
+  users_count: 0
+  state_id: 33
+metro_area_00110: 
+  name: Ithaca
+  country_id: 207
+  id: 110
+  users_count: 0
+  state_id: 33
+metro_area_00004: 
+  name: Albuquerque
+  country_id: 207
+  id: 4
+  users_count: 0
+  state_id: 32
+metro_area_00030: 
+  name: Boise
+  country_id: 207
+  id: 30
+  users_count: 0
+  state_id: 13
+metro_area_00111: 
+  name: Jackson
+  country_id: 207
+  id: 111
+  users_count: 0
+  state_id: 25
+metro_area_00005: 
+  name: Alexandria
+  country_id: 207
+  id: 5
+  users_count: 0
+  state_id: 19
+metro_area_00031: 
+  name: Boston
+  country_id: 207
+  id: 31
+  users_count: 0
+  state_id: 22
+metro_area_00112: 
+  name: Jacksonville
+  country_id: 207
+  id: 112
+  users_count: 0
+  state_id: 10
+metro_area_00006: 
+  name: Allentown
+  country_id: 207
+  id: 6
+  users_count: 0
+  state_id: 39
+metro_area_00032: 
+  name: Boulder
+  country_id: 207
+  id: 32
+  users_count: 0
+  state_id: 6
+metro_area_00113: 
+  name: Jefferson City / Columbia
+  country_id: 207
+  id: 113
+  users_count: 0
+  state_id: 26
+metro_area_00220: 
+  name: Shreveport
+  country_id: 207
+  id: 220
+  users_count: 0
+  state_id: 19
+metro_area_00007: 
+  name: Amarillo
+  country_id: 207
+  id: 7
+  users_count: 0
+  state_id: 44
+metro_area_00033: 
+  name: Bowling Green
+  country_id: 207
+  id: 33
+  users_count: 0
+  state_id: 18
+metro_area_00060: 
+  name: Concord
+  country_id: 207
+  id: 60
+  users_count: 0
+  state_id: 30
+metro_area_00114: 
+  name: Jersey Shore
+  country_id: 207
+  id: 114
+  users_count: 0
+  state_id: 31
+metro_area_00140: 
+  name: Lubbock
+  country_id: 207
+  id: 140
+  users_count: 0
+  state_id: 44
+metro_area_00221: 
+  name: Silicon Valley
+  country_id: 207
+  id: 221
+  users_count: 0
+  state_id: 5
+metro_area_00008: 
+  name: Anchorage
+  country_id: 207
+  id: 8
+  users_count: 0
+  state_id: 2
+metro_area_00034: 
+  name: Bozeman
+  country_id: 207
+  id: 34
+  users_count: 0
+  state_id: 27
+metro_area_00061: 
+  name: Corpus Christi
+  country_id: 207
+  id: 61
+  users_count: 0
+  state_id: 44
+metro_area_00115: 
+  name: Jonesboro
+  country_id: 207
+  id: 115
+  users_count: 0
+  state_id: 4
+metro_area_00141: 
+  name: Lynchburg
+  country_id: 207
+  id: 141
+  users_count: 0
+  state_id: 47
+metro_area_00222: 
+  name: Sioux City
+  country_id: 207
+  id: 222
+  users_count: 0
+  state_id: 16
+metro_area_00035: 
+  name: Bridgeport / Stamford
+  country_id: 207
+  id: 35
+  users_count: 0
+  state_id: 7
+metro_area_00116: 
+  name: Juneau
+  country_id: 207
+  id: 116
+  users_count: 0
+  state_id: 2
+metro_area_00142: 
+  name: Macon / Warner Robins
+  country_id: 207
+  id: 142
+  users_count: 0
+  state_id: 11
+metro_area_00223: 
+  name: Sioux Falls
+  country_id: 207
+  id: 223
+  users_count: 0
+  state_id: 42
+metro_area_00009: 
+  name: Ann Arbor
+  country_id: 207
+  id: 9
+  users_count: 0
+  state_id: 23
+metro_area_00036: 
+  name: Buffalo
+  country_id: 207
+  id: 36
+  users_count: 0
+  state_id: 33
+metro_area_00062: 
+  name: Corvallis
+  country_id: 207
+  id: 62
+  users_count: 0
+  state_id: 38
+metro_area_00117: 
+  name: Kalamazoo / Battle Creek
+  country_id: 207
+  id: 117
+  users_count: 0
+  state_id: 23
+metro_area_00143: 
+  name: Madison
+  country_id: 207
+  id: 143
+  users_count: 0
+  state_id: 50
+metro_area_00170: 
+  name: Northern Colorado
+  country_id: 207
+  id: 170
+  users_count: 0
+  state_id: 6
+metro_area_00224: 
+  name: Sonoma / Napa
+  country_id: 207
+  id: 224
+  users_count: 0
+  state_id: 5
+metro_area_00250: 
+  name: Ventura County
+  country_id: 207
+  id: 250
+  users_count: 0
+  state_id: 5
+metro_area_00063: 
+  name: Dallas / Fort Worth
+  country_id: 207
+  id: 63
+  users_count: 0
+  state_id: 44
+metro_area_00090: 
+  name: Fresno
+  country_id: 207
+  id: 90
+  users_count: 0
+  state_id: 5
+metro_area_00118: 
+  name: Kansas City
+  country_id: 207
+  id: 118
+  users_count: 0
+  state_id: 26
+metro_area_00144: 
+  name: Manchester
+  country_id: 207
+  id: 144
+  users_count: 0
+  state_id: 30
+metro_area_00171: 
+  name: Northern Indiana
+  country_id: 207
+  id: 171
+  users_count: 0
+  state_id: 15
+metro_area_00225: 
+  name: South Jersey
+  country_id: 207
+  id: 225
+  users_count: 0
+  state_id: 31
+metro_area_00251: 
+  name: Victoria
+  country_id: 207
+  id: 251
+  users_count: 0
+  state_id: 44
+metro_area_00037: 
+  name: Burlington
+  country_id: 207
+  id: 37
+  users_count: 0
+  state_id: 46
+metro_area_00064: 
+  name: Davenport
+  country_id: 207
+  id: 64
+  users_count: 0
+  state_id: 16
+metro_area_00091: 
+  name: Gainesville
+  country_id: 207
+  id: 91
+  users_count: 0
+  state_id: 10
+metro_area_00119: 
+  name: Kearney
+  country_id: 207
+  id: 119
+  users_count: 0
+  state_id: 28
+metro_area_00145: 
+  name: Mansfield
+  country_id: 207
+  id: 145
+  users_count: 0
+  state_id: 36
+metro_area_00226: 
+  name: Southern Georgia
+  country_id: 207
+  id: 226
+  users_count: 0
+  state_id: 11
+metro_area_00252: 
+  name: Virginia Beach / Norfolk
+  country_id: 207
+  id: 252
+  users_count: 0
+  state_id: 47
+metro_area_00038: 
+  name: Cape Cod
+  country_id: 207
+  id: 38
+  users_count: 0
+  state_id: 22
+metro_area_00092: 
+  name: Grand Forks
+  country_id: 207
+  id: 92
+  users_count: 0
+  state_id: 35
+metro_area_00146: 
+  name: Medford
+  country_id: 207
+  id: 146
+  users_count: 0
+  state_id: 38
+metro_area_00172: 
+  name: Ocala
+  country_id: 207
+  id: 172
+  users_count: 0
+  state_id: 10
+metro_area_00227: 
+  name: Spokane
+  country_id: 207
+  id: 227
+  users_count: 0
+  state_id: 48
+metro_area_00253: 
+  name: Waco
+  country_id: 207
+  id: 253
+  users_count: 0
+  state_id: 44
+metro_area_00039: 
+  name: Cape Coral / Fort Myers
+  country_id: 207
+  id: 39
+  users_count: 0
+  state_id: 10
+metro_area_00065: 
+  name: Dayton
+  country_id: 207
+  id: 65
+  users_count: 0
+  state_id: 36
+metro_area_00093: 
+  name: Grand Rapids
+  country_id: 207
+  id: 93
+  users_count: 0
+  state_id: 23
+metro_area_00147: 
+  name: Memphis
+  country_id: 207
+  id: 147
+  users_count: 0
+  state_id: 43
+metro_area_00173: 
+  name: Ogden
+  country_id: 207
+  id: 173
+  users_count: 0
+  state_id: 45
+metro_area_00228: 
+  name: Springfield
+  country_id: 207
+  id: 228
+  users_count: 0
+  state_id: 22
+metro_area_00254: 
+  name: Washington
+  country_id: 207
+  id: 254
+  users_count: 0
+  state_id: 9
+metro_area_00066: 
+  name: Daytona Beach
+  country_id: 207
+  id: 66
+  users_count: 0
+  state_id: 10
+metro_area_00148: 
+  name: Miami
+  country_id: 207
+  id: 148
+  users_count: 0
+  state_id: 10
+metro_area_00174: 
+  name: Oklahoma City
+  country_id: 207
+  id: 174
+  users_count: 0
+  state_id: 37
+metro_area_00229: 
+  name: Springfield
+  country_id: 207
+  id: 229
+  users_count: 0
+  state_id: 26
+metro_area_00255: 
+  name: Waterloo
+  country_id: 207
+  id: 255
+  users_count: 0
+  state_id: 16
+metro_area_00067: 
+  name: Denver
+  country_id: 207
+  id: 67
+  users_count: 0
+  state_id: 6
+metro_area_00094: 
+  name: Great Falls
+  country_id: 207
+  id: 94
+  users_count: 0
+  state_id: 27
+metro_area_00149: 
+  name: Midland / Odessa
+  country_id: 207
+  id: 149
+  users_count: 0
+  state_id: 44
+metro_area_00175: 
+  name: Olympia
+  country_id: 207
+  id: 175
+  users_count: 0
+  state_id: 48
+metro_area_00256: 
+  name: Wausau
+  country_id: 207
+  id: 256
+  users_count: 0
+  state_id: 50
+metro_area_00068: 
+  name: Des Moines
+  country_id: 207
+  id: 68
+  users_count: 0
+  state_id: 16
+metro_area_00176: 
+  name: Omaha
+  country_id: 207
+  id: 176
+  users_count: 0
+  state_id: 28
+metro_area_00257: 
+  name: Wenatchee
+  country_id: 207
+  id: 257
+  users_count: 0
+  state_id: 48
+metro_area_00069: 
+  name: Detroit
+  country_id: 207
+  id: 69
+  users_count: 0
+  state_id: 23
+metro_area_00095: 
+  name: Green Bay
+  country_id: 207
+  id: 95
+  users_count: 0
+  state_id: 50
+metro_area_00177: 
+  name: Orange County
+  country_id: 207
+  id: 177
+  users_count: 0
+  state_id: 5
+metro_area_00258: 
+  name: West Palm Beach
+  country_id: 207
+  id: 258
+  users_count: 0
+  state_id: 10
+metro_area_00096: 
+  name: Greensboro
+  country_id: 207
+  id: 96
+  users_count: 0
+  state_id: 34
+metro_area_00178: 
+  name: Orlando
+  country_id: 207
+  id: 178
+  users_count: 0
+  state_id: 10
+metro_area_00259: 
+  name: Westchester
+  country_id: 207
+  id: 259
+  users_count: 0
+  state_id: 33
+metro_area_00097: 
+  name: Greenville
+  country_id: 207
+  id: 97
+  users_count: 0
+  state_id: 34
+metro_area_00098: 
+  name: Greenville
+  country_id: 207
+  id: 98
+  users_count: 0
+  state_id: 41
+metro_area_00179: 
+  name: Oshkosh
+  country_id: 207
+  id: 179
+  users_count: 0
+  state_id: 50
+metro_area_00099: 
+  name: Gulfport / Biloxi
+  country_id: 207
+  id: 99
+  users_count: 0
+  state_id: 25
+metro_area_00100: 
+  name: Harrisburg
+  country_id: 207
+  id: 100
+  users_count: 0
+  state_id: 39
+metro_area_00020: 
+  name: Baton Rouge
+  country_id: 207
+  id: 20
+  users_count: 0
+  state_id: 19
+metro_area_00101: 
+  name: Hartford
+  country_id: 207
+  id: 101
+  users_count: 0
+  state_id: 7
+metro_area_00021: 
+  name: Beaumont
+  country_id: 207
+  id: 21
+  users_count: 0
+  state_id: 44
+metro_area_00102: 
+  name: Hattiesburg
+  country_id: 207
+  id: 102
+  users_count: 0
+  state_id: 25
+metro_area_00022: 
+  name: Bellevue
+  country_id: 207
+  id: 22
+  users_count: 0
+  state_id: 48
+metro_area_00103: 
+  name: Hawaii
+  country_id: 207
+  id: 103
+  users_count: 0
+  state_id: 12
+metro_area_00210: 
+  name: San Francisco
+  country_id: 207
+  id: 210
+  users_count: 0
+  state_id: 5
+metro_area_00023: 
+  name: Bellingham
+  country_id: 207
+  id: 23
+  users_count: 0
+  state_id: 48
+metro_area_00050: 
+  name: Chattanooga
+  country_id: 207
+  id: 50
+  users_count: 0
+  state_id: 43
+metro_area_00104: 
+  name: Hoboken / Jersey City
+  country_id: 207
+  id: 104
+  users_count: 0
+  state_id: 31
+metro_area_00130: 
+  name: Lawton
+  country_id: 207
+  id: 130
+  users_count: 0
+  state_id: 37
+metro_area_00211: 
+  name: Santa Barbara
+  country_id: 207
+  id: 211
+  users_count: 0
+  state_id: 5
+metro_area_00024: 
+  name: Bend
+  country_id: 207
+  id: 24
+  users_count: 0
+  state_id: 38
+metro_area_00105: 
+  name: Houston
+  country_id: 207
+  id: 105
+  users_count: 0
+  state_id: 44
+metro_area_00131: 
+  name: Lexington
+  country_id: 207
+  id: 131
+  users_count: 0
+  state_id: 18
+metro_area_00212: 
+  name: Santa Cruz
+  country_id: 207
+  id: 212
+  users_count: 0
+  state_id: 5
+metro_area_00025: 
+  name: Billings
+  country_id: 207
+  id: 25
+  users_count: 0
+  state_id: 27
+metro_area_00051: 
+  name: Cheyenne
+  country_id: 207
+  id: 51
+  users_count: 0
+  state_id: 51
+metro_area_00106: 
+  name: Huntington
+  country_id: 207
+  id: 106
+  users_count: 0
+  state_id: 49
+metro_area_00132: 
+  name: Lima
+  country_id: 207
+  id: 132
+  users_count: 0
+  state_id: 36
+metro_area_00213: 
+  name: Santa Fe
+  country_id: 207
+  id: 213
+  users_count: 0
+  state_id: 32
+metro_area_00026: 
+  name: Binghamton
+  country_id: 207
+  id: 26
+  users_count: 0
+  state_id: 33
+metro_area_00052: 
+  name: Chicago
+  country_id: 207
+  id: 52
+  users_count: 0
+  state_id: 14
+metro_area_00107: 
+  name: Huntsville / Decatur
+  country_id: 207
+  id: 107
+  users_count: 0
+  state_id: 1
+metro_area_00133: 
+  name: Lincoln
+  country_id: 207
+  id: 133
+  users_count: 0
+  state_id: 28
+metro_area_00160: 
+  name: Nashville
+  country_id: 207
+  id: 160
+  users_count: 0
+  state_id: 43
+metro_area_00214: 
+  name: Sarasota
+  country_id: 207
+  id: 214
+  users_count: 0
+  state_id: 10
+metro_area_00240: 
+  name: Terre Haute
+  country_id: 207
+  id: 240
+  users_count: 0
+  state_id: 15
+metro_area_00027: 
+  name: Birmingham
+  country_id: 207
+  id: 27
+  users_count: 0
+  state_id: 1
+metro_area_00053: 
+  name: Chico
+  country_id: 207
+  id: 53
+  users_count: 0
+  state_id: 5
+metro_area_00080: 
+  name: Evansville
+  country_id: 207
+  id: 80
+  users_count: 0
+  state_id: 15
+metro_area_00108: 
+  name: Indianapolis
+  country_id: 207
+  id: 108
+  users_count: 0
+  state_id: 15
+metro_area_00134: 
+  name: Little Rock
+  country_id: 207
+  id: 134
+  users_count: 0
+  state_id: 4
+metro_area_00215: 
+  name: Savannah
+  country_id: 207
+  id: 215
+  users_count: 0
+  state_id: 11
+metro_area_00241: 
+  name: Toledo
+  country_id: 207
+  id: 241
+  users_count: 0
+  state_id: 36
+metro_area_00028: 
+  name: Bismarck
+  country_id: 207
+  id: 28
+  users_count: 0
+  state_id: 35
+metro_area_00054: 
+  name: Cincinnati
+  country_id: 207
+  id: 54
+  users_count: 0
+  state_id: 36
+metro_area_00081: 
+  name: Fargo
+  country_id: 207
+  id: 81
+  users_count: 0
+  state_id: 35
+metro_area_00109: 
+  name: Inland Empire
+  country_id: 207
+  id: 109
+  users_count: 0
+  state_id: 5
+metro_area_00135: 
+  name: Logan
+  country_id: 207
+  id: 135
+  users_count: 0
+  state_id: 45
+metro_area_00161: 
+  name: Nassau County
+  country_id: 207
+  id: 161
+  users_count: 0
+  state_id: 33
+metro_area_00216: 
+  name: Scottsbluff
+  country_id: 207
+  id: 216
+  users_count: 0
+  state_id: 28
+metro_area_00242: 
+  name: Topeka
+  country_id: 207
+  id: 242
+  users_count: 0
+  state_id: 17
+metro_area_00029: 
+  name: Bloomington
+  country_id: 207
+  id: 29
+  users_count: 0
+  state_id: 15
+metro_area_00055: 
+  name: Cleveland
+  country_id: 207
+  id: 55
+  users_count: 0
+  state_id: 36
+metro_area_00082: 
+  name: Farmington
+  country_id: 207
+  id: 82
+  users_count: 0
+  state_id: 32
+metro_area_00136: 
+  name: Longview / Tyler
+  country_id: 207
+  id: 136
+  users_count: 0
+  state_id: 44
+metro_area_00162: 
+  name: New Haven
+  country_id: 207
+  id: 162
+  users_count: 0
+  state_id: 7
+metro_area_00217: 
+  name: Scranton
+  country_id: 207
+  id: 217
+  users_count: 0
+  state_id: 39
+metro_area_00243: 
+  name: Trenton / Princeton
+  country_id: 207
+  id: 243
+  users_count: 0
+  state_id: 31
+metro_area_00270: 
+  name: Yakima
+  country_id: 207
+  id: 270
+  users_count: 0
+  state_id: 48
+metro_area_00056: 
+  name: College Station
+  country_id: 207
+  id: 56
+  users_count: 0
+  state_id: 44
+metro_area_00083: 
+  name: Fayetteville
+  country_id: 207
+  id: 83
+  users_count: 0
+  state_id: 4
+metro_area_00137: 
+  name: Los Angeles
+  country_id: 207
+  id: 137
+  users_count: 0
+  state_id: 5
+metro_area_00163: 
+  name: New Orleans
+  country_id: 207
+  id: 163
+  users_count: 0
+  state_id: 19
+metro_area_00190: 
+  name: Providence
+  country_id: 207
+  id: 190
+  users_count: 0
+  state_id: 40
+metro_area_00218: 
+  name: Seattle
+  country_id: 207
+  id: 218
+  users_count: 0
+  state_id: 48
+metro_area_00244: 
+  name: Tri-Cities
+  country_id: 207
+  id: 244
+  users_count: 0
+  state_id: 48
+metro_area_00057: 
+  name: Colorado Springs
+  country_id: 207
+  id: 57
+  users_count: 0
+  state_id: 6
+metro_area_00138: 
+  name: Louisville
+  country_id: 207
+  id: 138
+  users_count: 0
+  state_id: 18
+metro_area_00164: 
+  name: New York
+  country_id: 207
+  id: 164
+  users_count: 0
+  state_id: 33
+metro_area_00191: 
+  name: Provo
+  country_id: 207
+  id: 191
+  users_count: 0
+  state_id: 45
+metro_area_00219: 
+  name: Sheboygan
+  country_id: 207
+  id: 219
+  users_count: 0
+  state_id: 50
+metro_area_00245: 
+  name: Tucson
+  country_id: 207
+  id: 245
+  users_count: 0
+  state_id: 3
+metro_area_00271: 
+  name: York
+  country_id: 207
+  id: 271
+  users_count: 0
+  state_id: 39
+metro_area_00272: 
+  name: Youngstown
+  country_id: 207
+  id: 272
+  users_count: 0
+  state_id: 36
+metro_area_00058: 
+  name: Columbia
+  country_id: 207
+  id: 58
+  users_count: 0
+  state_id: 41
+metro_area_00084: 
+  name: Fayetteville
+  country_id: 207
+  id: 84
+  users_count: 0
+  state_id: 34
+metro_area_00139: 
+  name: Lowell
+  country_id: 207
+  id: 139
+  users_count: 0
+  state_id: 22
+metro_area_00165: 
+  name: Newark
+  country_id: 207
+  id: 165
+  users_count: 0
+  state_id: 31
+metro_area_00192: 
+  name: Raleigh / Durham
+  country_id: 207
+  id: 192
+  users_count: 0
+  state_id: 34
+metro_area_00246: 
+  name: Tulsa
+  country_id: 207
+  id: 246
+  users_count: 0
+  state_id: 37
+metro_area_00059: 
+  name: Columbus
+  country_id: 207
+  id: 59
+  users_count: 0
+  state_id: 36
+metro_area_00085: 
+  name: Flint
+  country_id: 207
+  id: 85
+  users_count: 0
+  state_id: 23
+metro_area_00166: 
+  name: Newport
+  country_id: 207
+  id: 166
+  users_count: 0
+  state_id: 40
+metro_area_00193: 
+  name: Rapid City
+  country_id: 207
+  id: 193
+  users_count: 0
+  state_id: 42
+metro_area_00247: 
+  name: Tupelo
+  country_id: 207
+  id: 247
+  users_count: 0
+  state_id: 25
+metro_area_00086: 
+  name: Florence
+  country_id: 207
+  id: 86
+  users_count: 0
+  state_id: 41
+metro_area_00167: 
+  name: North Jersey
+  country_id: 207
+  id: 167
+  users_count: 0
+  state_id: 31
+metro_area_00248: 
+  name: Urbana / Champaign
+  country_id: 207
+  id: 248
+  users_count: 0
+  state_id: 14
+metro_area_00087: 
+  name: Fort Lauderdale
+  country_id: 207
+  id: 87
+  users_count: 0
+  state_id: 10
+metro_area_00168: 
+  name: North Platte
+  country_id: 207
+  id: 168
+  users_count: 0
+  state_id: 28
+metro_area_00194: 
+  name: Reading
+  country_id: 207
+  id: 194
+  users_count: 0
+  state_id: 39
+metro_area_00249: 
+  name: Utica
+  country_id: 207
+  id: 249
+  users_count: 0
+  state_id: 33
+metro_area_00088: 
+  name: Fort Smith
+  country_id: 207
+  id: 88
+  users_count: 0
+  state_id: 4
+metro_area_00169: 
+  name: Northern Arizona
+  country_id: 207
+  id: 169
+  users_count: 0
+  state_id: 3
+metro_area_00195: 
+  name: Redding
+  country_id: 207
+  id: 195
+  users_count: 0
+  state_id: 5
+metro_area_00089: 
+  name: Fort Wayne
+  country_id: 207
+  id: 89
+  users_count: 0
+  state_id: 15
+metro_area_00196: 
+  name: Reno
+  country_id: 207
+  id: 196
+  users_count: 0
+  state_id: 29
+metro_area_00197: 
+  name: Richmond
+  country_id: 207
+  id: 197
+  users_count: 0
+  state_id: 47
+metro_area_00198: 
+  name: Rio Grande Valley
+  country_id: 207
+  id: 198
+  users_count: 0
+  state_id: 44
+metro_area_00199: 
+  name: Roanoke
+  country_id: 207
+  id: 199
+  users_count: 0
+  state_id: 47
+metro_area_00010: 
+  name: Appleton
+  country_id: 207
+  id: 10
+  users_count: 0
+  state_id: 50
+metro_area_00011: 
+  name: Asheville
+  country_id: 207
+  id: 11
+  users_count: 0
+  state_id: 34
+metro_area_00200: 
+  name: Rochester
+  country_id: 207
+  id: 200
+  users_count: 0
+  state_id: 33
+metro_area_00012: 
+  name: Athens
+  country_id: 207
+  id: 12
+  users_count: 0
+  state_id: 11
+metro_area_00201: 
+  name: Rockford
+  country_id: 207
+  id: 201
+  users_count: 0
+  state_id: 14
+metro_area_00013: 
+  name: Atlanta
+  country_id: 207
+  id: 13
+  users_count: 0
+  state_id: 11
+metro_area_00120: 
+  name: Kingsport
+  country_id: 207
+  id: 120
+  users_count: 0
+  state_id: 43
+metro_area_00202: 
+  name: Sacramento
+  country_id: 207
+  id: 202
+  users_count: 0
+  state_id: 5
+metro_area_00014: 
+  name: Auburn / Lewiston
+  country_id: 207
+  id: 14
+  users_count: 0
+  state_id: 20
+metro_area_00040: 
+  name: Carson City
+  country_id: 207
+  id: 40
+  users_count: 0
+  state_id: 29
+metro_area_00121: 
+  name: Knoxville
+  country_id: 207
+  id: 121
+  users_count: 0
+  state_id: 43
+metro_area_00203: 
+  name: Saginaw / Bay City
+  country_id: 207
+  id: 203
+  users_count: 0
+  state_id: 23
+metro_area_00015: 
+  name: Augusta
+  country_id: 207
+  id: 15
+  users_count: 0
+  state_id: 11
+metro_area_00041: 
+  name: Casper
+  country_id: 207
+  id: 41
+  users_count: 0
+  state_id: 51
+metro_area_00122: 
+  name: La Crosse
+  country_id: 207
+  id: 122
+  users_count: 0
+  state_id: 50
+metro_area_00204: 
+  name: Salem
+  country_id: 207
+  id: 204
+  users_count: 0
+  state_id: 38
+metro_area_00230: 
+  name: Saint Cloud
+  country_id: 207
+  id: 230
+  users_count: 0
+  state_id: 24
+metro_area_00016: 
+  name: Austin
+  country_id: 207
+  id: 16
+  users_count: 0
+  state_id: 44
+metro_area_00042: 
+  name: Cedar Rapids
+  country_id: 207
+  id: 42
+  users_count: 0
+  state_id: 16
+metro_area_00123: 
+  name: Lafayette
+  country_id: 207
+  id: 123
+  users_count: 0
+  state_id: 15
+metro_area_00205: 
+  name: Salisbury
+  country_id: 207
+  id: 205
+  users_count: 0
+  state_id: 21
+metro_area_00231: 
+  name: Saint George
+  country_id: 207
+  id: 231
+  users_count: 0
+  state_id: 45
+metro_area_00017: 
+  name: Bakersfield
+  country_id: 207
+  id: 17
+  users_count: 0
+  state_id: 5
+metro_area_00043: 
+  name: Central Alaska
+  country_id: 207
+  id: 43
+  users_count: 0
+  state_id: 2
+metro_area_00070: 
+  name: Dothan
+  country_id: 207
+  id: 70
+  users_count: 0
+  state_id: 1
+metro_area_00124: 
+  name: Lafayette
+  country_id: 207
+  id: 124
+  users_count: 0
+  state_id: 19
+metro_area_00150: 
+  name: Milwaukee
+  country_id: 207
+  id: 150
+  users_count: 0
+  state_id: 50
+metro_area_00232: 
+  name: Saint Louis
+  country_id: 207
+  id: 232
+  users_count: 0
+  state_id: 26
+metro_area_00018: 
+  name: Baltimore
+  country_id: 207
+  id: 18
+  users_count: 0
+  state_id: 21
+metro_area_00044: 
+  name: Central Coast
+  country_id: 207
+  id: 44
+  users_count: 0
+  state_id: 5
+metro_area_00071: 
+  name: Dover
+  country_id: 207
+  id: 71
+  users_count: 0
+  state_id: 8
+metro_area_00125: 
+  name: Lake Charles
+  country_id: 207
+  id: 125
+  users_count: 0
+  state_id: 19
+metro_area_00151: 
+  name: Minneapolis / St. Paul
+  country_id: 207
+  id: 151
+  users_count: 0
+  state_id: 24
+metro_area_00206: 
+  name: Salt Lake City
+  country_id: 207
+  id: 206
+  users_count: 0
+  state_id: 45
+metro_area_00207: 
+  name: San Angelo
+  country_id: 207
+  id: 207
+  users_count: 0
+  state_id: 44
+metro_area_00072: 
+  name: Duluth
+  country_id: 207
+  id: 72
+  users_count: 0
+  state_id: 24
+metro_area_00045: 
+  name: Central Jersey
+  country_id: 207
+  id: 45
+  users_count: 0
+  state_id: 31
+metro_area_00233: 
+  name: State College
+  country_id: 207
+  id: 233
+  users_count: 0
+  state_id: 39
+metro_area_00019: 
+  name: Bangor
+  country_id: 207
+  id: 19
+  users_count: 0
+  state_id: 20
+metro_area_00126: 
+  name: Lancaster
+  country_id: 207
+  id: 126
+  users_count: 0
+  state_id: 39
+metro_area_00152: 
+  name: Missoula
+  country_id: 207
+  id: 152
+  users_count: 0
+  state_id: 27
+metro_area_00260: 
+  name: Western Arizona
+  country_id: 207
+  id: 260
+  users_count: 0
+  state_id: 3
+metro_area_00234: 
+  name: Stockton / Modesto
+  country_id: 207
+  id: 234
+  users_count: 0
+  state_id: 5
+metro_area_00153: 
+  name: Mobile
+  country_id: 207
+  id: 153
+  users_count: 0
+  state_id: 1
+metro_area_00127: 
+  name: Laredo
+  country_id: 207
+  id: 127
+  users_count: 0
+  state_id: 44
+metro_area_00046: 
+  name: Charleston
+  country_id: 207
+  id: 46
+  users_count: 0
+  state_id: 41
+metro_area_00180: 
+  name: Panama City
+  country_id: 207
+  id: 180
+  users_count: 0
+  state_id: 10
+metro_area_00208: 
+  name: San Antonio
+  country_id: 207
+  id: 208
+  users_count: 0
+  state_id: 44
+metro_area_00209: 
+  name: San Diego
+  country_id: 207
+  id: 209
+  users_count: 0
+  state_id: 5
+metro_area_00181: 
+  name: Parkersburg
+  country_id: 207
+  id: 181
+  users_count: 0
+  state_id: 49
+metro_area_00073: 
+  name: East Bay
+  country_id: 207
+  id: 73
+  users_count: 0
+  state_id: 5
+metro_area_00047: 
+  name: Charleston
+  country_id: 207
+  id: 47
+  users_count: 0
+  state_id: 49
+metro_area_00128: 
+  name: Las Cruces
+  country_id: 207
+  id: 128
+  users_count: 0
+  state_id: 32
+metro_area_00154: 
+  name: Monroe
+  country_id: 207
+  id: 154
+  users_count: 0
+  state_id: 19
+metro_area_00235: 
+  name: Suffolk County
+  country_id: 207
+  id: 235
+  users_count: 0
+  state_id: 33
+metro_area_00261: 
+  name: Western Colorado
+  country_id: 207
+  id: 261
+  users_count: 0
+  state_id: 6
+metro_area_00262: 
+  name: Wheeling
+  country_id: 207
+  id: 262
+  users_count: 0
+  state_id: 49
+metro_area_00182: 
+  name: Peoria
+  country_id: 207
+  id: 182
+  users_count: 0
+  state_id: 14
+metro_area_00155: 
+  name: Monterey Bay
+  country_id: 207
+  id: 155
+  users_count: 0
+  state_id: 5
+metro_area_00048: 
+  name: Charlotte
+  country_id: 207
+  id: 48
+  users_count: 0
+  state_id: 34
+metro_area_00074: 
+  name: East Lansing
+  country_id: 207
+  id: 74
+  users_count: 0
+  state_id: 23
+metro_area_00129: 
+  name: Las Vegas
+  country_id: 207
+  id: 129
+  users_count: 0
+  state_id: 29
+metro_area_00236: 
+  name: Syracuse
+  country_id: 207
+  id: 236
+  users_count: 0
+  state_id: 33
+metro_area_00075: 
+  name: Eastern Idaho
+  country_id: 207
+  id: 75
+  users_count: 0
+  state_id: 13
+metro_area_00049: 
+  name: Charlottesville
+  country_id: 207
+  id: 49
+  users_count: 0
+  state_id: 47
+metro_area_00156: 
+  name: Montgomery
+  country_id: 207
+  id: 156
+  users_count: 0
+  state_id: 1
+metro_area_00237: 
+  name: Tacoma
+  country_id: 207
+  id: 237
+  users_count: 0
+  state_id: 48
+metro_area_00263: 
+  name: Wichita Falls
+  country_id: 207
+  id: 263
+  users_count: 0
+  state_id: 44
+metro_area_00264: 
+  name: Wichita
+  country_id: 207
+  id: 264
+  users_count: 0
+  state_id: 17
+metro_area_00238: 
+  name: Tallahassee
+  country_id: 207
+  id: 238
+  users_count: 0
+  state_id: 10
+metro_area_00183: 
+  name: Philadelphia
+  country_id: 207
+  id: 183
+  users_count: 0
+  state_id: 39
+metro_area_00076: 
+  name: Eau Claire
+  country_id: 207
+  id: 76
+  users_count: 0
+  state_id: 50
+metro_area_00157: 
+  name: Morgantown
+  country_id: 207
+  id: 157
+  users_count: 0
+  state_id: 49
+metro_area_00158: 
+  name: Myrtle Beach
+  country_id: 207
+  id: 158
+  users_count: 0
+  state_id: 41
+metro_area_00077: 
+  name: El Paso
+  country_id: 207
+  id: 77
+  users_count: 0
+  state_id: 44
+metro_area_00184: 
+  name: Phoenix
+  country_id: 207
+  id: 184
+  users_count: 0
+  state_id: 3
+metro_area_00239: 
+  name: Tampa Bay
+  country_id: 207
+  id: 239
+  users_count: 0
+  state_id: 10
+metro_area_00265: 
+  name: Williamsport
+  country_id: 207
+  id: 265
+  users_count: 0
+  state_id: 39
+metro_area_00266: 
+  name: Wilmington
+  country_id: 207
+  id: 266
+  users_count: 0
+  state_id: 8
+metro_area_00185: 
+  name: Pierre
+  country_id: 207
+  id: 185
+  users_count: 0
+  state_id: 42
+metro_area_00078: 
+  name: Erie
+  country_id: 207
+  id: 78
+  users_count: 0
+  state_id: 39
+metro_area_00159: 
+  name: Naples
+  country_id: 207
+  id: 159
+  users_count: 0
+  state_id: 10
+metro_area_00186: 
+  name: Pittsburgh
+  country_id: 207
+  id: 186
+  users_count: 0
+  state_id: 39
+metro_area_00079: 
+  name: Eugene
+  country_id: 207
+  id: 79
+  users_count: 0
+  state_id: 38
+metro_area_00267: 
+  name: Wilmington
+  country_id: 207
+  id: 267
+  users_count: 0
+  state_id: 34

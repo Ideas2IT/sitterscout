@@ -1,0 +1,98 @@
+<style type="text/css">
+	/*------------------------------------------------------------------------------------
+	  @group AutoCompleter Styles
+	------------------------------------------------------------------------------------*/
+
+	input.textfield{
+	  width:350px;
+	  padding-top:3px;
+	  padding-bottom:3px;
+	  padding-left:3px;
+	  font-size:11px;
+	  border:1px solid #bebebe;
+	  border-right:1px solid #e6e6e6;
+	  border-bottom:1px solid #e6e6e6;
+	  font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+	}
+
+	.autocomplete{
+	  position:relative;
+	  display:inline;
+	}
+	.autocomplete ul.auto-dropdown{
+	  position:absolute;
+	  top:18px;
+	  left:0;
+	  margin:0;
+	  width:353px;
+	  border:1px solid #bbb;
+	  background:#fff;
+	  z-index:100;
+	}
+	.autocomplete ul.auto-dropdown li{
+	  margin:0;
+	  list-style-type:none;
+	  padding:3px 10px;
+	  color:#666;
+	  border-top:1px solid #e5e5e5;
+	  font-size:11px;
+	  cursor:pointer;
+	}
+	.autocomplete ul.auto-dropdown li:first-child{
+	  border-top:none;
+	}
+	.autocomplete ul.auto-dropdown li.highlighted{
+	  background:#fdffe5;
+	}
+	.autocomplete ul.auto-dropdown li strong{
+	  color:#000;
+	}
+
+
+	ul.userlist .avatar{
+	  margin-left:-6px;
+	  width:28px;
+	  height:28px;
+	  float:left;
+	  border-right:1px solid #ddd;
+	}
+	ul.userlist li{
+	  line-height:14px;
+	}
+	ul.userlist h5{
+	  margin:0 0 0 30px;
+	  font-weight:normal;
+	  font-size:11px;
+	}
+	ul.userlist p{
+	  margin:0 0 0 30px;
+	  font-size:10px;
+	  color:#999;
+	}
+	/* @end */
+</style>
+
+<%= error_messages_for :message %>
+
+<div id="composed_messages" style="margin-top: 5px; font-size: 9pt">
+	<% form_tag url_for(:controller => 'message', :action => 'send_message') do %>
+
+	<table>
+		<tr><td align="right"><strong>To:<strong></td><td>
+		<%= select_tag "message[recipient_id]", auto_complete_options(@people, params[:to_id]), :id => "autocomplete-users", :class=>"userlist"%>
+			
+	<tr><td align="right"><strong>Subject:</strong></td><td><%= text_field(:message, :subject, :class=>"userlist",:style => "margin-top: 5px;width: 350px;") %></td></tr>
+	<tr><td align="right" valign="top"><strong>Message:</strong></td><td><%= text_area(:message, :body, :style => "margin-top: 5px;width: 353px;")%></td></tr>
+	</table>
+
+	<div style="margin-top: 25px; margin-left: 60px;">
+		<%= submit_tag "Send" %>
+	</div>
+	<% end %>
+</div>
+  <script type="text/javascript" charset="utf-8">
+    new SelectAutocompleter('autocomplete-users', {
+      templateAttributes: ["email", "avatar"],
+      template: '<img src="{attrAvatar}" alt="{rawText}" class="avatar" /> <h5>{highlightedText}</h5> <p>{attrEmail}</p>'
+    });
+  </script>

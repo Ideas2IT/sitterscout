@@ -1,0 +1,36 @@
+<div id="content">
+	<div id="sub_menu_gradient">
+		<%= render :partial => 'admin_menu' %>
+	</div>
+	
+	
+	<div id="composed_messages" style="margin-top: 5px; font-size: 9pt">
+		<% form_tag url_for(:controller => 'admin', :action => 'send_message') do %>
+
+		<table>
+			<tr>
+				<td align="right"><strong>To:<strong></td>
+				<td>
+						<input type="radio" name="message[user_type]" id="message_user_type" value="all" checked='checked' /> All &nbsp;&nbsp;
+						<input type="radio" name="message[user_type]" id="message_user_type" value="parents" /> Parents &nbsp;&nbsp;
+						<input type="radio" name="message[user_type]" id="message_user_type" value="sitters" /> Sitters
+				</td>
+			</tr>
+			<tr>
+				<td align="right"><strong>Subject:</strong></td>
+				<td><%= text_field(:message, :subject, :style => "margin-top: 5px;width: 350px;") %></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top"><strong>Message:</strong></td>
+				<td><%= text_area(:message, :body, :style => "margin-top: 5px;width: 353px;")%></td>
+			</tr>
+		</table>
+		<div style="margin-top: 25px; margin-left: 60px;">
+			<%= submit_tag "Send" %>
+		</div>
+		<% end %>
+	</div>
+
+</div>
+
+<%#= render :partial => 'admin_info' %>

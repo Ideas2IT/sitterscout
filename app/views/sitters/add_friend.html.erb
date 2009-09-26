@@ -1,0 +1,23 @@
+<% if logged_in? %>
+<div style= "width: 300px;height:260px; font-size: 9pt; background-color: #C2CCFF;">
+<div style="padding-left: 25px; padding-top: 10px;">
+	We will send an email to <%= User.find(params[:id]).profile.full_name %> to <br />confirm that you are friends.
+<br /><br />
+<strong>Custom Message:</strong> (Optional)</div>
+	<% form_remote_tag :url => {:controller => 'sitters', :action => 'add_friend'} do %>
+	<%= text_area :message, :description, :style=>"width: 250px; height: 75px; margin-left: 20px;" %>
+	<div style="margin: 5px 0; font-size: 12px; padding: 2px; margin-left: 20px;">
+		SitterScout cares about your safety. We<br />
+		strongly recommend that you only add people <br />
+		to your community that you know and trust in <br />
+		the offline world.
+	</div>
+	<div style="text-align: center;">
+	<%= image_submit_tag '/images/add_friend.gif', :onclick => "Application.show_email_sent();"%><br />
+	<a href="#" class="lbAction" rel="deactivate">Close Window</a><% end %>
+</div>
+</div>
+
+<% else %>
+Please signup or login.
+<% end %>

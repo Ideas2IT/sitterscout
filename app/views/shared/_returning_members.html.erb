@@ -1,0 +1,30 @@
+<div style="position: absolute; top: 98px; left: 745px;">
+	<div style="background-color: #F7F7F7;">
+	<h3>Returning Members</h3>
+	<h4>Log in here:</h4>
+	<% form_tag sessions_path do -%>
+	<table>
+		<tr>
+			<td><label for="login">Email Address:</label>       &nbsp;&nbsp;&nbsp;&nbsp;	</td>
+			<td><%= text_field_tag 'login' %></td>
+		</tr>
+		<tr>
+	<td><label for="password">Password:</label></td>
+	<td><%= password_field_tag 'password' %></td>
+		</tr>
+				<tr><td colspan="2">&nbsp;</td></tr>
+<tr>
+			<td><label for="remember_me">Remember me:</label></td>
+			<td><%= check_box_tag 'remember_me' %></td></tr>
+
+	<tr>
+	<td colspan="2" align="center"><%= link_to "Forgot password?", :controller => "sessions", :action => "forgot_password" %></td>
+	</tr>
+	<tr><td colspan="2">&nbsp;</td></tr>
+	<tr>
+		<td colspan="2" align="center	"><%= image_submit_tag '/images/global/LogIn_bttn.gif' %></td>
+	</tr>
+	</table>
+	</div>
+	<% end -%>
+</div>

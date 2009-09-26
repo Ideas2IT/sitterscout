@@ -1,0 +1,151 @@
+<%= render :partial => 'nav_menu', :locals => {:selected => "family"} %>
+<div id="sub_menu_gradient">
+	
+</div>
+<div id="content" style="height: 800px;">
+
+
+<div class="colmask leftmenu">
+	<div class="colleft">
+		<div class="col1">
+			<!-- Column 1 start -->
+					<span style=" font-size: .8em; font-weight: bold;">People You May Know:</span>
+					<% for search in @parents do %>
+						<% unless search.nil? || search.profile.nil? %>
+							<div id="person_<%=search.id %>">
+									<div style="position: absolute; left: 210px; margin-top: 10px"><%= link_to_remote(image_tag("default/qtip/close.gif", :border => 0), :url => remove_person_sitter_path(search.id))  %></div>
+
+					<table style="border: 1px solid #ADACAD; margin-top: 4px; padding: 3px; background-color: #FFFFFF" id="person_<%=search.id %>_table">
+						<tr>
+							<td colspan="2">
+							<strong style="font-size: .8em;"><%= truncate(search.profile.first_name + " " + search.profile.last_name, 22) %></strong>
+							</td>
+						</tr>
+						<tr>
+							<td width="52">
+									<%= image_tag(search.avatar_photo_url(:thumb)) %>
+							</td>
+							<td>
+								<table>
+								<tr>
+									<td valign="top" width="163" style=" font-size: .7em; padding-left: 2px">
+										<p>Connections You Share:</p>
+										<%= current_user.shared_connections(search).collect(&:full_name).join(", ") %>
+									</td>
+								</tr>
+								<tr>
+									<td valign="top" width="163" style=" font-size: .7em; padding-left: 2px">
+										<p>Tags You Share:</p>
+										<%= current_user.shared_tags(search).collect(&:name).join(", ") %>
+									</td>
+								</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2" style=" font-size: .7em; padding-left: 2px;">
+								<%= link_to "Add to Your Friends", url_for(:controller => 'connections', :action => 'add_friend', :id => search.id), :class => "lbOn-300-270" %>
+								<% if current_user.connected?(search) %>
+								 | <%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => search.id), :class => "lbOn-405-390" %>
+								<% end %>
+							</td>
+						</tr>
+				</table>
+				</div>
+						<% end %>
+					<% end %>
+			<!-- Column 1 end -->
+		</div>
+		<div class="col2">
+			<span style="font-size: .9em; font-weight: bold;">Your Families:</span>
+			<div style="width: 465px; font-size: .8em">
+				<% unless @confirmed_friends.blank? %>
+				<% @confirmed_friends.each do |f| %>
+
+					<% if f.friend.is_a?Parent %>
+					<div style="width: 98%; border: 1px solid #ADACAD; padding: 5px; margin-top: 4px; background-color: #FFFFFF">
+
+				<table>
+				<tr>
+				  <td>
+				  <%= link_to(image_tag(f.friend.avatar_photo_url, :class => "right", :border => 0),url_for(view_parent_profile_sitter_path(f.friend.id)))  %>
+				  </td>
+
+				  <td style="padding: 5px;" valign="top">
+				   <strong style=" font-size: 1em; "><%= link_to(truncate(f.friend.profile.first_name + " " + f.friend.profile.last_name, 22), url_for(view_parent_profile_sitter_path(f.friend.id))) %></strong><br/>
+				  <%= f.friend.profile.city %>, <%= f.friend.profile.state.name %><br />
+				<strong>Tags: </strong><%= truncate(f.friend.profile.tag_list.to_s, 38, "...") %>
+				 <% if(f.friend.profile.tag_list.to_s.size > 38) %>
+					<%= link_to "More", "#", :onmouseover =>"TagToTip('#{f.friend.id}_tip', ABOVE, true, BALLOON, true)", :onmouseout => "UnTip()", :style => "color: #C21D7F;" %>
+					<div id="<%= f.friend.id %>_tip" style="display: none;"><%= f.friend.profile.tag_list.to_s %></div>
+					
+										<% end %>
+			
+					<div valign="top" style=" font-size: .8em;  margin-top: 18px;">
+				    <%= link_to "View Profile", url_for(view_parent_profile_sitter_path(f.friend.id)) %> |
+
+				    <%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => f.friend.id), :class => "lbOn-405-390" %> |
+
+					<%= link_to "Send Message", compose_sitter_path(current_user, :to_id => f.friend.id) %> |
+
+				    <%= link_to "Remove Family", url_for(:controller => 'connections', :action => 'decline', :id => f.friend.id), :confirm => "Are you sure you want to remove this friend?" %>
+				  </div>
+				</td>
+				</tr>
+					</table>
+					</div>
+					<% end %>
+				<% end %>
+				<% else %>
+				You currently have no families.
+				<% end %>
+		</div>
+		<br />
+		<span style="font-size: .9em; font-weight: bold;">Awaiting Confirmation:</span>
+		<div style="width: 465px; font-size: .8em;margin-bottom: 50px;">
+			<% unless @unconfirmed_friends.blank? %>
+			<% @unconfirmed_friends.each do |f| %>
+				<% if f.friend.is_a?Parent %>
+				<div style="width: 98%; border: 1px solid #ADACAD; padding: 5px; margin-top: 4px; background-color: #FFFFFF">
+				<table>
+			<tr>
+			  <td>
+			  <%= image_tag(f.friend.avatar_photo_url, :class => "right" ) %>
+			  </td>
+
+			  <td  style="padding: 5px;" valign="top">
+			    <strong style=" font-size: 13pt; font-weight: bold;"><%= truncate(f.friend.profile.first_name + " " + f.friend.profile.last_name, 22) %></strong><br/>
+			  <%= f.friend.profile.city %>, <%= f.friend.profile.state.name %><br />
+
+			  <div valign="top" style=" font-size: .8em;  margin-top: 18px;">
+
+			    <%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => f.friend.id), :class => "lbOn-405-390" %>
+			  	|
+			    <%= link_to "Remove Family", url_for(:controller => 'connections', :action => 'decline', :id => f.friend.id), :confirm => "Are you sure you want to remove this friend?" %>
+			 </div>
+			 </td>
+			
+			</tr>
+			</table>
+			</div>
+				<% end %>
+			<% end %>
+			<% else %>
+		You currently have no unconfirmed families.
+		<% end %>
+	</div>
+			<!-- Column 2 end -->
+		</div>
+	</div>
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+<%#= render :partial => 'shared/profile_percentage' %>

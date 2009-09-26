@@ -1,0 +1,17 @@
+<% week = %w(Sundays Mondays Tuesdays Wednesdays Thursdays Fridays Saturdays) %>
+<table>
+	<tr>
+
+<% week.each do |dow| %>
+	<td>&nbsp;<%= dow %>&nbsp;</td>
+<% end %>
+</tr>
+
+
+<tr>
+	<% week.each do |dow| %>
+	<td>&nbsp;<%= select :profile, "#{dow.downcase}", Profile::AVAILABILITY, :prompt => true %>&nbsp;&nbsp;</td>
+	<% end %>
+</tr>
+
+</table>

@@ -1,0 +1,18 @@
+<% 
+	unless params[:id].to_i == current_user.id 
+		@user = User.find(params[:id])
+	else
+		@user = ''
+	end 
+	%>
+	<%= javascript_include_tag 'quicksilver' %>
+	<%= javascript_include_tag 'select_autocompleter' %>
+	<%= render :partial => 'nav_menu', :locals => {:selected => "inbox"} %>
+		<div id="sub_menu_gradient">
+			<div class="sub_menu_gradient_center">
+				<%= render :partial => 'inbox_menu' %>
+			</div>
+		</div>
+	<div id="content">
+			<%= render :partial => '/shared/shared_compose' %>
+	</div>

@@ -1,0 +1,320 @@
+--- 
+slug: home-page
+filter_type: Textile
+body: <div>data</div>
+title: Home Page
+children: 
+- slug: faq
+  filter_type: Textile
+  body: "What does it cost?\r\n\
+    SitterScout is currently a free service and we will be working hard to keep it that way. The larger our community grows, the\r\n\
+    better the chance we can remain ad-funded and free to our members. If you like using SitterScout, let your friends and\r\n\
+    neighbors know. (link to invite friends)\r\n\
+    Do you screen the babysitters on SitterScout?\r\n\
+    No. SitterScout is a community where you can meet new babysitters through the friends and neighbors you trust. We\r\n\
+    recommend exploring your network of friends to see what sitters they use and who each sitter is connected to. Then ask for\r\n\
+    personal referrals from those families who use the sitter. Ask lots of questions about the babysitters your friends are using:\r\n\
+    Are they reliable? On time? Trustworthy? Anything else you should know?\r\n\
+    We recommend that our babysitters ask questions about the families they will be babysitting for, as well.\r\n\
+    Why can\xE2\x80\x99t I find babysitters in my area?\r\n\
+    SitterScout is a new, growing community and we may not have a lot of members in your area. We will grow quickly if our\r\n\
+    members invite their friends, neighbors and babysitters to join. The more members, the better the odds you\xE2\x80\x99ll be able to find\r\n\
+    a babysitter when you need one!\r\n\
+    What if I want to keep my connection to a sitter private?\r\n\
+    If you\xE2\x80\x99ve got a sitter that you just can\xE2\x80\x99t share, you can check the \xE2\x80\x9CHide Sitter\xE2\x80\x9D next to their name in \xE2\x80\x98Your Sitters\xE2\x80\x99 list on the\r\n\
+    dashboard. Once you check this box, your sitter will not appear in your list of Connections."
+  title: faq
+  keywords: ""
+- slug: privacy
+  filter_type: Textile
+  body: "<div style=\"margin-left: 20px;\">\r\n\
+    LAST UPDATED:  ______________<br />\r\n\
+    <br />\r\n\
+    SITTERSCOUT.COM<br />\r\n\
+    PRIVACY POLICY<br />\r\n\
+    <br />\r\n\
+    SitterScout is committed to protecting your privacy and earning your trust.  Please read the following policy to learn how we will collect and use your personal information.  This Privacy Policy applies to data collected through the domain and subdomains of www.SitterScout.com  (the \xE2\x80\x9CWeb Site\xE2\x80\x9D) and may be updated from time to time without notice to you.  Your access or use and continued access or use of the Web Site constitutes your consent to the data practices described in this Privacy Policy and any updates to the Privacy Policy. <br />\r\n\
+    <br />\r\n\
+    1.\tCOLLECTION OF YOUR PERSONAL INFORMATION<br />\r\n\
+    <br />\r\n\
+    We may collect the following personal information from you: <br />\r\n\
+    <br />\r\n\
+    <ul>\r\n\
+    <li>\r\n\
+    Registration.  Personal information, including your name and e-mail address, is requested in connection with registration to our service.  This information may be used to verify the identity of a registrant, to contact you in connection with the administration of the your account and to inform you of changes in the Web Site\xE2\x80\x99s functionality, its auxiliary services and promotions.  Personal information for registered users can be updated and maintained at any time via the Web Site.  Additionally, in order to access and use certain portions of the Web Site you will need to create a user ID and password.  As part of creating your user ID and password, you may be asked to provide questions and secret answers, which we use to help verify your identity and assist in resetting your password.  \r\n\
+    </li>\r\n\
+    <li>\r\n\
+    Profile Information.  After registration, you may create a personal profile.  You may provide additional information such as your phone number, home address, zip code, gender, preferences, interests, babysitting skills and experiences, and how many children you have and your children\xE2\x80\x99s ages in your profile.  Providing additional information beyond what is required at registration is voluntary and optional.  You may choose what profile information to provide at your sole discretion.  However, please note that if you choose not to provide certain profile information, you may not be able to access or use some of the services provided by SitterScout.\r\n\
+    </li>\r\n\
+    <li>Information Collected Automatically.  We may use data collection devices such as \xE2\x80\x9Ccookies\xE2\x80\x9D (see Section 6 of this Privacy Policy for details) to collect information about your IP address, browser type and language, domain name, access times, pages visited and viewed, features used, and referring Web site addresses.\r\n\
+    \r\n\
+    </li>\r\n\
+    <li>Information about Others.  You may invite your friends to join your SitterScout network.  If you provide your friend\xE2\x80\x99s name and email address to us, we will send an invitation email on your behalf.  Even though we retain email addresses and other contact information about your friends, we do not use these email addresses to send marketing or promotional communications. \r\n\
+    \r\n\
+    </li>\r\n\
+    <li>Other Information.  If you choose to provide comments and a rating for a babysitter, we will also collect that information you provide to us.  We retain this information as necessary to provide customer support and resolve disputes as permitted by law.\r\n\
+    </li>\r\n\
+    </ul>\r\n\
+    <br />\r\n\
+    2.\tUSE OF YOUR PERSONAL INFORMATION<br />\r\n\
+    <br />\r\n\
+    UNDER NO CIRCUMSTANCES WILL YOUR PERSONAL INFORMATION BE USED, DISCLOSED OR SOLD TO OR BY ANY THIRD PARTY FOR MARKETING OR PROMOTIONAL PURPOSES.  <br />\r\n\
+    <br />\r\n\
+    SitterScout collects and uses your personal information to operate and improve the Web Site and deliver the service you have requested.  For example, we may use your personal information to manage your account, provide you with customer support, perform research and analysis for the purpose of improving our service, and display content and advertising that are customized to your interests.   <br />\r\n\
+    <br />\r\n\
+    Additionally, SitterScout may use your personal information to send you service-related communications from time to time.  We may send communications such as welcome email, adding Friend/Babysitter request, notification of your friend\xE2\x80\x99s acceptance of your invitation to join your network, and alert of job request and acceptance.  By accepting SitterScout\xE2\x80\x99s Terms of Use and this Privacy Policy, you expressly agree to receive this information.  \r\n\
+    <br /><br />\r\n\
+    We will not send you marketing or promotional communications unless you opt in to receiving such information.  If you opt in to receiving promotional communications but do not wish to receive them later, you will have the ability to unsubscribe by following the unsubscribe link in the communications.  Please note that after unsubscribing, you will still receive service-related, non-promotional communications from SitterScout.<br />     \r\n\
+    <br />\r\n\
+    The profile information you submit to SitterScout will be available to users in your network.  Your first name and last name initial (if you are a user under 18) or your full name and profile picture (other users) will be available in search results across the Web Site.  The primary purpose of the search function is for your friends to find you and invite you to join their networks.  Users who see your name in searches, however, will not be able to access your profile information unless you add them to your network.  If you are not willing to make your information available in search results, you may choose to opt out of this function in your profile.  You may, at your discretion, add back this function at a later time. <br />\r\n\
+    <br />\r\n\
+    SitterScout may use aggregagated, non-personally identifiable information, for example, users\xE2\x80\x99 zip codes and usage statistics, for the purpose of market research and may disclose such aggregated, non-personally identifiable information to third parties.<br />\r\n\
+    <br />\r\n\
+    3.\tSHARING YOUR PERSONAL INFORMATION<br />\r\n\
+    <br />\r\n\
+    Except as described in this policy, personal information will be retained in SitterScout\xE2\x80\x99s database and will only be disclosed to third parties solely for the purposes of providing the service.  <br />\r\n\
+    <br />\r\n\
+    We may use other companies to provide certain services on our behalf, such as hosting the Web Site or providing customer support.  These companies will be permitted to obtain only the personal information they need to deliver the service. They are required to maintain the confidentiality of the information and are prohibited from using it for any other purposes.<br />\r\n\
+    <br />\r\n\
+    We may disclose and transfer your personal information to a third party who acquires all or a substantial portion of our business, whether such acquisition is by way of merger, consolidation or purchase of all or a substantial portion of our assets. In addition, in the event we become the subject of a bankruptcy proceeding, whether voluntary or involuntary, we or our trustee in bankruptcy may sell, license or otherwise dispose of such information in a transaction approved by the bankruptcy court. You will be notified of sale of all or a substantial portion of our business to a third party via email or through a prominent notice posted on the site. <br />\r\n\
+    <br />\r\n\
+    Additionally, we may disclose your personal information if we believe such disclosure is necessary to: (a) comply with a legal requirement or a legal process served on SitterScout; (b) enforce our rights under our agreements with users; or (c) act in urgent circumstances to protect the personal safety of SitterScout\xE2\x80\x99s users or members of the public.<br />\r\n\
+    <br />\r\n\
+    Unless otherwise specified in this Privacy Policy, we do not disclose your personal information to other users without your permission.  Please keep in mind that if you disclose personal information in your profile or post comments or other items, this information may become publicly available and be disclosed to other people to whom you did not intend to make the information available.  <br />\r\n\
+    <br />\r\n\
+    4.\tSECURITY OF YOUR PERSONAL INFORMATION<br />\r\n\
+    <br />\r\n\
+    We have implemented commercially reasonable technical and organizational measures designed to secure your personal information from accidental loss and from unauthorized access, use, alteration or disclosure. However, we cannot guarantee that unauthorized third parties will never be able to defeat those measures or use your personal information for improper purposes.<br /><br />\r\n\
+    You are responsible for keeping your password confidential.  Please do not share your password with anyone. We also recommend you change your password immediately if you believe your password has been compromised.  You should log out of your account and exit your browser after viewing the Web Site.<br />\r\n\
+    <br />\r\n\
+    5.\tCHILDREN<br />\r\n\
+    <br />\r\n\
+    We strive to retain compliance with the Children's Online Privacy Protection Act of 1998 (COPPA) as specified by regulations of the Federal Trade Commission.  We will not knowingly collect any information from children under 13 or knowingly allow children under 13 to register.  In the event that we learn that we have collected personal information from a child under 13 we will immediately remove the information from the Web Site. <br /> \r\n\
+    <br />\r\n\
+    You must identify your age during the registration process.  SitterScout does not assume any responsibility for any misrepresentations regarding your age or parental consent when using our service.  If we determine that you provided any false information to us when using the Web Site, your access to our service will be terminated immediately.<br />\r\n\
+    <br />\r\n\
+    6.\tUSE OF COOKIES<br />\r\n\
+    <br />\r\n\
+    The Web Site uses \"cookies\" to collect information.  A cookie is a small text file that is placed on your hard drive by a Web page server.   We use cookies to store your preferences and other information on your computer in order to save you time by eliminating the need to enter the same information every time you use the Web Site and to display your personalized content and appropriate advertising on your later visits to the Web Site.<br />\r\n\
+    <br />\r\n\
+    If you prefer, you may choose to decline or block cookies by changing your browser setting.  If you choose to decline cookies, however, you may not be able to use some of the features that depend on cookies.<br />\r\n\
+    <br />\r\n\
+    7.\tTHIRD PARTY ADVERTISEMENTS <br />\r\n\
+    <br />\r\n\
+    We allow third-party advertisers to display advertisements on the Web Site.  These advertisers may also place cookies on your computer or use other technologies such as \xE2\x80\x9Cweb beacons\xE2\x80\x9D to recognize your computer each time they display an advertisement to you, evaluate the effectiveness of their advertisements, and personalize advertising content.   These advertisers may be able to compile information about where you, or others who are using your computer, viewed or clicked on the advertisements they display.  <br />\r\n\
+    <br />\r\n\
+    SitterScout has no access or control of the cookies the third party advertisers may place on your computer.  This Privacy Policy applies to the use of cookies by SitterScout and does not apply to the use of cookies or other tracking technologies by any of the third-party advertisers. <br />\r\n\
+    <br />\r\n\
+    8.\tCONTACTING US<br />\r\n\
+    <br />\r\n\
+    If at any time, you believe that SitterScout has not adhered to these principles in its operations, the following steps can be taken: <br />\r\n\
+    <br />\r\n\
+    a.&nbsp;&nbsp;&nbsp;Contact us by e-mail at: <a href=\"mailto:info@sitterscout.com?subject=SitterScout Privacy Policy\">info@sitterscout.com</a><br />\r\n\
+    b.&nbsp;&nbsp;&nbsp;In the subject line, type: 'SitterScout Privacy Policy' <br />\r\n\
+    c.&nbsp;&nbsp;&nbsp;Specify the exact nature of the potential breach of principles in detail <br />\r\n\
+    d.&nbsp;&nbsp;&nbsp;Provide us with all necessary contact information for follow-up response \r\n\
+    <br /><br />\r\n\
+    SitterScout will use all commercially reasonable efforts to determine if corrective action is necessary and if so, remedy the problem promptly. \r\n"
+  title: privacy
+  keywords: ""
+- slug: tou
+  filter_type: Textile
+  body: "<center>SITTERSCOUT TERMS OF USE</center>\r\n\
+    <div style=\"margin-left: 25px\">\r\n\
+    <br />\r\n\
+    1.\tACCEPTANCE OF TERMS <br />\r\n\
+    <br />\r\n\
+    Welcome to [SitterScout.com] (the \xE2\x80\x9CWeb Site\xE2\x80\x9D).  The Web Site and its services are maintained by Scout Solutions Inc. (\xE2\x80\x9CSitterScout\xE2\x80\x9D) and offered to you, subject to the following Terms of Use (\xE2\x80\x9CTOU\xE2\x80\x9D), which may be updated from time to time without notice to you.  You can review the most current versions of the TOU at any time at: http://www.sitterscout.com/tou.  Your access or use and continued access or use of the Web Site constitutes your acceptance of the TOU and any future updates to the TOU. <br />\r\n\
+    <br />\r\n\
+    2.\tPRIVACY POLICY<br />\r\n\
+    <br />\r\n\
+    Registration data, materials submitted to the Web Site and certain other information about you is subject to our Privacy Policy. For more information, see our full Privacy Policy at <a href=\"/privacy\">http://www.sitterscout.com/privacy.</a><br />\r\n\
+    <br />\r\n\
+    3.\tDESCRIPTION OF SERVICE <br />\r\n\
+    <br />\r\n\
+    SitterScout offers an online social networking service which (i) allows parents (\xE2\x80\x9CParents\xE2\x80\x9D) to connect with other parents and recommend babysitters they use and trust to each other as well as connect with babysitters recommended by other parents and (ii) allows babysitters (\xE2\x80\x9CBabysitters\xE2\x80\x9D) to create an online network of the families they babysit for by connecting with parents and other babysitters (the \xE2\x80\x9CService\xE2\x80\x9D).<br />  \r\n\
+    <br />\r\n\
+    The Web Site is only an online platform for facilitating communications among friends who would otherwise use other offline channels to communicate with each other for the same purpose.  You acknowledge and agree that SitterScout cannot and will not guarantee the identity of any other users with whom you may interact, nor the authenticity of any data or information other users may provide about themselves or relationships they may describe.\r\n\
+    <br />\r\n\
+    <br />  \r\n\
+    Furthermore, any transactions between you and another user from your use of the Service are the sole responsibility of you and the user involved.  You acknowledge and agree that SitterScout has no control over the services actually delivered by Babysitters nor the actions of Parents.  <br />\r\n\
+    <br />\r\n\
+    You agree to take the same safety and security precautions and due diligence in identifying and working with Parents or Babysitters as you would when using any other offline channels.  Under no circumstances will SitterScout, or SitterScout\xE2\x80\x99s employees, officers, directors, shareholders, agents, representatives or affiliates, be liable for any claims arising from disputes between users or any loss or damage in connection with your use of the Web Site and the Service.  <br />\r\n\
+    <br />\r\n\
+    4.\tUSE OF THE WEB SITE<br />\r\n\
+    <br />\r\n\
+    You may only use the Web Site in accordance with the TOU, any posted policies and procedures that appear on the Web Site, and for lawful purposes.  You agree not to:<br />\r\n\
+    <br />\r\n\
+    <ul>\r\n\
+    <li>Post content or initiate communications which are unlawful, defamatory, libelous, abusive, obscene, offensive, sexually oriented, threatening, discriminatory, or otherwise objectionable.\r\n\
+    </li>\r\n\
+    <li>Use the Service to defame, abuse, harass, stalk, threaten others, or otherwise violate the legal rights of others, including, but not limited to, others\xE2\x80\x99 rights of privacy and publicity.\r\n\
+    </li>\r\n\
+    <li>Impersonate any person or entity or otherwise falsely state or misrepresent your identify or your affiliation with any person or entity.\r\n\
+    </li>\r\n\
+    <li>Use the Service for any commercial purposes without SitterScout\xE2\x80\x99s prior written authorization, including, but not limited to, promoting your business entity or generating advertising revenue.\r\n\
+    </li>\r\n\
+    <li>Post, upload, email, transmit any unsolicited or unauthorized advertising, promotional materials, \xE2\x80\x9Cjunk mail,\xE2\x80\x9D \xE2\x80\x9Cchain letters,\xE2\x80\x9D \xE2\x80\x9Cspamming,\xE2\x80\x9D or any other form of unauthorized solicitation.\r\n\
+    </li>\r\n\
+    <li>Solicit or collect personally identifiable information from minors or harm minors in any way.\r\n\
+    </li>\r\n\
+    <li>Use the Web Site to distribute computer viruses, worms, or software intended to damage or alter a computer system without the owner\xE2\x80\x99s consent.\r\n\
+    </li>\r\n\
+    <li>Attempt to gain unauthorized access to the Web Site or any part thereof, or other accounts, computer systems or networks connected to the Web Site, through login password mining or any other means.  \r\n\
+    </li>\r\n\
+    <li>Intentionally or unintentionally violate any applicable local, state, national or international law.\r\n\
+    </li>\r\n\
+    </ul>\r\n\
+    <br />\r\n\
+    5.\tELIGIBILITY. <br /> \r\n\
+    <br />\r\n\
+    To register for and/or use the password-protected part of the Web Site, you must become a registered user of the Web Site.  By registering for the Web Site, you represent and warrant that you are eligible to register as specified herein, and that the information you include as part of the registration process is complete and accurate.  <br />\r\n\
+    <br />\r\n\
+    Users under 13 years old are not eligible for using the Service.  Users older than 13 but under 18 must obtain parental permission to use the Web Site.  In addition, anyone who has been convicted of a felony or any criminal offense characterized as a sexual offense or anyone who may not legally work in the U.S. is not eligible for using the Service. <br /> \r\n\
+    <br />\r\n\
+    SitterScout will determine whether to accept or reject your registration in its sole discretion and will not assume any responsibility for any misrepresentations regarding a user\xE2\x80\x99s age, parental consent, felonies, criminal offenses, and/or authorization to employment in the U.S. when using the Service.<br />\r\n\
+    <br />\r\n\
+    6.\tUSER ID; PASSWORD.  <br />\r\n\
+    <br />\r\n\
+    In connection with your registration, you will receive a user ID and a password.  You are responsible for keeping your user ID and password confidential and for all activity that occurs on the Web Site through your password or account.  You agree to immediately notify SitterScout of any unauthorized use of your password or account or any other breach of security, and to ensure that you exit from your account at the end of each session. In addition, you may not have more than one active account.  SitterScout cannot and will not be liable for any loss or damage arising from your failure to comply with this paragraph.    \r\n\
+    <br /><br />\r\n\
+    7.\tPROPRIETARY RIGHTS.  <br />\r\n\
+    <br />\r\n\
+    The Web Site and certain content therein are protected by copyright, trademark, patent, and/or other intellectual property and proprietary rights laws and are owned (along with all proprietary rights therein) by SitterScout.  You agree that you will not copy, distribute, republish, display, post, or transmit any content or software you obtain from the Web Site without SitterScout\xE2\x80\x99 prior permission.  Other rights may be granted to you by SitterScout in writing, but all rights not expressly granted are reserved.\r\n\
+    <br />\r\n\
+    8.\tUSER SUBMISSIONS.<br />\r\n\
+    <br />\r\n\
+    In the course of using the Service, you may provide information about yourself which may be visible to other users.  You are solely responsible for any content posted, uploaded, or transmitted by you, including, but not limited to, any text, data, images, photographs, files, reviews, or ratings (\xE2\x80\x9CSubmissions\xE2\x80\x9D).  <br />\r\n\
+    <br />\r\n\
+    By providing your Submissions to SitterScout, you warrant and represent that you own or otherwise have all rights necessary for you to post, upload, or transmit your Submissions.  SitterScout respects the intellectual property of others, and requires that our users do the same.  <br />\r\n\
+    <br />\r\n\
+    If you believe your work has been copied and posted on or through the Web Site in a way that constitutes copyright infringement, please send SitterScout\xE2\x80\x99s Copyright Agent a notification of claimed infringement with all of the following information: (a) identification of the copyrighted work claimed to have been infringed, or, if multiple copyrighted works are covered by a single notification, a representative list of such works; (b) identification of the claimed infringing material and information reasonably sufficient to permit us to locate the material on the Web Site; (c) information reasonably sufficient to permit us to contact you, such as an address, telephone number, and, if available, an email address; (d) a statement by you that you have a good faith belief that the disputed use is not authorized by the copyright owner, its agent, or the law; (e) a statement by you, made under penalty of perjury, that the above information in your notification is accurate and that you are the copyright owner or authorized to act on the copyright owner's behalf; and (f) your physical or electronic signature.  SitterScout\xE2\x80\x99s Copyright Agent for notification of claimed infringement can be reached as follows: SitterScout Corporation, 704 228th AVE NE, #725, Sammamish, WA 98074; Facsimile: 425-651-2876; Attn: Copyright Agent.  SitterScout\xE2\x80\x99s Copyright Agent for notification of claimed infringement can also be reached electronically by clicking <a href=\"mailto:Info@sitterscout.com?subject=Attn: Copyright Agent\">here</a>.  <br />\r\n\
+    <br />\r\n\
+    In addition, you agree that by providing your Submissions to the Web Site, you grant to SitterScout and its assigns an irrevocable, royalty-free, world-wide, perpetual, transferrable, and sub-licensable license, in and to the Submissions, to use, reproduce, distribute, display, modify, adapt, create derivative works of, publish, redistribute, and sublicense such Submissions.  <br />\r\n\
+    <br />\r\n\
+    The opinions expressed in reviews and user ratings reflect solely the opinions of the individuals who submitted such opinions, and may not reflect SitterScout\xE2\x80\x99s opinions.  Under no circumstances will SitterScout, or SitterScout\xE2\x80\x99s employees, officers, directors, shareholders, agents, representatives or affiliates, be liable for any loss or damages caused by your reliance on the Submissions by other users.  <br />\r\n\
+    <br />\r\n\
+    Although SitterScout has no obligation to monitor or screen any of the materials posted on the Web Site, SitterScout reserves the right to remove any materials posted or stored on the Web Site without notice at any time and for any reason at its sole discretion.  You are solely responsible for creating backup copies of any materials you post on the Web Site at your sole cost and expense. <br />\r\n\
+    <br />\r\n\
+    9.\tFEES.<br />\r\n\
+    <br />\r\n\
+    SitterScout reserves the right to charge for the Service or any portion thereof and modify the pricing of the Service without prior notice to you.<br />\r\n\
+    <br />\r\n\
+    10.\tADVERTISEMENTS.<br />\r\n\
+    <br />\r\n\
+    SitterScout may post third parties\xE2\x80\x99 advertisements and promotions on the Web Site.  Your dealings or correspondence with advertisers other than SitterScout, and any terms, conditions, warranties or representations associated with such dealings, are solely between you and such third party.  SitterScout is not responsible or liable for any loss or damage arising from any such dealings or as the result of the presence of third-party advertisers on the Web Site.<br />\r\n\
+    <br />\r\n\
+    11.\tTEXT MESSAGES.  <br />\r\n\
+    <br />\r\n\
+    You may opt to receive text message notifications on your cellular phones or other mobile devices in connection with the Service.  By choosing this option, you grant SitterScout permission to send text messages to your cellular phone or other mobile devices.  In addition, you understand and agree that SitterScout does not have control over the quality or reliability of the text messaging service provided by your mobile device carrier and that you are solely responsible for any fees charged by your carrier for the service.  \r\n\
+    <br /><br />\r\n\
+    12.\tCHILDREN.<br />\r\n\
+    <br />\r\n\
+    We strongly encourage parents and guardians to supervise the activity of all children under the age of 18 when using the Internet and the Service.  We provide parents of users under 18 with an option to receive notifications when the child adds a connection or receives a job request.  Babysitters under 18 should immediately notify their parents or report to authorities if Parents use any improper actions or language toward them in the course of babysitting.  Babysitters should also report such incidents to SitterScout by contacting <a href=\"mailto:nfo@sitterscout.com\">info@caresquare.com</a>.  SitterScout is not obligated to investigate incidents reported by Babysitters.  However, it reserves the right, at its sole discretion, to restrict, suspend, or terminate a questionable Parent\xE2\x80\x99s access to any part of the Service, remove his/her profile, or report an incident to appropriate authorities.  <br />  \r\n\
+    <br />\r\n\
+    SitterScout strives to retain compliance with the Children's Online Privacy Protection Act of 1998 (COPPA) as specified by regulations of the Federal Trade Commission.  SitterScout will not knowingly collect any information from children under 13 or knowingly allow children under 13 to register.  In the event that we learn that we have collected personal information from a child under 13 we will immediately remove the information from the Web Site.  <br />\r\n\
+    <br />\r\n\
+    You must identify your age during the registration process.  SitterScout does not assume any responsibility for any misrepresentations regarding your age or parental consent when using the Service.  If we determine that you provided any false information to us when using the Web Site, your access to the Service will be terminated immediately.<br />\r\n\
+    <br />\r\n\
+    13.\tTERMINATION. <br />\r\n\
+    <br />\r\n\
+    You agree that SitterScout may, with or without cause, suspend or terminate your access to the Web Site, without prior notice.  Without limiting the foregoing, SitterScout will terminate your access to the Web Site if you engage in any conduct that SitterScout believes, in its sole discretion: (a) violates any provision of the TOU; (b) violates the rights of SitterScout or third parties; or (c) is otherwise inappropriate.<br />    \r\n\
+    <br />\r\n\
+    \r\n\
+    14.\tWARRANTY DISCLAIMER.  <br />\r\n\
+    <br />\r\n\
+    UNLESS OTHERWISE EXPRESSLY SET FORTH IN A SEPARATE WRITTEN AGREEMENT WITH YOU, THE WEB SITE AND ANY INFORMATION PROVIDED THROUGH THE WEB SITE ARE PROVIDED BY SITTERSCOUT ON AN \"AS IS\" AND \xE2\x80\x9CAS AVAILABLE\xE2\x80\x9D BASIS, AND NEITHER SITTERSCOUT NOR ITS PARTNERS, SUBCONTRACTORS, SHAREHOLDERS, DIRECTORS, OFFICERS, EMPLOYEES, OR AGENTS MAKE ANY REPRESENTATIONS OR WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, AS TO THE OPERATION OF THE WEB SITE OR ANY INFORMATION MADE AVAILABLE BY OR THROUGH THE WEB SITE.  IN ADDITION, SITTERSCOUT DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, TITLE, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT.  SITTERSCOUT DOES NOT WARRANT THAT USE OF THE WEB SITE WILL BE UNINTERRUPTED, AVAILABLE AT ANY TIME OR FROM ANY PARTICULAR LOCATION, SECURE OR ERROR-FREE, THAT DEFECTS WILL BE CORRECTED, OR THAT THE WEB SITE IS FREE OF VIRUSES OR OTHER POTENTIALLY HARMFUL COMPONENTS.  Some jurisdictions may not allow the exclusion of certain warranties, so some of the above exclusions may not apply to you.<br />\r\n\
+    <br />\r\n\
+    15.\tLIMITATION OF LIABILITY. <br />\r\n\
+    <br />\r\n\
+    YOUR USE OF THE SERVICE IS AT YOUR SOLE RISK.  IN NO EVENT WILL SITTERSCOUT OR ITS SHAREHOLDERS, DIRECTORS AND OFFICERS BE LIABLE FOR DIRECT, INDIRECT, INCIDENTAL, PUNITIVE OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OF OR INABILITY TO USE THE WEB SITE, WHETHER BASED ON CONTRACT, TORT OR OTHER LEGAL THEORY, AND REGARDLESS OF WHETHER SITTERSCOUT KNEW OR WAS ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.  SITTERSCOUT\xE2\x80\x99 AGGREGATE LIABILITY ARISING FROM OR RELATING TO THIS AGREEMENT (REGARDLESS OF THE CAUSE OF ACTION, WHETHER UNDER CONTRACT, TORT, OR OTHER LEGAL THEORY) IS LIMITED TO $100.  Some jurisdictions do not allow the limitation of incidental or consequential damages, so the above limitation may not apply to you.<br />\r\n\
+    <br />\r\n\
+    16.\tINDEMNIFICATION.  <br />\r\n\
+    <br />\r\n\
+    You agree to indemnify and hold SitterScout, its partners, subcontractors, shareholders, directors, officers, employees, and agents harmless from any and all losses, liabilities, damages and/or costs (including reasonable attorneys' fees) arising from any third-party claims arising from or related to your violation of the TOU.<br />  \r\n\
+    <br />\r\n\
+    17.\tGENERAL.  <br />\r\n\
+    <br />\r\n\
+    The TOU will be governed by and construed in accordance with the laws of the State of Washington, excluding its conflicts of laws rules.  You consent to the exclusive jurisdiction of the federal and state courts in King County, Washington and you further consent to the exercise of personal jurisdiction of the courts therein.  If any provision(s) of the TOU is found to be contrary to law, then such provision(s) will be construed, as nearly as possible, to reflect the intentions of the parties with the other provisions remaining in full force and effect.  Any waiver, modification, or amendment of this TOU must be in writing and signed or otherwise authenticated by SitterScout.  You may not assign this agreement to any other party, and any such attempted assignment is void.  The TOU constitutes the entire agreement between you and SitterScout with respect to the Service and supersedes any and all prior or contemporaneous agreements; provided, however, to the extent any written agreement between you and SitterScout conflicts with the TOU, such other written agreement shall control.<br />\r\n\
+    <br />\r\n\
+    18.\tNO RESALE OF SERVICE <br />\r\n\
+    <br />\r\n\
+    You agree not to reproduce, duplicate, copy, sell, resell or exploit for any commercial purposes, any portion of the Service, use of the Service, or access to the Service. <br />\r\n\
+    <br />\r\n\
+    19.\tMODIFICATIONS TO SERVICE <br />\r\n\
+    <br />\r\n\
+    SitterScout reserves the right at any time and from time to time to modify or discontinue, temporarily or permanently, the Service (or any part thereof) with or without notice. You agree that SitterScout shall not be liable to you or to any third party for any modification, suspension or discontinuance of the Service. <br />\r\n\
+    <br />\r\n\
+    20.\tLINKS <br />\r\n\
+    <br />\r\n\
+    The Service, third parties, and other users may provide links to other World Wide Web sites or resources. Because SitterScout has no control over such sites and resources, you acknowledge and agree that SitterScout is not responsible for the availability of such external sites or resources, and does not endorse and is not responsible or liable for any content, advertising, products, or other materials on or available from such sites or resources. You further acknowledge and agree that SitterScout shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with use of or reliance on any such content, goods or services available on or through any such site or resource. <br />\r\n\
+    <br />\r\n\
+    21.\tTRADEMARKS<br />\r\n\
+    <br />\r\n\
+    SitterScout, the SitterScout logo, and other SitterScout logos and names are trademarks of Scout Solutions Inc.  You agree not to display or use these trademarks in any manner without SitterScout\xE2\x80\x99s prior written permission. <br />\r\n\
+    <br />\r\n\
+    22.\tNOTICE<br /><br />\r\n\
+    <br />\r\n\
+    Notices to you may be made via either email or regular mail. The Service may also provide notices of changes to the TOU or other matters by displaying notices or links to notices to you generally on the Service.<br />\r\n\
+    \r\n\
+    <br />\r\n\
+    </div>"
+  title: tou
+  keywords: ""
+- slug: how-it-works
+  filter_type: Textile
+  body: "For Parents\r\n\
+    By creating an online network of friends and sitters, SitterScout can quickly increase your babysitting options.\r\n\
+    You create a SitterScout Profile\r\n\
+    You add friends and sitters you know and trust who are already on SitterScout to your network - or invite new ones to join\r\n\
+    You tell SitterScout when you need a babysitter and which sitters you\xE2\x80\x99d like to request\r\n\
+    SitterScout sends an email and a text message to the chosen sitters and lets you know when they respond - we\xE2\x80\x99ll even send a\r\n\
+    reminder to you and your sitter 48 hours before the scheduled job\r\n\
+    When you invite new friends to join, you\xE2\x80\x99ll see which sitters they are using and as a result expand your list of available sitters. Unlike\r\n\
+    most online sitter services there are no strangers here \xE2\x80\x93 SitterScout is all about connecting you with new sitters through a network of\r\n\
+    friends and neighbors you trust.\r\n\
+    Join the SitterScout community!\r\n\
+    How It Works\r\n\
+    For Sitters\r\n\
+    Use your SitterScout network to connect with families who are looking for great sitters. They request your services through\r\n\
+    SitterScout and we contact you. You can let the families you babysit for know when you are available \xE2\x80\x93 even on short notice.\r\n\
+    You\xE2\x80\x99d be surprised at how many parents might like a spur-of-the-moment night out.\r\n\
+    Tell us about yourself - your age and your skills\r\n\
+    Add the families you babysit for who are already on SitterScout to your network - or invite new ones to join\r\n\
+    Connect with those families and the friends of those families\r\n\
+    Whenever a family from your network needs a sitter, they make a request and we contact you\r\n\
+    Control how you want to be contacted for babysitting jobs, so you never miss out on an opportunity. SitterScout sends job\r\n\
+    requests to you via text message or e-mail and makes it easy for you to reply. For texting, simply respond with Y for yes\r\n\
+    (to accept the job) or N for no (to decline) and we will notify the family with your response. To reply by e-mail, just click on\r\n\
+    the embedded links. You tell us how you want to be reached and we\xE2\x80\x99ll take care of the rest.\r\n\
+    Join the SitterScout community!"
+  title: How It Works
+  keywords: ""
+- slug: about-us
+  filter_type: Textile
+  body: "Create Your Account Log In Information Your Profile Your Friends Your Sitters\r\n\
+    SitterScout is an online community that makes it easy for parents and their babysitters to connect with each other.\r\n\
+    You don\xE2\x80\x99t call around to book an airline flight, why call around to book your babysitter? Let SitterScout do the work for you\r\n\
+    with just the click of a mouse. There\xE2\x80\x99s no more waiting for a sitter to call you back.\r\n\
+    Expand your babysitting options\r\n\
+    Parents use SitterScout to expand their babysitting options by connecting with their friends and their friends\xE2\x80\x99 friends. You\r\n\
+    can see which babysitters your friends are using, contact your friends for recommendations and start growing your Sitter\r\n\
+    List, which means more options when you need them.\r\n\
+    We\xE2\x80\x99re ending the game of \xE2\x80\x9Cbabysitter phone tag\xE2\x80\x9D\r\n\
+    Once you create a list of sitters, we make it easy for you to book them. Just tell us when you need a babysitter and who\r\n\
+    you\xE2\x80\x99d like to contact. We do all the work and we\xE2\x80\x99ll let you know when we\xE2\x80\x99ve confirmed a sitter for you. To see the status of\r\n\
+    your request, visit your dashboard any time.\r\n\
+    More opportunities for babysitters\r\n\
+    Babysitters use SitterScout so they\xE2\x80\x99ll never miss out on a babysitting opportunity. They build their networks of families to\r\n\
+    increase their number of job offers. Sitters also determine how they want to be contacted for jobs and SitterScout makes it\r\n\
+    easy to reply.\r\n\
+    You control your privacy\r\n\
+    SitterScout is concerned about the privacy of our community members. Only your confirmed friends can view your full profile\r\n\
+    information. You determine whether your profile will be searchable and who can view your list of connections. You can edit\r\n\
+    your profile information at any time to change your privacy settings.\r\n\
+    About the company\r\n\
+    SitterScout was created by a mom with a single mission in mind: make it a lot easier to find and book reliable babysitters.\r\n\
+    SitterScout is a privately-held company headquartered in the Seattle, Washington area."
+  title: About Us
+  keywords: ""
+keywords: 

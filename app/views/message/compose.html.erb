@@ -1,0 +1,102 @@
+<% if current_user.is_a?Parent %>
+<%= render :partial => '/parents/nav_menu', :locals => {:selected => "inbox"} %>
+<% else %>
+<%= render :partial => '/sitters/nav_menu', :locals => {:selected => "inbox"} %>
+<% end %>
+<div id="content">
+<div class="message-compose-container">
+	<%= error_messages_for 'message' %>
+
+	<% form_for :message, :url => { :action => "send_message" } do |form| %>
+		<%= hidden_field :message, :recipient_id, { :value => @recipient.id } %>
+		<%= hidden_field_tag (params[:from_profile]) ? :from_profile : :from_messages, 1%>
+		<fieldset class="cornerbox_34_grn-col">
+			<div class="top"><h2><%= (params[:message_id].nil? ? "New Message" : "Replying") %> to <%= h(@recipient.email) %></h2></div>
+			<div class="content clearfix">
+				<dl class="clearfix">
+					<dt>
+						Message From:
+					</dt>
+					<dd>
+						<%= h(@sender.email) %> (you)
+					</dd>
+				</dl>
+				<% unless @message_templates.nil? %>
+					<script type="text/javascript">
+						//<![CDATA[
+							var message_backup = <%= @message.to_json %>;
+							if (!message_backup)
+							{
+								message_backup = {subject: "", body: ""};
+							}
+							var message_templates = {};
+							<% @message_templates.each {|message_template| %>
+								message_templates[<%= message_template.id %>] = <%= message_template.to_json %>;
+							<% } %>
+							function insert_message_template(id)
+							{
+								var subject = message_backup.subject;
+								var body = message_backup.body;
+								if (message_templates[id])
+								{
+									subject = message_templates[id].subject;
+									body = message_templates[id].body
+								}
+								$('message_subject').value = subject;
+								$('message_body').value = body + "\n\n" +  message_backup.body;
+							}
+						//]]>
+					</script>
+					<dl class="clearfix">
+						<dt>
+							<label for="message_subject">
+								Saved Messages:
+							</label>
+						</dt>
+						<dd>
+							<% if @message_templates.size > 0 %>
+								<%= select_tag(:message_template_id, options_for_select([nil] + @message_templates.map {|mt| [mt.name, mt.id]}), :id => 'message_template_id') %>
+								<%= observe_field :message_template_id, :function => "insert_message_template(value);" %>
+								[<%= link_to("Edit Saved Messages", :controller => :message, :action => :templates) %>]
+						    <% else %>
+							    <%= link_to("Add a Saved Message", :controller => :message, :action => :template_form) %>
+							<% end %>
+						</dd>
+					</dl>
+				<% end %>
+				<dl class="clearfix">
+					<dt>
+						<label for="message_subject">
+							Subject:
+						</label>
+					</dt>
+					<dd>
+						<%= text_field :message, :subject, :maxlength => 30 %>
+					</dd>
+				</dl>
+				<dl class="clearfix">
+					<dt>
+						<label for="message_body">
+							Message:
+						</label>
+					</dt>
+					<dd>
+						<%= text_area :message, :body, "cols" => 50 %>
+					</dd>
+				</dl>
+			</div>
+		</fieldset>
+		<%= submit_tag "Send" %>
+	<% end %>
+</div>
+</div>
+<script type="text/javascript">
+	//<![CDATA[
+	    LiveValidation.onValid = void(0);
+		subject_length = new LiveValidation('message_subject',{validMessage:'', onlyOnSubmit: true});
+		subject_length.add(Validate.Length,{ minimum: 5, maximum: 10, tooLongMessage:"Must be 10 characters or less.", tooShortMessage:"Must be at least 5 characters"});
+		
+		body_length = new LiveValidation('message_body',{validMessage:'', onlyOnSubmit: true});
+		body_length.add(Validate.Length,{ minimum: 10, maximum: 2000, tooLongMessage:"Must be 2000 characters or less.", tooShortMessage:"Must be at least 10 characters"});
+	//]]>
+</script>

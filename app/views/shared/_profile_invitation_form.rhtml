@@ -1,0 +1,25 @@
+<div id="content">
+<div id="sub_menu_gradient">
+</div>
+	<div class="parent_content">
+			<span style=" font-size: 14pt; font-weight: bold">Invite Your Friends & Sitters</span>
+			<p style=" font-size: 10pt; width: 85%;">With SitterScout, it’s networking that counts. The more friends you add, the more friends you can make – and that means a bigger network of trusted babysitters to choose from.
+			</p>
+			<br />
+
+		<% form_tag send_invitations_parent_path(current_user) do %>
+		<div id="invitations-container">
+			<div id="header" style="margin-left: 515px; margin-bottom: 4px;">
+				This person is a:
+				</div>
+		<%= render :partial => '/invitations/form' %>
+
+		</div>
+		<br /><br />
+		<p style=" font-size: 11pt; margin-bottom: 5px"><%= check_box_tag "custom_message", true %> Check this box to add a custom message.</p>
+		<%= text_area_tag "invitation_body", "", :style => "width: 600px; height: 50px;" %>
+					<br /><br />
+		<%= submit_tag "Submit" %>
+		<% end %>
+	</div>
+</div>

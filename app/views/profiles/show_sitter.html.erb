@@ -1,0 +1,62 @@
+<div id="content">
+
+<div style="width: 18%; float: left;">
+	<%#= image_tag(@user.avatar_photo_url, :class => "right" ) %>
+
+</div>
+<div style="width: 50%; float: left;">
+	<table style="padding-bottom: 25px">
+			<tr><td><strong><%= @profile.first_name + " " + @profile.last_name %></strong></td></tr>
+			<tr><td><%= @profile.address1 %></td></tr>
+			<tr><td><%= @profile.address2 %></td></tr>
+			<tr><td><%= @profile.city + ", " + State.find(@profile.state_id).name + " " + @profile.zipcode.to_s %></tr>
+		
+			</table>
+			<br />
+			<strong>Availability: </strong>
+		<table cellpadding=0 cellspacing=0 style="margin-top: 5px;">
+			<tr>
+			<td style="border-left: 1px solid #000000; border-top: 1px solid #000000; border-bottom: 1px solid #000000; padding: 5px; font-weight: bold;">Sundays</td>
+			<td style="border-left: 1px solid #000000; border-top: 1px solid #000000; border-bottom: 1px solid #000000; padding: 5px; font-weight: bold;">Mondays</td>
+			<td style="border-left: 1px solid #000000; border-top: 1px solid #000000; border-bottom: 1px solid #000000; padding: 5px; font-weight: bold;">Tuesdays</td>
+			<td style="border-left: 1px solid #000000; border-top: 1px solid #000000; border-bottom: 1px solid #000000; padding: 5px; font-weight: bold;">Wednesday</td>
+			<td style="border-left: 1px solid #000000; border-top: 1px solid #000000; border-bottom: 1px solid #000000; padding: 5px; font-weight: bold;">Thursdays</td>
+			<td style="border-left: 1px solid #000000; border-top: 1px solid #000000; border-bottom: 1px solid #000000; padding: 5px; font-weight: bold;">Fridays</td>
+			<td style="border: 1px solid #000000; padding: 5px; font-weight: bold;">Saturdays</td>			
+		</tr>
+		<tr>
+			<td style="border-left: 1px solid #000000; border-bottom: 1px solid #000000; padding: 5px"><%=  @user.profile.sundays %></td>
+			<td style="border-left: 1px solid #000000; border-bottom: 1px solid #000000; padding: 5px"><%=  @user.profile.mondays %></td>
+			<td style="border-left: 1px solid #000000; border-bottom: 1px solid #000000; padding: 5px"><%=  @user.profile.tuesdays %></td>
+			<td style="border-left: 1px solid #000000; border-bottom: 1px solid #000000; padding: 5px"><%=  @user.profile.wednesdays %></td>
+			<td style="border-left: 1px solid #000000; border-bottom: 1px solid #000000; padding: 5px"><%=  @user.profile.thursdays %></td>
+			<td style="border-left: 1px solid #000000; border-bottom: 1px solid #000000; padding: 5px"><%=  @user.profile.fridays %></td>
+			<td style="border-left: 1px solid #000000; border-bottom: 1px solid #000000; border-right: 1px solid #000000; padding: 5px" ><%=  @user.profile.saturdays %></td>
+		</tr>
+
+		</table>
+		<br /><br />
+	<table>
+		<tr><td><strong>Profile Tags:</strong></td><td><%= @profile.tag_list %></tr>
+		<tr><td><strong><%= label :profile, :email, "Email Address:" %></strong></td><td>
+		<%= @user.email %></td></tr>
+                <tr><td><strong><%= label :profile, :daytime_phone, "Daytime Phone #:" %></strong></td><td>
+		<%= @profile.datetime_phone %></td></tr>
+                <tr><td><strong><%= label :profile, :evening_phone, "Evening Phone #:" %></strong></td><td>
+		<%= @profile.evening_phone %></td></tr>
+                <tr><td><strong><%= label :profile, :cell_phone, "Cell Phone #:" %></strong></td><td>
+		<%= @profile.cell_phone %></td></tr>
+		
+	</table>
+
+
+</div>
+
+
+</div>
+<div style="text-align: center; background-color: #E9EDFE; text-align: center; padding: 5px 0; width: 100%;">
+<a href="#" class="lbAction" rel="deactivate">Close Window</a>
+</div>
+<script type="text/javascript">
+	initialize();
+</script>

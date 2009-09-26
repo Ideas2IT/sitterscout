@@ -1,0 +1,25 @@
+<div id="content" style="height: 700px;">
+	
+<div style="margin: 0 auto; padding: 2%; color: #666666">
+<span style=" font-size: 1.1em; font-weight: bold">Invite Your Friends & Sitters</span>
+<p style="font-size: .9em; width: 85%; margin-top: 5px;">
+	With SitterScout, it’s networking that counts. The more friends you add, the more friends you can make – 
+	and that means a bigger network of trusted babysitters to choose from.
+</p><br />	<br />
+	
+<% form_tag send_invitations_parent_path(current_user) do |form| %>
+<div id="invitations-container">
+	<%= render :partial => 'invitations_form' %>
+</div>
+<br /><br />
+
+<p style=" font-size: .8em; margin-bottom: 5px"><%= check_box_tag "custom_message", true %> Check this box to add a custom message.</p>
+<%= text_area(:invitations, :body, :style => "width: 600px; height: 50px;" , :text => "default") %>
+	<br /><br />
+	
+<div style="padding-left: 20%; display: inline;">	
+	<%= link_to(image_tag('/images/Wizard/Previous_bttn.gif', :border => 0), your_sitters_parent_path(current_user)) %>
+	<%= image_submit_tag "/images/parent_home/Submit_bttn.gif" %>&nbsp;<%= submit_tag "Skip" %>
+<% end %>
+</div>
+</div></div>

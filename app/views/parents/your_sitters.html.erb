@@ -1,0 +1,89 @@
+<div id="content" style="width: 950px;height: 700px;">	
+<span style=' font-size: 1.5em;'>Create Your Sitters List</span>
+<div style=' font-size: .8em; margin-top: 10px;'>
+	Below is a list of SitterScout sitters in your area. Just click ‘Add to Your Sitters’ and we’ll send that babysitter a confirmation e-mail. Once they confirm you as part of their network you can use SitterScout to request them when you need a sitter. If you don’t see sitters you know listed, invite your babysitters to join SitterScout.
+</div>
+<br />
+	<strong style=' font-size: 1.1em; font-weight: bold'>Sitters You May Know:</strong>
+<div style="margin: 10px;">
+	
+	<div style="border: 1px #AFAFAF solid; background-color: #E2EED3; stroke: #AFAFAF; padding: 5px; width: 420px; height: 285px; float: left; margin-right:20px;	 overflow-y: auto;">
+			<div style='font-size: .9em; margin-bottom: 4px;'>SitterScout has identified the following sitter(s) based on your ZIP code and profile tags.</div>
+		<% if !(@sitters.size == 1 && @sitters[0].nil?) %>	
+			<% @sitters.each do |friend| %>
+				<% unless friend.profile.nil? %>
+				<div style="width: 99%; height: 125px; float: left; border: 1px #AFAFAF solid; background-color: #FFF; margin-top: 4px;">
+
+						<div style="width: 55px; float: left; padding: 5px; ">
+							<%= image_tag(friend.avatar_photo_url(:thumb), :class => "right" ) %>
+						</div>
+
+						<div style="float:left;">
+							<strong style=' font-size: 1em;'><%= friend.profile.first_name rescue nil %>&nbsp;<%= friend.profile.last_name.first rescue nil %></strong>
+							<br />
+								<div style=' font-size: .7em;'><%= friend.profile.city %>, <%= friend.profile.state.name %></div>
+		
+							<font style=' font-size: .7em;'>Profile Tags:
+							<%= truncate(friend.profile.tag_list.to_s, 25, "...") %>
+							<% begin %>
+							<% if(friend.profile.tag_list.to_s.size > 25) && (!friend.profile.tag_list.to_s.size < 1) %>
+							<%= link_to "More", "#", :title => friend.profile.tag_list.to_s  %>
+							<% end %>
+							<% rescue %>
+							<% end %>
+							<br />
+										
+								<p style=' font-size: .9em; width: 300px;'>
+									<% unless friend.description.nil? %>	
+										<% if friend.description.to_s.size < 25 && (!friend.description.to_s.size == 0)  && !friend.description.to_s.size.nil? && !friend.description.to_s.size.blank? %>
+										<%= friend.description + " " + link_to("more...", "#", :title => friend.description) %>
+
+										<% elsif friend.description.to_s.size > 25 %>
+											<%= truncate(friend.description, 25, " ") + link_to("more...", "#", :title => friend.description) %>
+
+										<% end %>
+								<% end %>
+								</p><br />
+							> <%= link_to "Add to Your Sitters", url_for(:controller => 'connections', :action => 'add_sitter', :id => friend.id), :class => "lbOn-300-270" %> 
+								<% if current_user.connected?(friend) %>
+							 
+						&nbsp;	><%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => friend.id), :class => "lbOn-405-390" %>
+						<% end %>
+						</font>	
+						
+						</div>
+
+				</div>	
+				<% end %>	
+			<% end %>
+		<% end %>
+	</div>
+	
+	<div id="friends_search" style="float: left; width: 450px; margin-top: -30px;">
+		<span style='font-size: 1.1em; font-weight: bold;'>Search For Other Sitters:</span>
+		<div style="margin-top: 5px">
+		<% form_remote_tag :url => search_sitters_parent_path(current_user), :loading => "Element.show('spinner'); ", :complete => "Element.hide('spinner');" do %>
+            <%= text_field :user, :search %>
+						<%= hidden_field_tag :action_verbiage, "Sitters" %>
+
+			<%= image_submit_tag '/images/Wizard/Search_bttn_purple.gif' %>
+		<% end %>
+		<div id="sitter_results" style="background-color: #E2EED3; padding: 5px; overflow-y: auto; width: 420px; height: 260px; display: none; border: 1px #AFAFAF solid; margin-top: 5px;">
+
+        </div>
+		</div>
+	</div>
+</div>
+<div style="margin-left: 39%; margin-top: 350px;">
+
+	<% form_tag update_sitters_parent_path(current_user) do %>
+	
+	<%= link_to(image_tag('/images/Wizard/Previous_bttn.gif', :border => 0), your_friends_parent_path(current_user)) %>
+	<%= image_submit_tag '/images/Wizard/Continue_bttn.gif' %>
+	
+	<% end %>
+	<%#= link_to "Finish", invite_parent_path(current_user) %>
+</div>
+</div>
+
+

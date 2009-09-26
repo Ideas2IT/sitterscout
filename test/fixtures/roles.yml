@@ -1,0 +1,9 @@
+admin:
+  id: 1
+  name: admin
+moderator:
+  id: 2
+  name: sitter
+member:
+  id: 3 
+  name: parent

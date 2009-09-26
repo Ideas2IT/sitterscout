@@ -1,0 +1,29 @@
+--- 
+child_00001: 
+  name: Carter Kenney
+  updated_at: 2008-08-15 12:24:52 -04:00
+  id: 1
+  parent_id: 1
+  age: 2007-05-07
+  created_at: 2008-08-15 12:24:52 -04:00
+child_00002: 
+  name: ""
+  updated_at: 2008-08-15 12:26:18 -04:00
+  id: 2
+  parent_id: 2
+  age: 
+  created_at: 2008-08-15 12:26:18 -04:00
+child_00003: 
+  name: "Evan "
+  updated_at: 2008-08-15 12:26:18 -04:00
+  id: 3
+  parent_id: 2
+  age: 2006-08-14
+  created_at: 2008-08-15 12:26:18 -04:00
+child_00004: 
+  name: Carter Kenney
+  updated_at: 2008-08-15 12:27:57 -04:00
+  id: 4
+  parent_id: 3
+  age: 2007-05-07
+  created_at: 2008-08-15 12:27:57 -04:00

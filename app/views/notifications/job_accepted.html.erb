@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+</head>
+<body>
+<font face="Arial, Helvetica, Geneva">
+	
+<%= image_tag("#{APP_URL}/images/email_signature.jpg", :alt=>"SitterScout.com") %>
+
+<p>Dear <%= @parent.profile.full_name %>,</p>
+
+<p>Good news! <%= @sitter.profile.full_name %> has accepted your job request for <%= @job.date_from.strftime("%B %d, %Y") %> from <%= @job.date_from.strftime("%I:%M %p") %> to <%= @job.date_to.strftime("%I:%M %p") %>. We will send a reminder to you and <%= @sitter.profile.full_name %> 48 hours prior to the scheduled job.</p>
+
+<p><%= @message %></p>
+
+
+<p>The SitterScout Team</p>
+</font>
+</body>
+</html>

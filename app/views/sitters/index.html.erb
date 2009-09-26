@@ -1,0 +1,28 @@
+<div class="wrapper">
+<div id="nav_header">
+	<div class="nav_header">
+		<ul>
+			<li ><%= link_to image_tag('/images/parent_home/tab_parents.gif', :border => 0), parents_path %></li>
+			<li id="selected"><%= link_to image_tag('/images/sitter_home/tab_sitters.gif', :border => 0), sitters_path %></li>
+		</ul>
+	</div>
+</div>
+	<div class="sitter_main_content">
+		<p style=" font-size: 11pt;">
+			Get more babysitting jobs through the families you know. You decide how you want to be contacted so you'll never miss out on an opportunity.</p>
+		<br/>
+
+		
+<div id="for_parents">
+	<p style="font-family:'Tahoma'; font-size: 14pt; text-align: left;">
+		<strong>Here's how it works:</strong>
+	</p>
+<%= render :partial => 'sitters' %>	
+</div>
+<div class="join_us">
+   <%= link_to image_tag('parent_home/JoinSS_button.gif', :border => 0), new_sitter_path %>
+</div>
+</div>
+
+
+</div><%= render :partial => '/shared/login_div' %>

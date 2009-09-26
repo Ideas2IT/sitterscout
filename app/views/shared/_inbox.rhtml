@@ -1,0 +1,317 @@
+<div id="inbox" style="height: 450px; ">
+
+	<div class="message-list-container">
+		<div id="message-list-layout" style="font-size: .7em;">
+			<div id="message-list-viewer" style="height: 100%;overflow: auto;"></div></div>
+		<script type="text/javascript">
+			//<![CDATA[
+				var message_list_console = function(layout)
+				{
+					var scopeThis = this;
+
+					this.layout = new Ext.Panel
+					({
+						renderTo: layout,
+						layout: 'column',
+						items:
+						[
+							{id: 'message-list-grid-panel', columnWidth: .55, height: 442},
+							{id: 'message-list-viewer-panel', contentEl: 'message-list-viewer', columnWidth: .45, height: "100%"}
+						]
+					});
+
+					this.messageType = '<%= @type %>';
+
+					this.actions =
+					{
+						message:
+						{
+							reply: new Ext.Action
+							({
+								text: "Reply",
+								disabled: true,
+								icon: '/images/icons/message_reply.gif',
+								iconCls: 'x-button-icon',
+								handler: function()
+								{
+									var selections = this.selectionModel.getSelections();
+									if (!selections.length)
+									{
+										alert("You must select a message to reply to.");
+										return;
+									}
+									if (selections.length > 1)
+									{
+										alert("You can only reply to one message at a time.");
+										return;
+									}
+									window.location = "/message/reply/?message_id=" + selections[0].data.id + "&from_messages=1"
+								},
+								scope: this
+							}),
+							del: new Ext.Action
+							({
+								text: "Delete",
+								disabled: true,
+								icon: '/images/icons/message_delete.gif',
+								iconCls: 'x-button-icon',
+								handler: function()
+								{
+									var selections = this.selectionModel.getSelections();
+									if (!selections.length)
+									{
+										alert("You must select at least one message to delete.");
+										return;
+									}
+									var ids = [];
+									var qs = [];
+									for (var i = 0, l = selections.length; i < l; i++)
+									{
+										ids.push(selections[i].data.id);
+										qs.push("message_ids[]=" + selections[i].data.id);
+									}
+									new Ajax.Request
+									(
+										"<%= url_for(:controller=> :message, :action => :delete) %>",
+										{
+											method: "get",
+											parameters: qs.join('&'),
+											onSuccess: function(transport, json)
+											{
+												scopeThis.selectionModel.clearSelections();
+												scopeThis.store.load();
+											}
+										}
+									);
+								},
+								scope: this
+							})
+						}
+					}
+					this.buttons =
+					{
+						message:
+						{
+							reply: new Ext.Button(this.actions.message.reply),
+							del: new Ext.Button(this.actions.message.del)
+						}
+					}
+					this.combos =
+					{
+						whichbox: new Ext.form.ComboBox
+						({
+							store: new Ext.data.SimpleStore
+							({
+								fields: ['slug', 'name'],
+								data: [['received', "Inbox"], ['sent', "Sent"]]
+							}),
+							valueField: 'slug',
+							displayField: 'name',
+							value: this.messageType,
+							editable: false,
+							mode: 'local',
+							triggerAction: 'all',
+							selectOnFocus: true,
+							width: 75
+						})
+					}
+					this.combos.whichbox.on
+					(
+						'select',
+						function(combo, record, index)
+						{
+							this.messageType = record.data.slug;
+							this.store.proxy.conn.url = "/message/list?type=" + this.messageType;
+							this.store.load();
+						},
+						this
+					);
+
+					this.store = new Ext.data.Store
+					({
+						proxy: new Ext.data.HttpProxy({url: "/message/list?type=" + this.messageType}),
+						reader: new Ext.data.JsonReader
+						(
+							{
+								totalProperty: 'total',
+								root: 'messages',
+								id: "id"
+							},
+							Ext.data.Record.create
+							([
+								{name:'nickname'},
+								{name:'id'},
+								{name:'subject'},
+								{name:'status'},
+								{name:'created_at'},
+								{name:'type'}
+							])
+						),
+						remoteSort: true
+					});
+					this.store.on
+					(
+						'load',
+						function(store, records, options)
+						{
+							document.getElementById('sidebar-connections-messages-count').innerHTML = (store.reader.jsonData.unreadTotal > 0 ? '(' + store.reader.jsonData.unreadTotal + ')' : '');
+							this.columnModel.setColumnHeader(2, ((this.messageType == 'sent') ? 'To' : 'From'));
+
+							<% if params[:index] %>
+							   this.selectionModel.selectRow(<%= params[:index].to_i%>);
+							<% end %>
+
+						},
+						this
+					);
+
+					this.selectionModel = new Ext.grid.CheckboxSelectionModel();
+
+					this.renderers =
+					{
+						status: function(value, meta, record, row, column, store)
+						{
+							if (!<%= current_user.to_json %> && scopeThis.messageType == 'sent')
+							{
+								value = 'new';
+							}
+							switch(value)
+							{
+								case 'read':
+									return '<img id="message-icon-' + record.id + '" src="<%= image_path('icons/email_open_image.gif') %>" alt="Read" />';
+									break;
+								case 'new':
+									return '<img id="message-icon-' + record.id + '" src="<%= image_path('icons/email.gif') %>" alt="Unread" />';
+									break;
+							}
+						}
+					}
+
+					this.columnModel = new Ext.grid.ColumnModel
+					([
+						this.selectionModel,
+						{dataIndex: 'status', header: '<img src="<%= image_path('icons/email.gif') %>" alt="Status" />', sortable: true, renderer: this.renderers.status, width: 35},
+						{dataIndex: 'nickname', header: "From", sortable: true},
+						{dataIndex: 'subject', header: "Subject", sortable: true},
+						{dataIndex: 'created_at', header: "Date", sortable: true, renderer: Ext.util.Format.dateRenderer('m/d/Y')}
+					]);
+
+					this.gridPanel = new Ext.grid.GridPanel
+					({
+						el: 'message-list-grid-panel',
+						title: 'Received Messages',
+						height: "100%",
+						autoExpandColumn: 'subject',
+						viewConfig: { forceFit: true },
+						// loadMask: {msg: 'Retrieving Messages...'},
+						header: false,
+						ds: this.store,
+						cm: this.columnModel,
+						sm: this.selectionModel,
+						tbar:
+						[
+							this.combos.whichbox,
+							'-',
+							this.buttons.message.reply,
+							this.buttons.message.del
+						],
+						enableColumnHide: false
+					});
+
+					this.selectionModel.on
+					(
+						'selectionchange',
+						function(sm)
+						{
+							var count = sm.getCount();
+
+							this.actions.message.reply.setDisabled((count != 1 || sm.getSelected().data.nickname == 'Administrator' || this.messageType == 'sent'));
+							this.actions.message.del.setDisabled(!count);
+						
+							if (count == 1)
+							{
+								data = sm.getSelected().data;
+								new Ajax.Request
+								(
+									"/message/show/" + data.id +'?type=' + data.type + '&index=' + this.store.indexOf(sm.getSelected()),
+									{
+										onSuccess: function(xhr, json)
+										{
+											var viewer = document.getElementById('message-list-viewer');
+											viewer.innerHTML = xhr.responseText;
+											if (data.type == "received" && data.status == "new")
+											{
+												data.status = "read";
+												document.getElementById('message-icon-' + data.id).src = "<%= image_path('icons/email_open_image.gif') %>";
+												scopeThis.store.reader.jsonData.unreadTotal--;
+												document.getElementById('sidebar-connections-messages-count').innerHTML = (scopeThis.store.reader.jsonData.unreadTotal > 0 ? '(' + scopeThis.store.reader.jsonData.unreadTotal + ')' : '');
+											}
+										}
+									}
+								);
+
+							}
+						},
+						this
+					);
+
+					this.gridPanel.getStore().load();
+					this.gridPanel.render();
+				}
+				Ext.onReady(function()
+				{
+					var message_list_console_instance = new message_list_console('message-list-layout');
+				});
+
+				function showMessageDialog( text, selection, container){
+
+					Ext.MessageBox.show
+					({
+						title: "Reason",
+						msg: text,
+						width:300,
+						buttons: Ext.MessageBox.OKCANCEL,
+						multiline: true,
+						fn: function(obj, text)
+						{
+
+							if ('ok' == obj && text.length >= 50)
+							{
+								new Ajax.Request
+								(
+									"<%= url_for(:controller=> :message, :action => :report) %>",
+									{
+										method: "get",
+										parameters: {"concern[message_id]": selection.data.id, "concern[body]": text},
+										onSuccess: function(transport, json)
+										{
+											Ext.Msg.show({
+											   title:'Message Received',
+											   msg: 'Message sent successfully.',
+											   buttons: Ext.Msg.OK,
+											   fn: function(){ 
+											      container.selectionModel.clearSelections();
+											      container.store.load();   
+											   },
+											   animEl: this
+											});
+										}
+									}
+								);
+							}
+							else if( obj != 'cancel') 
+						    {
+								showMessageDialog( "Message Must be at least 50 characters.", selection);
+							}
+
+						},
+						animEl: this
+					});
+				}
+			//]]>
+		</script>
+
+	</div>
+
+</div>
+

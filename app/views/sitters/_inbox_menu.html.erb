@@ -1,0 +1,20 @@
+<%
+	current_link = '<img src="/images/pink_arrow.png" id="ras">'
+%>
+
+<table id="sub_menu" style="width: 390px;">
+<tr>
+	<td width="<%= ("inbox" == @current_action) ? '55' : '45' %>">
+		<%= ("inbox" == @current_action) ? current_link : '' %>
+		<%= link_to "Inbox", inbox_sitter_path(current_user), :class => ("inbox" == @current_action) ? "grey_link_selected" : "grey_link",  :onclick => "Element.hide('out');Element.show('in');Element.hide('comp');Element.show('inbox');Element.hide('composed_messages'); Element.hide('sent_messages'); return false;" %>
+	</td>
+	<td width="<%= ("compose" == @current_action) ? '150' : '130' %>">
+		<%= ("compose" == @current_action) ? current_link : '' %>
+		<%= link_to ("Compose Messages"), compose_sitter_path(current_user), :class => ("compose" == @current_action) ? "grey_link_selected" : "grey_link" %>
+	</td>
+	<td width="<%= ("connection_requests" == @current_action) ? '155' : '150' %>">
+		<%= ("connection_requests" == @current_action) ? current_link : '' %>
+		<%= link_to ("Connection Requests"), connection_requests_sitter_path(current_user), :class => ("connection_requests" == @current_action) ? "grey_link_selected" : "grey_link" %>
+	</td>
+</tr>
+</table>

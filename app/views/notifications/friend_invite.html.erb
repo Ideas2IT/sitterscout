@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+</head>
+<body>
+<%= image_tag("#{APP_URL}/images/email_signature.jpg", :alt=>"SitterScout.com") %>
+
+<font face="Arial, Helvetica, Geneva">
+<p>Dear <%= @receiver_name %>,</p>
+<p>I joined SitterScout and I want to share it with you because it’s making my
+life a little bit easier. I think you’ll find it useful too.</p>
+<p>SitterScout is an online community that helps parents find trusted
+babysitters by connecting with other parents. Joining is easy and FREE!</p>
+<p>Just create a quick profile and start connecting with friends and babysitters.
+When you’re ready to book a sitter, SitterScout does the work for you so
+you’ll never have to play phone tag with your babysitter again.</p>
+<p>Don’t have any sitters right now? No problem. This is where your network
+of friends comes in handy! SitterScout connects you with the babysitters
+that your friends use and trust, so you can <strong>find the right babysitter when
+you need one.</strong></p>
+
+<p>Join SitterScout.com today and start getting out!</p>
+Your friend, <br /><br /><%= @user.profile.full_name %>
+</font>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<% content_for :header do %>
+nothing
+<% end %>
+<%= render :partial => 'nav_menu', :locals => {:selected => "inbox"} %>
+
+	<div id="sub_menu_gradient">
+		<div class="sub_menu_gradient_center">
+			<%= render :partial => 'inbox_menu' %>
+		</div>
+	</div>
+<div id="content" style="height: 700px;">
+
+	<div class="colmask leftmenu">
+	<div class="colleft">
+		<div class="col1">
+		<!-- Column 1 start -->
+
+		<!-- Column 1 end -->
+		</div>
+		<div class="col2" style="font-size: .8em;">
+
+			<% if @unconfirmed_friends.length < 1 %>
+			You have no connection requests.
+			<% else %>
+
+		<strong style="font-size: 1em;">Awaiting Confirmation:</strong>
+		<div style="width: 465px;">
+			<% @unconfirmed_friends.each do |f| %>
+				<% unless f.friend.profile.nil? %>
+					<% if f.friend.profile.parent? %>
+						<div style="width: 98%; border: 1px solid #ADACAD; padding: 5px; margin-bottom: 5px; background-color: #FFFFFF">
+							<table>
+								<tr>
+									<td>
+									<%= link_to(image_tag(f.friend.avatar_photo_url, :class => "right", :border => 0),url_for(view_profile_parent_path(f.friend.id)))  %>
+									</td>
+
+									<td style="padding: 5px;" valign="top">
+									<strong style=" font-size: 1em; color: #333333;"><%= link_to(f.friend.profile.first_name + " " + f.friend.profile.last_name, url_for(view_profile_parent_path(f.friend.id))) %></strong><br/>
+									<%= f.friend.profile.city %>, <%= f.friend.profile.state.name %><br />
+
+
+
+									<div valign="top" style=" font-size: .8em; color: #333333; margin-top: 18px;">
+									<%= link_to "View Profile", url_for(view_profile_parent_path(f.friend.id)) %> |
+
+									<%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => f.friend.id), :class => "lbOn-405-390" %> |
+
+									<%= link_to "Accept Request", url_for(:controller => 'connections', :action => 'accept', :id => f.friend.id) %> |
+
+									<%= link_to "Decline Request", url_for(:controller => 'connections', :action => 'decline', :id => f.friend.id), :confirm => "Are you sure you want to remove this friend?" %>
+									</div>
+								</tr>
+							</table>
+						</div>
+					<% else %>
+						<div style="width: 98%; border: 1px solid #ADACAD; padding: 5px; margin-bottom: 5px; background-color: #FFFFFF">
+							<table>
+								<tr>
+								<td>
+								<%= link_to(image_tag(f.friend.avatar_photo_url, :class => "right", :border => 0),url_for(view_sitter_profile_parent_path(f.friend.id)))  %>
+								</td>
+
+								<td style="padding: 5px;" valign="top">
+									<strong style=" font-size: 1em; color: #333333;"><%= link_to(f.friend.profile.first_name + " " + f.friend.profile.last_name, url_for(view_sitter_profile_parent_path(f.friend.id))) %></strong><br/>
+								<%= f.friend.profile.city %>, <%= f.friend.profile.state.name %><br />
+
+
+
+									<div valign="top" style=" font-size: .8em; color: #333333; margin-top: 18px;">
+									<%= link_to "View Profile", url_for(view_sitter_profile_parent_path(f.friend.id)) %> |
+
+									<%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => f.friend.id), :class => "lbOn-405-390" %> |
+
+									<%= link_to "Accept Request", url_for(:controller => 'connections', :action => 'accept', :id => f.friend.id) %> |
+
+									<%= link_to "Decline Request", url_for(:controller => 'connections', :action => 'decline', :id => f.friend.id), :confirm => "Are you sure you want to remove this friend?" %>
+									</div>
+								</tr>
+							</table>
+						</div>
+					<% end %>
+				<% end %>
+			<% end %>
+
+
+		</div>
+			<% end %>
+		<!-- Column 2 end -->
+		</div>
+	</div>
+	</div>
+
+
+	<div style="position: absolute; margin-left: 750px;top: 275px;">
+			<%= render :partial => '/shared/share_a_sale' %>
+			</div>
+</div>
+		<%#= render :partial => 'shared/profile_percentage' %>

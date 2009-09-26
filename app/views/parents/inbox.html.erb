@@ -1,0 +1,13 @@
+<%= stylesheet_link_tag 'ext' %>
+<%= render :partial => 'nav_menu', :locals => {:selected => "inbox"} %>
+<div id="sub_menu_gradient">			
+	<div class="sub_menu_gradient_center">
+		<%= render :partial => 'inbox_menu'%>
+	</div>
+</div>
+<div id="content" style="height: 600px;">
+	<%= render :partial => '/shared/inbox' %>
+	<div style="position: absolute; margin-left: 800px;top: 250px;">
+			<%= render :partial => '/shared/share_a_sale' %>
+			</div>
+</div>

@@ -1,0 +1,17 @@
+<div style="float:left;" id="location_chooser">
+<table>
+	<tr>
+		<td><%= label(:search, :zip, "Search by:") %></td>
+		<td><%= text_field(:search, :zip) %> Or: </td>
+		<td><%= select_tag(:state_id, '<option>Select State</option>'+options_from_collection_for_select(State.find(:all), "id", "name", (selected_state rescue nil)), {:disabled => states.empty? } ) %><%= image_tag 'spinner.gif', :plugin => 'community_engine', :style => 'display:none;' %></td>
+	</tr> 
+	<tr>
+		<td></td>
+		<td></td>
+		<td><%= select_tag(:metro_area_id, '<option>Select City</option>'+options_from_collection_for_select(metro_areas, "id", "name", (selected_metro_area rescue nil)), {  } ) %>	<%= image_tag 'spinner.gif', :plugin => 'community_engine', :style => 'display:none;'%><%= submit_tag "Search" %></td>
+	</tr>
+<%= observe_field  "state_id", {:url => {:controller => 'users', :action => 'metro_area_update'}, :with => "state_id", :loading => "$$('div#location_chooser img')[0].show();", 500 => "alert('Sorry, there was an error.'); return false", :update => "location_chooser"} %>
+<%= observe_field  "metro_area_id", {:url => {:controller => 'users', :action => 'metro_area_update'}, :with => "metro_area_id", :loading => "$$('div#location_chooser img')[0].show();", 500 => "alert('Sorry, there was an error.'); return false", :update => "location_chooser"} %>
+</table>
+</div>
+

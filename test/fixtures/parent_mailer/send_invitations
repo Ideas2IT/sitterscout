@@ -1,0 +1,3 @@
+ParentMailer#send_invitations
+
+Find me in app/views/parent_mailer/send_invitations.erb

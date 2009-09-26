@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+</head>
+<body>
+<%= image_tag("#{APP_URL}/images/email_signature.jpg", :alt=>"SitterScout.com") %>
+
+<font face="Arial, Helvetica, Geneva">
+
+	<p>Dear <%= @sitter.profile.full_name %>,</p>
+
+	<p><%= @parent.profile.full_name %> has canceled the following SitterScout job: <%= @job.date_from.strftime("%B %d, %Y") %> from <%= @job.date_from.strftime("%I:%M %p") %> to <%= @job.date_to.strftime("%I:%M %p") %></p>
+
+	<p>The SitterScout Team</p>
+
+
+</font>
+</body>
+</html>

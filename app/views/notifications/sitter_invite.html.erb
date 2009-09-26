@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+</head>
+<body>
+<%= image_tag("#{APP_URL}/images/email_signature.jpg", :alt=>"SitterScout.com") %>
+
+<font face="Arial, Helvetica, Geneva">
+
+<p>Dear <%= @receiver_name %>,</p><br />
+<p>I joined SitterScout and I’m hoping you will too.</p><br />
+<p>SitterScout is an online community that helps babysitters like us get
+more jobs. How? Through networking.</p><br />
+<p>Families create networks of friends and trusted sitters. Sitters create
+networks of the families they sit for. Create your own and invite families
+to join. All of a sudden, what began as a network of 2 families can
+become 5, 10, 15 families. This means more earnings opportunities for you!</p><br />
+<p>Signing up is easy and FREE. Just create a profile and add the families
+you sit for. SitterScout will email or text you when a family in your
+network requests your services.<p/>
+<p>Don’t sit for any families in the area right now? No problem. You’ll
+come up in search results allowing new families to contact you.</p>
+<p>Join SitterScout today and network your way to more babysitting jobs!</p><br />
+Your friend, <br /><br />
+<%= @user.profile.full_name %>
+</font>
+</body>
+</html>

@@ -1,0 +1,11 @@
+<%
+	current_link = '<img src="/images/pink_arrow.png" id="ras">'
+%>
+<table id="sub_menu">
+	<tr>
+  <td width="<%= ("my_profile" == @current_action) ? '100' : '85' %>"><%= ("my_profile" == @current_action) ? current_link : '' %><%= link_to "Edit Profile", my_profile_parent_path(current_user),:class => ("my_profile" == @current_action) ? "grey_link_selected" : "grey_link" %></td>
+	<td width="<%= ("login_info" == @current_action) ? '140' : '130' %>"><%= ("login_info" == @current_action) ? current_link : '' %><%= link_to "Log in Information", login_info_parent_path(current_user),:class => ("login_info" == @current_action) ? "grey_link_selected" : "grey_link" %></td>
+	<td width="<%= ("my_photo" == @current_action) ? '95': '80' %>"><%= ("my_photo" == @current_action) ? current_link : '' %><%= link_to "Your Photo", my_photo_parent_path(current_user),:class => ("my_photo" == @current_action) ? "grey_link_selected" : "grey_link" %></td>
+	<td width="<%= ("my_children" == @current_action) ? '115' : '100' %>"><%= ("my_children" == @current_action) ? current_link : '' %><%= link_to "Your Children", my_children_parent_path(current_user),:class => ("my_children" == @current_action) ? "grey_link_selected" : "grey_link"	 %></td>
+	</tr>
+</table>

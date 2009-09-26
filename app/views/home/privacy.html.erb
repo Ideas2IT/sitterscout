@@ -1,0 +1,29 @@
+<% content_for :nav_bar do %>
+<div id='navbar' <%= current_page?(:controller => "home", :action => "index") ? "class='home'" : nil %><%= current_page?(:controller => 'home', :action => "how_it_works") ? "class='works'" : nil %><%= current_page?(:controller => "home", :action => "about_us") ? "class='about'" : nil %><%= current_page?(:controller => "home", :action => "faq") ? "class='faq'" : nil %>>
+
+
+	<ul id='globalnav'>
+		<li id="home" <%= current_page?(:controller => "parents", :action => "index") ? "class='selected'" : nil %>><%= link_to("home", home_page_path) %></li>
+		<li id="works"><%= link_to("works", how_it_works_path) %></li>
+		<li id="about"><%= link_to("about", about_us_path) %></li>
+		<li id="faq"><%= link_to("faq", :controller => 'home', :action => 'faq') %></li>
+	</ul>
+
+
+	<div id='searchbar' style='backg/round: #999; z-index: 900;'>
+		<% form_tag "/search", :name => 'search_form' do %>
+		<input id='searchfield' type="text" name="search" id="search" value="Search by name or zip code" size='40' onFocus="if(this.value=='Search by name or zip code'){this.value=''; this.style.color='#000';};" onBlur="if(this.value==''){this.value='Search by name or zip code'; this.style.color='#999'; }"/>
+		<div id='searchbutton' onclick="document.search_form.submit();"></div>
+		<% end %>
+
+	</div>		
+</div>
+<% end %>
+<div id='content' style='padding-top: 50px;font-size: .8em;'>
+<%= render :comatose=>'privacy' %>
+</div>
+	<% if logged_in? %>
+		<%#= render :partial => 'shared/profile_percentage' %>
+	<% else %>
+		<%#= render :partial => 'shared/returning_members' %>
+	<% end %>

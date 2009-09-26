@@ -1,0 +1,315 @@
+	
+<% 
+	ras_display = (@previous_action == 'create') ? 'display: none' : 'display: block'
+	ras_link_display = (@previous_action == 'create') ? 'display: none' : 'display: inline'
+	rss_display = (@previous_action == 'create') ? 'display: block' : 'display: none'
+	rss_link_display = (@previous_action == 'create') ? 'display: inline' : 'display: none' 
+	 
+%>
+<%= render :partial => 'nav_menu', :locals => {:selected => "schedule"} %>
+
+<div id="sub_menu_gradient">
+	<div class="sub_menu_gradient_center">
+		
+		<table id="sub_menu" style="width: 360px;">
+			<tr>
+			<td id="sitters_td" width="125">
+				<%= image_tag "pink_arrow.png", :id=>"ras", :style => ras_link_display %>
+				<%= link_to "Request a Sitter", "#", :id => "sitter_link", :class => 'grey_link_selected',  :onclick => "show_status()" %>
+			</td>
+			<td id="status_td" width="175">
+			<%= image_tag "pink_arrow.png", :id=>"rss", :style => "display: none" %>
+			<%= link_to ("Requested Sitter Status"), "#", :id => "status_link", :class => 'grey_link', :onclick => "show_sitters()" %>
+			</td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+<div id="content">
+	
+
+
+<!-- <div id="content"> -->
+	<br />
+			<% form_tag parent_jobs_path(current_user) do %>
+
+<div id="request" style="height: 600px;">
+	
+<div style="height: 500px;">
+		<div style="font-size: .8em; padding-left: 10px; ">
+			<strong style="color: #000;">Please select your date and time before selecting your sitters.</strong><br />
+			   &nbsp;&nbsp;*Sitters listed in <font style="color: #87A933;">green</font> have "typical availability" that matches your request.<br/>
+			   &nbsp;&nbsp;*Sitters who are <font style="color: #ACACAC;">"grayed out"</font> are already booked for another job at this time.
+</div>
+
+	<div style="float: left; padding: 10px; margin-top: 4px; width: 200px;">	
+
+		<strong style="font-size: .8em;font-weight: bold;">Select Date:</strong>
+						<div style="height: 300px;">
+							<div style="margin-bottom:8px;">
+								<%= calendar_date_select :parents, :scheduler, :embedded => true,:onchange => "check_availability();",:after_navigate => "check_availability();" %>
+							 	
+							</div>
+
+								<h2 style="font-size: .8em;">Select Time:</h2>
+							<div style="border: 1px solid #999; padding:2px; width:190px;">
+								<table>
+									<tr>
+										<td>
+											<font style=" font-size: .7em;">From: </font>
+										<br />
+										
+												<%= time_select :job, :date_from, {:twelve_hour => true, :minute_step => 15} %>
+											 	<%=	observe_field("job_date_from_4i", :frequency => 1, :function => "check_availability();") %>
+												<%=	observe_field("job_date_from_5i", :frequency => 1, :function => "check_availability();") %>
+												<%=	observe_field("job_date_from_6i", :frequency => 1, :function => "check_availability();") %>
+				
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<font style=" font-size: .7em; color: #999;">To:</font>
+										<br />
+													<%= time_select :job, :date_to, {:twelve_hour => true, :minute_step => 15} %>
+													<%=	observe_field("job_date_to_4i", :frequency => 1, :function => "check_availability();") %>
+													<%=	observe_field("job_date_to_5i", :frequency => 1, :function => "check_availability();") %>
+													<%=	observe_field("job_date_to_6i", :frequency => 1, :function => "check_availability();") %>
+													
+										</td>
+									</tr>
+								</table>
+							</div>
+				</div>
+	</div>
+	<div id="sitters" style="float: left; padding: 12px 20px;width: 210px;">	
+		<strong style=" font-size: .8em; font-weight: bold;">Select up to 10 Sitter(s):</strong>
+		<a href="#" class="tt" title="When one sitter accepts the job, the other sitters will be notified that the job is taken."  style="color: #F7F7F7;"><%= image_tag "QuestionMark_transp.gif", :alt=>"When one sitter accepts the job, the other sitters will be notified that the job is taken.", :border => 0 %>
+			</a>
+		<div style="height: 300px; width: 200px; padding: 0px 10px 0px 10px; overflow-y: scroll; border: 1px solid #999; background-color: #FFFFFF; font-size: .8em;">
+		<% unless @sitters.nil? %>
+		<% @sitters.each do |s| %>
+		 	<% unless s.profile.nil? %>
+					<% unless (@booked_sitters.include?(s.id.to_s)) %>
+				<%= check_box_tag "sitters[]", s.id, false, :id => "sitter_checkbox_#{s.id}", :onclick=> "check_selected_sitters(this);" %>&nbsp;<span id="sitter_<%= s.id %>" style="color: #999;"><%= s.profile.first_name + " " + s.profile.last_name rescue nil %></font><br />
+					<% else %>
+				<%= check_box_tag "sitters[]", s.id, false, :id => "sitter_checkbox_#{s.id}", :onclick=> "check_selected_sitters(this);" %><span id="sitter_<%= s.id %>" style="color: #999;"><%= s.profile.first_name + " " + s.profile.last_name rescue nil %></font><br />
+					<small>This sitter is booked at this time</small><br />
+					<% end %>
+			<% end %>
+		<% end %>
+		<% end %>
+		<input type="hidden" id="boxes_checked" value="0" />
+		</div>
+		
+	</div>
+	<div id="special_message" style="float: left; padding: 12px 20px; width: 200px; ">
+		
+			<strong style=" font-size: .8em; font-weight: bold;">Special Message:</strong><font style="font-size: .6em; font-weight: bold">(optional)</font><br/>
+			
+		<%= text_area :message, :message, :style => "width: 200px; height: 300px; border: 1px solid #999;  font-size: 9pt;" %>
+		
+	</div>
+
+
+</div>
+<div style="text-align: center;">
+	<%= image_submit_tag "/images/parent_home/SubmitSitterReq_bttn.gif" %>	
+</div>
+<div style="position: absolute; margin-left: 750px;top: 275px;">
+		<%= render :partial => '/shared/share_a_sale' %>
+		</div>
+</div>
+			
+			<% end %>
+			<div style="<%= rss_display %>; padding: 10px; height: 450px; font-size: .8em;" id="request_status">
+				<% if @j.nil? || (@j.length < 1) %>
+				<p>You have no active Sitter Requests</p>
+			<% else %>
+			<fieldset>		
+				<table width="100%">
+					<tr>
+						<td>
+						<h4>Date and Time&nbsp;&nbsp;&nbsp;&nbsp;</h4>
+						</td>
+						<td>
+							<h4>Sitter's Name&nbsp;&nbsp;&nbsp;&nbsp;</h4>
+						</td>
+						<td>
+							<h4>Status&nbsp;&nbsp;&nbsp;&nbsp;</h4>
+						</td>
+						<td></td>
+					</tr>
+					<% x = 0; %>
+					<% for job in @j %>
+					
+					<tr>
+						<td style="padding: 3px;"><%= job.date_from.strftime("%B %d, %Y")	 %><br />
+							<%= job.date_from.strftime("%I:%M %p") + "-" + job.date_to.strftime("%I:%M %p")	 %>
+							</td>
+						<td>
+						<% for r in job.requests %>
+							<% r.sitters.each do |s| %> 
+								<%= s.profile.first_name %>&nbsp;<%= s.profile.last_name%><br />
+							<% end %>
+						<% end %>
+						</td>
+						<td>
+							<div id="status_<%= job.id %>">
+						<% if job.status == "cancelled" %>
+						Cancelled
+						<% else %>
+							<% for r in job.requests %>
+								<% r.sitters.each do |s| %> 
+									<%= RequestSitter.find_by_sitter_id_and_request_id(s, r).state.capitalize unless RequestSitter.find_by_sitter_id_and_request_id(s, r).state == "filled" %><br />
+								<% end %>
+							<% end %>
+						<% end %>	
+							</div>
+						</td>
+						<td width=25%>
+							<div id="job_<%= job.id %>">
+							<% unless job.status == "cancelled" %>
+						<% form_remote_tag :url => cancel_job_parent_path(job) do  %>
+						&nbsp; <a href="#" title="You may use this button to cancel a request 24 hours or more before the sitter is scheduled. Sitters that have accepted or have yet to respond will be notified that the job has been cancelled. If you want to cancel less than 24 hours prior, you must contact the sitter directly." class="tt"  style="color: #F7F7F7;"><img src="/images/QuestionMark_transp.gif" border=0></a>
+						<%= image_submit_tag "/images/parent_home/CancelReq_bttn.gif", :confirm => 'Are you sure you want to cancel this request?' %>
+						
+						<% end %>
+						<% end %>
+						</div>
+						</td>
+					</tr>
+					<%
+						if x < @j.size - 1
+							%>
+					<tr><td colspan="4"><hr /></td></tr>
+					<%	
+					end	
+						x=x+1;
+					%>
+					<% end %>
+
+				</table>
+			</fieldset>
+					<% end %>
+					<div style="position: absolute; margin-left: 750px;top: 275px;">
+							<%= render :partial => '/shared/share_a_sale' %>
+							</div>
+			</div>
+		
+
+</div>			
+
+	</div>
+	
+	
+	<script type="text/javascript">
+	
+		Event.observe(window, 'load', function() { disable_checkboxes() });
+		
+		function check_selected_sitters(current_box)
+		{
+		
+			var boxes_checked = $('boxes_checked').value
+			
+			if(current_box.checked == true)
+			{
+		
+				if(boxes_checked == 10)
+				{
+					alert("You may only select up to 10 at a time.");
+					current_box.checked = false;
+				}
+				else
+				{
+					$('boxes_checked').value = Number(boxes_checked) + 1;
+				}
+			}
+			else
+			{
+				$('boxes_checked').value = Number(boxes_checked) - 1;
+			}
+		}
+		
+		
+		
+		function check_availability()
+		{
+			
+			<% @sitters.each do |s| %>
+			$('sitter_checkbox_<%= s.id %>').disabled=true;
+			<% end %>
+			var date = $('parents_scheduler').value;
+			
+			var date_from_hour   = $('job_date_from_4i').value;
+			var date_from_min    = $('job_date_from_5i').value
+			var date_from_period = $('job_date_from_6i').options[$('job_date_from_6i').selectedIndex].text;
+			
+			var date_to_hour     = $('job_date_to_4i').value;
+			var date_to_min      = $('job_date_to_5i').value
+			var date_to_period   = $('job_date_to_6i').options[$('job_date_to_6i').selectedIndex].text;
+			
+			var date_from_date = new Date(date + " " + date_from_hour + ":" + date_from_min + " " + date_from_period);
+			var date_to_date   = new Date(date + " " + date_to_hour + ":" + date_to_min + " " + date_to_period);
+			
+			if(date_to_date > date_from_date && date.length > 0)
+			{
+				var params_hash = new Hash();
+				
+				params_hash.set('date', date);
+				
+				params_hash.set('date_from_hour', date_from_hour);
+				params_hash.set('date_from_min', date_from_min);
+				params_hash.set('date_from_period', date_from_period);
+				
+				params_hash.set('date_to_hour', date_to_hour);
+				params_hash.set('date_to_min', date_to_min);
+				params_hash.set('date_to_period', date_to_period);
+								
+				new Ajax.Request('/parents/check_availability', {
+				  method: 'post',
+				  parameters: params_hash.toQueryString() 
+				});	
+			}			
+		}
+		
+		function change_text_color(id, color)
+		{
+			$(id).style.color = color;
+		}
+		
+
+		function show_status()
+		{
+			Element.hide('rss');
+			Element.show('ras');
+			Element.show('request'); 
+			Element.hide('request_status'); 
+			$('sitter_link').className = "grey_link_selected";
+			$('status_link').className = "grey_link";	
+			$('sitters_td').width = "125";
+
+		}
+
+
+		function show_sitters()
+		{
+			Element.hide('ras');
+			Element.show('rss');
+			Element.show('request_status'); 
+			Element.hide('request'); 
+			$('sitter_link').className = "grey_link";
+			$('status_link').className = "grey_link_selected";	
+			$('sitters_td').width = "110";
+		}
+
+		function disable_checkboxes()
+		{
+			<% @sitters.each do |s| %>
+			$('sitter_checkbox_<%= s.id %>').disabled=true;
+			<% end %>
+		}
+
+		
+	</script>
+	

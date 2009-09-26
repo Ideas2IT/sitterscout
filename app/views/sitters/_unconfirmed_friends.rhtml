@@ -1,0 +1,24 @@
+<table>
+	<% @unconfirmed_friends.each do |f| %>
+		<% if f.friend.is_a?Parent  %>
+	<tr>
+	  <td>
+	  <%= image_tag(f.friend.avatar_photo_url, :class => "right" ) %>
+	  </td>
+
+	  <td valign="top">
+	    <strong><%= f.friend.profile.first_name %>&nbsp;<%= f.friend.profile.last_name %></strong><br/>
+	  <%= f.friend.profile.city %>, <%= f.friend.profile.state.name %><br />
+
+	</tr>
+	<tr>
+	  <td></td>
+	  <td valign="top">
+	    <%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => f.friend.id), :class => "submodal-600-400" %>
+
+	    <%= link_to "Remove Parent" %>
+	  </td>
+	</tr>
+		<% end %>
+	<% end %>
+</table>

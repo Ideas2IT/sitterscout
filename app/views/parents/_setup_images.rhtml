@@ -1,0 +1,32 @@
+<div id="setup_menu">
+<ul>
+  <li>
+    <% if step == 'signup' %>
+    <%= image_tag '/images/wizard_progress_bar/LogInInfo_h.gif' %>
+    <% else %>
+    <%= image_tag '/images/wizard_progress_bar/LogInInfo_n.gif' %>
+    <% end %>
+  </li>
+  <li>
+    <% if step == 'profile' %>
+      <%= image_tag '/images/wizard_progress_bar/YourProfile_h.gif' %>
+    <% else %>
+    <%= image_tag '/images/wizard_progress_bar/YourProfile_n.gif' %>
+    <% end %>
+  </li>
+  <li>
+     <% if step == 'friends' %>
+      <%= image_tag '/images/wizard_progress_bar/YourFriends_h.gif' %>
+     <% else %>
+      <%= image_tag '/images/wizard_progress_bar/YourFriends_n.gif' %>
+     <% end %>
+  </li>
+  <li>
+     <% if step == 'sitters' %>
+      <%= image_tag '/images/wizard_progress_bar/YourSitters_h.gif' %>
+     <% else %>
+      <%= image_tag '/images/wizard_progress_bar/YourSitters_n.gif' %>
+     <% end %>
+  </li>
+</ul>
+</div>

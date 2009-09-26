@@ -1,0 +1,32 @@
+<%# The index parameter could either be a page param or a local passed to this partial %>
+<% index ||= params[:index] %>
+<% index = 0 if index.nil? %>
+
+<% input_name_prefix = "email[contact_#{index}]" %>
+<% input_id_prefix = "email_#{index}"%>
+
+<div id="email-<%= index %>-container" class="email-container">
+	<label for="<%= input_id_prefix  %>_number">Number:</label>
+	<input type="text" name="<%= input_name_prefix %>[number]" id="<%= input_id_prefix %>_number" size="30" <%= "value=\"#{form.number}\"" if form %> />
+
+	<label for="<%= input_id_prefix %>_number_type">Type:</label>
+	<input type="text" name="<%= input_name_prefix %>[number_type]" id="<%= input_id_prefix %>_number_type" size="10" <%= "value=\"#{form.number_type}\"" if form %> />
+	
+	
+	
+	<%= link_to_function(
+				image_tag('delete.png', :title => "Remove email"),
+				"Application.Emails.remove_email(#{index})",
+				:id => "email-remove-button-#{index}") %>
+		
+	<%= link_to_remote(
+				image_tag('add.png', :title => "Add another email"),
+				:url => new_email_path(:index => (index.to_i + 1)),
+				:html => {:id => "email-button-#{index}"}) %>
+</div>
+
+<% if index.to_i > 0 -%>
+	<script type="text/javascript">
+		Application.Emails.hide_add_button(<%= index.to_i - 1 %>);
+	</script>
+<% end -%>

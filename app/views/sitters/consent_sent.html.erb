@@ -1,0 +1,4 @@
+<div style="margin-left: 50px;"><h2>Thank you!</h2>
+
+<p>We will email <%= Sitter.find_by_id(params[:id]).consenting_parent.name %> at <%= Sitter.find_by_id(params[:id]).consenting_parent.email %>. Once we have your parent's consent, we will send you an email. At that point you can come back to sitterscout.com, log in and complete the signup process.</p>
+</div>

@@ -1,0 +1,2 @@
+page.call "Application.ContactNumbers.hide_add_button", params[:index].to_i - 1
+page.insert_html :bottom, "contact-numbers-container", :partial => "form"

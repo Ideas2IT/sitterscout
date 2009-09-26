@@ -1,0 +1,46 @@
+community_name: "Sitter Scout"
+community_tagline: "Parents and Sitters connect."
+community_description:  "Where parents and sitters connect!"
+support_email:  "notifications@sitterscout.com"
+meta_description: 'Where parents and sitters connect!'
+meta_keywords: 'sitting, parens, connect'
+sections_enabled: ['photos', 'posts', 'clippings', 'contests', 'categories', 'events']
+show_advertising: false
+closed_beta_mode: false
+
+# The label you use for 'staff' writers (featured writer, staff, pro, etc.)
+featured_writer_label: 'Featured Writer'
+
+photo:
+  missing_thumb: '/images/DefaultPhoto_80x80.gif'
+  missing_thumb_53: '/images/DefaultPhoto_53x53.gif'
+  missing_medium: "/plugin_assets/community_engine/images/icon_missing_medium.gif"
+  attachment_fu_options:
+    resize_to: "465>"
+    min_size: 1    
+    #size in megabytes
+    max_size: 3
+    thumbnails: {thumb: "100x100!", medium: "290x320!", large: "664>"}
+    #options - 's3', 'file_system', 'db_system' - see attachment_fu for details
+    storage: 'file_system'
+    content_type: ['image/jpg', 'image/jpeg', 'image/pjpeg', 'image/gif', 'image/png', 'image/x-png']
+      
+feature:
+  use_thumbs: true
+  dimensions: [150, 635]
+  attachment_fu_options:
+    resize_to: "465>"
+    min_size: 1    
+    max_size: 1
+    thumbnails: {thumb: '45x45!', large: '635x150!'}    
+    storage: 'file_system'
+    content_type: ['image/jpg', 'image/jpeg', 'image/pjpeg', 'image/gif', 'image/png', 'image/x-png']
+        
+clipping:
+  attachment_fu_options:
+    resize_to: "465>"
+    min_size: 1    
+    max_size: 3
+    thumbnails: {thumb: "100x100!", medium_square: "200x200!", medium: "200>"}
+    storage: 'file_system'
+    content_type: ['image/jpg', 'image/jpeg', 'image/pjpeg', 'image/gif', 'image/png', 'image/x-png']

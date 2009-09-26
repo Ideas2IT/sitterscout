@@ -1,0 +1,41 @@
+<% unless search.nil? %>
+<div class="horiz_li" style="border: 1px #AFAFAF solid; background-color: #F7F7F7; padding: 5px; margin-bottom: 5px; width: 100%; height: 150px">
+	<div style="float: left;">
+			<%= image_tag(search.avatar_photo_url(:thumb), :class => "right" ) %>			
+		</div>
+		<div style="float:left;">
+			
+			<table>
+				<tr>
+					<td>
+						Name:
+					</td>
+					<td>
+						<strong><%= search.profile.first_name %>&nbsp;<%= search.profile.last_name.to_s.first + "." %></strong>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Distance:
+					</td>
+					<td>
+						<%= search.profile.distance_from(params[:search][:zip]).to_i rescue 0 %> miles
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						Profile Tags:	
+					</td>
+					<td><%= search.profile.tags.collect(&:name).join(", ") %></td>
+				</tr>
+				
+			</table>
+		</div>
+		<div style="float:right;">
+          > <%= link_to_remote "Add to Your Sitters", :url => {:controller => 'parents', :action => 'add_sitter', :id => search.id}, :style => 'padding-bottom: 5px; padding-right: 10px; border-bottom: 1px #AFAFAF solid;' %><br />
+          > <%= link_to "View Connections", parent_connection_parent_path(search.id), :class => "submodal-600-400", :style => 'padding-bottom: 5px; padding-right: 10px; border-bottom: 1px #AFAFAF solid;' %>
+        </div>
+</div>
+
+<% end %>

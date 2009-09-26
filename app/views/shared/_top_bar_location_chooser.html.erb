@@ -1,0 +1,16 @@
+<div id="top_bar_location_chooser">
+<table style="width: 160px">
+	<tr>
+		<td width="100"><%= label(:topsearch, :zip, "Search for:  ") %></td>
+		<td width="100">&nbsp;Search In:</td>
+	</tr>
+	<tr>
+		<td>
+			<%= radio_button_tag "topsearch[sitter]", "sitter", true %> Sitter <br />
+			<%= radio_button_tag "topsearch[sitter]", "parent" %> Parent
+		</td>
+		<td align="center"><%= text_field(:topsearch, :zip, :size => 5, :value => 'Zip:', :onclick => "if(this.value=='Zip:')this.value=''") %> </td>
+	</tr>
+</table>
+</div>
+

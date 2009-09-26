@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <meta name="description" content="SitterScout connects parents and sitters through trusted referrals. Parents can book sitters with the click of a mouse. Sitters get more jobs via text or e-mail."/>
+  <meta name="keywords" content="<%= strip_tags(render(:comatose=>'keywords')) %>" />
+ <title><%= "SitterScout.com - Join the free Beta today and get out tonight!" %></title>
+  	<%= stylesheet_link_tag 'application' %>
+  	<%= stylesheet_link_tag 'ext' %>
+  	<%= javascript_include_tag :defaults %>
+	<%= javascript_include_tag 'quicksilver' %>
+	<%= javascript_include_tag 'select_autocompleter' %>
+
+
+	<%= stylesheet_link_tag 'lightbox' %>
+  	<%= javascript_include_tag 'lightbox' %>
+	<%= calendar_date_select_includes "green" %>
+</head>
+<body>
+		<%= javascript_include_tag 'wz_tooltip' %>
+	<%= javascript_include_tag 'tip_balloon' %>
+	<div id="parent_header">
+		<%= render :partial => 'layouts/top_bar' %>
+
+	</div>
+
+			<div id="flash_notice">
+		<% flash.each do |key, msg| %>
+			<%= content_tag('div', flash[:error], :class => 'flash error', :id => "notice_#{key}") if flash[:error] %>
+			<%= content_tag('div', flash[:notice], :class => 'flash notice', :id => "notice_#{key}") if flash[:notice] %>	
+		    
+		     <script type="text/javascript">
+		        setTimeout("new Effect.Fade('notice_<%= key %>');", 15000);
+		    </script>
+		<% end %>
+		</div>
+	
+		<div style="width: 1000px; float: left; margin-bottom: 25px;">
+		 <%= yield  %>
+		
+		</div>
+
+
+
+
+		<div id="footer">2008 Sitterscout, Inc. All Rights Reserved | Email: info@sitterscout.com | <%= link_to "Your Privacy", "/privacy" %> | <%= link_to "Terms of Use", "/tou", :target => 'blank' %></div>
+		</body>
+		</html>

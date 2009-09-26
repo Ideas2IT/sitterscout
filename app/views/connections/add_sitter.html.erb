@@ -1,0 +1,26 @@
+<% if logged_in? %>
+<div style= "width: 300px;height:270px; font-size: .7em; background-color: #AAE880;">
+<div style="padding-left: 25px; padding-top: 10px; width: 250px;text-align: justify; text-justify: newspaper;">
+	We will send an email to <%= User.find(params[:id]).profile.sitter_display_name %> to confirm your connection request.
+<br /><br />
+<strong>Custom Message:</strong> (Optional)</div>
+	<% form_remote_tag :url => {:controller => 'connections', :action => 'add_sitter'} do %>
+	<%= text_area :message, :description, :style=>"width: 250px; height: 75px; margin-left: 20px; margin-top: 7px;", :onkeypress => 'check_length(this, 250)' %>
+	<div style="margin: 5px 0; font-size: 1em; padding: 2px; margin-left: 20px;width: 250px; text-align: justify; text-justify: newspaper;">
+		SitterScout cares about your safety. We
+		strongly recommend that you only add people 
+		to your community that you know and trust in 
+		the offline world.
+	</div>
+	<div style="text-align: center; margin-top: 15px;">
+	<%= image_submit_tag '/images/add_sitter.gif', :onclick => "Application.show_email_sent();"%><br />
+	<!-- <a href="#" class="lbAction" rel="deactivate">Close Window</a> -->
+<a href="#" class="lbAction" rel="deactivate">Close Window</a>
+	<% end %>
+</div>
+</div>
+
+<% else %>
+Please signup or login.
+<% end %>
+

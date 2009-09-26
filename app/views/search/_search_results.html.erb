@@ -1,0 +1,87 @@
+
+	<% unless search.nil? %>
+		<div class="horiz_li" style="font-size: .8em;border: 1px #AFAFAF solid; background-color: #F7F7F7; padding: 5px; margin-bottom: 5px; height: 150px; width: <%= logged_in? ? "640px" : "605px" %>" >
+			<div style="float: left; padding: 5px;">
+				<%= image_tag(search.avatar_photo_url, :class => "right" ) %>			
+			</div>
+			<div style="float:left;">
+				<table>
+					<tr>
+						<td>
+							<p>
+								Name:
+							</p>
+						</td>
+						<td>
+							<p>
+								<strong><%= search.profile.first_name %>&nbsp;<%= search.profile.sitter? ? search.profile.last_name.to_s.first + "." : search.profile.last_name %></strong>
+							</p>
+						</td>
+					</tr>
+					<% unless @zipcode.nil? || @zipcode.blank? %>
+					<tr>
+						<td>
+							<p>
+								Distance:
+							</p>
+						</td>
+						<td>	
+							<p>
+								<%= search.profile.distance_from(@zipcode).to_i %> miles
+							</p>
+						</td>
+					</tr>
+					<% end %>
+					<tr>
+						<td>
+							<p style="padding-right: 12px;">
+								Profile Tags:	
+							</p>
+						</td>
+						<td>
+							<p style="width: 290px;line-height: 15px;">
+								<%= truncate(search.profile.tag_list.to_s, 46, " ") %>
+								<% if(search.profile.tag_list.to_s.size > 46) %>
+								<%= link_to "more...", "#", :title => search.profile.tag_list.to_s %></div>
+											<% end %>
+							</p>
+						</td>
+					</tr>
+						<tr>
+							<td>
+						
+							</td>
+							<td>
+								<p style="width: 290px;line-height: 15px;">
+									<% unless search.description.blank? %>	
+										<% if search.description.to_s.size < 130 %>
+										<%= search.description + " " + link_to("more...", "#", :title=> search.description) %>
+										<% else %>
+											<%= truncate(search.description, 130, " ") + link_to("more...", "#", :title=>search.description) %>
+										<% end %>
+								<% end %>
+								</p>
+							</td>
+						</tr>
+				</table>			
+			</div>
+			<div style="float:right;">
+				<p style="font-size: .9em;line-height: 15px;">
+				<% if logged_in? %>
+					<% if search.profile.sitter %>
+	    		> <%= link_to "Add to Your Sitters", url_for(:controller => 'connections', :action => 'add_friend', :id => search.id),:class => "lbOn-300-260", :style => 'padding-right: 10px; margin-bottom: 5px; border-bottom: 1px #AFAFAF solid;' %>
+					<% else %>
+	  			> <%= link_to "Add to Your Friends  ", url_for(:controller => 'connections', :action => 'add_friend', :id => search.id),:class => "lbOn-300-260", :style => 'padding-right: 10px; border-bottom: 1px #AFAFAF solid;' %><% end %>
+		
+					<br />
+						<% if current_user.connected?(search) %>
+	    		> <%= link_to "View Connections    ", url_for(:controller => 'connections', :action => 'show', :id => search.id), :class => "lbOn-405-390", :style => 'padding-right: 10px; border-bottom: 1px #AFAFAF solid;' %>
+		<% end %>
+					<% else %>
+					<%= link_to image_tag("JoinNow_bttn.gif", :border => 0), new_parent_path %>
+					<% end %>
+
+				</p>
+	  		</div>
+		</div>
+	<% end %>

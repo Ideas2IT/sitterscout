@@ -1,0 +1,22 @@
+development:
+  type: pop
+  server: 'pop.gmail.com'
+  username: 'notifications@sitterscout.com'
+  password: 'ChiefScout'
+  port: 995
+  ssl: true
+  
+test:
+  type: pop
+  server: localhost
+  username: username
+  password: password
+  
+production:
+    type: pop
+    server: 'pop.gmail.com'
+    username: 'notifications@sitterscout.com'
+    password: 'ChiefScout'
+    port: 995
+    authentication: plain
+

@@ -1,0 +1,13 @@
+<p>
+  <b>Parent:</b>
+  <%=h @friend.parent_id %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @friend.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_friend_path(@friend) %> |
+<%= link_to 'Back', friends_path %>

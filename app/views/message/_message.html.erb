@@ -1,0 +1,28 @@
+<div class="message--show-container" style="padding: 1em;">
+	<div class="message--show-header-container clearfix">
+		<div class="message--show-photo-container" style="float: right; margin-left: 1em;">
+			<% if @message.sender.id == @current_user.id %>
+				<%= link_to(image_tag(@message.recipient.avatar_photo_url), "#") %>
+			<% else %>
+				<%= link_to(image_tag(@message.sender.avatar_photo_url), "#") %>
+			<% end %>
+		</div>
+
+		<div class="message--show-info-container" style="float: left;">
+			<ul>
+				<% if message.sender.id == current_user.id %>
+					<li style=" font-size: 1.1em;"><%=  @message.recipient.profile.full_name %></li>
+				<% else %>
+					<li style="font-size: 1.1em;"><%= @message.sender.profile.full_name %></li>
+				<% end %>
+				<li><%=  @message.created_at.strftime('%m/%d/%Y at %I:%M:%S %p') %></li>
+				<li style="font-weight: bold;"><%=  @message.subject %></li>
+			</ul>
+		</div>
+	</div>
+	<hr style="margin-top: 65px; width: 100%;">
+	<div style="position: relative; top: 5px;">
+		
+		<%= simple_format(h(@message.body)) %>
+	</div>
+</div>

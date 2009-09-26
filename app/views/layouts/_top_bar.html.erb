@@ -1,0 +1,92 @@
+<div class="logo">
+	<%= link_to_unless(@current_action == 'index' && (@current_controller == 'parents' || @current_controller == 'sitters'),  image_tag('global/logo.png', :border => 0), home_page_path) %>
+</div>
+
+<div class="top_bar">
+		<% form_tag url_for(:controller => 'search', :action => 'index') do %>
+	<div id="nav_links">
+	<ul id="nav_menu" <% unless logged_in? %> style="padding-left: 90px;" <% end %>>
+<li <%= current_page?(:controller => "parents", :action => "index") ? "class='selected'" : nil %>><%= link_to("Home", home_page_path) %></li>
+<li <%= current_page?(:controller => "home", :action => "how_it_works") ? "class='selected'" : nil %>><%= link_to("How It Works", how_it_works_path) %></li>
+
+<li <%= current_page?(:controller => "home", :action => "about_us") ? "class='selected'" : nil %>><%= link_to("About Us", about_us_path) %></li>
+
+<% if logged_in? %>
+<li><%= link_to "Invite Friends", (current_user.is_a?Parent) ?  invite_friends_parent_path(current_user) : invite_friends_sitter_path(current_user) %> </li>
+<% end %>
+<li <%= current_page?(:controller => "home", :action => "faq") ? "class='selected'" : nil %>><%= link_to("FAQs", :controller => 'home', :action => 'faq') %></li>
+<!-- <li><%#= link_to("Contact Us", contact_us_path) %></li> -->
+	</ul>
+	</div>
+	<% unless @current_action == 'your_families' || @current_action == 'welcome' || @current_action == 'your_friends' || @current_action == 'invite' || @current_action == 'your_sitters' %>
+	<div id="skinnysearch">
+		
+		<ul>
+			<li>
+			<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong>	
+			</li>
+			<li>
+			<%= text_field_tag("topsearch[search_string2]", "", :value => "Friend & Sitter Finder", :onFocus => "Element.show('fatsearch');Element.hide('skinnysearch'); $('nav_links').style.paddingRight = '37px'") %>	
+			</li>
+<li>
+				<%= image_submit_tag("global/Search_bttn_pink.gif") %><%#= link_to "More", "#", :onclick => "Element.show('top_bar_search');" %></li>
+				<%= link_to "Search Tips", "#", :onmouseover =>"TagToTip('tip', ABOVE, true, BALLOON, true)", :onmouseout => "UnTip()", :style => "position: absolute; top: 50px; left: 320px; width: 75px; font-size: 8pt;" %>
+
+		</ul>
+		</div>
+		<div id="tip" style="display: none;width:250px;">
+			<p style="width: 250px;">To find your friends and sitters on SitterScout, first choose whether you are searching for a Parent or a Sitter.  Then, there are three ways to search: 
+				<ol>
+					<li>
+						<h2>1. By name</h2> - You can search by first name, last name (or both).
+					</li>
+					<li>
+						<h2>2. By profile tag</h2><p style="width: 250px;"> - Profiles tags are any identifier that a user has chosen to associate with their profile, e.g. the name of a neighborhood, church or school.  SitterScout will find exact matches for the profile tags you enter.</p>
+					</li>
+					<li>
+					<h2>	3. By Zip Code</h2><p style="width: 250px;"> - Enter a zip code and SitterScout will find all users within a 15 mile radius</p>
+					</li>
+				</ol>
+			</p>
+			</div>
+		
+		<style type="text/css">
+		.closebutton {
+			background-color: transparent;
+			background-repeat: no-repeat;
+			background-attachment: scroll;
+			background-position: center center;
+			display: block;
+			height: 11px;
+			position: absolute;
+			right: 7px;
+			top: 4px;
+			width: 11px;
+		}
+		</style>
+		
+	<div id="fatsearch" style="display: none; border: 1px solid #C4B2DE; position: absolute; left: 115px; top: 25px; background-color: #E8E1F6; z-index: 100">	
+		<table style="margin-top: 5px; width: 250px">
+			<tr>
+				<td>
+				<%= text_field_tag("topsearch[search_string]", "", :value => 'Friend & Sitter Finder:', :onclick => "if(this.value=='Friend & Sitter Finder:')this.value=''") %>	<br />
+				<%= render :partial => 'shared/top_bar_location_chooser', :locals => {:states => State.find(:all), :metro_areas => MetroArea.find(:all, :order => 'name ASC') } %>
+				</td>
+				<td width="140">
+				<%= image_submit_tag("global/Search_bttn_pink.gif") %><br />
+				<%= link_to "Search Tips", "#", :onmouseover =>"TagToTip('tip', ABOVE, true, BALLOON, true)", :onmouseout => "UnTip()", :style => "width: 75px; font-size: 8pt;" %>&nbsp;
+				<br /><br /><br /><br />
+				</td>
+			</tr>
+		 </table>    
+
+					<%= link_to(image_tag('close.gif', :border => 0), "#", :onclick => "Element.hide('fatsearch');Element.show('skinnysearch'); $('nav_links').style.paddingRight = '0px'", :class => 'closebutton') %>
+					
+	</div>
+
+
+<% end %>
+	<% end %>
+
+</div>
+	

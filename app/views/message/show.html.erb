@@ -1,0 +1,22 @@
+<div id="message">
+	<div id="message_header" class="clearfix">
+		<div id="sender_info" style="float:left;" class="clearfix">
+			<ul>
+				<li><strong>From:</strong> <% if !message.sender.nil? %><%= message.sender.nickname %><% end %></li>
+				<li><strong>Date:</strong> <%=  message.created_at.strftime('%m/%d/%Y') %></li>
+				<li><strong>Subject:</strong> <%=  message.subject %></li>
+			</ul>
+		</div>
+		<% if !message.user.nil? %>
+			<div style="float:right;" class="clearfix">
+				<%= image_tag message.sender.default_thumb_image, :size => "50x50" %>
+			</div>
+		<% end %>
+	</div>
+	<div id="message_body">
+
+		<%= simple_format(h( message.body)) %>
+		
+		<p>In response to <%= link_to "this profile", profile_url(:nickname =>  message.concerned_about.nickname) %></p>
+	</div>
+</div>

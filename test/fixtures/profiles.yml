@@ -1,0 +1,847 @@
+--- 
+profile_00028: 
+  city: Sammamish
+  address1: 25210 NE 3rd Way
+  updated_at: 2008-09-22 17:24:46 +00:00
+  evening_phone: ""
+  dob: 
+  address2: ""
+  visible_to_everyone: false
+  cell_carrier_id: 
+  zipcode: 98074
+  mondays: 
+  datetime_phone: ""
+  saturdays: 
+  lng: -122.002
+  tuesdays: 
+  num_children: 
+  cell_phone: ""
+  wednesdays: 
+  thursdays: 
+  sundays: 
+  not_searchable: false
+  first_name: Ivy
+  state_id: 48
+  parent: 
+  lat: 47.6107
+  last_name: Shannon
+  full_name: Ivy Shannon
+  fridays: 
+  address: 25210 NE 3rd Way, Sammamish, WA
+  text_message: false
+  email: true
+  created_at: 2008-09-18 04:16:17 +00:00
+profile_00006: 
+  city: Sammamish
+  address1: 208 259th AVE NE
+  updated_at: 2008-09-22 16:17:33 +00:00
+  evening_phone: 425-836-8880
+  dob: 
+  address2: ""
+  visible_to_everyone: true
+  cell_carrier_id: 442820205
+  zipcode: 98074
+  mondays: 
+  datetime_phone: 425-836-8880
+  saturdays: 
+  sitter_id: 
+  lng: -121.993
+  id: 6
+  tuesdays: 
+  num_children: 
+  cell_phone: 425-829-0299
+  wednesdays: 
+  thursdays: 
+  sundays: 
+  not_searchable: true
+  first_name: Heidi
+  state_id: 48
+  parent_id: 7
+  lat: 47.6103
+  last_name: Rielly
+  full_name: Heidi Rielly
+  fridays: 
+  address: 208 259th AVE NE, Sammamish, WA
+  text_message: true
+  email: true
+  created_at: 2008-09-11 18:51:40 +00:00
+profile_00017: 
+  city: Sammish
+  address1: 12345 Sam Street
+  updated_at: 2008-09-17 18:15:15 +00:00
+  evening_phone: ""
+  dob: 
+  address2: ""
+  visible_to_everyone: false
+  cell_carrier_id: 442820205
+  zipcode: 98074
+  mondays: 
+  datetime_phone: ""
+  saturdays: 
+  sitter_id: 
+  lng: -84.4969
+  id: 17
+  tuesdays: 
+  num_children: 
+  cell_phone: ""
+  wednesdays: 
+  thursdays: 
+  sundays: 
+  not_searchable: true
+  first_name: Patti
+  state_id: 48
+  parent_id: 26
+  lat: 38.0466
+  last_name: Peach
+  full_name: Patti Peach
+  fridays: 
+  address: 12345 Sam Street, Sammish, WA
+  text_message: false
+  email: true
+  created_at: 2008-09-17 18:14:00 +00:00
+profile_00030: 
+  city: Sammamish
+  address1: 205 259th AVE NE
+  updated_at: 2008-09-22 21:15:42 +00:00
+  evening_phone: ""
+  dob: 
+  address2: ""
+  visible_to_everyone: true
+  cell_carrier_id: 
+  zipcode: 98074
+  mondays: ""
+  datetime_phone: ""
+  saturdays: ""
+  sitter_id: 43
+  lng: -121.993
+  id: 30
+  tuesdays: ""
+  num_children: 
+  cell_phone: ""
+  wednesdays: ""
+  thursdays: ""
+  sundays: ""
+  not_searchable: true
+  first_name: Kristy
+  state_id: 48
+  parent_id: 
+  lat: 47.6099
+  last_name: Barry
+  full_name: Kristy Barry
+  fridays: ""
+  address: 205 259th AVE NE, Sammamish, WA
+  text_message: false
+  email: true
+  created_at: 2008-09-22 21:14:16 +00:00
+profile_00018: 
+  city: Sammamish
+  address1: 215 259th PL NE
+  updated_at: 2008-09-17 18:17:30 +00:00
+  evening_phone: ""
+  dob: 
+  address2: ""
+  visible_to_everyone: false
+  cell_carrier_id: 
+  zipcode: 98074
+  mondays: 
+  datetime_phone: ""
+  saturdays: 
+  sitter_id: 
+  lng: -121.993
+  id: 18
+  tuesdays: 
+  num_children: 
+  cell_phone: ""
+  wednesdays: 
+  thursdays: 
+  sundays: 
+  not_searchable: true
+  first_name: Julie
+  state_id: 48
+  parent_id: 27
+  lat: 47.6101
+  last_name: Doolittle
+  full_name: Julie Doolittle
+  fridays: 
+  address: 215 259th PL NE, Sammamish, WA
+  text_message: false
+  email: true
+  created_at: 2008-09-17 18:16:24 +00:00
+profile_00007: 
+  city: Topeka
+  address1: 3732 SW 34 th street
+  updated_at: 2008-09-17 18:36:54 +00:00
+  evening_phone: 859-420-0107
+  dob: 
+  address2: ""
+  visible_to_everyone: false
+  cell_carrier_id: 1092900264
+  zipcode: 66614
+  mondays: ""
+  datetime_phone: 859 420-0107
+  saturdays: ""
+  sitter_id: 8
+  lng: -95.7226
+  id: 7
+  tuesdays: All Day
+  num_children: 
+  cell_phone: 859-420-0107
+  wednesdays: Afternoons
+  thursdays: Mornings
+  sundays: ""
+  not_searchable: true
+  first_name: Sitter
+  state_id: 17
+  parent_id: 
+  lat: 39.0047
+  last_name: Kenney
+  full_name: Sitter Kenney
+  fridays: Nights
+  address: 3732 SW 34 th street, Topeka, KS
+  text_message: true
+  email: true
+  created_at: 2008-09-11 19:02:05 +00:00
+profile_00029: 
+  city: Sammamish
+  address1: 1422 233rd AVE NE
+  updated_at: 2008-09-18 17:16:28 +00:00
+  evening_phone: ""
+  dob: 
+  address2: ""
+  visible_to_everyone: false
+  cell_carrier_id: 
+  zipcode: 98074
+  mondays: 
+  datetime_phone: ""
+  saturdays: 
+  sitter_id: 41
+  lng: -122.027
+  id: 29
+  tuesdays: 
+  num_children: 
+  cell_phone: ""
+  wednesdays: 
+  thursdays: 
+  sundays: 
+  not_searchable: true
+  first_name: Megan
+  state_id: 48
+  parent_id: 
+  lat: 47.6226
+  last_name: O'Donnell
+  full_name: Megan O'Donnell
+  fridays: 
+  address: 1422 233rd AVE NE, Sammamish, WA
+  text_message: false
+  email: true
+  created_at: 2008-09-18 17:16:28 +00:00
+profile_00020: 
+  city: Sammamish
+  address1: 121 Windsor Dr. SE
+  updated_at: 2008-09-22 19:48:44 +00:00
+  evening_phone: ""
+  dob: 
+  address2: ""
+  visible_to_everyone: false
+  cell_carrier_id: 
+  zipcode: 33525
+  mondays: 
+  datetime_phone: ""
+  saturdays: 
+  sitter_id: 
+  lng: -122.009
+  id: 20
+  tuesdays: 
+  num_children: 
+  cell_phone: ""
+  wednesdays: 
+  thursdays: 
+  sundays: 
+  not_searchable: true
+  first_name: Allison
+  state_id: 48
+  parent_id: 30
+  lat: 47.6075
+  last_name: Alexander
+  full_name: Allison Alexander
+  fridays: 
+  address: 121 Windsor Dr. SE, Sammamish, WA
+  text_message: false
+  email: true
+  created_at: 2008-09-17 19:44:06 +00:00
+profile_00008: 
+  city: Sammamish
+  address1: 215 259th PL NE
+  updated_at: 2008-09-11 19:04:45 +00:00
+  evening_phone: ""
+  dob: 
+  address2: ""
+  visible_to_everyone: false
+  cell_carrier_id: 442820205
+  zipcode: 98074
+  mondays: 
+  datetime_phone: 425-836-8880
+  saturdays: 
+  sitter_id: 
+  lng: -121.993
+  id: 8
+  tuesdays: 
+  num_children: 
+  cell_phone: 425-829-0299
+  wednesdays: 
+  thursdays: 
+  sundays: 
+  not_searchable: true
+  first_name: Anna
+  state_id: 48
+  parent_id: 9
+  lat: 47.6101
+  last_name: Banana
+  full_name: Anna Banana
+  fridays: 
+  address: 215 259th PL NE, Sammamish, WA
+  text_message: false
+  email: true
+  created_at: 2008-09-11 19:04:20 +00:00
+profile_00019: 
+  city: Sammamish
+  address1: 208 259th AVE NE
+  updated_at: 2008-09-17 18:44:46 +00:00
+  evening_phone: ""
+  dob: 
+  address2: ""
+  visible_to_everyone: false
+  cell_carrier_id: 
+  zipcode: 98074
+  mondays: 
+  datetime_phone: ""
+  saturdays: 
+  sitter_id: 29
+  lng: -121.993
+  id: 19
+  tuesdays: 
+  num_children: 
+  cell_phone: ""
+  wednesdays: 
+  thursdays: 
+  sundays: 
+  not_searchable: true
+  first_name: Alexa
+  state_id: 48
+  parent_id: 
+  lat: 47.6103
+  last_name: Grimes
+  full_name: Alexa Grimes
+  fridays: 
+  address: 208 259th AVE NE, Sammamish, WA
+  text_message: false
+  email: true
+  created_at: 2008-09-17 18:28:09 +00:00
+profile_00009: 
+  city: Sammamish
+  address1: 26041 NE 30th Ct.
+  updated_at: 2008-09-12 14:22:01 +00:00
+  evening_phone: ""
+  dob: 
+  address2: ""
+  visible_to_everyone: false
+  cell_carrier_id: 442820205
+  zipcode: 98074
+  mondays: 
+  datetime_phone: ""
+  saturdays: 
+  sitter_id: 
+  lng: -121.991
+  id: 9
+  tuesdays: 
+  num_children: 
+  cell_phone: 425-829-0299
+  wednesdays: 
+  thursdays: 
+  sundays: 
+  not_searchable: true
+  first_name: Barb
+  state_id: 48
+  parent_id: 10
+  lat: 47.5823
+  last_name: Parent
+  full_name: Barb Parent
+  fridays: 
+  address: 26041 NE 30th Ct., Sammamish, WA
+  text_message: false
+  email: true
+  created_at: 2008-09-12 14:22:01 +00:00
+profile_00021: 
+  city: Sammamish
+  address1: 214 221st AVE NE
+  updated_at: 2008-09-17 21:59:45 +00:00
+  evening_phone: ""
+  dob: 
+  address2: ""
+  visible_to_everyone: true
+  cell_carrier_id: 
+  zipcode: 98074
+  mondays: 
+  datetime_phone: 425-888-9898
+  saturdays: 
+  sitter_id: 
+  lng: -122.045
+  id: 21
+  tuesdays: 
+  num_children: 
+  cell_phone: ""
+  wednesdays: 
+  thursdays: 
+  sundays: 
+  not_searchable: true
+  first_name: Becka
+  state_id: 48
+  parent_id: 31
+  lat: 47.6118
+  last_name: Mayr
+  full_name: Becka Mayr
+  fridays: 
+  address: 214 221st AVE NE, Sammamish, WA
+  text_message: true
+  email: true
+  created_at: 2008-09-17 21:59:45 +00:00
+profile_00022: 
+  city: Sammamish
+  address1: 451 245th AVE SE
+  updated_at: 2008-09-17 22:18:29 +00:00
+  evening_phone: ""
+  dob: 
+  address2: ""
+  visible_to_everyone: true
+  cell_carrier_id: 
+  zipcode: 98074
+  mondays: 
+  datetime_phone: ""
+  saturdays: 
+  sitter_id: 
+  lng: -122.013
+  id: 22
+  tuesdays: 
+  num_children: 
+  cell_phone: ""
+  wednesdays: 
+  thursdays: 
+  sundays: 
+  not_searchable: true
+  first_name: Cindy
+  state_id: 48
+  parent_id: 32
+  lat: 47.6043
+  last_name: McCain
+  full_name: Cindy McCain
+  fridays: 
+  address: 451 245th AVE SE, Sammamish, WA
+  text_message: false
+  email: true
+  created_at: 2008-09-17 22:18:29 +00:00
+profile_00011: 
+  city: Lexington
+  address1: 193 Bittersweet Way
+  updated_at: 2008-09-12 18:29:34 +00:00
+  evening_phone: "8593090468"
+  dob: 
+  address2: ""
+  visible_to_everyone: true
+  cell_carrier_id: 953125641
+  zipcode: 40515
+  mondays: All Day
+  datetime_phone: "8594203625"
+  saturdays: ""
+  sitter_id: 13
+  lng: -84.527
+  id: 11
+  tuesdays: All Day
+  num_children: 
+  cell_phone: "8594203625"
+  wednesdays: All Day
+  thursdays: All Day
+  sundays: ""
+  not_searchable: true
+  first_name: Ryne
+  state_id: 18
+  parent_id: 
+  lat: 37.9672
+  last_name: Hunt
+  full_name: Ryne Hunt
+  fridays: All Day
+  address: 193 Bittersweet Way, Lexington, KY
+  text_message: false
+  email: true
+  created_at: 2008-09-12 18:28:50 +00:00
+profile_00012: 
+  city: Sammamish
+  address1: 208 259th AVE NE
+  updated_at: 2008-09-17 03:05:05 +00:00
+  evening_phone: 425-836-8880
+  dob: 
+  address2: ""
+  visible_to_everyone: false
+  cell_carrier_id: 
+  zipcode: 98074
+  mondays: 
+  datetime_phone: 425-836-8880
+  saturdays: 
+  sitter_id: 
+  lng: -121.993
+  id: 12
+  tuesdays: 
+  num_children: 
+  cell_phone: 425-829-0299
+  wednesdays: 
+  thursdays: 
+  sundays: 
+  not_searchable: false
+  first_name: Liam
+  state_id: 48
+  parent_id: 14
+  lat: 47.6103
+  last_name: Rielly
+  full_name: Liam Rielly
+  fridays: 
+  address: 208 259th AVE NE, Sammamish, WA
+  text_message: false
+  email: true
+  created_at: 2008-09-15 16:13:47 +00:00
+profile_00023: 
+  city: Redmond
+  address1: 24306 NE Vine Maple Way
+  updated_at: 2008-09-17 22:25:35 +00:00
+  evening_phone: ""
+  dob: 
+  address2: ""
+  visible_to_everyone: false
+  cell_carrier_id: 
+  zipcode: 98053
+  mondays: 
+  datetime_phone: ""
+  saturdays: 
+  sitter_id: 
+  lng: -122.015
+  id: 23
+  tuesdays: 
+  num_children: 
+  cell_phone: ""
+  wednesdays: 
+  thursdays: 
+  sundays: 
+  not_searchable: true
+  first_name: Diane
+  state_id: 48
+  parent_id: 33
+  lat: 47.7027
+  last_name: Feinstein
+  full_name: Diane Feinstein
+  fridays: 
+  address: 24306 NE Vine Maple Way, Redmond, WA
+  text_message: false
+  email: true
+  created_at: 2008-09-17 22:25:35 +00:00
+profile_00024: 
+  city: Redmond
+  address1: 24306 NE Vine Maple Way
+  updated_at: 2008-09-17 22:30:46 +00:00
+  evening_phone: ""
+  dob: 
+  address2: ""
+  visible_to_everyone: false
+  cell_carrier_id: 
+  zipcode: 98074
+  mondays: 
+  datetime_phone: ""
+  saturdays: 
+  sitter_id: 
+  lng: -122.015
+  id: 24
+  tuesdays: 
+  num_children: 
+  cell_phone: ""
+  wednesdays: 
+  thursdays: 
+  sundays: 
+  not_searchable: false
+  first_name: Ellen
+  state_id: 48
+  parent_id: 34
+  lat: 47.7027
+  last_name: Ragland
+  full_name: Ellen Ragland
+  fridays: 
+  address: 24306 NE Vine Maple Way, Redmond, WA
+  text_message: false
+  email: true
+  created_at: 2008-09-17 22:30:46 +00:00
+profile_00013: 
+  city: Sammamish
+  address1: 123 Main St.
+  updated_at: 2008-09-17 03:10:12 +00:00
+  evening_phone: ""
+  dob: 
+  address2: ""
+  visible_to_everyone: false
+  cell_carrier_id: 
+  zipcode: 98074
+  mondays: ""
+  datetime_phone: ""
+  saturdays: ""
+  lng: -122.049
+  tuesdays: ""
+  num_children: 
+  cell_phone: ""
+  wednesdays: ""
+  thursdays: ""
+  sundays: ""
+  not_searchable: true
+  first_name: Meredith
+  state_id: 48
+  parent: user_with_state_as_new_account 
+  lat: 47.6092
+  last_name: Rielly
+  full_name: Meredith Rielly
+  fridays: ""
+  address: 123 Main St., Sammamish, WA
+  text_message: false
+  email: true
+  created_at: 2008-09-15 17:39:42 +00:00
+profile_00014: 
+  city: Sammamish
+  address1: 123 Main St.
+  updated_at: 2008-09-15 21:26:22 +00:00
+  evening_phone: ""
+  dob: 
+  address2: ""
+  visible_to_everyone: false
+  cell_carrier_id: 
+  zipcode: 98074
+  mondays: 
+  datetime_phone: ""
+  saturdays: 
+  sitter_id: 
+  lng: -122.049
+  id: 14
+  tuesdays: 
+  num_children: 
+  cell_phone: ""
+  wednesdays: 
+  thursdays: 
+  sundays: 
+  not_searchable: false
+  first_name: Darcy
+  state_id: 48
+  parent_id: 16
+  lat: 47.6092
+  last_name: Devine
+  full_name: Darcy Devine
+  fridays: 
+  address: 123 Main St., Sammamish, WA
+  text_message: false
+  email: true
+  created_at: 2008-09-15 21:26:21 +00:00
+profile_00025: 
+  city: Sammamish
+  address1: 23016 NE 18th St.
+  updated_at: 2008-09-22 20:31:14 +00:00
+  evening_phone: ""
+  dob: 
+  address2: ""
+  visible_to_everyone: false
+  cell_carrier_id: 
+  zipcode: 98074
+  mondays: ""
+  datetime_phone: ""
+  saturdays: ""
+  sitter_id: 35
+  lng: -122.032
+  id: 25
+  tuesdays: ""
+  num_children: 
+  cell_phone: ""
+  wednesdays: ""
+  thursdays: ""
+  sundays: ""
+  not_searchable: true
+  first_name: Felicia
+  state_id: 48
+  parent_id: 
+  lat: 47.6258
+  last_name: Hansell
+  full_name: Felicia Hansell
+  fridays: ""
+  address: 23016 NE 18th St., Sammamish, WA
+  text_message: false
+  email: true
+  created_at: 2008-09-17 22:53:15 +00:00
+profile_00026: 
+  city: Sammamish
+  address1: 428 214th AVE SE
+  updated_at: 2008-09-22 21:45:48 +00:00
+  evening_phone: ""
+  dob: 
+  address2: ""
+  visible_to_everyone: true
+  cell_carrier_id: 
+  zipcode: 98074
+  mondays: ""
+  datetime_phone: ""
+  saturdays: ""
+  sitter_id: 38
+  lng: -122.054
+  id: 26
+  tuesdays: ""
+  num_children: 
+  cell_phone: ""
+  wednesdays: ""
+  thursdays: ""
+  sundays: ""
+  not_searchable: false
+  first_name: Georgia
+  state_id: 48
+  parent_id: 
+  lat: 47.6045
+  last_name: Labeau
+  full_name: Georgia Labeau
+  fridays: ""
+  address: 428 214th AVE SE, Sammamish, WA
+  text_message: false
+  email: true
+  created_at: 2008-09-18 03:17:24 +00:00
+profile_00015: 
+  city: Sammamish
+  address1: 222 East Main
+  updated_at: 2008-09-15 23:17:56 +00:00
+  evening_phone: ""
+  dob: 
+  address2: ""
+  visible_to_everyone: false
+  cell_carrier_id: 
+  zipcode: 98074
+  mondays: ""
+  datetime_phone: ""
+  saturdays: ""
+  sitter_id: 19
+  lng: -122.006
+  id: 15
+  tuesdays: ""
+  num_children: 
+  cell_phone: ""
+  wednesdays: ""
+  thursdays: ""
+  sundays: ""
+  not_searchable: true
+  first_name: Frannie
+  state_id: 48
+  parent_id: 
+  lat: 47.6094
+  last_name: Farmer
+  full_name: Frannie Farmer
+  fridays: ""
+  address: 222 East Main, Sammamish, WA
+  text_message: false
+  email: true
+  created_at: 2008-09-15 23:06:32 +00:00
+profile_00016: 
+  city: Topeka
+  address1: 3732 SW 34 th street
+  updated_at: 2008-09-17 18:09:31 +00:00
+  evening_phone: 859-420-0107
+  dob: 
+  address2: ""
+  visible_to_everyone: false
+  cell_carrier_id: 
+  zipcode: 66614
+  mondays: 
+  datetime_phone: 859 420-0107
+  saturdays: 
+  sitter_id: 
+  lng: -95.7226
+  id: 16
+  tuesdays: 
+  num_children: 
+  cell_phone: 859-420-0107
+  wednesdays: 
+  thursdays: 
+  sundays: 
+  not_searchable: true
+  first_name: Patrick
+  state_id: 17
+  parent_id: 25
+  lat: 39.0047
+  last_name: Kenney
+  full_name: Patrick Kenney
+  fridays: 
+  address: 3732 SW 34 th street, Topeka, KS
+  text_message: false
+  email: true
+  created_at: 2008-09-17 18:08:18 +00:00
+profile_00005: 
+  city: Lexington
+  address1: 4612 Oak Creek Drive
+  updated_at: 2008-09-21 16:16:21 +00:00
+  evening_phone: 859-420-0107
+  dob: 
+  address2: ""
+  visible_to_everyone: false
+  cell_carrier_id: 1092900264
+  zipcode: 40515
+  mondays: 
+  datetime_phone: 859-420-0107
+  saturdays: 
+  sitter_id: 
+  lng: -84.4876
+  id: 5
+  tuesdays: 
+  num_children: 
+  cell_phone: 859-420-0107
+  wednesdays: 
+  thursdays: 
+  sundays: 
+  not_searchable: false
+  first_name: Patrick
+  state_id: 18
+  parent_id: 6
+  lat: 37.9602
+  last_name: Kenney
+  full_name: Patrick Kenney
+  fridays: 
+  address: 4612 Oak Creek Drive, Lexington, KY
+  text_message: false
+  email: true
+  created_at: 2008-09-11 18:49:50 +00:00
+profile_00027: 
+  city: Sammamish
+  address1: 202 249th Pl NE
+  updated_at: 2008-09-18 03:31:58 +00:00
+  evening_phone: ""
+  dob: 
+  address2: ""
+  visible_to_everyone: false
+  cell_carrier_id: 
+  zipcode: 98074
+  mondays: 
+  datetime_phone: ""
+  saturdays: 
+  sitter_id: 39
+  lng: -122.007
+  id: 27
+  tuesdays: 
+  num_children: 
+  cell_phone: ""
+  wednesdays: 
+  thursdays: 
+  sundays: 
+  not_searchable: true
+  first_name: Helen
+  state_id: 48
+  parent_id: 
+  lat: 47.6106
+  last_name: Eaves
+  full_name: Helen Eaves
+  fridays: 
+  address: 202 249th Pl NE, Sammamish, WA
+  text_message: false
+  email: true
+  created_at: 2008-09-18 03:31:58 +00:00

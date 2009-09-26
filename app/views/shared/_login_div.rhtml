@@ -1,0 +1,24 @@
+<div id="side_bar">
+<% unless logged_in? %>
+
+<%= image_tag '/images/global/MembersLogin_hd.gif' %>
+<% form_tag sessions_path do -%>
+<p><label for="login">Email Address:</label><br/>
+<%= text_field_tag 'login' %></p>
+<br />
+<p><label for="password">Password:</label><br/>
+<%= password_field_tag 'password' %></p>
+<br >
+
+<p>
+<%= check_box_tag 'remember_me' %>&nbsp;<label for="remember_me">Remember me</label></p>
+<br />
+<p><%= link_to "Forgot password?", :controller => "sessions", :action => "forgot_password" %></p>
+
+<p style="text-align:right;"><%= image_submit_tag '/images/global/LogIn_bttn.gif' %></p>
+<% end -%>
+
+<% else %>
+<%= link_to "Logout", logout_path  %>
+<% end %>
+</div>

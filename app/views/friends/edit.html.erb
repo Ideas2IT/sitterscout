@@ -1,0 +1,22 @@
+<h1>Editing friend</h1>
+
+<%= error_messages_for :friend %>
+
+<% form_for(@friend) do |f| %>
+  <p>
+    <b>Parent</b><br />
+    <%= f.text_field :parent_id %>
+  </p>
+
+  <p>
+    <b>Description</b><br />
+    <%= f.text_area :description %>
+  </p>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @friend %> |
+<%= link_to 'Back', friends_path %>

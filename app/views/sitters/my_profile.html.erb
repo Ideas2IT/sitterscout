@@ -1,0 +1,177 @@
+<%= render :partial => 'nav_menu', :locals => {:selected => "profile"} %>
+<div id="sub_menu_gradient">
+	<div class="sub_menu_gradient_center">
+		<%= render :partial => 'profile_menu' %>
+	</div>
+</div>
+
+<% form_tag sitter_path(current_user), :method => 'put', :multipart =>true, :class => 'MainForm' do %>
+<%= hidden_field_tag :update_profile, true%>
+<%= error_messages_for :user %>
+<br />
+<div id="content" style="height: 500px;">
+<div style="width: 48%; float: left;  font-size: .7em;">
+	<%= render :partial => 'shared/profile_details' %>
+	<%= render :partial => 'shared/profile_validations' %>
+	<%= render :partial => 'shared/profile_contact_address_and_numbers' %>
+</div>
+<div style="width: 50%; float: left; font-size: .7em;">
+	<table style="padding-bottom: 15px">
+		<tr>
+			<td><h3>Profile Tags</h3></td><td>&nbsp;</td><td></td>
+		</tr>
+		<tr>
+			<td colspan="2"><span>Adding profile tags will help you connect with people you know. Think about the ways you connect with friends offline (e.g., school, church, clubs) and list them here, separated by commas.</span>
+			</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="2">	
+		<%= text_area_tag "profile[tag_list]", @profile.tag_list, :cols => '40' %></td>
+		</tr>
+		<tr>
+			<td colspan="2">&nbsp;</td>
+		</tr>	
+		<tr>
+			<td><h3>Search Permissions</h3></td><td></td>
+		</tr>
+		<tr>
+			<td><span>People outside your network may try to find you.  Will you give SitterScout your permission to display a summary of your profile in our search results? (your name, photo, zip code, and profile tags)</span></td><td></td>
+		</tr>
+		<tr>
+			<td colspan="2">&nbsp;</td>
+		</tr>
+		<tr>
+			<td style="padding-bottom: 25px;"><%= radio_button :profile, :not_searchable, true %>&nbsp;Yes&nbsp;&nbsp;<%= radio_button :profile, :not_searchable, false %>&nbsp;No</td><td></td>
+		</tr>
+		  <tr>
+        <td>Who should be able to view your list of friends & sitters?</td><td></td>
+      </tr>
+		<tr>
+			<td><p><%= radio_button :profile, :visible_to_everyone, true %>&nbsp;Everyone</p>
+			<p><%= radio_button :profile, :visible_to_everyone, false %>&nbsp;Only my friends and their friends</p>
+				
+				</td><td></td>
+		</tr>
+	</table>
+</div>
+<input type="submit" name="update_profile" id="profile_submit" style="display: none;">
+<% end %>
+<br /><br />
+<div style="clear: both; margin-left: 42%; cursor: pointer;" onclick="validate();">
+<%= image_tag '/images/parent_home/SaveChanges_bttn.gif', :name => 'update_profile' %>
+</div>
+</div>
+<script type="text/javascript">
+
+function validate()
+{
+	$("profile_first_name_label").style.color = "#000000";
+	$("profile_last_name_label").style.color = "#000000";
+	$("profile_address1_label").style.color = "#000000";
+	$("profile_city_label").style.color = "#000000";
+	$("profile_zipcode_label").style.color = "#000000";
+	$('cell_phone_name_label').style.color = "#000000";
+	$('flash_notice').innerHTML = '';
+	
+	var fail = false;
+	
+	if($('profile_first_name').value == '')
+	{
+		$('profile_first_name_label').style.color = "#FF0000";
+		fail = true;
+	}
+	
+	if($('profile_last_name').value == '')
+	{
+		$('profile_last_name_label').style.color = "#FF0000";
+		fail = true;
+	}
+	
+	if($('profile_address1').value == '')
+	{
+		$('profile_address1_label').style.color = "#FF0000";
+		fail = true;
+	}
+
+	
+	if($('profile_city').value == '')
+	{
+		$('profile_city_label').style.color = "#FF0000";
+		fail = true;
+	}
+	
+	if(!validate_zip($('profile_zipcode').value))
+	{
+		$('profile_zipcode_label').style.color = "#FF0000";
+		fail = true;
+	}
+	
+	if($('profile_text_message_true').checked && $('profile_cell_phone').value == '')
+	{
+		$('cell_phone_name_label').style.color = "#FF0000";
+		fail = true;
+	}
+	
+	if($('profile_cell_carrier_id').value == '' && $('profile_cell_phone').value != '')
+	{
+		$('profile_cell_phone_carrier_label').style.color = "#FF0000";
+		fail = true;
+	}
+	
+	if(fail)
+	{
+		$('flash_notice').innerHTML = '<div id="notice_error">Oops. You’re missing something. Please review the fields in red.</div>';
+		path_to_root_dir = "<%= APP_URL %>/";
+		var myBox = new GlassBox();
+		myBox.init( 'notice_error', '360px', '100px', 'hidden', 'facebookstyle', true, true );
+		myBox.lbo( false, 0.01 ); 
+		myBox.appear(5000);
+	}
+	else
+	{
+		$('profile_submit').click();
+	}
+	
+	
+}
+
+function validate_zip(field)
+{
+	
+	var valid = "0123456789";
+	var hyphencount = 0;
+
+	if (field.length!=5) 
+	{
+		return false;
+	}
+	
+	for (var i=0; i < field.length; i++) 
+	{
+		temp = "" + field.substring(i, i+1);
+		if (valid.indexOf(temp) == "-1")
+		{
+			return false;
+		}
+	}
+	
+	return true;
+}
+
+
+function toggle_cell_star(box)
+{
+	
+	if(box.checked)
+	{
+		$('cell_phone_star').show()
+		$('text_message_span').show()
+	}
+	else
+	{
+		$('cell_phone_star').hide()
+		$('text_message_span').hide()
+	}
+}
+</script>

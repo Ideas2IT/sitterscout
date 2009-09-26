@@ -1,0 +1,85 @@
+
+<%= render :partial => 'nav_menu', :locals => {:selected => ''} %>
+<div id="sub_menu_gradient">
+	
+</div>
+<div id="content" style="height: 1100px;">
+
+<div style="width: 18%; float: left;">
+	<%= image_tag(@user.avatar_photo_url, :class => "right" ) %>
+	
+</div>
+<div style="width: 50%; float: left;">
+	<table style="padding-bottom: 25px">
+			<tr><td><strong><%= @profile.first_name + " " + @profile.last_name %></strong></td></tr>
+			<tr><td><%= @profile.address1 %></td></tr>
+			<tr><td><%= @profile.address2 %></td></tr>
+			<tr><td><%= @profile.city + ", " + State.find(@profile.state_id).name + " " + @profile.zipcode.to_s %></tr>
+			<tr><td> <%= link_to "View connections", url_for(:controller => 'connections', :action => 'show', :id => @user.id), :class => "lbOn-405-390" %>
+			| <%= link_to "Send message", compose_parent_path(current_user, :to_id => @profile.parent.id)  %>
+			</td></tr>
+
+
+		</table>	
+
+
+	<table>
+		<tr>
+			<td nowrap='nowrap'><strong>Profile Tags:</strong></td>
+			<td style="padding-left: 10px;"><%= @profile.tag_list %></td>
+		</tr>
+		<tr>
+			<td nowrap='nowrap'><strong><%= label :profile, :email, "Email Address:" %></strong></td>
+			<td style="padding-left: 10px;"><%= @user.email %></td>
+		</tr>
+    <tr>
+			<td nowrap='nowrap'><strong><%= label :profile, :daytime_phone, "Daytime Phone #:" %></strong></td>
+			<td style="padding-left: 10px;"><%= @profile.datetime_phone %></td>
+		</tr>
+    <tr>
+			<td nowrap='nowrap'><strong><%= label :profile, :evening_phone, "Evening Phone #:" %></strong></td>
+			<td style="padding-left: 10px;"><%= @profile.evening_phone %></td>
+		</tr>
+    <tr>
+			<td nowrap='nowrap'><strong><%= label :profile, :cell_phone, "Cell Phone #:" %></strong></td>
+			<td style="padding-left: 10px;"><%= @profile.cell_phone %></td>
+		</tr>
+		<tr>
+			<td colspan="2">Number of Children:&nbsp;&nbsp; <%= @user.children.length %></td>
+		</tr>
+		<tr>
+			<td>Children:</td><td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<table style="margin-top: 5px;">
+				<% @user.children.each_with_index do |a, i| 
+					age = (Time.now.to_date - a.age.to_date) / 365 %>
+					<tr>
+						<td style="padding-left: 20px"><%=a.name %></td>
+						<td style="padding-left: 20px">Age:
+								<% if age.to_f < 1.0 %>
+									<%= (age.to_f * 12).to_i.to_s + " Mos." %>
+								<%	else %>
+									<%= age.to_i.to_s  %>
+								<% end %>
+						</td>
+					</tr>
+					<%	end  %>
+				</table>
+			</td>
+		</tr>
+		
+	
+	</table>
+	<br /><br /><br />
+	<%= link_to "< Back to \"Your Friends\"", friends_parent_path(current_user) %>
+</div>
+
+<%#= render :partial => 'shared/profile_percentage' %>
+
+</div>
+
+	<div style="top: 550px; position: absolute; margin-left: 18%; color: #8F8F8F;  font-size: 10pt; width: 960px;"> </div>
+	
+	

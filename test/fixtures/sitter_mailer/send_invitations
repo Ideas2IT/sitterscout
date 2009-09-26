@@ -1,0 +1,3 @@
+SitterMailer#send_invitations
+
+Find me in app/views/sitter_mailer/send_invitations.erb

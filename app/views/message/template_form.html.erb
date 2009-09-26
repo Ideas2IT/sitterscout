@@ -1,0 +1,55 @@
+<div>
+	<%= error_messages_for 'message_template' %>
+
+	<% form_for :message_template, :url => { :action => "save_template" } do |form| %>
+		<%= hidden_field :message_template, :id, { :value => @message_template.id } %>
+		<fieldset class="cornerbox_34_grn-col">
+			<div class="top"><h2>Saved Message</h2></div>
+			<div class="content clearfix">
+				<dl class="clearfix">
+					<dt>
+						<label for="message_template_name">
+							Name:
+						</label>
+					</dt>
+					<dd>
+						<%= text_field :message_template, :name, { :value => @message_template.name, :maxlength => 30 } %>
+					</dd>
+				</dl>
+				<dl class="clearfix">
+					<dt>
+						<label for="message_template_subject">
+							Subject:
+						</label>
+					</dt>
+					<dd>
+						<%= text_field :message_template, :subject, { :value => @message_template.subject, :maxlength => 30} %>
+					</dd>
+				</dl>
+				<dl class="clearfix">
+					<dt>
+						<label for="message_template_body">
+							Message:
+						</label>
+					</dt>
+					<dd>
+						<%= text_area :message_template, :body, "cols" => 50, :value => @message_template.body %>
+					</dd>
+				</dl>
+			</div>
+		</fieldset>
+		<%= image_submit_tag "btn_save_large.gif", :class => "column-30-margin", :alt => "Save" %>
+	<% end %>
+</div>
+
+<script type="text/javascript">
+	//<![CDATA[
+	    LiveValidation.onValid = void(0);
+		template_name = new LiveValidation( 'message_template_name', {validMessage:'', onlyOnSubmit: true} );
+	    template_name.add( Validate.Length, { minimum: 5, tooShortMessage: "Name must be at least 5 characters"});
+		template_name.add( Validate.Exclusion, { within: [<%@message_templates.each_with_index {|message, index| %>'<%=message.name %>'<% if @message_templates.size - 1 != index%>,<%end%><%}%>], failureMessage: "You already have a Saved Message under this name." } );
+		
+		template_subject = new LiveValidation('message_template_subject',{validMessage:'', onlyOnSubmit: true});
+	    template_subject.add(Validate.Length,{ minimum:5, tooShortMessage:"Subject must be at least 5 characters"});
+	//]]>
+</script>

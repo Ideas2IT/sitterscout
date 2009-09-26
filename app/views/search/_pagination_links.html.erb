@@ -1,0 +1,97 @@
+		<%
+		
+		if @total_pages > 1
+			if @total_pages < 5
+				@total_pages.times do |n|
+					options = {
+			      	:url => {:action => 'index', :params => params.merge({:page => n + 1})},
+			      	:update => 'results'
+				    }
+			    html_options = {:href => url_for(:action => 'index', :params => params.merge({:page => n + 1}))}
+	
+					if @current_page == n %>
+						<%= n + 1 %>
+					<% else %>
+				   <%= link_to_remote((n + 1).to_s, options, html_options) %>
+				 <% end #current_page
+			  end #pages.times
+			else		
+				if @current_page < 3
+					5.times do |n|
+					
+						options = {
+				      	:url => {:action => 'index', :params => params.merge({:page => n + 1})},
+				      	:update => 'results'
+					    }
+				    html_options = {:href => url_for(:action => 'index', :params => params.merge({:page => n + 1}))}
+					
+						if @current_page == n %>
+							<%= n + 1 %>
+						<% else %>
+					   <%= link_to_remote((n + 1).to_s, options, html_options) %>
+					 <% end # current_page == n 
+					 end #5.times do
+						options = {
+				      	:url => {:action => 'index', :params => params.merge({:page => @total_pages})},
+				      	:update => 'results'
+					    }
+				    html_options = {:href => url_for(:action => 'index', :params => params.merge({:page => @total_pages}))} %>
+					 <%= link_to_remote('Last', options, html_options) %>
+				<%
+				elsif @current_page > @total_pages.to_i - 4
+						options = {
+				      	:url => {:action => 'index', :params => params.merge({:page => 1})},
+				      	:update => 'results'
+					    }
+				    html_options = {:href => url_for(:action => 'index', :params => params.merge({:page => 1}))} %>
+					 <%= link_to_remote("First", options, html_options) %>
+						<% 
+						5.times do |n|
+							
+							options = {
+					      	:url => {:action => 'index', :params => params.merge({:page => (@total_pages.to_i - (5-n)) + 1 })},
+					      	:update => 'results'
+						    }
+					    html_options = {:href => url_for(:action => 'index', :params => params.merge({:page => (@total_pages.to_i - (5-n)) + 1 }))}
+
+							if @current_page == @total_pages - (5 - n) %>
+								<%= @total_pages - (5 - n) + 1 %>
+							<% else %>
+						   <%= link_to_remote((@total_pages - (5 - n) + 1).to_s, options, html_options) %>
+						 <% end # current_page == n	
+					 	end #5.times do
+				else
+					
+					options = {
+			      	:url => {:action => 'index', :params => params.merge({:page => 1})},
+			      	:update => 'results'
+				    }
+			    html_options = {:href => url_for(:action => 'index', :params => params.merge({:page => 1}))} %>
+				 <%= link_to_remote("First", options, html_options) %>
+			<%
+			
+					5.times do |n|
+						page = (@current_page - 2) + n
+						if @current_page == page %>
+							<%= page + 1 %>
+						<% else 
+							options = {
+					      	:url => {:action => 'index', :params => params.merge({:page => page + 1})},
+					      	:update => 'results'
+						    }
+					    html_options = {:href => url_for(:action => 'index', :params => params.merge({:page => page + 1 }))} %>
+							<%= link_to_remote((page + 1).to_s, options, html_options) %>
+						<% end # current_page == n
+					
+					end #5.times
+					options = {
+			      	:url => {:action => 'index', :params => params.merge({:page => @total_pages})},
+			      	:update => 'results'
+				    }
+			    html_options = {:href => url_for(:action => 'index', :params => params.merge({:page => @total_pages}))} %>
+				 <%= link_to_remote('Last', options, html_options) %>
+					<% 
+			 
+		 end # current_page
+	 end #total_pages	< 5
+end #total_pages > 1 %>

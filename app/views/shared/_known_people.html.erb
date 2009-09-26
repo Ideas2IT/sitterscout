@@ -1,0 +1,27 @@
+<div style="width: 98%; height: 85px; float: left; border: 1px #AFAFAF solid; background-color: #FFF; margin-bottom: 4px;lbOn-405-390">
+
+		<div style="width: 55px; height: 55px; float: left; padding: 5px; ">
+			<%= image_tag(known_people.avatar_photo_url(:thumb), :class => "right" ) %>
+		</div>
+
+		<div style="float:left;">
+			<strong style=' font-size: .8em;'><%= known_people.profile.first_name %>
+				&nbsp;<%= known_people.profile.sitter? ? known_people.profile.last_name.to_s.first + "." : known_people.profile.last_name %>
+			</strong>
+			<br />
+				<div style=' font-size: .6em;'><%= known_people.profile.city %>, <%= known_people.profile.state.name %></div>
+
+			<font style=' font-size: .7em;'>Profile Tags:
+			<%= truncate(known_people.profile.tag_list.to_s, 30, "...") %>
+			<% if(known_people.profile.tag_list.to_s.size > 25) %>
+			<%= link_to "More", "#", :onmouseover =>"TagToTip('#{known_people.id}_tip', ABOVE, true, BALLOON, true)", :onmouseout => "UnTip()", :style => "color: #C21D7F;" %>
+			<div id="<%= known_people.id %>_tip" style="display: none;"><%= known_people.profile.tag_list.to_s %></div>
+						<% end %><br />
+			<% if known_people.id != current_user.id%>
+			> <%= link_to "Add to Your Friends", url_for(:controller => 'connections', :action => 'add_friend', :id => known_people.id), :class => "lbOn-300-270" %>  
+			<% end %>
+		<!-- &nbsp;	> <%#= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => known_people.id), :class => "lbOn-405-390" %>--></font>	
+			
+		</div>
+
+</div>

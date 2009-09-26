@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+</head>
+<body>
+<%= image_tag("#{APP_URL}/images/email_signature.jpg", :alt=>"SitterScout.com") %>
+
+<font face="Arial, Helvetica, Geneva">
+
+<p>Hi <%= @sitter.profile.full_name rescue "Sitter" %>,</p>
+
+<p>We’re sorry, but your parents have chosen to say no to your request to join SitterScout. Unfortunately, we are not able to activate your membership at this time, since parental permission is required for babysitters under 18.</p>
+
+<p>Please visit us on your 18th birthday!</p>
+
+<p>Wishing you the best,</p>
+<p>The SitterScout Team</p>
+
+</font>
+</body>
+</html>

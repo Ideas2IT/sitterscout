@@ -1,0 +1,13 @@
+.tooltip{
+width: 202px; color:#000;
+font: 12px Arial,sans-serif;
+line-height: 17px;
+letter-spacing: 0px;
+text-decoration:none;text-align:left
+}
+
+.tooltip span.top{padding: 10px 15px 0;
+    background: url(../images/balloon.png) no-repeat top}
+
+.tooltip b.bottom{padding:10px 15px 15px;color: #548912;
+    background: url(../images/balloon.png) no-repeat bottom}

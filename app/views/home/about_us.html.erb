@@ -1,0 +1,56 @@
+<% content_for :nav_bar do %>
+<div id='navbar' <%= current_page?(:controller => "home", :action => "index") ? "class='home'" : nil %><%= current_page?(:controller => 'home', :action => "how_it_works") ? "class='works'" : nil %><%= current_page?(:controller => "home", :action => "about_us") ? "class='about'" : nil %><%= current_page?(:controller => "home", :action => "faq") ? "class='faq'" : nil %>>
+
+
+	<ul id='globalnav'>
+		<li id="home" <%= current_page?(:controller => "parents", :action => "index") ? "class='selected'" : nil %>><%= link_to("home", home_page_path) %></li>
+		<li id="works"><%= link_to("works", how_it_works_path) %></li>
+		<li id="about"><%= link_to("about", about_us_path) %></li>
+		<li id="faq"><%= link_to("faq", :controller => 'home', :action => 'faq') %></li>
+	</ul>
+
+
+	<div id='searchbar' style='backg/round: #999; z-index: 900;'>
+		<% form_tag "/search", :name => 'search_form' do %>
+		<input id='searchfield' type="text" name="search" id="search" value="Search by name or zip code" size='40' onFocus="if(this.value=='Search by name or zip code'){this.value=''; this.style.color='#000';};" onBlur="if(this.value==''){this.value='Search by name or zip code'; this.style.color='#999'; }"/>
+		<div id='searchbutton' onclick="document.search_form.submit();"></div>
+		<% end %>
+
+	</div>		
+</div>
+<% end %>
+<div id='content' style='height: 500px; background: url(images/banner-aboutus-d.png) no-repeat; padding-top: 180px;'>
+
+<div style='padding-left: 60px; width: 680px;'>
+
+	<p>SitterScout is an online community that makes it easy for parents and their babysitters to connect with each other.</p>
+	
+	<p>You don&#39;t call around to book an airline flight, why call around to book your babysitter? Let SitterScout do the work for you with just the click of a mouse. There&#39;s no more waiting for a sitter to call you back.</p>
+	
+</div>
+
+<div class='col' style='padding-left: 60px;'>
+
+	<h4>Expand your babysitting options</h4>
+	<p>Parents use SitterScout to expand their babysitting options by connecting with their friends and their friends&#39; friends. You can see which babysitters your friends are using, contact your friends for recommendations and start growing your Sitter List, which means more options when you need them.</p>
+	
+	<h4>We&#39;re ending the game of &#8220;babysitter phone tag&#8221;</h4>
+	<p>Once you create a list of sitters, we make it easy for you to book them. Just tell us when you need a babysitter and who you&#39;d like to contact. We do all the work and we&#39;ll let you know when we&#39;ve confirmed a sitter for you. To see the status of your request, visit your dashboard any time.</p>
+	
+	<h4>About the company</h4>
+	<p>SitterScout was created by a mom with a single mission in mind: make it a lot easier to find and book reliable babysitters. SitterScout is based in the Seattle, Washington area.</p>
+	
+</div>
+
+<div class='col rightcol' style='padding-left: 60px; backg/round: pink;'>
+
+	<h4>You control your privacy</h4>
+	<p>SitterScout is concerned about the privacy of our community members. Only your confirmed friends can view your full profile information. You determine whether your profile will be searchable and who can view your list of connections. You can edit your profile information at any time to change your privacy settings.</p>
+
+	<h4>More opportunities for babysitters</h4>
+	<p>Babysitters use SitterScout so they&#39;ll never miss out on a babysitting opportunity. They build their networks of families to increase their number of job offers. Sitters also determine how they want to be contacted for jobs and SitterScout makes it easy to reply.</p>
+
+</div>
+
+</div>
+
