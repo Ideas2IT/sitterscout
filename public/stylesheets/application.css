@@ -452,3 +452,23 @@ a.tt:hover span.bottom{
 	width:65%;			/* left column content width (column width minus left and right padding) */
 	left:40%;			/* (right column left and right padding) plus (left column left padding) */
 }
+
+.username_heading{
+	font-family:Arail,sans-serif;
+	font-size:12px;
+	color:#C31880;
+}
+.profile_border1{
+	border-top:2px solid lightgray;
+	border-bottom:1px solid;
+	border-left: 2px solid lightgray;
+	border-right: 2px solid lightgray;
+	padding:10px;
+}
+.profile_border2{
+	border-bottom:2px solid lightgray;border-left:2px solid lightgray;border-right:2px solid lightgray;padding:10px;
+}
+.small_link{
+	color: #C31880; text-decoration: none; font-family:Verdana,sans-serif;font-size:11px;
+}
+

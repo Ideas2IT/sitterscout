@@ -3,6 +3,8 @@ class ProfilesController < ApplicationController
   skip_before_filter :direct_to_current_state
   # GET /profiles
   # GET /profiles.xml
+  layout 'new_design'
+  
   def index
     @profiles = Profile.find(:all)
 
@@ -23,13 +25,13 @@ class ProfilesController < ApplicationController
   def show_sitter
     @user = User.find(params[:id])
     @profile = @user.profile
-    render :layout => 'bare'
+#    render :layout => 'bare'
   end
   
   def show_family
     @user = User.find(params[:id])
     @profile = @user.profile
-    render :layout => 'bare'
+#    render :layout => 'bare'
   end
 
   # GET /profiles/new
