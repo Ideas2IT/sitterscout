@@ -51,6 +51,7 @@ class User < ActiveRecord::Base
 
   has_many :friendships_not_initiated_by_me, :class_name => "Friendship", :foreign_key => "user_id", :conditions => ['initiator = ?', false], :dependent => :destroy
   has_many :occurances_as_friend, :class_name => "Friendship", :foreign_key => "friend_id", :dependent => :destroy
+  has_many :childs ,:class_name => "Child" ,:foreign_key => "parent_id"
 
   belongs_to :avatar, :class_name => "Photo", :foreign_key => "avatar_id"
   belongs_to :metro_area
