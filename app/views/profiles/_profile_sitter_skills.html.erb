@@ -1,0 +1,168 @@
+<table width="100%">
+	<%unless @profile.sitter.nil? and @profile.sitter.skill.nil?%>
+	<tr>
+		<td>
+			<table width="100%">
+				<tr>
+					<td><strong>I'm comfortable babysitting:</strong></td>
+				</tr>
+				<%if @profile.sitter.skill.babies?%>
+					<tr>
+						<td>
+							<ul style="padding-left:12px;">
+								<li>Babies</li>
+							</ul>
+						</td>
+					</tr>
+				<%end%>
+				<%if @profile.sitter.skill.toddlers?%>
+					<tr>
+						<td>
+							<ul style="padding-left:12px;">
+								<li>Toddlers</li>
+							</ul>
+						</td>
+					</tr>
+				<%end%>
+				<%if @profile.sitter.skill.preschoolers?%>
+					<tr>
+						<td>
+							<ul style="padding-left:12px;">
+								<li>Pre-schoolers</li>
+							</ul>
+						</td>
+					</tr>
+				<%end%>
+				<%if @profile.sitter.skill.schoolaged?%>
+					<tr>
+						<td>
+							<ul style="padding-left:12px;">
+								<li>School Aged</li>
+							</ul>
+						</td>
+					</tr>
+				<%end%>
+				<%if @profile.sitter.skill.specialneeds?%>
+					<tr>
+						<td>
+							<ul style="padding-left:12px;">
+								<li>Special Needs Children</li>
+							</ul>
+						</td>
+					</tr>
+				<%end%>
+				<%if @profile.sitter.skill.multiples?%>
+					<tr>
+						<td>
+							<ul style="padding-left:12px;">
+								<li>Multiples (Twins, Triplets)</li>
+							</ul>
+						</td>
+					</tr>
+				<%end%>
+			</table>
+		</td>
+		<td valign="top">
+			<strong>Own transportation:</strong><br/>
+			<%=@profile.sitter.skill.transportation%>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			&nbsp;
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<table>
+				<tr>
+					<td><strong>Task's I'm Comfortable with:</strong></td>
+				</tr>
+				<%if @profile.sitter.skill.cook?%>
+					<tr>
+						<td>
+							<ul style="padding-left:12px;">
+								<li>Cook meals</li>
+							</ul>
+						</td>
+					</tr>
+				<%end%>
+				<%if @profile.sitter.skill.homework?%>
+					<tr>
+						<td>
+							<ul style="padding-left:12px;">
+								<li>Help with homework</li>
+							</ul>
+						</td>
+					</tr>
+				<%end%>
+				<%if @profile.sitter.skill.bathe?%>
+					<tr>
+						<td>
+							<ul style="padding-left:12px;">
+								<li>Bathe kids</li>
+							</ul>
+						</td>
+					</tr>
+				<%end%>
+				<%if @profile.sitter.skill.kidstobed?%>
+					<tr>
+						<td>
+							<ul style="padding-left:12px;">
+								<li>Get kids to bed</li>
+							</ul>
+						</td>
+					</tr>
+				<%end%>
+				<%if @profile.sitter.skill.entertain?%>
+					<tr>
+						<td>
+							<ul style="padding-left:12px;">
+								<li>Play/entertain</li>
+							</ul>
+						</td>
+					</tr>
+				<%end%>
+			</table>
+		</td>
+		<td valign="top">
+			<strong>Willing to travel:</strong><br/>
+			<%=@profile.sitter.skill.max_mileage%>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			&nbsp;
+		</td>
+	</tr>
+	<%end%>
+	<tr>
+		<td>
+			<strong>My hourly rate:</strong><br/>
+			$<%=@profile.hourly_rate%>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			&nbsp;
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<strong>My description:</strong><br/>
+			<%=@user.description%>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			&nbsp;
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<label class="small_link">
+				<%=link_to '< Back to "your Sitters"',sitters_parent_path(self.current_user)%>
+			</label>
+		</td>
+	</tr>
+</table>

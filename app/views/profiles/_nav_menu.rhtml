@@ -1,0 +1,18 @@
+<div id="nav_header" style="margin: 0 auto 0 auto;">
+<% selected = "" if selected.nil? %>
+<ul id="dash_header">
+  		<li id="schedule" <%= selected == "schedule" ? "class='schedule'" : nil %>><%= link_to("schedule", schedule_sitter_parent_path(self.current_user)) %></li>
+   		
+
+<li id="sitter" <%= selected == "sitter" ? "class='sitter'" : nil %>><%= link_to("sitter", sitters_parent_path(self.current_user)) %></li>
+
+
+<li id="friend" <%= selected == "friend" ? "class='friend'" : nil %>><%= link_to('friend', friends_sitter_path(self.current_user)) %></li>
+
+<li id="inbox" <%= selected == "inbox" ? "class='inbox'" : nil %>><%= link_to("inbox", connection_requests_sitter_path(current_user)) %></li>
+<li id="profile" <%= selected == "profile" ? "class='profile'" : nil %>><%= link_to("profile", my_profile_sitter_path(self.current_user)) %></li>
+<li id="invite" <%= selected == "invite" ? "class='invite'" : nil %>><%= link_to("invite", invite_friends_sitter_path(self.current_user)) %></li>
+</ul>
+
+</div>
+<div style="border-bottom: 1px solid #999;"></div>
