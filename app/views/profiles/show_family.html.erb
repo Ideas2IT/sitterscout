@@ -1,12 +1,20 @@
+<div>
+	<%= render :partial => 'nav_menu', :locals => {:selected => "profile"} %>
+</div>
+<div id="sub_menu_gradient">
+	<div class="sub_menu_gradient_center">
+	
+	</div>
+</div>
 <div id="content">
-	<table style="border: 2px solid lightgray; padding :10px;" width="80%" height="100%">
+	<table style="border: 2px solid lightgray; padding :10px;font-size:12px;font-family:verdana;" width="80%" height="100%">
 		<tr>
 			<td valign="top">
 				<%= image_tag(@user.avatar_photo_url, :class => "right" ,:height=> 150 ,:width=> 130) %>			
 			</td>
 			<td>&nbsp;</td>
 			<td valign="top">
-				<table border="0">
+				<table border="0" cellpadding="0" cellspacing="0">
 					<tr>
 						<td>
 							<strong>
@@ -90,10 +98,12 @@
 									<%@user.childs.each do |child|%>
 										<tr>
 											<td>
-												<%=child.name%>
+												<ul style="padding-left:12px;">
+													<li ><%=child.name%></li>
+												</ul>
 											</td>
 											<td>
-												<%=child.age%>
+												<%=Date.today.year - child.age.year%>
 											</td>
 										</tr>
 									<%end%>
@@ -106,7 +116,7 @@
 									<tr>
 										<td>
 											<label class="small_link">
-												<%=link_to '< Back to "your Friends"'%>
+												<%=link_to '< Back to "your Friends"',friends_parent_path(current_user) %>
 											</label>
 										</td>
 									</tr>
