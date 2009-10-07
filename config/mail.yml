@@ -1,9 +1,9 @@
 development:
-  type: pop
-  server: 'pop.gmail.com'
+  type: smtp
+  server: 'smtp.gmail.com'
   username: 'notifications@sitterscout.com'
   password: 'ChiefScout'
-  port: 995
+  port: 25
   ssl: true
   
 test:
@@ -13,10 +13,10 @@ test:
   password: password
   
 production:
-    type: pop
-    server: 'pop.gmail.com'
+    type: smtp
+    server: 'smtp.gmail.com'
     username: 'notifications@sitterscout.com'
     password: 'ChiefScout'
-    port: 995
-    authentication: plain
+    port: 25
+    authentication: true
 
