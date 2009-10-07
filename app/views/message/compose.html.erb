@@ -3,24 +3,31 @@
 <% else %>
 <%= render :partial => '/sitters/nav_menu', :locals => {:selected => "inbox"} %>
 <% end %>
+<div id="sub_menu_gradient">
+	<div class="sub_menu_gradient_center">
+		<%= render :partial => 'inbox_menu' %>
+	</div>
+</div>
 <div id="content">
-<div class="message-compose-container">
+<div >
 	<%= error_messages_for 'message' %>
 
 	<% form_for :message, :url => { :action => "send_message" } do |form| %>
 		<%= hidden_field :message, :recipient_id, { :value => @recipient.id } %>
 		<%= hidden_field_tag (params[:from_profile]) ? :from_profile : :from_messages, 1%>
 		<fieldset class="cornerbox_34_grn-col">
-			<div class="top"><h2><%= (params[:message_id].nil? ? "New Message" : "Replying") %> to <%= h(@recipient.email) %></h2></div>
-			<div class="content clearfix">
-				<dl class="clearfix">
-					<dt>
-						Message From:
-					</dt>
-					<dd>
-						<%= h(@sender.email) %> (you)
-					</dd>
-				</dl>
+			<div style="font-size: 0.9em; font-weight: bold;line-height:30px;"><h3><%= (params[:message_id].nil? ? "New Message" : "Replying") %> to <%= h(@recipient.email) %></h3></div>
+			<div class="content clearfix" style="font-size: 0.8em; margin-bottom: 50px;line-height:20px;">
+				<table >
+					<tr>
+						<td>
+							<strong>Message From:</strong>
+						</td>
+						<td>
+							<%= h(@sender.email) %> (you)
+						</td>
+					</tr>
+				</table>
 				<% unless @message_templates.nil? %>
 					<script type="text/javascript">
 						//<![CDATA[
@@ -64,29 +71,31 @@
 						</dd>
 					</dl>
 				<% end %>
-				<dl class="clearfix">
-					<dt>
-						<label for="message_subject">
-							Subject:
-						</label>
-					</dt>
-					<dd>
-						<%= text_field :message, :subject, :maxlength => 30 %>
-					</dd>
-				</dl>
-				<dl class="clearfix">
-					<dt>
-						<label for="message_body">
-							Message:
-						</label>
-					</dt>
-					<dd>
-						<%= text_area :message, :body, "cols" => 50 %>
-					</dd>
-				</dl>
+				<table class="clearfix" border="0" cellpadding="2" cellspacing="4">
+					<tr>
+						<td width="105px;"><label for="message_subject">
+							<strong>Subject:</strong>
+						</label></td>
+						<td>
+							<%= text_field :message, :subject, :maxlength => 30 %>
+						</td>
+					</tr>
+					<tr>
+						<td><label for="message_body">
+							<strong>Message:</strong>
+						</label></td>
+						<td>
+							<%= text_area :message, :body, "cols" => 50 %>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" align="center">
+							<%= submit_tag "Send" %>
+						</td>
+					</tr>
+				</table>
 			</div>
 		</fieldset>
-		<%= submit_tag "Send" %>
 	<% end %>
 </div>
 </div>
