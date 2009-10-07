@@ -18,3 +18,10 @@ config.action_view.cache_template_extensions         = false
 config.action_mailer.raise_delivery_errors = false
 
 APP_URL = "http://staging.sitterscout.com"
+
+##Exception Notificaiton settings
+ExceptionNotifier.exception_recipients = %w(akvmurlai@gmail.com ilangoinfotech@gmail.com)
+
+ExceptionNotifier.sender_address = %("Application Error" <app.error@sitterscout.com>)  
+##Email settings
+require 'smtp_tls'

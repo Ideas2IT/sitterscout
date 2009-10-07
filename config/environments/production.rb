@@ -20,3 +20,11 @@ config.action_view.cache_template_loading            = true
 config.action_mailer.raise_delivery_errors = true
 
 APP_URL = "http://staging.sitterscout.com" #(or whatever your URL will be for that particular environment)
+
+##Exception Notificaiton settings
+ExceptionNotifier.exception_recipients = %w(heidi@sitterscout.com akvmurlai@gmail.com)
+
+ExceptionNotifier.sender_address = %("Application Error" <app.error@sitterscout.com>)  
+##Email settings
+require 'smtp_tls'
+

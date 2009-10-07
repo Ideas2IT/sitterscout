@@ -82,7 +82,7 @@ Comatose.configure do |config|
 end
 
 ##Exception Notificaiton settings
-ExceptionNotifier.exception_recipients = %w(heidi@sitterscout.com pkenney@pmkenney.com)
+ExceptionNotifier.exception_recipients = %w(ilangoinfotech@gmail.com)
 
 ExceptionNotifier.sender_address = %("Application Error" <app.error@sitterscout.com>)  
   
@@ -172,3 +172,6 @@ module ApplicationConfiguration
 
   ::AppConfig = OpenStruct.new config_hash
 end
+
+
+ENV['INLINEDIR'] = File.join(RAILS_ROOT,'tmp','ruby_inline')
