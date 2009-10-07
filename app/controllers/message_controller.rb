@@ -49,7 +49,7 @@ class MessageController < ApplicationController
 			this_message.body = params[:message][:body]
 			this_message.subject = params[:message][:subject]
 			if this_message.save!
-			  flash[:notice] = "Your message has been sent."
+        flash[:notice] = "Your message has been sent."
 		  else
 		    redirect_to :back
 		    return
@@ -154,7 +154,21 @@ class MessageController < ApplicationController
 		end
 	end
 
-	# contact history between this user and another
+	def list
+    return_data = {} 
+    messages = current_user.received_messages.find(:all)
+    return_data[:messages] = messages.collect{|m| {
+                  :id => m.id,
+                  :nickname => m.sender.profile.full_name,
+                  :subject => truncate(m.subject,15),
+                  :created_at => m.created_at.strftime('%m/%d/%Y'),
+                  :status => m.status,
+                  :type => "received"
+                }}
+    render :json => return_data.to_json
+  end
+  
+  # contact history between this user and another
 	def history
 		@partner = User.find_by_nickname(params[:nickname], :include => [:lead_photo, {:profile => :profile_text}])
 
