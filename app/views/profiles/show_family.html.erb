@@ -8,7 +8,7 @@
 </div>
 <div id="content">
 	<div class="div_border">
-		<table width="100%" height="100%">
+		<table height="100%">
 		<tr>
 			<td valign="top">
 				<%= image_tag(@user.avatar_photo_url, :class => "right" ,:height=> 150 ,:width=> 130) %>			
@@ -19,7 +19,11 @@
 					<tr>
 						<td>
 							<strong>
-								<font class="username_heading"><%= @profile.first_name + " " + @profile.last_name %></font></strong><br/>
+								<font class="username_heading">
+									<%unless @profile.first_name.nil? and @profile.last_name.nil?%>
+									<%= @profile.first_name + " " + @profile.last_name %>
+									<%end%>
+								</font></strong><br/>
 								<%unless @profile.address1.nil?%>
 									<%= @profile.address1%>, 
 								<%end%>
@@ -125,7 +129,6 @@
 							</div>
 						</td>
 					</tr>
-					
 				</table>
 			</td>
 		</tr>

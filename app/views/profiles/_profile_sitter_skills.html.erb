@@ -1,5 +1,6 @@
 <table width="100%">
-	<%unless @profile.sitter.nil? and @profile.sitter.skill.nil?%>
+	<%unless @profile.sitter.nil? %>
+	<%unless @profile.sitter.skill.nil?%>
 	<tr>
 		<td>
 			<table width="100%">
@@ -135,6 +136,7 @@
 			&nbsp;
 		</td>
 	</tr>
+	<%end%>
 	<%end%>
 	<tr>
 		<td>
