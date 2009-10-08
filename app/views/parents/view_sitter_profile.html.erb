@@ -1,133 +1,139 @@
-
-<%= render :partial => 'nav_menu', :locals => {:selected => ''} %>
+<div>
+	<%= render :partial => 'nav_menu', :locals => {:selected => ""} %>
+</div>
 <div id="sub_menu_gradient">
+	<div class="sub_menu_gradient_center">
+	
+	</div>
+</div>
+<div id="content" style="height:50px;">
+	<div class="div_border">
+		<table width="100%" height="100%" >
+		<tr>
+			<td valign="top">
+				<%= image_tag(@user.avatar_photo_url, :class => "right" ,:height=> 150 ,:width=> 130) %>			
+			</td>
+			<td>&nbsp;</td>
+			<td valign="top">
+				<table border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td>
+							<strong>
+								<font class="username_heading">
+									<%unless @profile.first_name.nil? and @profile.last_name.nil?%>
+										<%= @profile.first_name + " " + @profile.last_name %>
+									<%end%>
+								</font></strong><br/>
+								<%unless @profile.address1.nil?%>
+									<%= @profile.address1%>, 
+								<%end%>
+								<%unless @profile.address2.nil?%>
+									<%= @profile.address2%>,<br/>
+								<%end%>
+								<%unless @profile.city.nil?%>
+									<%= @profile.city %>,
+								<%end%>
+								<%unless @profile.state_id.nil?%> 
+									<%= State.find(@profile.state_id).name %>,  
+								<%end%>
+								<%unless @profile.zipcode.nil?%>
+									<%=@profile.zipcode.to_s %>.<br/>
+								<%end%>			
+						</td>
+						<td valign="top" align="right">
+							<label class="small_link">
+								<%= link_to "View connections", view_connections_parent_path(@user) %> |
+								<%= link_to "Send message", inbox_parent_path(current_user) %>
+							</label>
+							
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<div class="profile_border1" style="width:600px;">
+								<table border="0" width="100%">
+									<tr>
+										<td><strong>Typical Availability:</strong></td>
+									</tr>
+									<tr>
+										<td style="font-size:11px;" colspan="2">
+											<div style="padding:0px;">
+												<table cellpadding=0 cellspacing=0 style="margin-top: 5px;" width="100%">
+												<tr bgcolor="#C31880" style="color:white;">
+													<td style="border-left: 1px solid #999696; border-top: 1px solid #999696; border-bottom: 1px solid #999696; padding: 5px; font-weight: bold;">Sundays</td>
+													<td style="border-left: 1px solid #999696; border-top: 1px solid #999696; border-bottom: 1px solid #999696; padding: 5px; font-weight: bold;">Mondays</td>
+													<td style="border-left: 1px solid #999696; border-top: 1px solid #999696; border-bottom: 1px solid #999696; padding: 5px; font-weight: bold;">Tuesdays</td>
+													<td style="border-left: 1px solid #999696; border-top: 1px solid #999696; border-bottom: 1px solid #999696; padding: 5px; font-weight: bold;">Wednesday</td>
+													<td style="border-left: 1px solid #999696; border-top: 1px solid #999696; border-bottom: 1px solid #999696; padding: 5px; font-weight: bold;">Thursdays</td>
+													<td style="border-left: 1px solid #999696; border-top: 1px solid #999696; border-bottom: 1px solid #999696; padding: 5px; font-weight: bold;">Fridays</td>
+													<td style="border-left: 1px solid #999696; border-top: 1px solid #999696; border-bottom: 1px solid #999696; border-right: 1px solid #999696;padding: 5px; font-weight: bold;">Saturdays</td>			
+												</tr>
+												<tr>
+													<td style="border-left: 1px solid #999696;border-bottom: 1px solid #999696; padding: 5px"><%=  @user.profile.sundays %></td>
+													<td style="border-left: 1px solid #999696; border-bottom: 1px solid #999696; padding: 5px"><%=  @user.profile.mondays %></td>
+													<td style="border-left: 1px solid #999696; border-bottom: 1px solid #999696; padding: 5px"><%=  @user.profile.tuesdays %></td>
+													<td style="border-left: 1px solid #999696; border-bottom: 1px solid #999696; padding: 5px"><%=  @user.profile.wednesdays %></td>
+													<td style="border-left: 1px solid #999696; border-bottom: 1px solid #999696; padding: 5px"><%=  @user.profile.thursdays %></td>
+													<td style="border-left: 1px solid #999696; border-bottom: 1px solid #999696; padding: 5px"><%=  @user.profile.fridays %></td>
+													<td style="border-left: 1px solid #999696; border-bottom: 1px solid #999696; border-right: 1px solid #999696;padding: 5px" ><%=  @user.profile.saturdays %></td>
+												</tr>
+											</table>	
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>&nbsp;</td>
+									</tr>
+									<tr>
+										<td>
+											<table width="60%">
+												<tr>
+													<td><strong>Profile Tags:</strong></td>
+													<td><%= @profile.tag_list %>
+												</tr>
+												<%unless @profile.address1.nil? or @profile.address2.nil? or @profile.city.nil?%>
+													<tr>
+														<td>&nbsp;</td>
+													</tr>
+													<tr>
+														<td><strong><%= label :profile, :email, "Email Address:" %></strong></td>
+														<td><%= @user.email %></td>
+													</tr>
+											        <tr>
+											        	<td><strong><%= label :profile, :daytime_phone, "Daytime Phone #:" %></strong></td>
+														<td><%= @profile.datetime_phone %></td>
+													</tr>
+											        <tr>
+											        	<td><strong><%= label :profile, :evening_phone, "Evening Phone #:" %></strong></td>
+														<td><%= @profile.evening_phone %></td>
+													</tr>
+											        <tr>
+											        	<td><strong><%= label :profile, :cell_phone, "Cell Phone #:" %></strong></td>
+														<td><%= @profile.cell_phone %></td>
+													</tr>
+												<%end%>
+											</table>
+										</td>
+									</tr>	
+								</table>
+							</div>
+							<div class="profile_border2" style="width:600px;">
+								<%=render :partial => "profiles/profile_sitter_skills"%>
+							</div>
+						</td>
+					</tr>
+					
+				</table>
+			</td>
+		</tr>
+	</table>	
+	</div>
 	
 </div>
-<div id="content" style="margin-bottom: 10px;height:1100px;">
-<div style="width: 18%; float: left;">
-	<%= image_tag(@user.avatar_photo_url, :class => "right" ) %>
 
-</div>
-<div style="width: 50%; float: left;">
-	<table style="padding-bottom: 25px">
-			<tr><td><strong><%= @profile.first_name + " " + @profile.last_name %></strong></td></tr>
-			<tr><td><%= @profile.address1 %></td></tr>
-			<tr><td><%= @profile.address2 %></td></tr>
-			<tr><td><%= @profile.city + ", " + State.find(@profile.state_id).name + " " + @profile.zipcode.to_s %></tr>
-			<tr><td> <%= link_to "View connections", url_for(:controller => 'connections', :action => 'show', :id => @user.id), :class => "lbOn-405-390" %>
-			| <%= link_to "Send message", compose_parent_path(current_user, :to_id => @profile.sitter.id) %>
-			
-			</td></tr>
-			</table>
-
-			<strong>Typical Availability: </strong>
-		<table cellpadding=0 cellspacing=0 style="margin-top: 5px;">
-			<tr>
-			<td><img src="/images/availability_header_left.gif"></td>
-			<td style="background-color: #c2448f; color: #FFFFFF; padding: 5px 7px;" align="center">Sundays</td>
-			<td style="background-color: #c2448f; color: #FFFFFF; padding: 5px 7px;" align="center">Mondays</td>
-			<td style="background-color: #c2448f; color: #FFFFFF; padding: 5px 7px;" align="center">Tuesdays</td>
-			<td style="background-color: #c2448f; color: #FFFFFF; padding: 5px 7px;" align="center">Wednesday</td>
-			<td style="background-color: #c2448f; color: #FFFFFF; padding: 5px 7px;" align="center">Thursdays</td>
-			<td style="background-color: #c2448f; color: #FFFFFF; padding: 5px 7px;" align="center">Fridays</td>
-			<td style="background-color: #c2448f; color: #FFFFFF; padding: 5px 7px;" align="center">Saturdays</td>
-			<td><img src="/images/availability_header_right.gif"></td>			
-		</tr>
-		<tr>
-			<td style="border-left: 1px solid #666666; border-bottom: 1px solid #666666;">&nbsp;</td>
-			<td align="center" style="border-bottom: 1px solid #666666; padding: 5px 5px 5px 0"><%=  @user.profile.sundays %></td>
-			<td align="center" style="border-left: 1px solid #666666; border-bottom: 1px solid #666666; padding: 5px"><%=  @user.profile.mondays %></td>
-			<td align="center" style="border-left: 1px solid #666666; border-bottom: 1px solid #666666; padding: 5px"><%=  @user.profile.tuesdays %></td>
-			<td align="center" style="border-left: 1px solid #666666; border-bottom: 1px solid #666666; padding: 5px"><%=  @user.profile.wednesdays %></td>
-			<td align="center" style="border-left: 1px solid #666666; border-bottom: 1px solid #666666; padding: 5px"><%=  @user.profile.thursdays %></td>
-			<td align="center" style="border-left: 1px solid #666666; border-bottom: 1px solid #666666; padding: 5px"><%=  @user.profile.fridays %></td>
-			<td align="center" colspan="2"style="border-left: 1px solid #666666; border-bottom: 1px solid #666666; border-right: 1px solid #666666; padding: 5px" ><%=  @user.profile.saturdays %></td>
-		</tr>
-
-		</table>
-		<br />
-	<table>
-		<tr>
-			<td nowrap='nowrap'><strong>Profile Tags:</strong></td>
-			<td style="padding-left: 10px;"><%= @profile.tag_list %></td>
-		</tr>
-		<tr>
-			<td nowrap='nowrap'><strong><%= label :profile, :email, "Email Address:" %></strong></td>
-			<td style="padding-left: 10px;"><%= @user.email %></td>
-		</tr>
-    <tr>
-			<td nowrap='nowrap'><strong><%= label :profile, :daytime_phone, "Daytime Phone #:" %></strong></td>
-			<td style="padding-left: 10px;"><%= @profile.datetime_phone %></td>
-		</tr>
-    <tr>
-			<td nowrap='nowrap'><strong><%= label :profile, :evening_phone, "Evening Phone #:" %></strong></td>
-			<td style="padding-left: 10px;"><%= @profile.evening_phone %></td>
-		</tr>
-    <tr>
-			<td nowrap='nowrap'><strong><%= label :profile, :cell_phone, "Cell Phone #:" %></strong></td>
-			<td style="padding-left: 10px;"><%= @profile.cell_phone %></td>
-		</tr>
-	</table>
-	<br />
-	<table width="600">
-		<tr>
-			<td width="300">
-				<h4>I'm comfortable babysitting:</h4>
-				<ul style="list-style-position: inside; list-style-type: disc;">
-					<% if @user.skill.babies %> <li>Babies</li><% end %>
-					<% if @user.skill.toddlers %>  <li>Toddlers</li><% end %>
-					<% if @user.skill.preschoolers %>  <li>Pre-schoolers</li><% end %>
-					<% if @user.skill.schoolaged %>  <li>School Aged</li><% end %>
-					<% if @user.skill.specialneeds %>  <li>Special Needs Children</li><% end %>
-					<% if @user.skill.multiples %>  <li>Multiples (Twins, Triplets) </li><% end %>
-				</ul>
-			</td>
-			<td>
-				<h4>Own Transportation:</h4>
-				<% if @user.skill.transportation == 'true' %>
-					Yes
-				<% elsif @user.skill.transportation == 'sometimes' %>
-					Sometimes
-				<% else %>
-					No
-				<% end %><br /><br />
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<h4>Tasks I'm comfortable with:</h4>
-				<ul style="list-style-position: inside; list-style-type: disc;">
-				<% if @user.skill.cook %> <li>Cook meals </li><% end %>
-				<% if @user.skill.homework %> <li>Help with homework </li><% end %>
-				<% if @user.skill.bathe %> <li>Bathe kids </li><% end %>
-				<% if @user.skill.kidstobed %> <li>Get kids to bed </li><% end %>
-				<% if @user.skill.entertain %> <li>Play/entertain </li><% end %>
-				</ul>
-		</td>
-		<td>
-			<h4>Willing to travel:</h4>
-			Up to <%= @user.skill.max_mileage  %> miles<br />
-		</td>
-	</tr>
-	<tr>
-		<td colspan='2'>
-			<h4>Their Hourly Rate:</h4>
-			$<%= @user.profile.hourly_rate %>
-			<br /><br />
-			<h4>Their Description:</h4>
-			<%= @user.description %>
-		</td>
-	</tr>
-	</table>
-	<br />
-	
-	<%= link_to "< Back to \"Your Sitters\"", sitters_parent_path(current_user) %>
-<br /><br />
-
-
-
-</div>
-</div>
-
-<div style="top: 550px; position: absolute; margin-left: 18%; color: #8F8F8F;  font-size: 10pt; width: 960px;"> </div>
-
+<script type="text/javascript">
+	initialize();
+</script>

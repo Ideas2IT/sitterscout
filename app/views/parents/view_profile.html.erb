@@ -1,85 +1,137 @@
-
-<%= render :partial => 'nav_menu', :locals => {:selected => ''} %>
+<div>
+	<%= render :partial => 'nav_menu', :locals => {:selected => ""} %>
+</div>
 <div id="sub_menu_gradient">
+	<div class="sub_menu_gradient_center">
 	
+	</div>
 </div>
-<div id="content" style="height: 1100px;">
-
-<div style="width: 18%; float: left;">
-	<%= image_tag(@user.avatar_photo_url, :class => "right" ) %>
-	
-</div>
-<div style="width: 50%; float: left;">
-	<table style="padding-bottom: 25px">
-			<tr><td><strong><%= @profile.first_name + " " + @profile.last_name %></strong></td></tr>
-			<tr><td><%= @profile.address1 %></td></tr>
-			<tr><td><%= @profile.address2 %></td></tr>
-			<tr><td><%= @profile.city + ", " + State.find(@profile.state_id).name + " " + @profile.zipcode.to_s %></tr>
-			<tr><td> <%= link_to "View connections", url_for(:controller => 'connections', :action => 'show', :id => @user.id), :class => "lbOn-405-390" %>
-			| <%= link_to "Send message", compose_parent_path(current_user, :to_id => @profile.parent.id)  %>
-			</td></tr>
-
-
-		</table>	
-
-
-	<table>
+<div id="content">
+	<div class="div_border">
+		<table height="100%">
 		<tr>
-			<td nowrap='nowrap'><strong>Profile Tags:</strong></td>
-			<td style="padding-left: 10px;"><%= @profile.tag_list %></td>
-		</tr>
-		<tr>
-			<td nowrap='nowrap'><strong><%= label :profile, :email, "Email Address:" %></strong></td>
-			<td style="padding-left: 10px;"><%= @user.email %></td>
-		</tr>
-    <tr>
-			<td nowrap='nowrap'><strong><%= label :profile, :daytime_phone, "Daytime Phone #:" %></strong></td>
-			<td style="padding-left: 10px;"><%= @profile.datetime_phone %></td>
-		</tr>
-    <tr>
-			<td nowrap='nowrap'><strong><%= label :profile, :evening_phone, "Evening Phone #:" %></strong></td>
-			<td style="padding-left: 10px;"><%= @profile.evening_phone %></td>
-		</tr>
-    <tr>
-			<td nowrap='nowrap'><strong><%= label :profile, :cell_phone, "Cell Phone #:" %></strong></td>
-			<td style="padding-left: 10px;"><%= @profile.cell_phone %></td>
-		</tr>
-		<tr>
-			<td colspan="2">Number of Children:&nbsp;&nbsp; <%= @user.children.length %></td>
-		</tr>
-		<tr>
-			<td>Children:</td><td>&nbsp;</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<table style="margin-top: 5px;">
-				<% @user.children.each_with_index do |a, i| 
-					age = (Time.now.to_date - a.age.to_date) / 365 %>
+			<td valign="top">
+				<%= image_tag(@user.avatar_photo_url, :class => "right" ,:height=> 150 ,:width=> 130) %>			
+			</td>
+			<td>&nbsp;</td>
+			<td valign="top">
+				<table border="0" cellpadding="0" cellspacing="0">
 					<tr>
-						<td style="padding-left: 20px"><%=a.name %></td>
-						<td style="padding-left: 20px">Age:
-								<% if age.to_f < 1.0 %>
-									<%= (age.to_f * 12).to_i.to_s + " Mos." %>
-								<%	else %>
-									<%= age.to_i.to_s  %>
-								<% end %>
+						<td>
+							<strong>
+								<font class="username_heading">
+									<%unless @profile.first_name.nil? and @profile.last_name.nil?%>
+									<%= @profile.first_name + " " + @profile.last_name %>
+									<%end%>
+								</font></strong><br/>
+								<%unless @profile.address1.nil?%>
+									<%= @profile.address1%>, 
+								<%end%>
+								<%unless @profile.address2.nil?%>
+									<%= @profile.address2%><br/>
+								<%end%>
+								<%unless @profile.city.nil?%>
+									<%= @profile.city %>,
+								<%end%>
+								<%unless @profile.state_id.nil?%> 
+									<%= State.find(@profile.state_id).name %>,  
+								<%end%>
+								<%unless @profile.zipcode.nil?%>
+									<%=@profile.zipcode.to_s %>.<br/>
+								<%end%>			
+						</td>
+						<td valign="top" align="right">
+							<label class="small_link">
+								<%= link_to "View connections", view_connections_parent_path(@user) %> |
+								<%= link_to "Send message", inbox_parent_path(current_user) %>
+							</label>
+							
 						</td>
 					</tr>
-					<%	end  %>
+					<tr>
+						<td colspan="2">&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<div class="profile_border1" style="width:600px;">
+								<table width="60%">
+									<tr>
+										<td><strong>Profile Tags:</strong></td>
+										<td><%= @profile.tag_list %>
+									</tr>
+									<%unless @profile.address1.nil? or @profile.address2.nil? or @profile.city.nil?%>
+										<tr>
+											<td>&nbsp;</td>
+										</tr>
+										<tr>
+											<td><strong><%= label :profile, :email, "Email Address:" %></strong></td>
+											<td><%= @user.email %></td>
+										</tr>
+								        <tr>
+								        	<td><strong><%= label :profile, :daytime_phone, "Daytime Phone #:" %></strong></td>
+											<td><%= @profile.datetime_phone %></td>
+										</tr>
+								        <tr>
+								        	<td><strong><%= label :profile, :evening_phone, "Evening Phone #:" %></strong></td>
+											<td><%= @profile.evening_phone %></td>
+										</tr>
+								        <tr>
+								        	<td><strong><%= label :profile, :cell_phone, "Cell Phone #:" %></strong></td>
+											<td><%= @profile.cell_phone %></td>
+										</tr>
+									<%end%>
+								</table>
+							</div>
+							<div class="profile_border2" style="width:600px;">
+								<table>
+									<tr>
+										<td><strong>Number of children:</strong></td>
+										<td><%= @user.childs.size %></td>
+									</tr>
+									<tr>
+										<td>&nbsp;</td>
+									</tr>
+									<%if @user.childs.size > 0%>
+									<tr>
+										<td>
+											<strong>Children:</strong>
+										</td>
+										<td>
+											<strong>Age:</strong>
+										</td>
+									</tr>
+									<%@user.childs.each do |child|%>
+										<tr>
+											<td>
+												<ul style="padding-left:12px;">
+													<li ><%=child.name%></li>
+												</ul>
+											</td>
+											<td>
+												<%=Date.today.year - child.age.year%>
+											</td>
+										</tr>
+									<%end%>
+									<%end%>	
+									<tr>
+										<td>
+											&nbsp;
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<label class="small_link">
+												<%=link_to '< Back to "your Friends"',friends_parent_path(current_user) %>
+											</label>
+										</td>
+									</tr>
+								</table>
+							</div>
+						</td>
+					</tr>
 				</table>
 			</td>
 		</tr>
-		
-	
 	</table>
-	<br /><br /><br />
-	<%= link_to "< Back to \"Your Friends\"", friends_parent_path(current_user) %>
+	</div>
 </div>
-
-<%#= render :partial => 'shared/profile_percentage' %>
-
-</div>
-
-	<div style="top: 550px; position: absolute; margin-left: 18%; color: #8F8F8F;  font-size: 10pt; width: 960px;"> </div>
-	
-	
