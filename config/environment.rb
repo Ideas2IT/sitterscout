@@ -82,13 +82,13 @@ Comatose.configure do |config|
 end
 
 ##Exception Notificaiton settings
-ExceptionNotifier.exception_recipients = %w(ilangoinfotech@gmail.com)
 
-ExceptionNotifier.sender_address = %("Application Error" <app.error@sitterscout.com>)  
+
+#ExceptionNotifier.sender_address = %("Application Error" <app.error@sitterscout.com>)  
   
 # defaults to "[ERROR] "  
   
-ExceptionNotifier.email_prefix = "[SitterScout] "
+#ExceptionNotifier.email_prefix = "[SitterScout] "
 
 
 ##Email settings
