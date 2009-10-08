@@ -6,8 +6,9 @@ class Photo < ActiveRecord::Base
   :large => '96x96>' ,
   :medium => '64x64>' ,
   :small => '80x80>',
-  :thumb => '53X53>'
-  }
+  :thumb => '53X53>'},
+  :processor => 'Rmagick'
+  
   acts_as_taggable
 
 #  acts_as_activity :user, :if => Proc.new{|record| record.parent.nil?}
