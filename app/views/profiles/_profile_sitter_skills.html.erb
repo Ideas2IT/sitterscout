@@ -3,16 +3,8 @@
 		<td>
 			<table width="100%" >
 				<tr>
-					<td><strong>I'm comfortable babysitting:</strong></td>
-				</tr>
-				<%if @profile.sitter.skill.babies?%>
-				<tr>
-					<td>
-						<ul style="padding-left:12px;">
-							<li>Babies</li>
-						</ul><tr>
 					<td width="300">
-						<h4 style="line-height:15px;">I'm comfortable babysitting:</h4>
+						<h4 style="line-height:25px;">I'm comfortable babysitting:</h4>
 						<ul style="list-style-position: inside; list-style-type: disc;">
 							<% if @user.skill.babies %> <li>Babies</li><% end %>
 							<% if @user.skill.toddlers %>  <li>Toddlers</li><% end %>
@@ -23,7 +15,7 @@
 						</ul>
 					</td>
 					<td>
-						<h4 style="line-height:15px;">Own Transportation:</h4>
+						<h4 style="line-height:25px;">Own Transportation:</h4>
 						<% if @user.skill.transportation == 'true' %>
 							Yes
 						<% elsif @user.skill.transportation == 'sometimes' %>
@@ -35,7 +27,7 @@
 				</tr>
 				<tr>
 					<td>
-						<h4 style="line-height:15px;">Tasks I'm comfortable with:</h4>
+						<h4 style="line-height:25px;">Tasks I'm comfortable with:</h4>
 						<ul style="list-style-position: inside; list-style-type: disc;">
 						<% if @user.skill.cook %> <li>Cook meals </li><% end %>
 						<% if @user.skill.homework %> <li>Help with homework </li><% end %>
@@ -45,12 +37,12 @@
 						</ul>
 				</td>
 				<td>
-					<h4 style="line-height:15px;">Willing to travel:</h4>
+					<h4 style="line-height:25px;">Willing to travel:</h4>
 					Up to <%= @user.skill.max_mileage  %> miles<br />
 				</td>
 			</tr>
 	<tr>
-		<td colspan='2' style="line-height:15px;">
+		<td colspan='2' style="line-height:25px;">
 			<h4>Their Hourly Rate:</h4>
 			$<%= @user.profile.hourly_rate %>
 			<br /><br />
@@ -65,5 +57,5 @@
 			</label>
 		</td>
 	</tr>
-	<%end%>
+	
 </table>
