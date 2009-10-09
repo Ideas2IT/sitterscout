@@ -13,14 +13,14 @@
 		
 		<table id="sub_menu" style="width: 360px;">
 			<tr>
-			<td id="sitters_td" width="125">
-				<%= image_tag "pink_arrow.png", :id=>"ras", :style => ras_link_display %>
-				<%= link_to "Request a Sitter", "#", :id => "sitter_link", :class => 'grey_link_selected',  :onclick => "show_status()" %>
-			</td>
-			<td id="status_td" width="175">
-			<%= image_tag "pink_arrow.png", :id=>"rss", :style => "display: none" %>
-			<%= link_to ("Requested Sitter Status"), "#", :id => "status_link", :class => 'grey_link', :onclick => "show_sitters()" %>
-			</td>
+				<td id="sitters_td" width="125">
+					<%= image_tag "pink_arrow.png", :id=>"ras", :style => ras_link_display %>
+					<%= link_to "Request a Sitter", "#", :id => "sitter_link", :class => 'grey_link_selected',  :onclick => "show_status()" %>
+				</td>
+				<td id="status_td" width="175">
+					<%= image_tag "pink_arrow.png", :id=>"rss", :style => "display: none" %>
+					<%= link_to ("Requested Sitter Status"), "#", :id => "status_link", :class => 'grey_link', :onclick => "show_sitters()" %>
+				</td>
 			</tr>
 		</table>
 	</div>
@@ -205,7 +205,7 @@
 	
 	<script type="text/javascript">
 	
-		Event.observe(window, 'load', function() { disable_checkboxes() });
+		//Event.observe(window, 'load', function() { disable_checkboxes() });
 		
 		function check_selected_sitters(current_box)
 		{
