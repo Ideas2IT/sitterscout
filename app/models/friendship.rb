@@ -1,6 +1,6 @@
 class Friendship < ActiveRecord::Base
   belongs_to :user, :with_deleted => true
-  belongs_to :friend, :class_name => "User", :foreign_key => "friend_id"
+  belongs_to :friend, :class_name => "Friendship", :foreign_key => "friend_id"
   
   validates_presence_of :user_id, :friend_id
   
