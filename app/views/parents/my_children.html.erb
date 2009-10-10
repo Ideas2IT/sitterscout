@@ -11,9 +11,8 @@
 		<div style="margin-top: 20px; font-size: .8em;">
 			Sitters will able to learn about your family and decide if they are qualified. You may enter as much or as little information as you feel comfortable with.
 		</div>
-	
+	<% form_tag update_my_children_parent_path(current_user) do  %>
 	<% if @children.blank? %>
-		<% form_tag update_my_children_parent_path(current_user) do  %>
 			<div style="margin-bottom:10px; margin-top: 15px; font-size: .8em;" >
 			How many children do you have? <%= select_tag "number_of_children", options_for_select(0..6, @children.count) %>
 			</div>
@@ -22,13 +21,10 @@
 		    	 :with => "'number_of_children=' + value + '&children_shown=' + $('children_shown').value "
 		     %>	
 			<input type="hidden" id="children_shown" value="<%= @children.count%>">
-			<div style="margin-top: 25px; margin-left: 36%;">
-				<%= image_submit_tag '/images/parent_home/SaveChanges_bttn.gif' %>
-			</div>
-		<% end %>
+	<%end%>	
 
-	<%	else %>
-		<% form_tag update_my_children_parent_path(current_user) do  %>
+	<%	if @children.size > 0 %>
+		
 		<div style="margin-bottom:10px; margin-top: 15px; font-size: .8em;" >
 			How many children do you have? <%= select_tag "number_of_children", options_for_select(1..6, @children.count) %>
 			</div>
