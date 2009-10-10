@@ -7,4 +7,16 @@ module ParentsHelper
   	end
   	return str
   end
+  
+  def check_contact(user,current_user)
+      friendships = user.accepted_friendships
+      unless friendships.nil?
+        friendships.each do |f|
+          if f.friend.eql?(current_user)
+            return true
+          end
+        end
+      end
+  end
+ 
 end

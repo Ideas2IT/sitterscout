@@ -20,30 +20,34 @@
 						<td>
 							<strong>
 								<font class="username_heading">
-									<%unless @profile.first_name.nil? and @profile.last_name.nil?%>
-										<%= @profile.first_name + " " + @profile.last_name %>
-									<%end%>
+								<%unless @profile.first_name.nil? and @profile.last_name.nil?%>
+									<%= @profile.first_name + " " + @profile.last_name %>
+								<%end%>
 								</font></strong><br/>
-								<%unless @profile.address1.nil?%>
-									<%= @profile.address1%>, 
-								<%end%>
-								<%unless @profile.address2.nil?%>
-									<%= @profile.address2%>,<br/>
-								<%end%>
-								<%unless @profile.city.nil?%>
-									<%= @profile.city %>,
-								<%end%>
-								<%unless @profile.state_id.nil?%> 
-									<%= State.find(@profile.state_id).name %>,  
-								<%end%>
-								<%unless @profile.zipcode.nil?%>
-									<%=@profile.zipcode.to_s %>.<br/>
-								<%end%>			
+								<%show_contact = check_contact(@user,current_user)%>	
+								
+								<%if show_contact == true%>
+									<%unless @profile.address1.nil?%>
+										<%= @profile.address1%>, 
+									<%end%>
+									<%unless @profile.address2.nil?%>
+										<%= @profile.address2%>,<br/>
+									<%end%>
+									<%unless @profile.city.nil?%>
+										<%= @profile.city %>,
+									<%end%>
+									<%unless @profile.state_id.nil?%> 
+										<%= State.find(@profile.state_id).name %>,  
+									<%end%>
+									<%unless @profile.zipcode.nil?%>
+										<%=@profile.zipcode.to_s %>.<br/>
+									<%end%>	
+								<%end%>		
 						</td>
 						<td valign="top" align="right">
 							<label class="small_link">
 								<%= link_to "View connections", view_connections_parent_path(@user) %> |
-								<%= link_to "Send message", inbox_parent_path(current_user) %>
+								<%= link_to "Send message", inbox_parent_path(@user) %>
 							</label>
 							
 						</td>
@@ -94,7 +98,7 @@
 													<td><strong>Profile Tags:</strong></td>
 													<td><%= @profile.tag_list %>
 												</tr>
-												<%unless @profile.address1.nil? or @profile.address2.nil? or @profile.city.nil?%>
+												<%if show_contact == true%>
 													<tr>
 														<td>&nbsp;</td>
 													</tr>
