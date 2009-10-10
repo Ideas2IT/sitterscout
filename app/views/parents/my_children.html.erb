@@ -19,22 +19,30 @@
 		     :with => "'number_of_children=' + value + '&children_shown=' + $('children_shown').value"
 		     %>
 				<input type="hidden" id="children_shown" value="<%=@children.count %>">
-<% form_tag update_my_children_parent_path(current_user) do  %>		
+	
 	<% if @children.blank? %>
+	<% form_tag update_my_children_parent_path(current_user) do  %>	
+		<% @children.count -1 %>
 		<%= render :partial => 'child' %>
-	<%	else	
-	 @children.each_with_index do |c, i| %>
-		<div id="child_<%= i %>" style="margin-bottom: 5px; font-size: .8em;">
+	<div style="margin-top: 25px; margin-left: 36%;">
+		<%= image_submit_tag '/images/parent_home/SaveChanges_bttn.gif' %>
+	</div>
+	<% end %>
+
+	<%	else %>	
+	<% form_tag update_my_children_parent_path(current_user) do  %>	
+	<% @children.each_with_index do |c, i| %>
+		<div id="child_<%= i %>" style="margin-bottom: 5px;">
 			Child's Name &nbsp;<%= text_field_tag "child[#{i}][name]", c.name, :style=> "margin-right: 5px;" %>
 			<% if c.age.nil?
 				c.age = "January 1, 2000".to_date
 			end
-				%>
+	%>
 			Child's Birth Date <%= date_select "child[#{i}]", "age", :start_year => 20.years.ago.year, :end_year => Time.now.year, :default => {:year => c.age.to_date.year, :day => c.age.to_date.day, :month => c.age.to_date.month}, :order => [:month, :day, :year] %>
-			<%#= select_tag "child[#{i}][age]", options_for_select(["1-6 mos.", "6-12 mos.","2 yrs.", "3 yrs.", "4 yrs.","5 yrs."], c.age	) %>
+			<% #= select_tag "child[#{i}][age]", options_for_select(["1-6 mos.", "6-12 mos.","2 yrs.", "3 yrs.", "4 yrs.","5 yrs."], c.age	) %>
 		</div>
-	<% end 
-		end %>
+	<% end   
+		end%>
 		<div style="position: absolute; margin-left: 800px;top: 275px;">
 				<%= render :partial => '/shared/share_a_sale' %>
 				</div>
