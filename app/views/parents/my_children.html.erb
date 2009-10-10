@@ -11,26 +11,35 @@
 		<div style="margin-top: 20px; font-size: .8em;">
 			Sitters will able to learn about your family and decide if they are qualified. You may enter as much or as little information as you feel comfortable with.
 		</div>
-		<div style="margin-bottom:10px; margin-top: 15px; font-size: .8em;" >
-		How many children do you have? <%= select_tag "number_of_children", options_for_select(1..6, @children.count) %>
+	
+	<% if @children.blank? %>
+	<% form_tag update_my_children_parent_path(current_user) do  %>
+	<div style="margin-bottom:10px; margin-top: 15px; font-size: .8em;" >
+		How many children do you have? <%= select_tag "number_of_children", options_for_select(0..6, @children.count) %>
 		</div>
 		<%= observe_field :number_of_children, :url => insert_children_parent_path(current_user) ,
 		     :frequency => 2,
-		     :with => "'number_of_children=' + value + '&children_shown=' + $('children_shown').value"
-		     %>
-				<input type="hidden" id="children_shown" value="<%=@children.count %>">
-	
-	<% if @children.blank? %>
-	<% form_tag update_my_children_parent_path(current_user) do  %>	
-		<% @children.count -1 %>
-		<%= render :partial => 'child' %>
+		     :with => "'number_of_children=' + value + '&children_shown=' + $('children_shown').value "
+		     %>	
+			 <input type="hidden" id="children_shown" value="<%= @children.count%>">
+
+		
 	<div style="margin-top: 25px; margin-left: 36%;">
 		<%= image_submit_tag '/images/parent_home/SaveChanges_bttn.gif' %>
 	</div>
 	<% end %>
 
-	<%	else %>	
-	<% form_tag update_my_children_parent_path(current_user) do  %>	
+	<%	else %>
+			
+	<% form_tag update_my_children_parent_path(current_user) do  %>
+	<div style="margin-bottom:10px; margin-top: 15px; font-size: .8em;" >
+		How many children do you have? <%= select_tag "number_of_children", options_for_select(1..6, @children.count) %>
+		</div>
+		<%= observe_field :number_of_children, :url => insert_children_parent_path(current_user) ,
+		     :frequency => 2,
+		     :with => "'number_of_children=' + value + '&children_shown=' + $('children_shown').value"
+		     %>	
+	<input type="hidden" id="children_shown" value="<%=@children.count %>">	
 	<% @children.each_with_index do |c, i| %>
 		<div id="child_<%= i %>" style="margin-bottom: 5px;">
 			Child's Name &nbsp;<%= text_field_tag "child[#{i}][name]", c.name, :style=> "margin-right: 5px;" %>
