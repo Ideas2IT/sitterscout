@@ -74,6 +74,19 @@
 			  </td>
 
 			  <td style="padding: 3px;" valign="top">
+			  <%
+						hide_connection = Friendship.find(:first, :conditions => ["user_id = ? AND friend_id = ?", current_user, f.friend.id], :limit => 1).hide_connection
+						checked = hide_connection ? "checked='checked'" : ""
+					%>
+					<div id="hide_<%= f.friend.id %>_div" style="float: right; margin-top: -6px;"><input name="hide_<%= f.friend.id %>" <%=checked %> id="hide_<%= f.friend.id %>" type="checkbox" value='1' /> Hide Friend 
+					
+						<a href="#" title="If you check the box, this Friend will not be displayed when others “View Your Connections”."><img src="/images/QuestionMark_transp.gif" border=0></a>
+						</div>
+						<%= observe_field "hide_#{f.friend.id}", :url => hide_sitter_connection_parent_path(current_user),
+						     :frequency => 2,
+						     :with => "'sitter_id=#{f.friend.id}&hide_connection='+value"
+						     %>
+						
 			   <strong style="font-size: 1em;"><%= link_to(f.friend.profile.first_name + " " + f.friend.profile.last_name, url_for(view_profile_parent_path(f.friend.id))) %></strong><br/>
 			  <%= f.friend.profile.city %>, <%= f.friend.profile.state.name %><br />
 				<strong>Tags: </strong><%= truncate(f.friend.profile.tag_list.to_s, 38, "...") %>
