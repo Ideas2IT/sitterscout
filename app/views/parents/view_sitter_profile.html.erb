@@ -38,7 +38,7 @@
 										<%= @profile.city %>,
 									<%end%>
 									<%unless @profile.state_id.nil?%> 
-										<%= State.find(@profile.state_id).name %>,  
+										<%= State.find(@profile.state_id).name %>.  
 									<%end%>
 									<%unless @profile.zipcode.nil?%>
 										<%=@profile.zipcode.to_s %><br/>
