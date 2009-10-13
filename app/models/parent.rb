@@ -39,7 +39,7 @@ class Parent < User
   #after_save   {|user| ParentMailer.deliver_activation(user) if user.recently_activated? }
   
   def self.find(*args)
-    with_scope(:find => {:include => :profile, :conditions => ["profiles.parent_id IS NOT NULL"]}) do 
+    with_scope(:find => {:include => [ {:profile => [:state, :tags]}, :tags, :accepted_friendships], :conditions => ["profiles.parent_id IS NOT NULL"]}) do 
       super
     end
   end

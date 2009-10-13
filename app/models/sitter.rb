@@ -40,7 +40,7 @@ class Sitter < User
    end
    
    def self.find(*args)
-     with_scope(:find => {:include => :profile, :conditions => ["profiles.sitter_id IS NOT NULL"]}) do 
+     with_scope(:find => {:include => [ {:profile => [:state, :tags]}, :tags, :accepted_friendships], :conditions => ["profiles.sitter_id IS NOT NULL"]}) do 
        super
      end
    end
