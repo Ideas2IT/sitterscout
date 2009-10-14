@@ -34,7 +34,9 @@
 						</td>
 						<td valign="top" align="right">
 							<label class="small_link">
+								<%if current_user.connected?(@user) %>
 								<%= link_to "View connections", view_connections_parent_path(@user) %> |
+								<% end %>
 								<%= link_to "Send message", compose_parent_path(current_user) %>
 							</label>
 							
