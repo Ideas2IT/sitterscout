@@ -15,16 +15,16 @@
 	<% form_for :message, :url => { :action => "send_message" } do |form| %>
 		<%= hidden_field :message, :recipient_id, { :value => @recipient.id } %>
 		<%= hidden_field_tag (params[:from_profile]) ? :from_profile : :from_messages, 1%>
-		<fieldset class="cornerbox_34_grn-col">
-			<div style="font-size: 0.9em; font-weight: bold;line-height:30px;"><h3><%= (params[:message_id].nil? ? "New Message" : "Replying") %> to <%= h(@recipient.email) %></h3></div>
+		<fieldset class="cornerbox_34_grn-col" style="border-width: 0px;">
+			<div style="font-size: 0.8em; font-weight: bold;line-height:20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= (params[:message_id].nil? ? "New Message" : "Replying") %> To:<input type="text" value="<%=h(@recipient.email) %>" size="44" ></div>
 			<div class="content clearfix" style="font-size: 0.8em; margin-bottom: 50px;line-height:20px;">
 				<table >
 					<tr>
-						<td>
+						<td align=="right">
 							<strong>Message From:</strong>
 						</td>
-						<td>
-							<%= h(@sender.email) %> (you)
+						<td align=="left">
+							&nbsp;<%= h(@sender.email) %> (you)
 						</td>
 					</tr>
 				</table>
@@ -73,23 +73,24 @@
 				<% end %>
 				<table class="clearfix" border="0" cellpadding="2" cellspacing="4">
 					<tr>
-						<td width="105px;"><label for="message_subject">
+						<td width="105px;" align="right"><label for="message_subject">
 							<strong>Subject:</strong>
 						</label></td>
 						<td>
-							<%= text_field :message, :subject, :maxlength => 30 %>
+							<%= text_field :message, :subject, :maxlength => 44 %>
 						</td>
 					</tr>
-					<tr>
-						<td><label for="message_body">
+					<tr align="top" valign="top">
+						<td align="right"><label for="message_body">
 							<strong>Message:</strong>
 						</label></td>
-						<td>
+						<td align="top">
 							<%= text_area :message, :body, "cols" => 50 %>
 						</td>
 					</tr>
 					<tr>
-						<td colspan="2" align="center">
+						<td></td>
+						<td align="left">
 							<%= submit_tag "Send" %>
 						</td>
 					</tr>
@@ -103,7 +104,7 @@
 	//<![CDATA[
 	    LiveValidation.onValid = void(0);
 		subject_length = new LiveValidation('message_subject',{validMessage:'', onlyOnSubmit: true});
-		subject_length.add(Validate.Length,{ minimum: 5, maximum: 10, tooLongMessage:"Must be 10 characters or less.", tooShortMessage:"Must be at least 5 characters"});
+		subject_length.add(Validate.Length,{ minimum: 1, maximum: 20, tooLongMessage:"Must be 20 characters or less.", tooShortMessage:"Subject could not be empty"});
 		
 		body_length = new LiveValidation('message_body',{validMessage:'', onlyOnSubmit: true});
 		body_length.add(Validate.Length,{ minimum: 10, maximum: 2000, tooLongMessage:"Must be 2000 characters or less.", tooShortMessage:"Must be at least 10 characters"});

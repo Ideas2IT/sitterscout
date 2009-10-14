@@ -27,17 +27,17 @@
 								<%unless @profile.address1.nil?%>
 									<%= @profile.address1%>, 
 								<%end%>
-								<%unless @profile.address2.nil?%>
+								<%unless @profile.address2.empty?%>
 									<%= @profile.address2%>,<br/>
 								<%end%>
 								<%unless @profile.city.nil?%>
 									<%= @profile.city %>,
 								<%end%>
 								<%unless @profile.state_id.nil?%> 
-									<%= State.find(@profile.state_id).name %>,  
+									<%= State.find(@profile.state_id).name %>.  
 								<%end%>
 								<%unless @profile.zipcode.nil?%>
-									<%=@profile.zipcode.to_s %>.<br/>
+									<%=@profile.zipcode.to_s %><br/>
 								<%end%>			
 						</td>
 						<td valign="top" align="right">
@@ -53,8 +53,8 @@
 					</tr>
 					<tr>
 						<td colspan="2">
-							<div class="profile_border1" style="width:600px;">
-								<table border="0" width="100%">
+							<div class="profile_border1" style="width:600px;" style=" background-color: white;">
+								<table border="0" width="100%" bgcolor="#529d52">
 									<tr>
 										<td><strong>Typical Availability:</strong></td>
 									</tr>
