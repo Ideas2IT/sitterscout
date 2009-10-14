@@ -3,44 +3,77 @@
 <div id="sub_menu_gradient">
 	
 </div>
-<div id="content" style="height: 1100px;">
-
-<div style="width: 18%; float: left;">
-	<%= image_tag(@user.avatar_photo_url, :class => "right" ) %>
-
+<div id="content" style="height: 300px;">
+<div class="div_border">
+	<table height="100%">
+		<tr>
+			<td valign="top"><%= image_tag(@user.avatar_photo_url, :class => "right" ) %></td>
+			<td>&nbsp;</td>
+			<td valign="top">
+				<table border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td>
+							<strong>
+								<font class="username_heading">
+								<%= @profile.first_name + " " + @profile.last_name %>
+								</font></strong>
+								<%= @profile.address1 %>,
+								<%= @profile.address2 %>
+								<br/>
+								<%= @profile.city + ", " + State.find(@profile.state_id).name + " " + @profile.zipcode.to_s %>,
+								</td>
+								<td valign="top" align="right">
+							<label class="small_link">
+								<%= link_to "View #{@user.profile.full_name} connections", url_for(:controller => 'connections', :action => 'show', :id => @user.id), :class => "lbOn-405-390" %>
+								| <%= link_to "Send #{@user.profile.full_name} a message", compose_sitter_path(current_user, :to_id => @user.id) %>
+								</label>
+								</td>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<div class="profile_border1" style="width:600px;">
+								<table width="60%">
+									<tr>
+										<td><strong>Profile Tags:</strong></td>
+										<td><%= @profile.tag_list %></td>
+									</tr>
+									<tr>
+										<td><strong><%= label :profile, :email, "Email Address:" %></strong></td>
+										<td><%= @user.email %></td>
+									</tr>
+									<tr>
+										<td><strong><%= label :profile, :daytime_phone, "Daytime Phone #:" %></strong></td>
+										<td><%= @profile.datetime_phone %></td>
+									</tr>
+									<tr>
+										<td><strong><%= label :profile, :evening_phone, "Evening Phone #:" %></strong></td>
+										<td><%= @profile.evening_phone %></td>
+									</tr>
+                					<tr>
+                						<td><strong><%= label :profile, :cell_phone, "Cell Phone #:" %></strong></td>
+										<td><%= @profile.cell_phone %></td>
+									</tr>
+							</table>
+							</div>
+							<div class="profile_border2" style="width:600px;">
+								<table>
+									<tr>
+										<td>
+											<label class="small_link">
+												<%= link_to "< Back to \"Your Search\"", referring_url %>
+											</label>
+											</td>
+									</tr>
+								</table>
+								</div>
 </div>
-<div style="width: 50%; float: left;">
-	<table style="padding-bottom: 25px">
-			<tr><td><strong><%= @profile.first_name + " " + @profile.last_name %></strong></td></tr>
-			<tr><td><%= @profile.address1 %></td></tr>
-			<tr><td><%= @profile.address2 %></td></tr>
-			<tr><td><%= @profile.city + ", " + State.find(@profile.state_id).name + " " + @profile.zipcode.to_s %></tr>
-			<tr><td> <%= link_to "View #{@user.profile.full_name} connections", url_for(:controller => 'connections', :action => 'show', :id => @user.id), :class => "lbOn-405-390" %>
-			| <%= link_to "Send #{@user.profile.full_name} a message", compose_sitter_path(current_user, :to_id => @user.id) %>
-			</td></tr>
-			</table>
-			<br />
-
-		<br /><br />
-	<table>
-		<tr><td><strong>Profile Tags:</strong></td><td><%= @profile.tag_list %></tr>
-		<tr><td><strong><%= label :profile, :email, "Email Address:" %></strong></td><td>
-		<%= @user.email %></td></tr>
-                <tr><td><strong><%= label :profile, :daytime_phone, "Daytime Phone #:" %></strong></td><td>
-		<%= @profile.datetime_phone %></td></tr>
-                <tr><td><strong><%= label :profile, :evening_phone, "Evening Phone #:" %></strong></td><td>
-		<%= @profile.evening_phone %></td></tr>
-                <tr><td><strong><%= label :profile, :cell_phone, "Cell Phone #:" %></strong></td><td>
-		<%= @profile.cell_phone %></td></tr>
-		
-	</table>
-	<br /><br /><br />
-	<%= link_to "< Back to \"Your Families\"", families_sitter_path(current_user) %>
-
-
 </div>
 
+<% #= render :partial => 'shared/profile_percentage' %>
 
-</div>
-<%#= render :partial => 'shared/profile_percentage' %>
+
 
