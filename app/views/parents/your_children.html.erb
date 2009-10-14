@@ -3,7 +3,6 @@
 	<div class='box alt first_alt'>
 	<%= error_messages_for :parent %>
 	<%= error_messages_for :profile %>
-	<div>
 	<h2>Add Your Children</h2>
 	<p style="font-size: .8em;"></p>
 	<br />
@@ -23,7 +22,7 @@
 
 
 			<%= observe_field  "number_of_children", {
-				:url => insert_children_parent_path(current_user), 
+				:url => 
 				:with => "'number_of_children=' + value + '&welcome=true' + '&children_shown=' + $('children_shown').value", 
 				500 => "alert('Sorry, there was an error.'); return false"} %>
 
