@@ -78,7 +78,7 @@
 						checked = hide_connection ? "checked='checked'" : ""
 					%>
 					<div id="hide_<%= f.friend.id %>_div" style="float: right; margin-top: -6px;"><input name="hide_<%= f.friend.id %>" <%=checked %> id="hide_<%= f.friend.id %>" type="checkbox" value='1' /> Hide Sitter 
-
+					
 						<a href="#" title="If you check the box, this sitter will not be displayed when others “View Your Connections”."><img src="/images/QuestionMark_transp.gif" border=0></a>
 						</div>
 						<%= observe_field "hide_#{f.friend.id}", :url => hide_sitter_connection_parent_path(current_user),
