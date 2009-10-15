@@ -47,16 +47,9 @@
 			<h4>My Hourly Rate:</h4>
 			$<%= @user.profile.hourly_rate %>
 			<br /><br />
-			<h4>My Description:</h4>
+			<h4>About Me:</h4>
 			<%= @user.description %>
 		</td>
 	</tr>
-	<tr>
-		<td>
-			<label class="small_link">
-				<%=link_to '< Back to "Your Sitters"',sitters_parent_path(self.current_user)%>
-			</label>
-		</td>
-	</tr>
-	<%end%>
 </table>
+<%end%>

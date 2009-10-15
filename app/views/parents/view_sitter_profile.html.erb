@@ -6,9 +6,9 @@
 	
 	</div>
 </div>
-<div id="content" style="height:650px;">
+<div id="content" style="height:300px;">
 	<div class="div_border">
-		<table width="100%" height="100%">
+		<table height="100%">
 		<tr>
 			<td valign="top">
 				<%= image_tag(@user.avatar_photo_url, :class => "right" ,:height=> 150 ,:width=> 130) %>			
@@ -24,7 +24,7 @@
 									<%= @profile.first_name + " " + @profile.last_name %>
 								<%end%>
 								</font></strong><br/>
-								<%show_contact = check_contact(@user,current_user)%>	
+								<% show_contact = check_contact(@user,current_user) %>	
 								
 								<%if show_contact == true%>
 									<%unless @profile.address1.nil?%>
@@ -61,7 +61,7 @@
 					<tr>
 						<td colspan="2" >
 							<div class="profile_border1" style="width:600px;">
-								<table border="0" width="100%">
+								<table width="60%">
 									<tr>
 										<td><strong>Typical Availability:</strong></td>
 									</tr>
@@ -130,9 +130,10 @@
 							<div class="profile_border2" style="width:600px;">
 								<%=render :partial => "profiles/profile_sitter_skills"%>
 							</div>
-						</td>
+							<label class="small_link">
+						<%=link_to '< Back to "Your Sitters"',sitters_parent_path(self.current_user)%>
+						</label>
 					</tr>
-					
 				</table>
 			</td>
 		</tr>
@@ -140,7 +141,3 @@
 	</div>
 	
 </div>
-
-<script type="text/javascript">
-	initialize();
-</script>
