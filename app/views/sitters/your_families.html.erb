@@ -25,7 +25,7 @@
 						<font style='font-size: .6em;'>Profile Tags:
 						<%= truncate(friend.profile.tag_list.to_s, 25, "...") rescue nil %>
 						<% if(friend.profile.tag_list.to_s.size > 25) %>
-						<%= link_to "More", "#", :onmouseover =>"TagToTip('#{friend.id}_tip', ABOVE, true, BALLOON, true)", :onmouseout => "UnTip()", :style => "color: #C21D7F;" %>
+						<%= link_to "More", "#", :onmouseover =>"TagToTip('#{friend.id}_tip', ABOVE, true, BALLOON, true)", :onmouseout => "UnTip()", :style => "color: #C21D7F;",:title=>"#{friend.profile.tag_list.to_s}" %>
 						<div id="<%= friend.id %>_tip" style="display: none;"><%= friend.profile.tag_list.to_s %></div>
 									<% end %><br />
 						> <%= link_to "Add to Your Families", url_for(:controller => 'connections', :action => 'add_friend', :id => friend.id), :class => "lbOn-300-270" %> 
