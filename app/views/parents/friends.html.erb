@@ -94,7 +94,7 @@
 				<strong>Tags: </strong><%= truncate(f.friend.profile.tag_list.to_s, 38, "...") %>
 				 <% if(f.friend.profile.tag_list.to_s.size > 38) %>
 				 
-					<%= link_to "More", "#", :onmouseover =>"TagToTip('#{friend.id}_tip', ABOVE, true, BALLOON, true)", :onmouseout => "UnTip()", :style => "color: #C21D7F;" %>
+					<%= link_to "More", "#", :onmouseover =>"TagToTip('#{f.friend.id}_tip', ABOVE, true, BALLOON, true)", :onmouseout => "UnTip()", :style => "color: #C21D7F;" %>
 					<div id="<%= f.friend.id %>_tip" style="display: none;"><%= f.friend.profile.tag_list.to_s %></div>
 										<% end %>
 	
