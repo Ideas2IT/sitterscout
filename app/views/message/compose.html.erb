@@ -77,7 +77,7 @@
 							<strong><%= (params[:message_id].nil? ? "New Message" : "Replying") %> To :</strong>
 						</td>
 						<td align=="left">
-							<input type="text" value="<%=h(@recipient.email) %>" size="44" > 
+							<input type="text" value="<%=h(@recipient.email) %>" size="42" > 
 						</td>
 					</tr>
 					<tr>
@@ -94,20 +94,13 @@
 							<strong>Subject :</strong>
 						</label></td>
 						<td>
-							<%= text_field :message, :subject,:style => "margin-top: 5px;width: 375px;" %>
+							<%= text_field :message, :subject,:style => "margin-top: 5px;width: 358px;" %>
 						</td>
 					</tr>
-					<tr align="top" valign="top">
-						<td align="right"><label for="message_body">
-							<strong>Message :</strong>
-						</label></td>
-						<td align="top">
-							<%= text_area :message, :body, "cols" => 50 %>
-						</td>
-					</tr>
+					<tr><td align="right" valign="top"><strong>Message:</strong></td><td><%= text_area(:message, :body, :style => "margin-top: 5px;width: 353px;")%></td></tr>
 					<tr>
 						<td></td>
-						<td align="left">
+						<td align="center">
 							<%= submit_tag "Send" %>
 						</td>
 					</tr>
