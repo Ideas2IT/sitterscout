@@ -19,17 +19,18 @@
 								<%unless @profile.address1.nil?%>
 									<%= @profile.address1%>, 
 								<%end%>
-								<%unless @profile.address2.nil?%>
-									<%= @profile.address2%><br/>
+								<%unless @profile.address2.empty?%>
+									<%= @profile.address2%>
 								<%end%>
+								<br/>
 								<%unless @profile.city.nil?%>
 									<%= @profile.city %>,
 								<%end%>
 								<%unless @profile.state_id.nil?%> 
-									<%= State.find(@profile.state_id).name %>,  
+									<%= State.find(@profile.state_id).name %>  
 								<%end%>
 								<%unless @profile.zipcode.nil?%>
-									<%=@profile.zipcode.to_s %>.<br/>
+									<%=@profile.zipcode.to_s %><br/>
 								<%end%>			
 						</td>
 						<td valign="top" align="right">

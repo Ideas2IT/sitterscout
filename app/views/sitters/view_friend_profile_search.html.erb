@@ -11,11 +11,11 @@
 							<strong>
 								<font class="username_heading">
 								<%= @profile.first_name + " " + @profile.last_name %>
-								</font></strong>
+								</font></strong><br/>
 								<%= @profile.address1 %>,
 								<%= @profile.address2 %>
 								<br/>
-								<%= @profile.city + ", " + State.find(@profile.state_id).name + " " + @profile.zipcode.to_s %>,
+								<%= @profile.city + ", " + State.find(@profile.state_id).name + " " + @profile.zipcode.to_s %>
 								</td>
 								<td valign="top" align="right">
 							<label class="small_link">
