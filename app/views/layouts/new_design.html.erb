@@ -80,7 +80,7 @@
 			</div>
 
 			<div id='navbar' <%= current_page?(:controller => "home", :action => "index") ? "class='home'" : nil %>
-				<div id='searchbar' style='backg/round: #999;z-index: 900;width:665px;'>
+				<div id='searchbar' style='backg/round: #999;z-index: 900;'>
 					<% form_tag "/search", :name => 'search_form' do %>
 					<input id='searchfield' type="text" name="search" id="search" value="Search by name or zip code" size='40' onFocus="if(this.value=='Search by name or zip code'){this.value=''; this.style.color='#000';};" onBlur="if(this.value==''){this.value='Search by name or zip code'; this.style.color='#999'; }"/>
 					<div id='searchbutton' onclick="if($('searchfield').value != '' && $('searchfield').value != 'Search by name or zip code'){ document.search_form.submit();}">
