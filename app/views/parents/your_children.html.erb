@@ -18,11 +18,11 @@
 					</td>
 				</tr>
 			</table>
-		   	<input type="hidden" id="children_shown" value="<%=0 %>">
+		   	<input type="hidden" id="children_shown" value="<%= 0 %>">
 
 
 			<%= observe_field  "number_of_children", {
-				:url => 
+				:url => insert_children_parent_path(current_user),
 				:with => "'number_of_children=' + value + '&welcome=true' + '&children_shown=' + $('children_shown').value", 
 				500 => "alert('Sorry, there was an error.'); return false"} %>
 
