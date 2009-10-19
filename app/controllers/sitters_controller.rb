@@ -657,6 +657,10 @@ class SittersController < ApplicationController
   def accept_job_from_email
     acceptjob(params[:id])
   end
+  
+  def invite
+    render :layout => "no_search"
+  end
 
   
   def decline_job_from_email
@@ -681,6 +685,7 @@ class SittersController < ApplicationController
     
     
   def send_invitations
+    
       p = Sitter.find(current_user)
       unless p.aasm_state == "complete"
         p.aasm_state = "complete"
@@ -706,6 +711,7 @@ class SittersController < ApplicationController
              end
         end
       #SitterMailer.deliver_send_welcome_email(current_user)
+      
     end
     
 protected
@@ -750,7 +756,8 @@ protected
      Notifications.deliver_sitter_invite(current_user, email, name, msg)
    when "friends"
      Notifications.deliver_friend_invite(current_user, email, name, msg)
-    end
+   end
+   
   end  
 
 

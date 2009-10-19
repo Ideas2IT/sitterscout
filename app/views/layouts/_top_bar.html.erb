@@ -1,4 +1,4 @@
-<div class="logo">
+ma<div class="logo">
 	<%= link_to_unless(@current_action == 'index' && (@current_controller == 'parents' || @current_controller == 'sitters'),  image_tag('global/logo.png', :border => 0), home_page_path) %>
 </div>
 
@@ -19,6 +19,7 @@
 	</ul>
 	</div>
 	<% unless @current_action == 'your_families' || @current_action == 'welcome' || @current_action == 'your_friends' || @current_action == 'invite' || @current_action == 'your_sitters' %>
+
 	<div id="skinnysearch">
 		
 		<ul>
