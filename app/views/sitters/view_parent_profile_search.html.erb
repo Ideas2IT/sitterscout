@@ -20,9 +20,9 @@
 								<td valign="top" align="right">
 							<label class="small_link">
 								<%if current_user.connected?(@user) %>
-								<%= link_to "View #{@user.profile.full_name} connections", url_for(:controller => 'connections', :action => 'show', :id => @user.id), :class => "lbOn-405-390" %> |
+								<%= link_to "View connections", url_for(:controller => 'connections', :action => 'show', :id => @user.id), :class => "lbOn-405-390" %> |
 								<% end %>
-								<%= link_to "Send #{@user.profile.full_name} a message", compose_sitter_path(current_user, :to_id => @user.id) %>
+								<%= link_to "Send a message", compose_sitter_path(current_user, :to_id => @user.id) %>
 								</label>
 								</td>
 						</td>
