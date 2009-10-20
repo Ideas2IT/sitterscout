@@ -71,7 +71,7 @@
 						</dd>
 					</dl>
 				<% end %>
-				<table class="clearfix" border="0" cellpadding="2" cellspacing="4" >
+				<table class="clearfix" border="1" cellpadding="2" cellspacing="4" >
 					<tr>
 						<td align="right">
 							<strong><%= (params[:message_id].nil? ? "New Message" : "Replying") %> To :</strong>
@@ -81,10 +81,10 @@
 						</td>
 					</tr>
 					<tr>
-						<td  width="112px;" align=="right">
+						<td  width="120px;" align="right">
 							<strong>Message From :</strong>
 						</td>
-						<td align=="left">
+						<td align="left">
 							<%= h(@sender.email) %> (you)
 						</td>
 					</tr>
