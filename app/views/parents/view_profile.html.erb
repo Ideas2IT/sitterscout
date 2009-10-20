@@ -46,7 +46,7 @@
 								<%if current_user.connected?(@user) %>
 								 <%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => @user.id), :class => "lbOn-405-390" %> |
 								<% end %>
-								<%= link_to "Send message", compose_parent_path(current_user) %>
+								<%= link_to "Send message", compose_parent_path(@user, :to_id => @user.id) %>
 							</label>
 							
 						</td>
