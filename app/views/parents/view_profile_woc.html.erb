@@ -1,0 +1,93 @@
+<div>
+	<%= render :partial => 'nav_menu', :locals => {:selected => ""} %>
+</div>
+<div id="sub_menu_gradient">
+	<div class="sub_menu_gradient_center">
+	</div>
+</div>
+<div id="content" style="height:300px;">
+	<div class="div_border">
+		<table height="100%">
+		<tr>
+			<td valign="top">
+				<%= image_tag(@user.avatar_photo_url(:large), :class => "right" ,:height=> 150 ,:width=> 130) %>			
+			</td>
+			<td>&nbsp;</td>
+			<td valign="top">
+				<table border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td>
+							<strong>
+								<font class="username_heading">
+									<%unless @profile.first_name.nil? and @profile.last_name.nil?%>
+									<%= @profile.first_name + " " + @profile.last_name %>
+									<%end%>
+								</font></strong><br/>	
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<div class="profile_border1" style="width:600px;">
+								<table width="60%">
+									<tr>
+										<td><strong>Profile Tags:</strong></td>
+										<td><%= @profile.tag_list %>
+									</tr>
+								</table>
+							</div>
+							<div class="profile_border2" style="width:600px;">
+								<table>
+									<tr>
+										<td><strong>Number of children:</strong></td>
+										<td><%= @user.childs.size %></td>
+									</tr>
+									<tr>
+										<td>&nbsp;</td>
+									</tr>
+									<%if @user.childs.size > 0%>
+									<tr>
+										<td>
+											<strong>Children:</strong>
+										</td>
+										<td>
+											<strong>Age:</strong>
+										</td>
+									</tr>
+									<%@user.childs.each do |child|%>
+										<tr>
+											<td>
+												<ul style="padding-left:12px;">
+													<li ><%=child.name%></li>
+												</ul>
+											</td>
+											<td>
+												<%=Date.today.year - child.age.year%>
+											</td>
+										</tr>
+									<%end%>
+									<%end%>	
+									<tr>
+										<td>
+											&nbsp;
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<label class="small_link">
+												<%=link_to '< Back to "Your Friends"',friends_parent_path(current_user) %>
+											</label>
+										</td>
+									</tr>
+								</table>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+	</div>
+</div>

@@ -124,7 +124,16 @@ class SittersController < ApplicationController
      @user = Sitter.find_by_id(params[:id])
     @profile = @user.profile
   end
-    
+  def view_friend_profile_woc
+   @user = Sitter.find_by_id(params[:id])
+    @profile = @user.profile
+  end
+  def view_parent_profile_woc
+   @user = Parent.find_by_id(params[:id])
+    @profile = @user.profile 
+  end
+  
+ 
   def add_family
     if request.post?
       Friendship.request(current_user, Parent.find_by_id(params[:id]))
