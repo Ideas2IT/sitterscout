@@ -3,7 +3,7 @@ class Photo < ActiveRecord::Base
   :storage => :file_system,
    :resize_to => '384x256>' ,
   :thumbnails => {
-  :large => '96x96>' ,
+  :large => '96x96<' ,
   :medium => '64x64>' ,
   :small => '80x80>',
   :thumb => '53X53>'},

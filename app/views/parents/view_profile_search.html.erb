@@ -3,7 +3,7 @@
 		<table height="100%">
 		<tr>
 			<td valign="top">
-				<%= image_tag(@user.avatar_photo_url, :class => "right" ,:height=> 150 ,:width=> 130) %>			
+				<%= image_tag(@user.avatar_photo_url(:large), :class => "right" ,:height=> 150 ,:width=> 130) %>			
 			</td>
 			<td>&nbsp;</td>
 			<td valign="top">
@@ -17,7 +17,7 @@
 									<%end%>
 								</font></strong><br/>
 								<%unless @profile.address1.nil?%>
-									<%= @profile.address1%>, 
+									<%= @profile.address1%>&nbsp;
 								<%end%>
 								<%unless @profile.address2.empty?%>
 									<%= @profile.address2%>

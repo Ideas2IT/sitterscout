@@ -150,7 +150,7 @@ class User < ActiveRecord::Base
     end
   end
 
-
+ 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   def self.authenticate(login, password)
     # hide records with a nil activated_at
