@@ -155,17 +155,80 @@ class MessageController < ApplicationController
 	end
 
 	def list
-    return_data = {} 
-    messages = current_user.received_messages.find(:all)
-    return_data[:messages] = messages.collect{|m| {
-                  :id => m.id,
-                  :nickname => m.sender.profile.full_name,
-                  :subject => truncate(m.subject,15),
-                  :created_at => m.created_at.strftime('%m/%d/%Y'),
-                  :status => m.status,
-                  :type => "received"
-                }}
-    render :json => return_data.to_json
+   @needs_ext = 1
+    @type = (params[:type]) ? params[:type] : 'received'
+
+    page_number = (params[:start].to_i / 25) + 1 || 1
+    respond_to do |wants|
+      wants.html
+      wants.js {
+        msg_type = params[:type]||"received"
+        msg_search = params[:search]||""
+
+        case params[:sort]
+          when "nickname"
+            sort = "nickname"
+          when "status"
+            sort = "messages.status"
+          when "subject"
+            sort = "messages.subject"
+          else
+            sort = "messages.created_at"
+        end
+
+        case params[:dir]
+          when "ASC"
+            dir = "ASC"
+          else
+            dir = "DESC"
+        end
+
+        return_data = {}
+        case msg_type
+          when "received"
+            messages = current_user.received_messages.find(:all)## ,
+            #            :include => :sender,
+            #            :conditions => ["(subject like ? OR body LIKE ?) AND (users.deleted_at is null OR users.deleted_at > ?)", '%' + msg_search + '%', '%' + msg_search + '%', Time.now],
+            #            :order => sort + " " + dir,
+            #            :page => {
+            #              :size => 25, 
+            #              :current => page_number
+            #            }
+          # )
+            return_data[:messages] = messages.collect{|m| {
+              :id => m.id,
+              :nickname => m.sender.profile.full_name,
+              :subject => truncate(m.subject,15),
+              :created_at => m.created_at.strftime('%m/%d/%Y'),
+              :status => m.status,
+              :type => "received"
+            }}
+          else
+            messages = current_user.sent_messages.find(:all,
+              :include => :recipient,
+              :conditions => ["(subject like ? OR body LIKE ?) AND (users.deleted_at is null OR users.deleted_at > ?)", '%' + msg_search + '%', '%' + msg_search + '%',Time.now],
+              :order => sort + " " + dir)
+#              :page => {
+#                :size => 25, 
+#               :current => page_number
+#              }
+            
+            return_data[:messages] = messages.collect{|m| {
+              :id => m.id,
+              :nickname => m.recipient.profile.full_name,
+              :subject => truncate(m.subject,15),
+              :created_at => m.created_at.strftime('%m/%d/%Y'),
+              :status => m.status,
+              :type => "sent"
+            }}
+          end
+
+
+        return_data[:total] = messages.size
+        return_data[:unreadTotal] = current_user.unread_received_messages.size
+        render :json => return_data.to_json
+      }
+    end
   end
   
   # contact history between this user and another

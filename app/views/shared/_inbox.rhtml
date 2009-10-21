@@ -8,7 +8,6 @@
 				var message_list_console = function(layout)
 				{
 					var scopeThis = this;
-
 					this.layout = new Ext.Panel
 					({
 						renderTo: layout,
@@ -21,7 +20,7 @@
 					});
 
 					this.messageType = '<%= @type %>';
-
+					
 					this.actions =
 					{
 						message:
@@ -186,7 +185,7 @@
 							}
 						}
 					}
-
+						
 					this.columnModel = new Ext.grid.ColumnModel
 					([
 						this.selectionModel,
@@ -203,7 +202,7 @@
 						height: "100%",
 						autoExpandColumn: 'subject',
 						viewConfig: { forceFit: true },
-						// loadMask: {msg: 'Retrieving Messages...'},
+						//loadMask: {msg: 'Retrieving Messages...'},
 						header: false,
 						ds: this.store,
 						cm: this.columnModel,
@@ -224,7 +223,6 @@
 						function(sm)
 						{
 							var count = sm.getCount();
-
 							this.actions.message.reply.setDisabled((count != 1 || sm.getSelected().data.nickname == 'Administrator' || this.messageType == 'sent'));
 							this.actions.message.del.setDisabled(!count);
 						
@@ -254,7 +252,6 @@
 						},
 						this
 					);
-
 					this.gridPanel.getStore().load();
 					this.gridPanel.render();
 				}
@@ -264,7 +261,6 @@
 				});
 
 				function showMessageDialog( text, selection, container){
-
 					Ext.MessageBox.show
 					({
 						title: "Reason",
