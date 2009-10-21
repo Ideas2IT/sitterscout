@@ -36,11 +36,45 @@
 							<div class="profile_border2" style="width:600px;background-color: rgb(255, 255, 255);">
 								<table>
 									<tr>
+										<td><strong>Number of children:</strong></td>
+										<td><%= @user.childs.size %></td>
+									</tr>
+									<tr>
+										<td>&nbsp;</td>
+									</tr>
+									<%if @user.childs.size > 0%>
+									<tr>
+										<td>
+											<strong>Children:</strong>
+										</td>
+										<td>
+											<strong>Age:</strong>
+										</td>
+									</tr>
+									<%@user.childs.each do |child|%>
+										<tr>
+											<td>
+												<ul style="padding-left:12px;">
+													<li ><%=child.name%></li>
+												</ul>
+											</td>
+											<td>
+												<%=Date.today.year - child.age.year%>
+											</td>
+										</tr>
+									<%end%>
+									<%end%>	
+									<tr>
+										<td>
+											&nbsp;
+										</td>
+									</tr>
+									<tr>
 										<td>
 											<label class="small_link">
 												<%= link_to "< Back to \"Your Families\"", families_sitter_path(current_user) %>
 											</label>
-											</td>
+										</td>
 									</tr>
 								</table>
 							</div>

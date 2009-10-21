@@ -1,11 +1,12 @@
 <table width="100%">
 	<tr>
 		<td>
-			<%unless @user.skill.nil?%>
-			<table width="100%" >
+			
+			<table width="100%" border="0" >
 				<tr>
 					<td width="300">
 						<h4 style="line-height:25px;">I'm comfortable babysitting:</h4>
+						<%unless @user.skill.nil?%>
 						<ul style="list-style-position: inside; list-style-type: disc;">
 							<% if @user.skill.babies %> <li>Babies</li><% end %>
 							<% if @user.skill.toddlers %>  <li>Toddlers</li><% end %>
@@ -14,9 +15,11 @@
 							<% if @user.skill.specialneeds %>  <li>Special Needs Children</li><% end %>
 							<% if @user.skill.multiples %>  <li>Multiples (Twins, Triplets) </li><% end %>
 						</ul>
+						<%end%>
 					</td>
 					<td>
 						<h4 style="line-height:25px;">Own Transportation:</h4>
+						<%unless @user.skill.nil?%>
 						<% if @user.skill.transportation == 'true' %>
 							Yes
 						<% elsif @user.skill.transportation == 'sometimes' %>
@@ -25,10 +28,13 @@
 							No
 						<% end %><br /><br />
 					</td>
+					<%end%>
 				</tr>
 				<tr>
 					<td>
+						
 						<h4 style="line-height:25px;">Tasks I'm comfortable with:</h4>
+						<%unless @user.skill.nil?%>
 						<ul style="list-style-position: inside; list-style-type: disc;">
 						<% if @user.skill.cook %> <li>Cook meals </li><% end %>
 						<% if @user.skill.homework %> <li>Help with homework </li><% end %>
@@ -36,20 +42,23 @@
 						<% if @user.skill.kidstobed %> <li>Get kids to bed </li><% end %>
 						<% if @user.skill.entertain %> <li>Play/entertain </li><% end %>
 						</ul>
+						<%end%>
 				</td>
 				<td>
 					<h4 style="line-height:25px;">Willing to travel:</h4>
+					<%unless @user.skill.nil?%>
 					Up to <%= @user.skill.max_mileage  %> miles<br />
+					<%end%>
 				</td>
 			</tr>
 	<tr>
 		<td colspan='2' style="line-height:25px;">
 			<h4>My Hourly Rate:</h4>
-			$<%= @user.profile.hourly_rate %>
+			$<%unless @user.skill.nil?%><%= @user.profile.hourly_rate %><%end%>
 			<br /><br />
 			<h4>About Me: </h4>
-			<%= @user.description %>
+			<%unless @user.skill.nil?%><%= @user.description %><%end%>
 		</td>
 	</tr>
 </table>
-<%end%>
+

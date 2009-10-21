@@ -119,76 +119,20 @@
 									</tr>	
 								</table>
 							</div>
-							<div class="profile_border2" style="width:600px;background-color: rgb(255, 255, 255);">
-								<table width="100%">
-	<tr>
-		<td>
-			<%unless @user.skill.nil?%>
-			<table width="100%" >
-				<tr>
-					<td width="300">
-						<h4 style="line-height:25px;">I'm comfortable babysitting:</h4>
-						<ul style="list-style-position: inside; list-style-type: disc;">
-							<% if @user.skill.babies %> <li>Babies</li><% end %>
-							<% if @user.skill.toddlers %>  <li>Toddlers</li><% end %>
-							<% if @user.skill.preschoolers %>  <li>Pre-schoolers</li><% end %>
-							<% if @user.skill.schoolaged %>  <li>School Aged</li><% end %>
-							<% if @user.skill.specialneeds %>  <li>Special Needs Children</li><% end %>
-							<% if @user.skill.multiples %>  <li>Multiples (Twins, Triplets) </li><% end %>
-						</ul>
-					</td>
-					<td>
-						<h4 style="line-height:25px;">Own Transportation:</h4>
-						<% if @user.skill.transportation == 'true' %>
-							Yes
-						<% elsif @user.skill.transportation == 'sometimes' %>
-							Sometimes
-						<% else %>
-							No
-						<% end %><br /><br />
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<h4 style="line-height:25px;">Tasks I'm comfortable with:</h4>
-						<ul style="list-style-position: inside; list-style-type: disc;">
-						<% if @user.skill.cook %> <li>Cook meals </li><% end %>
-						<% if @user.skill.homework %> <li>Help with homework </li><% end %>
-						<% if @user.skill.bathe %> <li>Bathe kids </li><% end %>
-						<% if @user.skill.kidstobed %> <li>Get kids to bed </li><% end %>
-						<% if @user.skill.entertain %> <li>Play/entertain </li><% end %>
-						</ul>
-				</td>
-				<td>
-					<h4 style="line-height:25px;">Willing to travel:</h4>
-					Up to <%= @user.skill.max_mileage  %> miles<br />
-				</td>
-			</tr>
-	<tr>
-		<td colspan='2' style="line-height:25px;">
-			<h4>My Hourly Rate:</h4>
-			$<%= @user.profile.hourly_rate %>
-			<br /><br />
-			<h4>Their Description:</h4>
-			<%= @user.description %>
-		</td>
-	</tr>
-	
-	<%end%>
-</table>
+							<div class="profile_border2" style="width:600px;background-color: rgb(255, 255, 255);" >
+								<table>
+									<tr>
+										<td>
+											<label class="small_link">
+												<%=render :partial => "profiles/profile_sitter_skills"%>
+												<%= link_to "< Back to \"Your Search\"",  referring_url %>
+											</label>
+											</td>
+									</tr>
+								</table>
+								</div>
 </div>
-</td>
-</tr>
-<tr>
-		<td>
-			<label class="small_link">
-				<%=link_to '< Back to "Your Sitters"' ,referring_url %>
-			</label>
-		</td>
-	</tr>
-					
-				</table>
-			</td>
-		</tr>
-	</table>	
-	</div>
+</div>
+<div style="top: 450px; position: absolute; margin-left: 18%; color: #8F8F8F;  font-size: 10pt; width: 960px;">
+</div>
+							
