@@ -3,7 +3,6 @@
 </div>
 <div id="sub_menu_gradient">
 	<div class="sub_menu_gradient_center">
-	
 	</div>
 </div>
 <div id="content" style="height:300px;">
@@ -23,36 +22,8 @@
 								<%unless @profile.first_name.nil? and @profile.last_name.nil?%>
 									<%= @profile.first_name + " " + @profile.last_name %>
 								<%end%>
-								</font></strong><br/>
-								<% show_contact = check_contact(@user,current_user) %>	
-								
-								<%if show_contact == true%>
-									<%unless @profile.address1.nil?%>
-										<%= @profile.address1%>&nbsp;
-									<%end%>
-									<%unless @profile.address2.empty?%>
-										<%= @profile.address2%>
-									<%end%>
-									<br/>
-									<%unless @profile.city.nil?%>
-										<%= @profile.city %>,
-									<%end%>
-									<%unless @profile.state_id.nil?%> 
-										<%= State.find(@profile.state_id).name %>  
-									<%end%>
-									<%unless @profile.zipcode.nil?%>
-										<%=@profile.zipcode.to_s %><br/>
-									<%end%>	
-								<%end%>		
-						</td>
-						<td valign="top" align="right">
-							<label class="small_link">
-								<%if current_user.connected?(@user) %>
-								 <%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => @user.id), :class => "lbOn-405-390" %> |
-								<% end %>
-								<%= link_to "Send message", compose_parent_path(@user, :to_id => Sitter.find(@user.id).id) %>
-							</label>
-							
+								</font>
+							</strong>
 						</td>
 					</tr>
 					<tr>
@@ -100,28 +71,6 @@
 												<tr>
 													<td><strong>Profile Tags:</strong></td>
 													<td><%= @profile.tag_list %>
-												</tr>
-												<%if show_contact == true%>
-													<tr>
-														<td>&nbsp;</td>
-													</tr>
-													<tr>
-														<td><strong><%= label :profile, :email, "Email Address:" %></strong></td>
-														<td><%= @user.email %></td>
-													</tr>
-											        <tr>
-											        	<td><strong><%= label :profile, :daytime_phone, "Daytime Phone #:" %></strong></td>
-														<td><%= @profile.datetime_phone %></td>
-													</tr>
-											        <tr>
-											        	<td><strong><%= label :profile, :evening_phone, "Evening Phone #:" %></strong></td>
-														<td><%= @profile.evening_phone %></td>
-													</tr>
-											        <tr>
-											        	<td><strong><%= label :profile, :cell_phone, "Cell Phone #:" %></strong></td>
-														<td><%= @profile.cell_phone %></td>
-													</tr>
-												<%end%>
 											</table>
 										</td>
 									</tr>	

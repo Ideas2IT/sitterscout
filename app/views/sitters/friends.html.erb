@@ -42,7 +42,7 @@
 						</td>
 					<tr>
 						<td colspan="2" style=" font-size: .7em; padding-left: 2px;">
-						<%= link_to "View Profile", url_for(view_friend_profile_sitter_path(search.id)) %> |
+						<%= link_to "View Profile", url_for(view_friend_profile_woc_sitter_path(search.id)) %> |
 							<%= link_to "Add to Your Friends", url_for(:controller => 'connections', :action => 'add_friend', :id => search.id), :class => "lbOn-300-270" %>
 							<% if current_user.connected?(search) %>
 							 | <%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => search.id), :class => "lbOn-405-390" %>

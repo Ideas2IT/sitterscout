@@ -49,6 +49,12 @@ class ConnectionsController < ApplicationController
     @sitters = Sitter.find(:all)
     render :layout => 'bare'
   end
+  
+  def view_profile
+    @user = Parent.find_by_id(params[:id])
+    @profile = @user.profile
+    render :layout => 'lightbox'
+  end
 
   def show
     @user = User.find(params[:id])

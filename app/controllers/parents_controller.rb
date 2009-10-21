@@ -733,6 +733,16 @@ end
       @profile = @user.profile
     end
     
+    def view_profile_woc
+      @user = Parent.find_by_id(params[:id])
+      @profile = @user.profile
+    end
+    
+    def view_sitter_profile_woc
+      @user = Sitter.find_by_id(params[:id])
+      @profile = @user.profile
+    end
+    
     def view_connections
       @user = User.find(params[:id])
       @profile = @user.profile
