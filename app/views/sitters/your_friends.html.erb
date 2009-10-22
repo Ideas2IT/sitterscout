@@ -12,7 +12,7 @@
 		<% if !(@friends.size == 1 && @friends[0].nil?) %>
 			<% @friends.each do |friend| %>
 				<% unless friend.nil? || friend.profile.nil? %>
-				<div style="width: 98%; height: 76px; float: left; border: 1px #AFAFAF solid; background-color: #FFF; margin-left: 2px; margin-bottom: 4px;">
+				<div style="width: 98%; height: 98px; float: left; border: 1px #AFAFAF solid; background-color: #FFF; margin-left: 2px; margin-bottom: 4px;">
 
 						<div style="width: 80px; float: left; padding: 5px; ">
 							<%= image_tag(friend.avatar_photo_url(:thumb), :class => "right" ) %>
@@ -29,10 +29,11 @@
 								<%= link_to "More", "#", :onmouseover =>"TagToTip('#{friend.id}_tip', ABOVE, true, BALLOON, true)", :onmouseout => "UnTip()", :style => "color: #C21D7F;" %>
 								<div id="<%= friend.id %>_tip" style="display: none;"><%= friend.profile.tag_list.to_s %></div>
 										<% end %><br />
+							> <%= link_to "View Profile",  url_for(:controller => 'connections' , :action => 'view_profile_friends' , :id => friend.id), :class => "lbOn-850-570" %>
 							> <%= link_to "Add to Your Friends", url_for(:controller => 'connections', :action => 'add_friend', :id => friend.id), :class => "lbOn-300-270" %>  
 								<% if current_user.connected?(friend) %>
 							
-						&nbsp;	><%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => friend.id), :class => "lbOn-405-390" %>
+						<br/>	><%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => friend.id), :class => "lbOn-405-390" %>
 						<% end %>
 						</font>	
 						
