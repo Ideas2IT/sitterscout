@@ -11,7 +11,7 @@
 	<div style="border: 1px #AFAFAF solid; background-color: #E9EDFE; padding: 5px; width: 420px; height: 285px; float: left; margin-right:20px;	 overflow-y: auto;">
 		<div style='font-size: .9em; margin-bottom: 4px;'>SitterScout has identified the following parent(s) based on your ZIP code and profile tags.</div>
 		<% @families.each do |friend| %>
-			<div style="width: 98%; height: 85px; float: left; border: 1px #AFAFAF solid; background-color: #FFF; margin-bottom: 4px;">
+			<div style="width: 98%; height: 100px; float: left; border: 1px #AFAFAF solid; background-color: #FFF; margin-bottom: 4px;">
 
 					<div style="width: 80px; float: left; padding: 5px; ">
 						<%= image_tag(friend.avatar_photo_url(:thumb), :class => "right" ) %>
@@ -28,10 +28,10 @@
 						<%= link_to "More", "#", :onmouseover =>"TagToTip('#{friend.id}_tip', ABOVE, true, BALLOON, true)", :onmouseout => "UnTip()", :style => "color: #C21D7F;",:title=>"#{friend.profile.tag_list.to_s}" %>
 						<div id="<%= friend.id %>_tip" style="display: none;"><%= friend.profile.tag_list.to_s %></div>
 									<% end %><br />
-						> <%= link_to "Add to Your Families", url_for(:controller => 'connections', :action => 'add_friend', :id => friend.id), :class => "lbOn-300-270" %> 
+						> <%= link_to "View Profile",  url_for(:controller => 'connections' , :action => 'view_profile' , :id => friend.id), :class => "lbOn-850-370" %>
+						> <%= link_to "Add to Your Families", url_for(:controller => 'connections', :action => 'add_friend', :id => friend.id), :class => "lbOn-300-270" %>
 							<% if current_user.connected?(friend) %>
-						 
-					&nbsp;	> <%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => friend.id), :class => "lbOn-405-390" %>
+					<br/>	> <%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => friend.id), :class => "lbOn-405-390" %>
 					<% end %></font>	
 						
 					</div>
