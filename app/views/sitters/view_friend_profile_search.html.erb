@@ -1,8 +1,10 @@
-<div id="content" style="height: 300px;">
+
+<div id="content" style="height: 550px;">
 <div class="div_border">
 	<table height="100%">
-		<tr>
-			<td valign="top"><%= image_tag(@user.avatar_photo_url(:large), :class => "right" ,:height=> 150 ,:width=> 130) %></td>
+		<tr>	
+			<td valign="top" >
+				<%= image_tag(@user.avatar_photo_url(:large), :class => "right" ,:height=> 150 ,:width=> 130) %></td>
 			<td>&nbsp;</td>
 			<td valign="top">
 				<table border="0" cellpadding="0" cellspacing="0">
@@ -11,20 +13,8 @@
 							<strong>
 								<font class="username_heading">
 								<%= @profile.first_name + " " + @profile.last_name %>
-								</font></strong><br/>
-								<%= @profile.address1 %>&nbsp;
-								<%= @profile.address2 %>
-								<br/>
-								<%= @profile.city + ", " + State.find(@profile.state_id).name + " " + @profile.zipcode.to_s %>
-								</td>
-								<td valign="top" align="right">
-							<label class="small_link">
-								<%if current_user.connected?(@user) %>
-								<%= link_to "View connections", url_for(:controller => 'connections', :action => 'show', :id => @user.id), :class => "lbOn-405-390" %> |
-								<% end %>
-								 <%= link_to "Send a message", compose_sitter_path(current_user, :to_id => @user.id) %>
-								</label>
-								</td>
+								</font>
+							</strong><br/>
 						</td>
 					</tr>
 					<tr>
@@ -38,37 +28,29 @@
 										<td><strong>Profile Tags:</strong></td>
 										<td><%= @profile.tag_list %></td>
 									</tr>
-									<tr>
-										<td><strong><%= label :profile, :email, "Email Address:" %></strong></td>
-										<td><%= @user.email %></td>
-									</tr>
-									<tr>
-										<td><strong><%= label :profile, :daytime_phone, "Daytime Phone #:" %></strong></td>
-										<td><%= @profile.datetime_phone %></td>
-									</tr>
-									<tr>
-										<td><strong><%= label :profile, :evening_phone, "Evening Phone #:" %></strong></td>
-										<td><%= @profile.evening_phone %></td>
-									</tr>
-                					<tr>
-                						<td><strong><%= label :profile, :cell_phone, "Cell Phone #:" %></strong></td>
-										<td><%= @profile.cell_phone %></td>
-									</tr>
-							</table>
+								</table>
 							</div>
-							<div class="profile_border2" style="width:600px;background-color: rgb(255, 255, 255);" >
+							<div class="profile_border2" style="width:600px;background-color: rgb(255, 255, 255);">
 								<table>
 									<tr>
 										<td>
+											<%=render :partial => "profiles/profile_sitter_skills"%>
 											<label class="small_link">
-												<%=render :partial => "profiles/profile_sitter_skills"%>
 												<%= link_to "< Back to \"Your Search\"",  referring_url %>
 											</label>
-											</td>
+										</td>
 									</tr>
 								</table>
-								</div>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
 </div>
 </div>
 <div style="top: 450px; position: absolute; margin-left: 18%; color: #8F8F8F;  font-size: 10pt; width: 960px;">
 </div>
+												
+										
