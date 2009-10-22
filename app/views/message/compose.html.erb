@@ -71,17 +71,20 @@
 						</dd>
 					</dl>
 				<% end %>
+				
 				<table class="clearfix" border="0" cellpadding="2" cellspacing="4" >
 					<tr>
 						<td align="right">
 							<strong><%= (params[:message_id].nil? ? "New Message" : "Replying") %> To :</strong>
 						</td>
-						<td align=="left">
-							<input type="text" value="<%=h(@recipient.email) %>" size="42" > 
+						<td align="left">
+							<!--<input type="text" value="<%=h(@recipient.email) %>" size="42" >-->
+							<%= text_field_tag :recipient ,h(@recipient.email) ,:style => "margin-top: 5px;width: 355px;"     %>
+
 						</td>
 					</tr>
 					<tr>
-						<td  width="120px;" align="right">
+						<td  width="120" align="right">
 							<strong>Message From :</strong>
 						</td>
 						<td align="left">
@@ -90,11 +93,11 @@
 					</tr>
 					
 					<tr>
-						<td width="105px;" align="right"><label for="message_subject">
+						<td width="105" align="right"><label for="message_subject">
 							<strong>Subject :</strong>
 						</label></td>
 						<td>
-							<%= text_field :message, :subject,:style => "margin-top: 5px;width: 358px;" %>
+							<%= text_field :message, :subject,:style => "margin-top: 5px;width: 355px;" %>
 						</td>
 					</tr>
 					<tr><td align="right" valign="top"><strong>Message :</strong></td><td><%= text_area(:message, :body, :style => "margin-top: 5px;width: 353px;")%></td></tr>
@@ -114,7 +117,7 @@
 	//<![CDATA[
 	    LiveValidation.onValid = void(0);
 		subject_length = new LiveValidation('message_subject',{validMessage:'', onlyOnSubmit: true});
-		subject_length.add(Validate.Length,{ minimum: 1,tooShortMessage:"Subject could not be empty"});
+		subject_length.add(Validate.Length,{ minimum: 2,tooShortMessage:"Subject could not be empty"});
 		
 		body_length = new LiveValidation('message_body',{validMessage:'', onlyOnSubmit: true});
 		body_length.add(Validate.Length,{ minimum: 10, maximum: 2000, tooLongMessage:"Must be 2000 characters or less.", tooShortMessage:"Must be at least 10 characters"});
