@@ -18,8 +18,5 @@
 		validates_profile_city.add( Validate.Presence, {failureMessage: " "} );
 		validates_profile_city.add( Validate.Length, {minimum: 2, tooShortMessage: "minimum 2 characters needed "});
 		
-		validates_profile_zip = new LiveValidation( 'profile_zipcode', {validMessage:" "});
-		validates_profile_zip.add( Validate.Presence, {failureMessage: " "} );
-		validates_profile_zip.add( Validate.Length, {minimum: 2, tooShortMessage: "minimum 2 characters needed "});
 		
 	</script>

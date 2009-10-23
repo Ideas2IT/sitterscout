@@ -1,5 +1,5 @@
 <font style="font-size: .9em;">Would you like to receive notifications via text message?</font>
-<table style="padding-bottom: 25px" border="0">
+<table style="padding-bottom: 25px" border="0" >
 		<tr>
 			<td>
 			
@@ -24,19 +24,19 @@
 			<td colspan="2" >&nbsp;</td>
 		</tr>
 		<tr>
-			<td align="right"><%= label :user, :email, "Email Address:" %></td>
+			<td align="left" width="130"><%= label :user, :email, "Email Address:" %></td>
 			<td><%= text_field :user, :email, :style=>"margin-top: 5px"  %></td>
 		</tr>
     <tr>
-			<td align="right"><%= label :profile, :daytime_phone, "Daytime Phone #:" %></td>
+			<td align="left"><%= label :profile, :daytime_phone, "Daytime Phone #:" %></td>
 			<td><%= text_field :profile, :datetime_phone, :style=>"margin-top: 5px"  %></td>
 		</tr>
     <tr>
-			<td align="right"><%= label :profile, :evening_phone, "Evening Phone #:" %></td>
+			<td align="left"><%= label :profile, :evening_phone, "Evening Phone #:" %></td>
 			<td><%= text_field :profile, :evening_phone, :style=>"margin-top: 5px"  %></td>
 		</tr>
     <tr>
-			<td align="right"><span id="cell_phone_name_label"><%= label :profile, :cell_phone, "Cell Phone #" %></span>
+			<td align="left"><span id="cell_phone_name_label"><%= label :profile, :cell_phone, "Cell Phone #" %></span>
 					<% if @current_action == 'my_profile' %>
 					 <% if @profile.text_message %>
 					<span id="cell_phone_star" style="color: #FF0000">*</span>:</td>
@@ -49,7 +49,7 @@
 			<td><%= text_field :profile, :cell_phone, :style=>"margin-top: 5px"  %></td>
 		</tr>
     <tr>
-			<td align="right"><span id="profile_cell_phone_carrier_label"><%= label :profile, :cell_phone_carrier, "Cellular Carrier:" %></span></td>
+			<td align="left"><span id="profile_cell_phone_carrier_label"><%= label :profile, :cell_phone_carrier, "Cellular Carrier:" %></span></td>
 			<td><%= collection_select :profile, :cell_carrier_id, CellCarrier.find(:all), :id, :name, {:prompt => true}, :style=> "width: 125px; margin-top: 5px;" %></td>
 		</tr>
 	</table>
