@@ -79,6 +79,7 @@ ActionController::Routing::Routes.draw do |map|
     :your_requests => :get,
     :your_skills => :get,
     :send_invitations => :post,
+    :welcome_screen => :post,
     :your_families => :get,
     :families => :get,
     :search_families => :post,

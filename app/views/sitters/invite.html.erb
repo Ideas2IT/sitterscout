@@ -21,7 +21,7 @@
 		<input type="text" name="<%= input_name_prefix %>[email_address]" id="<%= input_id_prefix %>_email_address" size="20" <%#= "value=\"#{form.email}\"" if form %> />
 	&nbsp;&nbsp;&nbsp;
 	<%= radio_button_tag "#{input_name_prefix}[friendsitters]", "friends"  %><font style="font-size: .7em;"> Parent</font>&nbsp;&nbsp;&nbsp;<%= radio_button_tag "#{input_name_prefix}[friendsitters]", "sitters"  %><font style="font-size: .7em;"> Sitter</font>
-
+	
 	</div>
 	<% end %>
 
@@ -31,12 +31,68 @@
 <%= check_box_tag "invitations_box", true %> Check this box to add a custom message.<br />
 <%= text_area(:invitations, :body, :size => "80x15", :text => "default") %>
 	<br /><br />
-<div style="margin-left: 30%;">
-<%= link_to(image_tag('/images/Wizard/Previous_bttn.gif', :border => 0), your_friends_sitter_path(current_user)) %>&nbsp;
-<%= image_submit_tag "/images/parent_home/Submit_bttn.gif" %> 
-<%= submit_tag "Skip" %>
-</div>
-
+	<input type="submit" name="check_values" id="profile_submit" style="display: none;">
 <% end %>
-
+<center>
+<table>
+<div style="margin-right: 30%;" >
+	<tr>
+		<td>
+			<%= link_to(image_tag('/images/Wizard/Previous_bttn.gif', :border => 0), your_friends_sitter_path(current_user)) %>&nbsp;
+		</td>
+		<td>
+			<%= image_submit_tag "/images/parent_home/Submit_bttn.gif", :name => 'check_values',  :onclick=>'check();' %>&nbsp;
+		</td>
+		<td>
+			<% form_tag welcome_screen_sitter_path(current_user) do |form| %>
+			<%= submit_tag "Skip" %>
+			<% end %>
+		</td>
+	</tr>
 </div>
+</table>
+</center>
+</div>
+
+<script type="text/javascript" >
+
+	function check() {
+		$('flash_notice').innerHTML = '';
+	
+		var fail = false;
+		
+		if($('invitation_invite_0_email_address').value != '')
+		{
+			fail = true;
+		}
+		else if ($('invitation_invite_1_email_address').value != '') {
+			fail = true;
+		}
+		else if ($('invitation_invite_2_email_address').value != '') {
+			  	fail = true;
+		}
+		else if ($('invitation_invite_3_email_address').value != '') {
+			fail = true;
+		}	 
+		else if ($('invitation_invite_4_email_address').value != '') {
+			fail = true;
+		}
+		
+		if(!fail)
+		{
+			$('flash_notice').innerHTML = '<div id="notice_error">Please enter the Email Address</div>';
+			path_to_root_dir = "<%= APP_URL %>/";
+			var myBox = new GlassBox();
+			myBox.init( 'notice_error', '360px', '100px', 'hidden', 'facebookstyle', true, true );
+			myBox.lbo( false, 0.01 ); 
+			myBox.appear(5000);
+			
+		}
+		else
+		{
+			$('profile_submit').click();
+		}
+		
+	}
+</script>
+

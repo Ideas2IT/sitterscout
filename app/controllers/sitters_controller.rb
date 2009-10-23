@@ -670,7 +670,6 @@ class SittersController < ApplicationController
   def invite
     render :layout => "no_search"
   end
-
   
   def decline_job_from_email
     declinejob(params[:id])
@@ -706,7 +705,7 @@ class SittersController < ApplicationController
       @users = []
       
       if params[:commit]
-        redirect_to dashboard_sitter_path(current_user)
+        redirect_to welcome_screen_sitter_path(current_user)
       else
            params[:invitation].keys.each do |invite|
                 if User.find_by_email(params[:invitation][invite][:email_address])
@@ -721,7 +720,21 @@ class SittersController < ApplicationController
         end
       #SitterMailer.deliver_send_welcome_email(current_user)
       
-    end
+  end
+  
+protected
+  
+  def welcome_screen
+    
+     p = Sitter.find(current_user)
+      unless p.aasm_state == "complete"
+        p.aasm_state = "complete"
+        p.save
+        Notifications.deliver_sitter_welcome(current_user, params[:invitations_box])
+      end
+      
+      #SitterMailer.deliver_send_welcome_email(current_user)
+  end
     
 protected
 
