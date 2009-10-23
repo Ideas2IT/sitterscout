@@ -722,8 +722,7 @@ class SittersController < ApplicationController
       
   end
   
-protected
-  
+ 
   def welcome_screen
     
      p = Sitter.find(current_user)
@@ -732,7 +731,7 @@ protected
         p.save
         Notifications.deliver_sitter_welcome(current_user, params[:invitations_box])
       end
-      
+        
       #SitterMailer.deliver_send_welcome_email(current_user)
   end
     

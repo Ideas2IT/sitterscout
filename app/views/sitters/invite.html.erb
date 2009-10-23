@@ -20,7 +20,7 @@
 		<label for="<%= input_id_prefix %>_email_address" style="font-size: .7em;">Email Address:</label>
 		<input type="text" name="<%= input_name_prefix %>[email_address]" id="<%= input_id_prefix %>_email_address" size="20" <%#= "value=\"#{form.email}\"" if form %> />
 	&nbsp;&nbsp;&nbsp;
-	<%= radio_button_tag "#{input_name_prefix}[friendsitters]", "friends"  %><font style="font-size: .7em;"> Parent</font>&nbsp;&nbsp;&nbsp;<%= radio_button_tag "#{input_name_prefix}[friendsitters]", "sitters"  %><font style="font-size: .7em;"> Sitter</font>
+	<%= radio_button_tag "#{input_name_prefix}[friendsitters]", "friends",true %><font style="font-size: .7em;"> Parent</font>&nbsp;&nbsp;&nbsp;<%= radio_button_tag "#{input_name_prefix}[friendsitters]", "sitters",true  %><font style="font-size: .7em;"> Sitter</font>
 	
 	</div>
 	<% end %>
@@ -44,7 +44,7 @@
 			<%= image_submit_tag "/images/parent_home/Submit_bttn.gif", :name => 'check_values',  :onclick=>'check();' %>&nbsp;
 		</td>
 		<td>
-			<% form_tag welcome_screen_sitter_path(current_user) do |form| %>
+			<% form_tag send_invitations_sitter_path(current_user) do |form| %>
 			<%= submit_tag "Skip" %>
 			<% end %>
 		</td>
