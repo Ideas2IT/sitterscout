@@ -14,7 +14,7 @@ a:hover { border-bottom: none; }
 #footer a { color: #fff; }
 #footer a:hover { text-decoration: none; }
 
-#content { width: 800px; height: auto; margin: 5px auto 0 auto; }
+#content { width: 800px; height: auto; margin: 5px auto 0 auto; background-color:#F8F8F9 }
 
 /*#content {
 	background-color: #F7F7F7;
@@ -36,6 +36,12 @@ a:hover { border-bottom: none; }
 	
 }
 
+.view_prof {
+	
+	background-image :url(../images/default/ParentProfile-bg_image.png);
+	background-repeat :repeat-x;
+	background-color:rgb(255, 255, 255);
+	}
 
 #content p { line-height: 26px; }
 
