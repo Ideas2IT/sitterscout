@@ -8,7 +8,8 @@
 </div>
 <div class="view_prof" style="height:800px;">
 	<div style="height:10px">
-		</div>
+	
+	</div>
 <div id="content" style="height:auto;">
 	<div class="div_border">
 		<table height="100%">
@@ -26,8 +27,9 @@
 								<%unless @profile.first_name.nil? and @profile.last_name.nil?%>
 									<%= @profile.first_name + " " + @profile.last_name %>
 								<%end%>
-								</font></strong><br/>
-								<% show_contact = check_contact(@user,current_user) %>	
+								</font>
+							</strong><br/>
+							<% show_contact = check_contact(@user,current_user) %>	
 								
 								<%if show_contact == true%>
 									<%unless @profile.address1.nil?%>
@@ -102,7 +104,7 @@
 											<table width="60%">
 												<tr>
 													<td><strong>Profile Tags:</strong></td>
-													<td><%= @profile.tag_list %>
+													<td><%= @profile.tag_list %></td>
 												</tr>
 												<%if show_contact == true%>
 													<tr>
@@ -136,13 +138,13 @@
 							<label class="small_link">
 						<%=link_to '< Back to "Your Sitters"',sitters_parent_path(self.current_user)%>
 						</label>
+						</td>
 					</tr>
 				</table>
 			</td>
 		</tr>
 	</table>	
 	</div>
-	
 </div>
 <div style="top: 450px; position: absolute; margin-left: 18%; color: #8F8F8F;  font-size: 10pt; width: 960px; height:300px;">
 </div>
