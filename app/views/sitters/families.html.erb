@@ -122,7 +122,7 @@
 			  <%= f.friend.profile.city %>, <%= f.friend.profile.state.name %><br />
 
 			  <div valign="top" style=" font-size: .8em;  margin-top: 18px;">
-			 	<%= link_to "View Profile", url_for(view_parent_profile_woc_sitter_path(f.friend.id)) %> 
+			 	<%= link_to "View Profile", url_for(view_profile_family_ac_sitter_path(f.friend.id)) %> 
 				|
 			    <%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => f.friend.id), :class => "lbOn-405-390" %>
 			  	|

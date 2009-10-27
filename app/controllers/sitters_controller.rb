@@ -133,6 +133,17 @@ class SittersController < ApplicationController
     @profile = @user.profile 
   end
   
+  def view_profile_friend_ac
+    @user = Sitter.find_by_id(params[:id])
+    @profile = @user.profile
+  end
+  
+  def view_profile_family_ac
+    @user = Parent.find_by_id(params[:id])
+    @profile = @user.profile 
+  end
+  
+  
  
   def add_family
     if request.post?
