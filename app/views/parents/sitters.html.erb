@@ -131,7 +131,8 @@
 		    <strong style="font-size: 1em; "><%= f.friend.profile.sitter_display_name %></strong><br/>
 		  <%= f.friend.profile.city %>, <%= f.friend.profile.state.name %><br />
 			<div style="font-size: .8em; margin-top: 18px;">
-
+			<%= link_to "View Profile", url_for(view_profile_sitter_ac_parent_path(f.friend.id)) %>
+			|
 		    <%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => Sitter.find(f.friend.id).id), :class => "lbOn-405-390" %>
 				|
 		    <%= link_to "Remove Sitter", url_for(:controller => 'connections', :action => 'decline', :id => f.friend.id), :confirm => "Are you sure you want to remove this sitter?" %>

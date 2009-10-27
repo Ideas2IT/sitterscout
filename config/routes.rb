@@ -50,6 +50,8 @@ ActionController::Routing::Routes.draw do |map|
     :view_sitter_profile => :get,
     :view_sitter_profile_woc => :get,
     :view_sitter_profile_search => :get,
+    :view_profile_sitter_ac => :get,
+    :view_profile_friend_ac => :get,
     :view_connections => :get,
     :hide_sitter_connection => :post,
     :connection_requests => :get,

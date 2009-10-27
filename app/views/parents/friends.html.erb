@@ -139,6 +139,8 @@
 									<%= f.friend.profile.city %>, <%= f.friend.profile.state.name %><br />
 
 						  		<div style=" font-size: .8em; margin-top: 18px;">
+								<%= link_to "View Profile", url_for(view_profile_friend_ac_parent_path(f.friend.id)) %>
+								|
 						    <%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => f.friend.id), :class => "lbOn-405-390" %>
 						  	|
 						    <%= link_to "Remove Friend", url_for(:controller => 'connections', :action => 'decline', :id => f.friend.id), :confirm => "Are you sure you want to remove this friend?" %>

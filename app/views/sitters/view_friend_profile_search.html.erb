@@ -18,6 +18,11 @@
 								</font>
 							</strong><br/>
 						</td>
+						<td valign="top" align="right">
+							<label class="small_link">
+								<%= link_to "Add to Your Friends", url_for(:controller => 'connections', :action => 'add_friend', :id => @user.id), :class => "lbOn-300-270" %>
+							</label>
+						</td>
 					</tr>
 					<tr>
 						<td colspan="2">&nbsp;</td>

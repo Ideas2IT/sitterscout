@@ -17,7 +17,12 @@
 								<font class="username_heading">
 								<%= @profile.first_name + " " + @profile.last_name %><br/>
 								</font>
-								</strong>
+							</strong>
+						</td>
+						<td valign="top" align="right">
+							<label class="small_link">
+								<%= link_to "Add to Your Families", url_for(:controller => 'connections', :action => 'add_friend', :id => @user.id), :class => "lbOn-300-270" %>
+							</label>
 						</td>
 					</tr>
 					<tr>
