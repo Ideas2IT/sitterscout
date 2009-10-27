@@ -23,7 +23,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td width="52">
+							<td width="52" >
 									<%= image_tag(search.avatar_photo_url(:thumb)) %>
 							</td>
 							<td>
@@ -45,9 +45,9 @@
 						</tr>
 						<tr>
 							<td colspan="2" style=" font-size: .7em; padding-left: 2px;">
-							 <%= link_to "View Profile", url_for(view_parent_profile_woc_sitter_path(search.id)) %> |
-							 
-								<%= link_to "Add to Your Friends", url_for(:controller => 'connections', :action => 'add_friend', :id => search.id), :class => "lbOn-300-270" %>
+							 <%= link_to "View Profile", url_for(view_parent_profile_woc_sitter_path(search.id)) %> 
+							 |
+								<%= link_to "Add to Your Families", url_for(:controller => 'connections', :action => 'add_friend', :id => search.id), :class => "lbOn-300-270" %>
 								<% if current_user.connected?(search) %>
 								 | <%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => search.id), :class => "lbOn-405-390" %>
 								<% end %>
@@ -75,7 +75,8 @@
 				  </td>
 
 				  <td style="padding: 5px;" valign="top">
-				   <strong style=" font-size: 1em; "><%= link_to(truncate(f.friend.profile.first_name + " " + f.friend.profile.last_name, 22), url_for(view_parent_profile_sitter_path(f.friend.id))) %></strong><br/>
+				   <strong style=" font-size: 1em; ">
+				   <%= link_to(truncate(f.friend.profile.first_name + " " + f.friend.profile.last_name, 22), url_for(view_parent_profile_sitter_path(f.friend.id))) %></strong><br/>
 				  <%= f.friend.profile.city %>, <%= f.friend.profile.state.name %><br />
 				<strong>Tags: </strong><%= truncate(f.friend.profile.tag_list.to_s, 38, "...") %>
 				 <% if(f.friend.profile.tag_list.to_s.size > 38) %>
@@ -121,7 +122,8 @@
 			  <%= f.friend.profile.city %>, <%= f.friend.profile.state.name %><br />
 
 			  <div valign="top" style=" font-size: .8em;  margin-top: 18px;">
-
+			 	<%= link_to "View Profile", url_for(view_parent_profile_woc_sitter_path(f.friend.id)) %> 
+				|
 			    <%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => f.friend.id), :class => "lbOn-405-390" %>
 			  	|
 			    <%= link_to "Remove Family", url_for(:controller => 'connections', :action => 'decline', :id => f.friend.id), :confirm => "Are you sure you want to remove this friend?" %>
