@@ -3,13 +3,12 @@
 </div>
 <div id="sub_menu_gradient">
 	<div class="sub_menu_gradient_center">
-	
 	</div>
 </div>
 <div class="view_prof" style="height:500px;">
 	<div style="height:10px">
 		</div>
-<div id="content" style="height:auto;">
+<div id="content" style="height:auto">
 	<div class="div_border">
 		<table height="100%">
 		<tr>
@@ -26,32 +25,8 @@
 									<%unless @profile.first_name.nil? and @profile.last_name.nil?%>
 									<%= @profile.first_name + " " + @profile.last_name %>
 									<%end%>
-								</font></strong><br/>
-								<%unless @profile.address1.nil?%>
-									<%= @profile.address1%>&nbsp;
-								<%end%>
-								<%unless @profile.address2.empty?%>
-									<%= @profile.address2%>
-								<%end%>
-								<br/>
-								<%unless @profile.city.nil?%>
-									<%= @profile.city %>,
-								<%end%>
-								<%unless @profile.state_id.nil?%> 
-									<%= State.find(@profile.state_id).name %>&nbsp; 
-								<%end%>
-								<%unless @profile.zipcode.nil?%>
-									<%=@profile.zipcode.to_s %><br/>
-								<%end%>			
-						</td>
-						<td valign="top" align="right">
-							<label class="small_link">
-								<%if current_user.connected?(@user) %>
-								 <%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => @user.id), :class => "lbOn-405-390" %> |
-								<% end %>
-								<%= link_to "Send message", compose_parent_path(@user, :to_id => @user.id) %>
-							</label>
-							
+								</font>
+							</strong><br/>	
 						</td>
 					</tr>
 					<tr>
@@ -63,29 +38,8 @@
 								<table width="60%">
 									<tr>
 										<td><strong>Profile Tags:</strong></td>
-										<td><%= @profile.tag_list %>
+										<td><%= @profile.tag_list %></td>
 									</tr>
-									<%unless @profile.address1.nil? or @profile.address2.nil? or @profile.city.nil?%>
-										<tr>
-											<td>&nbsp;</td>
-										</tr>
-										<tr>
-											<td width="130"><strong><%= label :profile, :email, "Email Address:" %></strong></td>
-											<td><%= @user.email %></td>
-										</tr>
-								        <tr>
-								        	<td><strong><%= label :profile, :daytime_phone, "Daytime Phone #:" %></strong></td>
-											<td><%= @profile.datetime_phone %></td>
-										</tr>
-								        <tr>
-								        	<td><strong><%= label :profile, :evening_phone, "Evening Phone #:" %></strong></td>
-											<td><%= @profile.evening_phone %></td>
-										</tr>
-								        <tr>
-								        	<td><strong><%= label :profile, :cell_phone, "Cell Phone #:" %></strong></td>
-											<td><%= @profile.cell_phone %></td>
-										</tr>
-									<%end%>
 								</table>
 							</div>
 							<div class="profile_border2" style="width:600px;background-color: rgb(255, 255, 255);">
@@ -140,8 +94,7 @@
 		</tr>
 	</table>
 	</div>
-	<div style="top: 450px; position: absolute; margin-left: 18%; color: #8F8F8F;  font-size: 10pt; width: 960px; height:auto;">
 </div>
-
+<div style="top: 450px; position: absolute; margin-left: 18%; color: #8F8F8F;  font-size: 10pt; width: 960px; height:auto;">
 </div>
-
+</div>

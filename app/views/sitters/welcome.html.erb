@@ -10,7 +10,7 @@
 	Tell us a little about yourself and then start building your SitterScout Network. Your profile information will only be visible to the friends and families that you add to your network.  	(<span style="color: #FF0000">*</span> Required Fields)</p>
 <br />
 <div>
-	<div style="width: 48%; float: left; font-size: .8em;">
+	<div style="width: 50%; float: left; font-size: .8em;">
 		<%= render :partial => 'shared/profile_details' %>
 		<%= render :partial => 'shared/profile_validations' %>		
 
@@ -42,19 +42,19 @@ function validate()
 	
 	var fail = false;
 	
-	if($('profile_first_name').value == '')
+	if(!validate_first_name($('profile_first_name').value))
 	{
 		$('profile_first_name_label').style.color = "#FF0000";
 		fail = true;
 	}
 	
-	if($('profile_last_name').value == '')
+	if(!validate_last_name($('profile_last_name').value ))
 	{
 		$('profile_last_name_label').style.color = "#FF0000";
 		fail = true;
 	}
 	
-	if($('profile_address1').value == '')
+	if(!validate_address1($('profile_address1').value))
 	{
 		$('profile_address1_label').style.color = "#FF0000";
 		fail = true;
@@ -66,7 +66,7 @@ function validate()
 	}
 
 	
-	if($('profile_city').value == '')
+	if(!validate_city($('profile_city').value))
 	{
 		$('profile_city_label').style.color = "#FF0000";
 		fail = true;
@@ -135,6 +135,50 @@ function validate_zip(field)
 	
 	return true;
 }
+function validate_city(field)
+{
+	
+	if (field.length<2) 
+	{
+		return false;
+	}
+	
+	return true;
+}
+
+function validate_address1(field)
+{
+	
+	if (field.length<2) 
+	{
+		return false;
+	}
+	
+	return true;
+}
+
+function validate_last_name(field)
+{
+	
+	if (field.length<2) 
+	{
+		return false;
+	}
+	
+	return true;
+}
+
+function validate_first_name(field)
+{
+	
+	if (field.length<2) 
+	{
+		return false;
+	}
+	
+	return true;
+}
+
 
 function toggle_cell_star(box)
 {

@@ -323,8 +323,6 @@ class ParentsController < ApplicationController
   
   def insert_children
      @children = current_user.children
-      
-
       respond_to do |format|
         format.html
         format.js do
@@ -362,8 +360,8 @@ class ParentsController < ApplicationController
         end
       end
 
-  end
-  
+end
+
   def update_my_children
       @parent = current_user
       @children = current_user.children
@@ -732,6 +730,35 @@ class ParentsController < ApplicationController
       @profile = @user.profile
     end
     
+    def view_profile_search
+      @user = Parent.find_by_id(params[:id])
+      @profile = @user.profile
+    end
+    
+    def view_sitter_profile_search
+      @user = Sitter.find_by_id(params[:id])
+      @profile = @user.profile
+    end
+    
+    def view_profile_woc
+      @user = Parent.find_by_id(params[:id])
+      @profile = @user.profile
+    end
+    
+    def view_sitter_profile_woc
+      @user = Sitter.find_by_id(params[:id])
+      @profile = @user.profile
+    end
+    
+    def view_profile_sitter_ac 
+      @user = Sitter.find_by_id(params[:id])
+      @profile = @user.profile
+    end
+    
+    def view_profile_friend_ac
+      @user = Parent.find_by_id(params[:id])
+      @profile = @user.profile
+    end
     
     def view_connections
       @user = User.find(params[:id])

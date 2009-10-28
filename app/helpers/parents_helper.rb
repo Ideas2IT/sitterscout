@@ -18,5 +18,13 @@ module ParentsHelper
         end
       end
   end
+  
+   def referring_url
+    if request.env["HTTP_REFERER"]
+      return request.env["HTTP_REFERER"]
+    else
+      return "Empty"
+    end
+  end
  
 end

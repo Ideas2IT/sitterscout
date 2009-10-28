@@ -42,6 +42,8 @@
 						</td>
 					<tr>
 						<td colspan="2" style=" font-size: .7em; padding-left: 2px;">
+						<%= link_to "View Profile", url_for(view_friend_profile_woc_sitter_path(search.id)) %> 
+						|
 							<%= link_to "Add to Your Friends", url_for(:controller => 'connections', :action => 'add_friend', :id => search.id), :class => "lbOn-300-270" %>
 							<% if current_user.connected?(search) %>
 							 | <%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => search.id), :class => "lbOn-405-390" %>
@@ -74,6 +76,7 @@
 				  <%= f.friend.profile.city %>, <%= f.friend.profile.state.name %><br />
 				<strong>Tags: </strong><%= truncate(f.friend.profile.tag_list.to_s, 38, "...") %>
 				 <% if(f.friend.profile.tag_list.to_s.size > 38) %>
+				
 					<%= link_to "More", "#", :onmouseover =>"TagToTip('#{f.friend.id}_tip', ABOVE, true, BALLOON, true)", :onmouseout => "UnTip()", :style => "color: #C21D7F;" %>
 					<div id="<%= f.friend.id %>_tip" style="display: none;"><%= f.friend.profile.tag_list.to_s %></div>
 										<% end %>
@@ -118,9 +121,11 @@
 									<%= f.friend.profile.city %>, <%= f.friend.profile.state.name %><br />
 
 						  		<div style="font-size: .8em; margin-top: 18px;">
-						    <%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => f.friend.id), :class => "lbOn-405-390" %>
-						  	|
-						    <%= link_to "Remove Friend", url_for(:controller => 'connections', :action => 'decline', :id => f.friend.id), :confirm => "Are you sure you want to remove this friend?" %>
+								<%= link_to "View Profile", url_for(view_profile_friend_ac_sitter_path(f.friend.id)) %>
+								|
+						    	<%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => f.friend.id), :class => "lbOn-405-390" %>
+						  		|
+						    	<%= link_to "Remove Friend", url_for(:controller => 'connections', :action => 'decline', :id => f.friend.id), :confirm => "Are you sure you want to remove this friend?" %>
 								</div>
 								</td>
 							</tr>

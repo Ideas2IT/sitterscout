@@ -27,10 +27,7 @@ children:
   keywords: ""
 - slug: privacy
   filter_type: Textile
-  body: "<div style=\"margin-left: 20px;\">\r\n\
-    LAST UPDATED:  ______________<br />\r\n\
-    <br />\r\n\
-    SITTERSCOUT.COM<br />\r\n\
+  body: "<div style=\"margin-left: 20px;\">
     PRIVACY POLICY<br />\r\n\
     <br />\r\n\
     SitterScout is committed to protecting your privacy and earning your trust.  Please read the following policy to learn how we will collect and use your personal information.  This Privacy Policy applies to data collected through the domain and subdomains of www.SitterScout.com  (the \xE2\x80\x9CWeb Site\xE2\x80\x9D) and may be updated from time to time without notice to you.  Your access or use and continued access or use of the Web Site constitutes your consent to the data practices described in this Privacy Policy and any updates to the Privacy Policy. <br />\r\n\
@@ -115,6 +112,7 @@ children:
     d.&nbsp;&nbsp;&nbsp;Provide us with all necessary contact information for follow-up response \r\n\
     <br /><br />\r\n\
     SitterScout will use all commercially reasonable efforts to determine if corrective action is necessary and if so, remedy the problem promptly. \r\n"
+    
   title: privacy
   keywords: ""
 - slug: tou
@@ -253,7 +251,7 @@ children:
     <br />\r\n\
     SitterScout, the SitterScout logo, and other SitterScout logos and names are trademarks of Scout Solutions Inc.  You agree not to display or use these trademarks in any manner without SitterScout\xE2\x80\x99s prior written permission. <br />\r\n\
     <br />\r\n\
-    22.\tNOTICE<br /><br />\r\n\
+    22.\tNOTICE<br />\r\n\
     <br />\r\n\
     Notices to you may be made via either email or regular mail. The Service may also provide notices of changes to the TOU or other matters by displaying notices or links to notices to you generally on the Service.<br />\r\n\
     \r\n\

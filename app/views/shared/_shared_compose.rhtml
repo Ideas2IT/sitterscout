@@ -77,16 +77,21 @@
 <div id="composed_messages" style="margin-top: 5px; font-size: 9pt">
 	<% form_tag url_for(:controller => 'message', :action => 'send_message') do %>
 
-	<table>
+	<table border="0">
 		<tr><td align="right"><strong>To:<strong></td><td>
 		<%= select_tag "message[recipient_id]", auto_complete_options(@people, params[:to_id]), :id => "autocomplete-users", :class=>"userlist"%>
 			
 	<tr><td align="right"><strong>Subject:</strong></td><td><%= text_field(:message, :subject, :class=>"userlist",:style => "margin-top: 5px;width: 350px;") %></td></tr>
 	<tr><td align="right" valign="top"><strong>Message:</strong></td><td><%= text_area(:message, :body, :style => "margin-top: 5px;width: 353px;")%></td></tr>
+	<tr><td></td>
+	<td align="center">
+		<%= submit_tag "Send" %>
+	</td>
+	</tr>
 	</table>
 
 	<div style="margin-top: 25px; margin-left: 60px;">
-		<%= submit_tag "Send" %>
+		
 	</div>
 	<% end %>
 </div>

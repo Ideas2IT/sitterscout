@@ -4,22 +4,19 @@
 
 		validate_profile_first_name = new LiveValidation( 'profile_first_name', {validMessage:" "});
 		validate_profile_first_name.add( Validate.Presence, {failureMessage: " "} );
-		validate_profile_first_name.add( Validate.Length, {minimum: 2, tooShortMessage: " "});
+		validate_profile_first_name.add( Validate.Length, {minimum: 2, tooShortMessage: "minimum 2 characters needed"});
 
 		validates_profile_last_name = new LiveValidation( 'profile_last_name', {validMessage:" " });
 		validates_profile_last_name.add( Validate.Presence, {failureMessage: " "} );
-		validates_profile_last_name.add( Validate.Length, {minimum: 2, tooShortMessage: " "});
+		validates_profile_last_name.add( Validate.Length, {minimum: 2, tooShortMessage: "minimum 2 characters needed "});
 
 		validate_profile_address1 = new LiveValidation( 'profile_address1', {validMessage:" "});
 		validate_profile_address1.add( Validate.Presence, {failureMessage: " "} );
-		validate_profile_address1.add( Validate.Length, {minimum: 2, tooShortMessage: " "});
+		validate_profile_address1.add( Validate.Length, {minimum: 2, tooShortMessage: "\nminimum 2 characters needed"});
 
 		validates_profile_city = new LiveValidation( 'profile_city', {validMessage:'' });
 		validates_profile_city.add( Validate.Presence, {failureMessage: " "} );
-		validates_profile_city.add( Validate.Length, {minimum: 2, tooShortMessage: " "});
+		validates_profile_city.add( Validate.Length, {minimum: 2, tooShortMessage: "minimum 2 characters needed "});
 		
-		validates_profile_zip = new LiveValidation( 'profile_zipcode', {validMessage:" "});
-		validates_profile_zip.add( Validate.Presence, {failureMessage: " "} );
-		validates_profile_zip.add( Validate.Length, {minimum: 2, tooShortMessage: " "});
 		
 	</script>

@@ -6,12 +6,16 @@
 	
 	</div>
 </div>
-<div id="content" style="height:650px;">
+<div class="view_prof" style="height:900px;">
+	<div style="height:10px">
+	
+	</div>
+<div id="content" style="height:auto;">
 	<div class="div_border">
-		<table width="100%" height="100%" >
+		<table height="100%">
 		<tr>
 			<td valign="top">
-				<%= image_tag(@user.avatar_photo_url, :class => "right" ,:height=> 150 ,:width=> 130) %>			
+				<%= image_tag(@user.avatar_photo_url(:large), :class => "right" ,:height=> 150 ,:width=> 130) %>			
 			</td>
 			<td>&nbsp;</td>
 			<td valign="top">
@@ -23,31 +27,35 @@
 								<%unless @profile.first_name.nil? and @profile.last_name.nil?%>
 									<%= @profile.first_name + " " + @profile.last_name %>
 								<%end%>
-								</font></strong><br/>
-								<%show_contact = check_contact(@user,current_user)%>	
+								</font>
+							</strong><br/>
+							<% show_contact = check_contact(@user,current_user) %>	
 								
 								<%if show_contact == true%>
 									<%unless @profile.address1.nil?%>
-										<%= @profile.address1%>, 
+										<%= @profile.address1%>&nbsp;
 									<%end%>
-									<%unless @profile.address2.nil?%>
-										<%= @profile.address2%>,<br/>
+									<%unless @profile.address2.empty?%>
+										<%= @profile.address2%>
 									<%end%>
+									<br/>
 									<%unless @profile.city.nil?%>
 										<%= @profile.city %>,
 									<%end%>
 									<%unless @profile.state_id.nil?%> 
-										<%= State.find(@profile.state_id).name %>,  
+										<%= State.find(@profile.state_id).name %>  
 									<%end%>
 									<%unless @profile.zipcode.nil?%>
-										<%=@profile.zipcode.to_s %>.<br/>
+										<%=@profile.zipcode.to_s %><br/>
 									<%end%>	
 								<%end%>		
 						</td>
 						<td valign="top" align="right">
 							<label class="small_link">
-								<%= link_to "View connections", view_connections_parent_path(@user) %> |
-								<%= link_to "Send message", inbox_parent_path(@user) %>
+								<%if current_user.connected?(@user) %>
+								 <%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => @user.id), :class => "lbOn-405-390" %> |
+								<% end %>
+								<%= link_to "Send message", compose_parent_path(@user, :to_id => Sitter.find(@user.id).id) %>
 							</label>
 							
 						</td>
@@ -56,9 +64,9 @@
 						<td colspan="2">&nbsp;</td>
 					</tr>
 					<tr>
-						<td colspan="2">
-							<div class="profile_border1" style="width:600px;">
-								<table border="0" width="100%">
+						<td colspan="2" >
+							<div class="profile_border1" style="width:600px;background-color: rgb(255, 255, 255);">
+								<table width="60%">
 									<tr>
 										<td><strong>Typical Availability:</strong></td>
 									</tr>
@@ -96,14 +104,14 @@
 											<table width="60%">
 												<tr>
 													<td><strong>Profile Tags:</strong></td>
-													<td><%= @profile.tag_list %>
+													<td><%= @profile.tag_list %></td>
 												</tr>
 												<%if show_contact == true%>
 													<tr>
 														<td>&nbsp;</td>
 													</tr>
 													<tr>
-														<td><strong><%= label :profile, :email, "Email Address:" %></strong></td>
+														<td width="130"><strong><%= label :profile, :email, "Email Address:" %></strong></td>
 														<td><%= @user.email %></td>
 													</tr>
 											        <tr>
@@ -124,20 +132,20 @@
 									</tr>	
 								</table>
 							</div>
-							<div class="profile_border2" style="width:600px;">
+							<div class="profile_border2" style="width:600px;background-color: rgb(255, 255, 255);">
 								<%=render :partial => "profiles/profile_sitter_skills"%>
 							</div>
+							<label class="small_link">
+						<%=link_to '< Back to "Your Sitters"',sitters_parent_path(self.current_user)%>
+						</label>
 						</td>
 					</tr>
-					
 				</table>
 			</td>
 		</tr>
 	</table>	
 	</div>
-	
 </div>
-
-<script type="text/javascript">
-	initialize();
-</script>
+<div style="top: 450px; position: absolute; margin-left: 18%; color: #8F8F8F;  font-size: 10pt; width: 960px; height:auto;">
+</div>
+</div>

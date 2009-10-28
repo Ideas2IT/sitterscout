@@ -2,60 +2,53 @@
 	<div style="padding: 20px"><h2>Search Results</h2><br />
 		<% unless logged_in? %>
 			<div style="float:left; margin-right: 5px;">
-				<%= link_to image_tag("JoinNow_bttn.gif", :border => 0), new_parent_path %></div>
-					<div style="font-size: .9em; width: 625px">
-						To gain full access to search results <%= link_to "Join SitterScout", new_parent_path %>. Already a member? <%= link_to "Click here to log in", home_path %>. 
-					</div>
-					<br />
-				<% end %>
-				<% if @profiles.length < 1 %>
+				<%= link_to image_tag("JoinNow_bttn.gif", :border => 0), new_parent_path %>
+			</div>
+			<div style="font-size: .9em; width: 625px">
+				To gain full access to search results <%= link_to "Join SitterScout", new_parent_path %>. Already a member? <%= link_to "Click here to log in", home_path %>. 
+			</div>
+			<br />
+		<% end %>
+		<% if @profiles.length < 1 %>
+			<div>
+				<p style="font-size: 1em; height: 400px;">
+					<strong>
+						Your search <%= @zipcode.nil? ? "" : " in ZIP code " + @zipcode.to_s %> yielded no results.
+					</strong>
+				</p>
+			</div>
+		<% else %>
+			<div id="results" style="margin-bottom: 50px;">
 				<div>
-					<p style="font-size: 1em; height: 400px;">
+					<p style="font-size: .8em;">
 						<strong>
-							Your search <%= @zipcode.nil? ? "" : " in ZIP code " + @zipcode.to_s %> yielded no results.
+							<%= page_entries_info @profiles, :entry_name => 'results' %>
 						</strong>
+							<br />
+						<div id="top_pagination_links" style="width: 100%; padding-bottom: 30px;">
+							<%= will_paginate @profiles, :style=> "width: 70%;float:left;" %>
+							<%#= hidden_field_tag "search", params[:search] %> 
+							<!-- <% form_tag "/search" do %> 
+							<%= hidden_field_tag "search", params[:search] %> 
+							Sort by <%= select_tag("parent_or_sitter", options_for_select(["All", "Sitter", "Parent"]), :style => "display: inline;") %>
+							<%= submit_tag "Go" %>
+							<% end %> -->
+						</div>
 					</p>
 				</div>
-				<% else %>
-			
-				<div id="results" style="margin-bottom: 50px;">
-						<div>
-							<p style="font-size: .8em;">
-								<strong><%= page_entries_info @profiles, :entry_name => 'results' %>
-									
-									</strong>
-								<br />
-								<div id="top_pagination_links" style="width: 100%; padding-bottom: 30px;">
-								<%= will_paginate @profiles, :style=> "width: 59%;float:left;" %>
-								<%#= hidden_field_tag "search", params[:search] %> 
-								<!-- <% form_tag "/search" do %> 
-																	<%= hidden_field_tag "search", params[:search] %> 
-																		Sort by <%= select_tag("parent_or_sitter", options_for_select(["All", "Sitter", "Parent"]), :style => "display: inline;") %>
-																	<%= submit_tag "Go" %>
-																	<% end %> -->
-								</div>
-							</p>
-						</div>
-					<div style="width: 690px">
-						
+				<div style="width: 690px">
 					<% for search in @profiles %>
-					<% u = search.sitter ? search.sitter : search.parent %>
+						<% u = search.sitter ? search.sitter : search.parent %>
 						<%= render :partial => 'search_results', :locals => {:search  => u} %>
 					<% end %>
-					
-					</div>
-					<%= will_paginate @profiles %>
 				</div>
-				<% end %>
-				</div>
-				
-				<div style="position: absolute; margin-left: 700px;top: 320px;">
-					<%= render :partial => '/shared/share_a_sale' %>
-				</div>
+				<%= will_paginate @profiles %>
 			</div>
-
+		<% end %>
 	</div>
-
+	<div style="position: absolute; margin-left: 700px;top: 320px;">
+		<%= render :partial => '/shared/share_a_sale' %>
+	</div>
 </div>
 		
 

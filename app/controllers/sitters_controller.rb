@@ -114,7 +114,37 @@ class SittersController < ApplicationController
     @user = Sitter.find_by_id(params[:id])
     @profile = @user.profile
   end
-
+    
+  def view_parent_profile_search
+    @user = Parent.find_by_id(params[:id])
+    @profile = @user.profile
+  end
+  
+  def view_friend_profile_search
+     @user = Sitter.find_by_id(params[:id])
+    @profile = @user.profile
+  end
+  def view_friend_profile_woc
+   @user = Sitter.find_by_id(params[:id])
+    @profile = @user.profile
+  end
+  def view_parent_profile_woc
+   @user = Parent.find_by_id(params[:id])
+    @profile = @user.profile 
+  end
+  
+  def view_profile_friend_ac
+    @user = Sitter.find_by_id(params[:id])
+    @profile = @user.profile
+  end
+  
+  def view_profile_family_ac
+    @user = Parent.find_by_id(params[:id])
+    @profile = @user.profile 
+  end
+  
+  
+ 
   def add_family
     if request.post?
       Friendship.request(current_user, Parent.find_by_id(params[:id]))
@@ -647,7 +677,10 @@ class SittersController < ApplicationController
   def accept_job_from_email
     acceptjob(params[:id])
   end
-
+  
+  def invite
+    render :layout => "no_search"
+  end
   
   def decline_job_from_email
     declinejob(params[:id])
@@ -671,6 +704,7 @@ class SittersController < ApplicationController
     
     
   def send_invitations
+    
       p = Sitter.find(current_user)
       unless p.aasm_state == "complete"
         p.aasm_state = "complete"
@@ -682,7 +716,7 @@ class SittersController < ApplicationController
       @users = []
       
       if params[:commit]
-        redirect_to dashboard_sitter_path(current_user)
+        redirect_to welcome_screen_sitter_path(current_user)
       else
            params[:invitation].keys.each do |invite|
                 if User.find_by_email(params[:invitation][invite][:email_address])
@@ -696,7 +730,21 @@ class SittersController < ApplicationController
              end
         end
       #SitterMailer.deliver_send_welcome_email(current_user)
-    end
+      
+  end
+  
+ 
+  def welcome_screen
+    
+     p = Sitter.find(current_user)
+      unless p.aasm_state == "complete"
+        p.aasm_state = "complete"
+        p.save
+        Notifications.deliver_sitter_welcome(current_user, params[:invitations_box])
+      end
+        
+      #SitterMailer.deliver_send_welcome_email(current_user)
+  end
     
 protected
 
@@ -740,7 +788,8 @@ protected
      Notifications.deliver_sitter_invite(current_user, email, name, msg)
    when "friends"
      Notifications.deliver_friend_invite(current_user, email, name, msg)
-    end
+   end
+   
   end  
 
 

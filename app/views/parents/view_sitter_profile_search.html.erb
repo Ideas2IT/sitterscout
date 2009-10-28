@@ -1,0 +1,98 @@
+<div class="view_prof" style="height:700px;">
+	<div style="height:10px">
+		</div>
+<div id="content" style="height:auto;">
+	<div class="div_border">
+		<table height="100%">
+			<tr>
+				<td valign="top">
+					<%= image_tag(@user.avatar_photo_url(:large), :class => "right" ,:height=> 150 ,:width=> 130) %>			
+				</td>
+				<td>&nbsp;</td>
+				<td valign="top">
+					<table border="0" cellpadding="0" cellspacing="0">
+						<tr>
+							<td>
+								<strong>
+									<font class="username_heading">
+									<%unless @profile.first_name.nil? and @profile.last_name.nil?%>
+										<%= @profile.first_name + " " + @profile.last_name %>
+									<%end%>
+									</font>
+								</strong>
+							</td>
+							<td valign="top" align="right">
+							<label class="small_link">
+								<%= link_to "Add to Your Sitters", url_for(:controller => 'connections', :action => 'add_friend', :id => @user.id), :class => 'lbOn-300-270' %>
+							</label>
+						</td>
+						</tr>
+						<tr>
+							<td colspan="2">&nbsp;</td>
+						</tr>
+						<tr>
+							<td colspan="2" >
+								<div class="profile_border1" style="width:600px;background-color: rgb(255, 255, 255);">
+									<table width="60%">
+										<tr>
+											<td><strong>Typical Availability:</strong></td>
+										</tr>
+										<tr>
+											<td style="font-size:11px;" colspan="2">
+												<div style="padding:0px;">
+													<table cellpadding=0 cellspacing=0 style="margin-top: 5px;" width="100%">
+													<tr bgcolor="#C31880" style="color:white;">
+														<td style="border-left: 1px solid #999696; border-top: 1px solid #999696; border-bottom: 1px solid #999696; padding: 5px; font-weight: bold;">Sundays</td>
+														<td style="border-left: 1px solid #999696; border-top: 1px solid #999696; border-bottom: 1px solid #999696; padding: 5px; font-weight: bold;">Mondays</td>
+														<td style="border-left: 1px solid #999696; border-top: 1px solid #999696; border-bottom: 1px solid #999696; padding: 5px; font-weight: bold;">Tuesdays</td>
+														<td style="border-left: 1px solid #999696; border-top: 1px solid #999696; border-bottom: 1px solid #999696; padding: 5px; font-weight: bold;">Wednesday</td>
+														<td style="border-left: 1px solid #999696; border-top: 1px solid #999696; border-bottom: 1px solid #999696; padding: 5px; font-weight: bold;">Thursdays</td>
+														<td style="border-left: 1px solid #999696; border-top: 1px solid #999696; border-bottom: 1px solid #999696; padding: 5px; font-weight: bold;">Fridays</td>
+														<td style="border-left: 1px solid #999696; border-top: 1px solid #999696; border-bottom: 1px solid #999696; border-right: 1px solid #999696;padding: 5px; font-weight: bold;">Saturdays</td>			
+													</tr>
+													<tr>
+														<td style="border-left: 1px solid #999696;border-bottom: 1px solid #999696; padding: 5px"><%=  @user.profile.sundays %></td>
+														<td style="border-left: 1px solid #999696; border-bottom: 1px solid #999696; padding: 5px"><%=  @user.profile.mondays %></td>
+														<td style="border-left: 1px solid #999696; border-bottom: 1px solid #999696; padding: 5px"><%=  @user.profile.tuesdays %></td>
+														<td style="border-left: 1px solid #999696; border-bottom: 1px solid #999696; padding: 5px"><%=  @user.profile.wednesdays %></td>
+														<td style="border-left: 1px solid #999696; border-bottom: 1px solid #999696; padding: 5px"><%=  @user.profile.thursdays %></td>
+														<td style="border-left: 1px solid #999696; border-bottom: 1px solid #999696; padding: 5px"><%=  @user.profile.fridays %></td>
+														<td style="border-left: 1px solid #999696; border-bottom: 1px solid #999696; border-right: 1px solid #999696;padding: 5px" ><%=  @user.profile.saturdays %></td>
+													</tr>
+													</table>	
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>&nbsp;</td>
+										</tr>
+										<tr>
+											<td>
+												<table width="60%">
+													<tr>
+														<td><strong>Profile Tags:</strong></td>
+														<td><%= @profile.tag_list %></td>
+													</tr>
+												</table>
+											</td>
+										</tr>	
+									</table>
+								</div>
+								<div class="profile_border2" style="width:600px;background-color: rgb(255, 255, 255);">
+									<%=render :partial => "profiles/profile_sitter_skills"%>
+								</div>
+								<label class="small_link">
+									<a href="javascript:history.back();"> < Back to "Your Search" </a> 
+								</label>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>	
+	</div>
+</div>
+<div style="top: 450px; position: absolute; margin-left: 18%; color: #8F8F8F;  font-size: 10pt; width: 960px; height:auto;">
+</div>								
+</div>												
+												

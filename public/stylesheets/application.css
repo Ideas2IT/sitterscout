@@ -157,6 +157,7 @@ div.flash.notice {
 	border: 1px solid #ADACAD;
 	width: 720px;
 	background-color: #E5F1D5;
+	
 }
 .sitter_main_content{
 	clear: both;
@@ -186,6 +187,7 @@ div.flash.notice {
 	margin: 0;
 	margin-left: 10px;
 	width: 100%;
+	height: auto;
 	
 }
 #tabmenu {
@@ -446,7 +448,7 @@ a.tt:hover span.bottom{
 }
 .leftmenu .col1 {
 	width:35%;			/* right column content width */
-	left:142%;			/* 100% plus left column left padding */
+	left:140%;			/* 100% plus left column left padding */
 }
 .leftmenu .col2 {
 	width:65%;			/* left column content width (column width minus left and right padding) */
