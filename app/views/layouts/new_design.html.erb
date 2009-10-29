@@ -80,11 +80,18 @@
 			</div>
 
 			<div id='navbar' <%= current_page?(:controller => "home", :action => "index") ? "class='home'" : nil %>
+			
 				<div id='searchbar' style='backg/round: #999;z-index: 900;'>
+				
 					<% form_tag "/search", :name => 'search_form' do %>
-					<input id='searchfield' type="text" name="search" id="search" value="Search by name or zip code" size='40' onFocus="if(this.value=='Search by name or zip code'){this.value=''; this.style.color='#000';};" onBlur="if(this.value==''){this.value='Search by name or zip code'; this.style.color='#999'; }"/>
-					<div id='searchbutton' onclick="if($('searchfield').value != '' && $('searchfield').value != 'Search by name or zip code'){ document.search_form.submit();}">
-					</div>
+					<table border="0" cellpadding="0" cellspacing="0">
+						<tr>
+							<td valign='bottom'> <select id='searchoption' name='searchoption'> <option value="">Please Select the option</option><option value="parent">I'm looking for a: Parent</option><option value="sitter">I'm looking for a: Sitter</option></select></td>
+							<td>&nbsp;</td>
+							<td><input id='searchfield' type="text" name="search" id="search" value="Search by name or zip code" size='40' onFocus="if(this.value=='Search by name or zip code'){this.value=''; this.style.color='#000';}; " onBlur="if(this.value==''){this.value='Search by name or zip code'; this.style.color='#999'; }"/></td>
+							<td><div id='searchbutton' onclick="if($('searchoption').value != '' && $('searchfield').value != '' && $('searchfield').value != 'Search by name or zip code') { document.search_form.submit();} else { $('searchoption').style.color = '#FF0000';}" ></div></td>
+						</tr>
+					</table>
 					<% end %>
 				</div>
 			</div>
