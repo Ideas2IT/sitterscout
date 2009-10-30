@@ -31,6 +31,9 @@
 						<td valign="top" align="right">
 							<label class="small_link">
 								<%= link_to "Add to Your Friends", url_for(:controller => 'connections', :action => 'add_friend', :id => @user.id), :class => 'lbOn-300-270' %>
+								<%if current_user.connected?(@user) %>
+								| <%= link_to "View connections", url_for(:controller => 'connections', :action => 'show', :id => @user.id), :class => "lbOn-405-390" %> 
+								<% end %>
 							</label>
 						</td>
 					</tr>
