@@ -14,9 +14,9 @@
 						<% unless search.nil? || search.profile.nil? %>
 							<div id="person_<%=search.id %>">
 	
-									<div style="position: absolute; left: 210px; margin-top: 10px"><%= link_to_remote(image_tag("default/qtip/close.gif", :border => 0), :url => remove_person_sitter_path(search.id))  %></div>
+									<div style="position: absolute; left: 220px; margin-top: 10px"><%= link_to_remote(image_tag("default/qtip/close.gif", :border => 0), :url => remove_person_sitter_path(search.id))  %></div>
 
-					<table style="border: 1px solid #ADACAD; margin-top: 4px; padding: 3px; background-color: #FFFFFF" id="person_<%=search.id %>_table">
+					<table width="252px" style="border: 1px solid #ADACAD; margin-top: 4px; padding: 3px; background-color: #FFFFFF" id="person_<%=search.id %>_table" >
 						<tr>
 							<td colspan="2">
 							<strong style="font-size: .8em;"><%= truncate(search.profile.first_name + " " + search.profile.last_name, 22) %></strong>
@@ -45,12 +45,13 @@
 						</tr>
 						<tr>
 							<td colspan="2" style=" font-size: .7em; padding-left: 2px;">
-							 <%= link_to "View Profile", url_for(view_parent_profile_woc_sitter_path(search.id)) %> 
-							 |
-								<%= link_to "Add to Your Families", url_for(:controller => 'connections', :action => 'add_friend', :id => search.id), :class => "lbOn-300-270" %>
+							 	<%= link_to "Add to Your Families", url_for(:controller => 'connections', :action => 'add_friend', :id => search.id), :class => "lbOn-300-270" %>
 								<% if current_user.connected?(search) %>
 								 | <%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => search.id), :class => "lbOn-405-390" %>
+								 |
 								<% end %>
+								 <br />
+								<%= link_to "View Profile", url_for(view_parent_profile_woc_sitter_path(search.id)) %>
 							</td>
 						</tr>
 				</table>
