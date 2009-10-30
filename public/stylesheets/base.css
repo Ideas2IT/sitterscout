@@ -137,7 +137,6 @@ a:hover { border-bottom: none; }
 #searchbar { position: absolute; right: 0; width: auto; height: 60px; }
 #searchoptions { width: auto; height: 20px; margin-top: 40px; background: pink; font-size: 12px; line-height: 12px; }
 #searchfield { color: #999; width: 180px; height: 16px; line-height: 16px; margin-top: 3px; float: left; }
-#searchfields { color: #999; width: 85px; height: 16px; line-height: 16px; margin-top: 3px; float: left; }
 #searchbutton { width: 32px; height: 22px; background: url(../images/search-button.png); float: left; margin-top: 3px; margin-left: 2px;}
 #searchbutton:hover { background-position: 0 -22px; }
 
