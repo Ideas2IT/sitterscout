@@ -101,8 +101,8 @@
 						</tr>
 						<tr>
 							<td  align='left'valign='middle' style='font-size:10pt;font-family:"Verdana",sans-serif' >Search by name or zip code :</td><td>&nbsp;</td>
-							<td valign='top'> <input id='searchfield' type="text" name="search" id="search" value="" size='40' onFocus="if(this.value=='Search by name or zip code'){this.value=''; this.style.color='#000';}; " onBlur="if(this.value==''){this.value='Search by name or zip code'; this.style.color='#999'; }"/>
-								<div id='searchbutton' onclick="if($('searchoption').value != '' && $('searchfield').value != '' && $('searchfield').value != 'Search by name or zip code') { document.search_form.submit();} else { $('searchoption').style.color = '#FF0000';}" ></div>
+							<td valign='top'> <input id='searchfields' type="text" name="search" id="search" value="" size='40' onFocus="if(this.value=='Search by name or zip code'){this.value=''; this.style.color='#000';}; " onBlur="if(this.value==''){this.value='Search by name or zip code'; this.style.color='#999'; }"/>
+								<div id='searchbutton' onclick="if($('searchoption').value != '' && $('searchfields').value != '' && $('searchfields').value != 'Search by name or zip code') { document.search_form.submit();} else { $('searchoption').style.color = '#FF0000';}" ></div>
 							</td>
 						</tr>
 					</table>
