@@ -83,7 +83,9 @@ class ConnectionsController < ApplicationController
       
         if @user.profile.visible_to_everyone #&& (Friendship.find(:first, :conditions => ["user_id = ? AND friend_id = ?", current_user.id, af.friend.id]).status == 'accepted') rescue true)
              unless af.hide_connection 
-               @friends << User.find(af.friend.id) 
+               unless af.friend.nil?
+                 @friends << User.find(af.friend.id) 
+               end
              end   
         elsif @user.profile.visible_to_everyone == false  
  
