@@ -5,10 +5,10 @@
 	
 </div>
 
-<div id="content" style="height: 550px;">
+<div id="content" style="height: 540px;">
 
 <%= render :partial => 'shared/send_invites' %>
-		<h3>Please add notifications@sitterscout.com to your e-mail contacts so that you will be sure to receive your requests and messages.</h3>
+		<h4>Please add <a href="mailTo:notifications@sitterscout.com?subject=notifications"> notifications@sitterscout.com</a> to your e-mail contacts so that you will be sure to receive your requests and messages.</h4>
 <%= link_to image_tag("HaveFun_bttn.gif", :border => 0), dashboard_sitter_path(current_user) %>
 </div>
 
