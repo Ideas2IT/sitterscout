@@ -89,7 +89,9 @@ class ConnectionsController < ApplicationController
  
           if @current_user_accepted_friends.collect{|f| f.friend}.include?(@user) || my_friends_match_their_friends
             unless af.hide_connection 
-              @friends << User.find(af.friend.id) 
+              unless af.friend.nil?
+                @friends << User.find(af.friend.id) 
+              end
             end
           end
         end
