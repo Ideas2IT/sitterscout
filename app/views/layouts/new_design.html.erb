@@ -86,10 +86,9 @@
 					<% form_tag "/search", :name => 'search_form' do %>
 					<table border="0" cellpadding="0" cellspacing="0">
 						<tr>
-							<td valign='bottom' style='font-size:9pt;'>I'm looking for a:</td>
-							<td>&nbsp;</td>
-							<td valign='bottom'> 
-								<select id='searchoption' name='searchoption' style='font-size:9pt;width:77px'>
+							<td  align='left' valign='bottom' style='font-size:10pt;font-family:"Verdana",sans-serif' >I'm looking for a:</td><td>&nbsp;</td>
+							<td  align='left' valign='bottom'>
+								<select id='searchoption' name='searchoption' style='font-size:9pt; width:85px;height:25px'>
 								<% if current_user.type == 'Parent' %>
 									<option value="sitter">Sitters</option>
 									<option value="parent">Friends</option>
@@ -99,9 +98,12 @@
 								<%end%>
 								</select>
 							</td>
-							<td>&nbsp;</td>
-							<td><input id='searchfield' type="text" name="search" id="search" value="Search by name or zip code" size='40' onFocus="if(this.value=='Search by name or zip code'){this.value=''; this.style.color='#000';}; " onBlur="if(this.value==''){this.value='Search by name or zip code'; this.style.color='#999'; }"/></td>
-							<td><div id='searchbutton' onclick="if($('searchoption').value != '' && $('searchfield').value != '' && $('searchfield').value != 'Search by name or zip code') { document.search_form.submit();} else { $('searchoption').style.color = '#FF0000';}" ></div></td>
+						</tr>
+						<tr>
+							<td  align='left'valign='middle' style='font-size:10pt;font-family:"Verdana",sans-serif' >Search by name or zip code :</td><td>&nbsp;</td>
+							<td valign='top'> <input id='searchfield' type="text" name="search" id="search" value="" size='40' onFocus="if(this.value=='Search by name or zip code'){this.value=''; this.style.color='#000';}; " onBlur="if(this.value==''){this.value='Search by name or zip code'; this.style.color='#999'; }"/>
+								<div id='searchbutton' onclick="if($('searchoption').value != '' && $('searchfield').value != '' && $('searchfield').value != 'Search by name or zip code') { document.search_form.submit();} else { $('searchoption').style.color = '#FF0000';}" ></div>
+							</td>
 						</tr>
 					</table>
 					<% end %>
