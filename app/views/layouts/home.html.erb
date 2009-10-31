@@ -98,15 +98,8 @@
 					<li id="works"><%= link_to("works", how_it_works_path) %></li>
 					<li id="about"><%= link_to("about", about_us_path) %></li>
 					<li id="faq"><%= link_to("faq", :controller => 'home', :action => 'faq') %></li>
-				</ul>
-				<div id='searchbar' style='backg/round: #999; z-index: 900;'>
-					<% form_tag "/search", :name => 'search_form' do %>
-					<input id='searchfield' type="text" name="search" id="search" value="Search by name or zip code" size='40' onFocus="if(this.value=='Search by name or zip code'){this.value=''; this.style.color='#000';};" onBlur="if(this.value==''){this.value='Search by name or zip code'; this.style.color='#999'; }"/>
-					<div id='searchbutton' onclick="if($('searchfield').value != '' && $('searchfield').value != 'Search by name or zip code'){ document.search_form.submit();}"></div>
-					<% end %>
-				</div>		
+				</ul>	
 			</div>
-
 		<div id='loginmenu'>
 			<div style='top: 40px; position: absolute;'>
 				<% form_tag sessions_path, :id=>"login_form" do -%>
@@ -132,6 +125,7 @@
 
 	</div>
 		<%= yield %>
+		
 <div id='footer'>
 	<p>&copy; 2008 Sitterscout, Inc.&nbsp;&nbsp;All Rights Reserved.&nbsp;&nbsp;|&nbsp;&nbsp;Email: info@sitterscout.com&nbsp;&nbsp;|&nbsp;&nbsp;<a href='/privacy'>Your Privacy<a/>&nbsp;&nbsp;|&nbsp;&nbsp;<a href='/tou'>Terms of Use</a>&nbsp;&nbsp;<a>|</a>&nbsp;&nbsp;<a href='/faq'>FAQ</a>&nbsp;&nbsp;<a>|</a>&nbsp;&nbsp;<a href='/how_it_works'>How it Works</a>
 		</p>
@@ -146,5 +140,6 @@ try {
 var pageTracker = _gat._getTracker("UA-6137367-1");
 pageTracker._trackPageview();
 } catch(err) {}</script>
+
 </body>
 </html>

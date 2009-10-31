@@ -48,6 +48,7 @@ a:hover { border-bottom: none; }
 #content .col { width: 280px; margin-right: 40px; backg/round: pink; float: left; padding-bottom: 60px; padding-left: 100px; }
 .rightcol { margin: 0 !important; }
 
+
 .signupitsfree { background: url(../images/signupitsfree-lgbuttons.png); width: 240px; height: 40px; margin-left: -28px; margin-top: 25px; cursor: pointer; }
 .magenta { background-position: 0 0; }
 .magenta:hover { background-position: 0 -40px; }
@@ -135,6 +136,7 @@ a:hover { border-bottom: none; }
 #dash_header li#requests.requests a { background-position: -643px 0; width: 193px; }
 /* searchbar */
 #searchbar { position: absolute; right: 0; width: auto; height: 60px; }
+#searchbarhome { position: absolute; left: 760px; width: auto; height: 60px; }
 #searchoptions { width: auto; height: 20px; margin-top: 40px; background: pink; font-size: 12px; line-height: 12px; }
 #searchfield { color: #999; width: 180px; height: 16px; line-height: 16px; margin-top: 3px; float: left; }
 #searchbutton { width: 32px; height: 22px; background: url(../images/search-button.png); float: left; margin-top: 3px; margin-left: 2px;}
