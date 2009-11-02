@@ -36,8 +36,9 @@
 
 
 										<div valign="top" style=" font-size: 9pt; color: #333333; margin-top: 18px;">
-										<%= link_to "View Profile", url_for(view_profile_parent_path(f.friend.id)) %> |
-
+										
+										<%= link_to "View profile", url_for(:controller => 'sitters', :action => 'view_parent_profile', :id => f.friend.id , :from => "awt_conf") %> |
+										
 										<%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => f.friend.id), :class => "lbOn-405-390" %> |
 
 										<%= link_to "Accept Request", url_for(:controller => 'connections', :action => 'accept', :id => f.friend.id) %> |
@@ -59,10 +60,9 @@
 										<strong style=" font-size: 1em; color: #333333;"><%= link_to(f.friend.profile.first_name + " " + f.friend.profile.last_name, url_for(view_friend_profile_sitter_path(f.friend.id))) %></strong><br/>
 									<%= f.friend.profile.city %>, <%= f.friend.profile.state.name %><br />
 
-
-
 										<div valign="top" style=" font-size: .8em; color: #333333; margin-top: 18px;">
-										<%= link_to "View Profile", url_for(view_sitter_profile_parent_path(f.friend.id)) %> |
+										
+										<%= link_to "View profile", url_for(:controller => 'sitters', :action => 'view_friend_profile', :id => f.friend.id , :from => "awt_conf") %> |
 
 										<%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => f.friend.id), :class => "lbOn-405-390" %> |
 

@@ -42,7 +42,8 @@ nothing
 
 
 									<div valign="top" style=" font-size: .8em; color: #333333; margin-top: 18px;">
-									<%= link_to "View Profile", url_for(view_profile_parent_path(f.friend.id)) %> |
+									
+									 <%= link_to "View profile", url_for(:controller => 'parents', :action => 'view_profile', :id => f.friend.id , :from => "awt_conf") %> |
 
 									<%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => f.friend.id), :class => "lbOn-405-390" %> |
 
@@ -68,7 +69,8 @@ nothing
 
 
 									<div valign="top" style=" font-size: .8em; color: #333333; margin-top: 18px;">
-									<%= link_to "View Profile", url_for(view_sitter_profile_parent_path(f.friend.id)) %> |
+									
+									<%= link_to "View profile", url_for(:controller => 'parents', :action => 'view_sitter_profile', :id => f.friend.id , :from => "awt_conf") %> |
 
 									<%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => f.friend.id), :class => "lbOn-405-390" %> |
 

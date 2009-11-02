@@ -127,7 +127,11 @@
 									<tr>
 										<td>
 											<label class="small_link">
+												<% if @awaiting == 'awt_conf'%>
+												<a href="javascript:history.back();"> < Back to "Connection Request" </a> 
+												<%else%>
 												<%=link_to '< Back to "Your Friends"',friends_parent_path(current_user) %>
+												<%end%>
 											</label>
 										</td>
 									</tr>

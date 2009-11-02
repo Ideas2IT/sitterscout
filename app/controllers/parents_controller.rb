@@ -721,11 +721,13 @@ end
     end
     
     def view_profile
+      @awaiting = params[:from]
       @user = Parent.find_by_id(params[:id])
       @profile = @user.profile
     end
     
     def view_sitter_profile
+      @awaiting = params[:from]
       @user = Sitter.find_by_id(params[:id])
       @profile = @user.profile
     end
