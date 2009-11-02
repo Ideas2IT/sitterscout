@@ -105,12 +105,14 @@ class SittersController < ApplicationController
   end
 
   def view_parent_profile 
+    @pawaitingconf=params[:from]
     @user = Parent.find_by_id(params[:id])
     @profile = @user.profile
   end
 
     
   def view_friend_profile
+    @pawaitingconf=params[:from]
     @user = Sitter.find_by_id(params[:id])
     @profile = @user.profile
   end

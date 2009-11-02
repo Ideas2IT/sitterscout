@@ -4,7 +4,7 @@
 		
 </div>
 
-<div class="view_prof" style="height:900px;">
+<div class="view_prof" style="height:1000px;">
 	<div style="height:10px">
 		</div>
 <div id="content" style="height: auto;">
@@ -73,13 +73,15 @@
 										<td>
 											<%=render :partial => "profiles/profile_sitter_skills"%>
 											<label class="small_link">
+												<% if @pawaitingconf == 'awt_conf' %>
+												<a href="javascript:history.back();"> < Back to "Connection Requests" </a>
+												<%else%>
 												<%= link_to "< Back to \"Your Friends\"", friends_sitter_path(current_user) %>
+												<%end%>
 											</label>
 											</td>
 									</tr>
 								</table>
-								
-								
 								</div>
 </div>
 </div>
