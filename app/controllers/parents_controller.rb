@@ -79,7 +79,7 @@ class ParentsController < ApplicationController
     @names = []
     @users = []
     if params[:commit]
-      redirect_to dashboard_parent_path(current_user)
+      redirect_to welcome_screen_parent_path(current_user)
     else
       
       params[:invitation].keys.each do |invite|
@@ -95,6 +95,18 @@ class ParentsController < ApplicationController
      end
      
   end
+  
+  def welcome_screen
+    
+     p = Parent.find(current_user)
+    unless p.aasm_state == "complete"
+      p.aasm_state = "complete"
+      p.save
+      Notifications.deliver_parent_welcome(current_user)
+    end
+      #SitterMailer.deliver_send_welcome_email(current_user)
+  end
+  
 
   def new
     page_title = ""

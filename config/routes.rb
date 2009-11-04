@@ -19,6 +19,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :parents, :collection => {:search => :post }, :member => { 
     :invite => :get,
     :welcome => :get,
+    :welcome_screen => :get,
     :your_friends => :get,
     :update_friends => :post,
     :your_sitters => :get,

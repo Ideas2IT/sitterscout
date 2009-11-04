@@ -8,16 +8,15 @@
 <%= @names.join("<br />") %> 
 </div>
 <% end %>
-<br />
 <% unless @users.size < 1 %>
 
 <h4>The following people are already part of the SitterScout Community</h4>
 <table style="font-size: .8em;">
+<tr>
+		<td>&nbsp;</td>
+</tr>
 <% @users.each do |user| %>
 	<% unless user.profile.nil? %>
-	<tr>
-		<td>&nbsp;</td>
-	</tr>
 	<tr>
 		<td><%= user.profile.first_name %>&nbsp;<%= user.profile.last_name %></td>
 		<td style="padding-left: 50px"><%= user.profile.parent? ? (link_to "Add to Your Friends", url_for(:controller => 'connections', :action => 'add_friend', :id => user.id), :class => "lbOn-300-260") : (link_to "Add to Your Sitters", url_for(:controller => 'connections', :action => 'add_friend', :id => user.id), :class => "lbOn-300-260")  %></td>
