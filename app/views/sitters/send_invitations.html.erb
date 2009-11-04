@@ -8,8 +8,11 @@
 <div id="content" style="height: 540px;">
 
 <%= render :partial => 'shared/send_invites' %>
-		<h4>Please add <a href="mailTo:notifications@sitterscout.com?subject=notifications"> notifications@sitterscout.com</a> to your e-mail contacts so that you will be sure to receive your requests and messages.</h4>
+<div style="padding-left:15px;">
+		<h4>Please add&nbsp;&nbsp<a href="mailTo:notifications@sitterscout.com?subject=notifications">notifications@sitterscout.com</a>&nbsp;&nbsp;to your e-mail contacts so that you will be sure to receive your requests and messages.</h4>
+		<br />
 <%= link_to image_tag("HaveFun_bttn.gif", :border => 0), dashboard_sitter_path(current_user) %>
+</div>
 </div>
 
 <%#= render :partial => 'shared/profile_percentage' %>

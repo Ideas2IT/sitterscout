@@ -57,30 +57,70 @@
 <script type="text/javascript" >
 
 	function check() {
+		
+		var email_0_val=document.getElementById('invitation_invite_0_email_address').value;
+		var email_1_val=document.getElementById('invitation_invite_1_email_address').value;
+		var email_2_val=document.getElementById('invitation_invite_2_email_address').value;
+		var email_3_val=document.getElementById('invitation_invite_3_email_address').value;
+		var email_4_val=document.getElementById('invitation_invite_4_email_address').value;
+		
 		$('flash_notice').innerHTML = '';
-	
+		var EMAIL_REGEX = /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i;
+		
+		
+		
 		var fail = false;
 		
 		if($('invitation_invite_0_email_address').value != '')
 		{
-			fail = true;
+			myNumber = new String(email_0_val);
+			email_value = EMAIL_REGEX.test(myNumber);
+			if(!email_value){
+				fail=false;
+			}else{
+			fail = true;	
+			}
 		}
 		else if ($('invitation_invite_1_email_address').value != '') {
-			fail = true;
+			myNumber = new String(email_1_val);
+			email_value = EMAIL_REGEX.test(myNumber);
+			if(!email_value){
+				fail=false;
+			}else{
+			fail = true;	
+			}
 		}
 		else if ($('invitation_invite_2_email_address').value != '') {
-			  	fail = true;
+			 myNumber = new String(email_2_val);
+			email_value = EMAIL_REGEX.test(myNumber);
+			if(!email_value){
+				fail=false;
+			}else{
+			fail = true;	
+			}
 		}
 		else if ($('invitation_invite_3_email_address').value != '') {
-			fail = true;
+			myNumber = new String(email_3_val);
+			email_value = EMAIL_REGEX.test(myNumber);
+			if(!email_value){
+				fail=false;
+			}else{
+			fail = true;	
+			}
 		}	 
 		else if ($('invitation_invite_4_email_address').value != '') {
-			fail = true;
+			myNumber = new String(email_4_val);
+			email_value = EMAIL_REGEX.test(myNumber);
+			if(!email_value){
+				fail=false;
+			}else{
+			fail = true;	
+			}
 		}
 		
 		if(!fail)
 		{
-			$('flash_notice').innerHTML = '<div id="notice_error">Please enter the Email Address</div>';
+			$('flash_notice').innerHTML = '<div id="notice_error">Please enter the valid Email Address</div>';
 			path_to_root_dir = "<%= APP_URL %>/";
 			var myBox = new GlassBox();
 			myBox.init( 'notice_error', '360px', '100px', 'hidden', 'facebookstyle', true, true );
