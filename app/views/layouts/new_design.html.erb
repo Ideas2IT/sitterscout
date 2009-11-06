@@ -71,49 +71,42 @@
 <div id='beta'></div>
 
 <div id='header'>
-		<div id='headerwrapper'>
-			<div id='mainlogo' onclick='location.href="<%= current_path %>"'></div>
-			<div id='logorsign'>
-				<div class='loginsignup <%= logged_in? ? 'out' : 'carbon' %>' <%= logged_in? ? nil : "onmouseover='document.getElementById(\"loginmenu\").style.display=\"block\";'" %> onclick='<%= logged_in? ? "location.href=\"/logout\";" : nil %>'>
-				</div>
-
+	<div id='headerwrapper'>
+		<div id='mainlogo' onclick='location.href="<%= current_path %>"'></div>
+		<div id='logorsign'>
+			<div class='loginsignup <%= logged_in? ? 'out' : 'carbon' %>' <%= logged_in? ? nil : "onmouseover='document.getElementById(\"loginmenu\").style.display=\"block\";'" %> onclick='<%= logged_in? ? "location.href=\"/logout\";" : nil %>'>
 			</div>
-
-			<div id='navbar' <%= current_page?(:controller => "home", :action => "index") ? "class='home'" : nil %>
-			
-				<div id='searchbar' style='backg/round: #999;z-index: 900;'>
-				
-					<% form_tag "/search", :name => 'search_form' do %>
-					<table border="0" cellpadding="0" cellspacing="0" style="margin-top:10px">
-						<tr>
-							<td  align='left' valign='bottom' style='font-size:10pt;font-family:"Verdana",sans-serif' >I'm looking for a:</td>
-							<td>&nbsp;</td>
-							<td  align='left' valign='bottom'>
-								<select id='searchoption' name='searchoption' style='font-size:9pt; width:75px;height:23px'>
-									<option value="sitter">Sitter</option>
-									<option value="parent">Parent</option>
-								</select>
-							</td>
-							<td>&nbsp;</td>
-							<td valign='top'> 
-								<input id='searchfield' type="text" name="search" id="search" value="Search by name or zip code" size='40' onFocus="if(this.value=='Search by name or zip code'){this.value=''; this.style.color='#000';}; " onBlur="if(this.value==''){this.value='Search by name or zip code'; this.style.color='#999'; }"/>
-								<div id='searchbutton' onclick="if($('searchoption').value != '' && $('searchfield').value != '' && $('searchfield').value != 'Search by name or zip code') { document.search_form.submit();}" ></div>
-							</td>
-						</tr>
-					</table>
-					<% end %>
-				</div>
+		</div>
+		<div id='navbar' <%= current_page?(:controller => "home", :action => "index") ? "class='home'" : nil %>>
+			<div id='searchbar' style="background: #F8F8F9;z-index: 900;">
+				<% form_tag "/search", :name => 'search_form' do %>
+				<table border="0" cellpadding="0" cellspacing="0" style="margin-top:10px">
+					<tr>
+						<td  align='left' valign='bottom' style='font-size:0.8em;font-family:"Verdana",sans-serif' >I'm looking for a:</td>
+						<td  align='left' valign='bottom'>
+							<select id='searchoption' name='searchoption' style='font-size:0.8em; width:70px;height:21px'>
+								<option value="sitter">Sitter</option>
+								<option value="parent">Parent</option>
+							</select>
+						</td>
+						<td>&nbsp;</td>
+						<td valign='top'> 
+							<input id='searchfield' type="text" name="search" id="search" value="Search by name or zip code" size='40' onFocus="on_focus(this);" onBlur="on_blur(this);" />
+							<div id='searchbutton' onclick="on_click(this);" ></div>
+						</td>
+					</tr>
+				</table>
+				<% end %>
 			</div>
-
+		</div>
 		<div id='loginmenu'>
 			<div style='top: 40px; position: absolute;'>
 				<% form_tag sessions_path, :id=>"login_form" do -%>
 					<%= text_field_tag 'login','email address',:class=>'loginmenuinput', :onfocus=>"if(this.value=='email address'){this.value=''; this.style.color='#000';};", :onblur=>"if(this.value==''){this.value='email address'; this.style.color='#999'; }" %>
 					<%= password_field_tag 'password', 'password', :class=>'loginmenuinput',  :onfocus=>"if(this.value=='password'){this.value=''; this.style.color='#000';};", :onblur=>"if(this.value==''){this.value='password'; this.style.color='#999'; }"%>
-							<br /><%= check_box_tag 'remember_me', :style=>'margin-left: 0;' %><label for="remember" style='font-size: 11px; color: #fff;'>Remember Me</label>
-							
-				<div class="logmenubutton in" onclick="$('login_form').submit();"></div>
-							<a href='<%= url_for(:controller => "sessions", :action => "forgot_password") %>' style='font-size: 11px; c/olor:#fff; border-bott/om: 1px dotted #fff; padding-left: 1px;'>forgot password?</a>
+					<br /><%= check_box_tag 'remember_me', :style=>'margin-left: 0;' %><label for="remember" style='font-size: 11px; color: #fff;'>Remember Me</label>
+					<div class="logmenubutton in" onclick="$('login_form').submit();"></div>
+					<a href='<%= url_for(:controller => "sessions", :action => "forgot_password") %>' style='font-size: 11px; c/olor:#fff; border-bott/om: 1px dotted #fff; padding-left: 1px;'>forgot password?</a>
 				<% end %>
 			</div>
 			<div class='logmenubutton signup' onclick='location.href="<%= new_sitter_path %>"'></div>	
@@ -125,13 +118,12 @@
 			<% end %>
 		</div>
 	</div>
-
-	</div>
-			<%= yield %>	
+</div>
+<%= yield %>	
 		
 <div id='footer'>
-	<p>&copy; 2008 Sitterscout, Inc.&nbsp;&nbsp;All Rights Reserved.&nbsp;&nbsp;|&nbsp;&nbsp;Email: info@sitterscout.com&nbsp;&nbsp;|&nbsp;&nbsp;<a href='/privacy'>Your Privacy<a/>&nbsp;&nbsp;|&nbsp;&nbsp;<a href='/tou'>Terms of Use</a>&nbsp;&nbsp;<a>|</a>&nbsp;&nbsp;<a href='/faq'>FAQ</a>&nbsp;&nbsp;<a>|</a>&nbsp;&nbsp;<a href='/how_it_works'>How it Works</a>
-		</p>
+<p>&copy; 2008 Sitterscout, Inc.&nbsp;&nbsp;All Rights Reserved.&nbsp;&nbsp;|&nbsp;&nbsp;Email: info@sitterscout.com&nbsp;&nbsp;|&nbsp;&nbsp;<a href='/privacy'>Your Privacy</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href='/tou'>Terms of Use</a>&nbsp;&nbsp;<a>|</a>&nbsp;&nbsp;<a href='/faq'>FAQ</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href='/how_it_works'>How it Works</a>
+</p>
 </div>
 
 <script type="text/javascript">
@@ -142,6 +134,28 @@ document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.
 try {
 var pageTracker = _gat._getTracker("UA-6137367-1");
 pageTracker._trackPageview();
-} catch(err) {}</script>
+} catch(err) {}
+</script>
+<script type="text/javascript">
+	function on_focus(this_obj){
+		if(this_obj.value=='Search by name or zip code'){
+			this_obj.value=''; 
+			this_obj.style.color='#000';
+		}
+	}
+	function on_blur(this_obj){
+		if(this_obj.value==''){
+			this_obj.value='Search by name or zip code'; 
+			this_obj.style.color='#999'; 
+		}
+	} 
+	function on_click(){
+		if($('searchoption').value != '' && $('searchfield').value != '' && $('searchfield').value != 'Search by name or zip code') { 
+		document.search_form.submit();
+		}
+	}
+	
+</script>
+</body>
 </body>
 </html>
