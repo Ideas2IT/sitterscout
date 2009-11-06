@@ -43,7 +43,7 @@
 								<%= truncate(search.profile.tag_list.to_s, 46, " ") %>
 								<% if(search.profile.tag_list.to_s.size > 46) %>
 								<%= link_to "more...", "#", :title => search.profile.tag_list.to_s %></div>
-											<% end %>
+								<% end %>
 							</p>
 						</td>
 					</tr>
@@ -72,11 +72,11 @@
 						<% if search.profile.sitter %>
 						> <%= link_to "View Profile",  url_for(:controller => 'sitters' , :action => 'view_friend_profile_search' , :id => search.id) %>  
 						<br /> 
-	    				> <%= link_to "Add to Your Friends", url_for(:controller => 'connections', :action => 'add_friend', :id => search.id),:class => "lbOn-300-260", :style => 'padding-right: 10px; margin-bottom: 5px; border-bottom: 1px #AFAFAF solid;' %>
+	    				> <%= link_to "Add to Your Sitters", url_for(:controller => 'connections', :action => 'add_friend', :id => search.id),:class => "lbOn-300-260", :style => 'padding-right: 10px; margin-bottom: 5px; border-bottom: 1px #AFAFAF solid;' %>
 						<% else %>
 						> <%= link_to "View Profile", url_for(:controller => 'sitters' , :action => 'view_parent_profile_search' , :id => search.id) %>				
 						<br />
-	  					> <%= link_to "Add to Your Families", url_for(:controller => 'connections', :action => 'add_friend', :id => search.id),:class => "lbOn-300-260", :style => 'padding-right: 10px; border-bottom: 1px #AFAFAF solid;' %>
+	  					> <%= link_to "Add to Your Parents", url_for(:controller => 'connections', :action => 'add_friend', :id => search.id),:class => "lbOn-300-260", :style => 'padding-right: 10px; border-bottom: 1px #AFAFAF solid;' %>
 						<% end %>
 						<% if current_user.connected?(search) %>
 						<br />
@@ -90,7 +90,7 @@
 						<% else %>
 						> <%= link_to "View Profile", url_for(:controller => 'parents' , :action => 'view_profile_search' , :id => search.id) %>				
 						<br />
-	  					> <%= link_to "Add to Your Friends", url_for(:controller => 'connections', :action => 'add_friend', :id => search.id),:class => "lbOn-300-260", :style => 'padding-right: 10px; border-bottom: 1px #AFAFAF solid;' %>
+	  					> <%= link_to "Add to Your Parents", url_for(:controller => 'connections', :action => 'add_friend', :id => search.id),:class => "lbOn-300-260", :style => 'padding-right: 10px; border-bottom: 1px #AFAFAF solid;' %>
 						<% end %>
 						<% if current_user.connected?(search) %>
 						<br />
