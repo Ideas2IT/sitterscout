@@ -1,8 +1,8 @@
 <%= flash[:notice] %>
 <div style="margin-left: 15px;">
-<h3>Thank you for inviting your friends to join SitterScout!</h3><br />
+Thank you for inviting your friends to join SitterScout!<br /><br />
 <% unless @names.blank? %>
-<h4>You have invited the following people:</h4>
+You have invited the following people:<br>
 <br>
 <div style="font-size: .8em;">
 <%= @names.join("<br />") %> 
@@ -10,7 +10,7 @@
 <% end %>
 <% unless @users.size < 1 %>
 
-<h4>The following people are already part of the SitterScout Community</h4>
+The following people are already part of the SitterScout Community<br>
 <table style="font-size: .8em;">
 <tr>
 		<td>&nbsp;</td>
