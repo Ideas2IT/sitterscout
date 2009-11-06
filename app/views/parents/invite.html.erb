@@ -2,10 +2,10 @@
 	
 <div style="margin: 0 auto; padding: 2%; color: #666666">
 <span style=" font-size: 1.1em; font-weight: bold">Invite Your Friends & Sitters</span>
-<p style="font-size: .9em; width: 85%; margin-top: 5px;">
+<div style="font-size: .9em; width: 85%; margin-top: 5px;">
 	With SitterScout, it’s networking that counts. The more friends you add, the more friends you can make – 
 	and that means a bigger network of trusted babysitters to choose from.
-</p><br />	<br />
+</div><br />	
 	
 <% form_tag send_invitations_parent_path(current_user) do |form| %>
 <div id="invitations-container">
@@ -13,13 +13,111 @@
 </div>
 <br /><br />
 
-<p style=" font-size: .8em; margin-bottom: 5px"><%= check_box_tag "custom_message", true %> Check this box to add a custom message.</p>
+<p style=" font-size: .8em; margin-bottom: 5px">
+<%= check_box_tag "custom_message", true %> Check this box to add a custom message.</p>
 <%= text_area(:invitations, :body, :style => "width: 600px; height: 50px;" , :text => "default") %>
 	<br /><br />
-	
+	<input type="submit" name="check_values" id="profile_submit" style="display: none;">
+	<% end %>
+<center>
+<table align="left" style="margin-left:30%">
 <div style="padding-left: 20%; display: inline;">	
-	<%= link_to(image_tag('/images/Wizard/Previous_bttn.gif', :border => 0), your_sitters_parent_path(current_user)) %>
-	<%= image_submit_tag "/images/parent_home/Submit_bttn.gif" %>&nbsp;<%= submit_tag "Skip" %>
-<% end %>
+	<tr>
+		<td>
+			<%= link_to(image_tag('/images/Wizard/Previous_bttn.gif', :border => 0), your_sitters_parent_path(current_user)) %>
+		</td>
+		<td>
+			<%= image_submit_tag "/images/parent_home/Submit_bttn.gif",:name => 'check_values', :onclick=>'check();'%>&nbsp;
+		</td>
+		<td>
+			<% form_tag send_invitations_parent_path(current_user) do |form| %>
+			<%= submit_tag "Skip" %>
+			<%end%>
+		</td>
+	</tr>
 </div>
-</div></div>
+</table>
+</center>
+</div>
+</div>
+<script type="text/javascript" >
+
+	function check() {
+		
+		var email_0_val=document.getElementById('invitation_invite_0_email_address').value;
+		var email_1_val=document.getElementById('invitation_invite_1_email_address').value;
+		var email_2_val=document.getElementById('invitation_invite_2_email_address').value;
+		var email_3_val=document.getElementById('invitation_invite_3_email_address').value;
+		var email_4_val=document.getElementById('invitation_invite_4_email_address').value;
+		
+		$('flash_notice').innerHTML = '';
+		var EMAIL_REGEX = /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i;
+		
+		
+		
+		var fail = false;
+		
+		if($('invitation_invite_0_email_address').value != '')
+		{
+			myNumber = new String(email_0_val);
+			email_value = EMAIL_REGEX.test(myNumber);
+			if(!email_value){
+				fail=false;
+			}else{
+			fail = true;	
+			}
+		}
+		else if ($('invitation_invite_1_email_address').value != '') {
+			myNumber = new String(email_1_val);
+			email_value = EMAIL_REGEX.test(myNumber);
+			if(!email_value){
+				fail=false;
+			}else{
+			fail = true;	
+			}
+		}
+		else if ($('invitation_invite_2_email_address').value != '') {
+			myNumber = new String(email_2_val);
+			email_value = EMAIL_REGEX.test(myNumber);
+			if(!email_value){
+				fail=false;
+			}else{
+			fail = true;	
+			}
+		}
+		else if ($('invitation_invite_3_email_address').value != '') {
+			myNumber = new String(email_3_val);
+			email_value = EMAIL_REGEX.test(myNumber);
+			if(!email_value){
+				fail=false;
+			}else{
+			fail = true;	
+			}
+		}	 
+		else if ($('invitation_invite_4_email_address').value != '') {
+			myNumber = new String(email_4_val);
+			email_value = EMAIL_REGEX.test(myNumber);
+			if(!email_value){
+				fail=false;
+			}else{
+			fail = true;	
+			}
+		}
+		
+		if(!fail)
+		{
+			$('flash_notice').innerHTML = '<div id="notice_error">Please enter the valid Email Address</div>';
+			path_to_root_dir = "<%= APP_URL %>/";
+			var myBox = new GlassBox();
+			myBox.init( 'notice_error', '360px', '100px', 'hidden', 'facebookstyle', true, true );
+			myBox.lbo( false, 0.01 ); 
+			myBox.appear(5000);
+			
+		}
+		else
+		{
+			$('profile_submit').click();
+		}
+		
+	}
+</script>
