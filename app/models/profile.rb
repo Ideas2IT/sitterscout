@@ -116,36 +116,30 @@ class Profile < ActiveRecord::Base
   
   def self.parents_you_may_know(uid)
     begin
-    ret_array = []
-    ret = find(:all, :conditions => ["not_searchable = ? AND parent_id <> ? AND parent_id IS NOT NULL", true, uid ],:origin => "#{uid.zipcode.to_s}", :within=>10, :order=>'distance asc')
-    ret2 = find(:all, :conditions => ["not_searchable = ? AND parent_id <> ? AND parent_id IS NOT NULL", true, uid ],:origin => "#{uid.zipcode.to_s}", :order => 'distance asc')
-    ret_a = ret.concat(ret2)
-    
-    old_ids = []
-    ret_a.uniq.each do |ra|
-      if ra.id != uid.id
-        #ret_array << Parent.find(ra.parent_id) rescue nil
-        old_ids << ra.parent_id
+      ret_array = []
+      ret = find(:all, :conditions => ["not_searchable = ? AND parent_id <> ? AND parent_id IS NOT NULL", true, uid ],:origin => "#{uid.zipcode.to_s}", :within=>10, :order=>'distance asc')
+      ret2 = find(:all, :conditions => ["not_searchable = ? AND parent_id <> ? AND parent_id IS NOT NULL", true, uid ],:origin => "#{uid.zipcode.to_s}", :order => 'distance asc')
+      ret_a = ret.concat(ret2)
+      
+      my_ret_a = []
+      ret_a.uniq.each do |ra|
+        if ra.id != uid.id
+          my_ret_a << ra.parent_id
+        end
       end
-    end
-    
-    puts "old ids #{old_ids.uniq.sort}"
-    
-    my_ret_a = []
-    ret_a.uniq.each do |ra|
-      if ra.id != uid.id
-        my_ret_a << ra.parent_id
+      
+      puts my_ret_a.uniq.sort.inspect
+      
+      my_ret_array = Parent.find(:all, :include => [:photo], :conditions => ["users.id in (?) ", my_ret_a.first(30)])
+      
+      puts my_ret_array.collect{|x| x.id }.uniq.sort.inspect
+      
+      my_ret_hash = my_ret_array.to_hash_values {|v| v.id}
+      ordered_ret_array = Array.new
+      my_ret_a.first(30).each do |id|
+        ordered_ret_array << my_ret_hash[id] unless my_ret_hash[id].nil?
       end
-    end
-    
-    puts "my ids #{my_ret_a.uniq.sort}"
-    
-    my_ret_array = Parent.find(:all, :include => [:photo], :conditions => ["users.id in (?) ", my_ret_a])
-    
-    
-    puts "old recs #{ret_array.collect(&:id).uniq.sort}"
-    puts "my recs #{my_ret_array.collect(&:id).uniq.sort}"
-    
+      
     rescue GeoKit::Geocoders::GeocodeError => ex
       ret_array = []
       ret = find(:all, :conditions => ["not_searchable = ? AND parent_id <> ? AND parent_id IS NOT NULL", true, uid ])
@@ -156,7 +150,7 @@ class Profile < ActiveRecord::Base
       end
     end
     
-    return my_ret_array
+    return ordered_ret_array
   end
   
   def self.sitters_you_may_know(uid)
@@ -173,7 +167,12 @@ class Profile < ActiveRecord::Base
         end
       end
       
-      my_ret_array = Sitter.find(:all, :include => [:photo], :conditions => ["users.id in (?) ", my_ret_a])
+      my_ret_array = Sitter.find(:all, :include => [:photo], :conditions => ["users.id in (?) ", my_ret_a.first(30)])
+      my_ret_hash = my_ret_array.to_hash_keys {|v| v.id}
+      ordered_ret_array = Array.new
+      my_ret_a.first(30).each do |id|
+        ordered_ret_array << my_ret_hash[id] unless my_ret_hash[id].nil?
+      end
       
     rescue GeoKit::Geocoders::GeocodeError => ex
       ret_array = []
@@ -183,7 +182,7 @@ class Profile < ActiveRecord::Base
       end
     end
     
-    return my_ret_array
+    return ordered_ret_array
   end
    
   def sitter?
