@@ -128,11 +128,10 @@ class Profile < ActiveRecord::Base
         end
       end
       
-      puts my_ret_a.uniq.sort.inspect
+      puts my_ret_a.inspect
       
       my_ret_array = Parent.find(:all, :include => [:photo], :conditions => ["users.id in (?) ", my_ret_a.first(30)])
       
-      puts my_ret_array.collect{|x| x.id }.uniq.sort.inspect
       
       my_ret_hash = my_ret_array.to_hash_values {|v| v.id}
       ordered_ret_array = Array.new
@@ -168,7 +167,7 @@ class Profile < ActiveRecord::Base
       end
       
       my_ret_array = Sitter.find(:all, :include => [:photo], :conditions => ["users.id in (?) ", my_ret_a.first(30)])
-      my_ret_hash = my_ret_array.to_hash_keys {|v| v.id}
+      my_ret_hash = my_ret_array.to_hash_values {|v| v.id}
       ordered_ret_array = Array.new
       my_ret_a.first(30).each do |id|
         ordered_ret_array << my_ret_hash[id] unless my_ret_hash[id].nil?
