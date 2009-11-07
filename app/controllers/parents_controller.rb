@@ -57,12 +57,16 @@ class ParentsController < ApplicationController
       end
     end
     
-    @unconfirmed_sitters = []
-    current_user.pending_friendships.each do |f|
-      if f.friend.is_a?Sitter
-        @unconfirmed_sitters << f
-      end
-    end
+#    @unconfirmed_sitters = []
+#    current_user.pending_friendships.each do |f|
+#      if f.friend.is_a?Sitter
+#        @unconfirmed_sitters << f
+#      end
+#    end
+    
+    pending_friendship_sitter_ids = current_user.pending_friendships.select {|f| f.friend.is_a?Sitter}.collect {|f| f.friend.id}
+    
+    @unconfirmed_sitters = Sitter.find(:all, :include => [:photo], :conditions => ["users.id in (?) ", pending_friendship_sitter_ids])
   end
 
   def invite
@@ -555,12 +559,14 @@ end
           @confirmed_friends << f
         end
       end
-      @unconfirmed_friends = []
-      current_user.pending_friendships.each do |f|
-        if f.friend.is_a?Parent
-          @unconfirmed_friends << f
-        end
-      end
+     @unconfirmed_friends = []
+#      current_user.pending_friendships.each do |f|
+#        if f.friend.is_a?Parent
+#          @unconfirmed_friends << f
+#        end
+#      end
+      pending_friendship_parent_ids = current_user.pending_friendships.select {|f| f.friend.is_a?Parent}.collect {|f| f.friend.id}  
+      @unconfirmed_friends = Parent.find(:all, :include => [:photo], :conditions => ["users.id in (?) ", pending_friendship_parent_ids])
       
   end
   

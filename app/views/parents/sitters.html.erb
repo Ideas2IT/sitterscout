@@ -119,30 +119,28 @@
 			<% end %>
 
 		<% @unconfirmed_sitters.each do |f| %>
-			<% if f.friend.is_a?Sitter %>
 			<div style="width: 98%; border: 1px solid #ADACAD; padding: 5px; margin-bottom: 5px; background-color: #FFFFFF">
 
 			<table>
 				<tr>
 		  		<td>
-		  			<%= image_tag(f.friend.avatar_photo_url, :class => "right", :border => 0) %>
+		  			<%= image_tag(f.avatar_photo_url, :class => "right", :border => 0) %>
 		  		</td>
 					<td style="padding: 5px;" valign="top">
-		    <strong style="font-size: 1em; "><%= f.friend.profile.sitter_display_name %></strong><br/>
-		  <%= f.friend.profile.city %>, <%= f.friend.profile.state.name %><br />
+		    <strong style="font-size: 1em; "><%= f.profile.sitter_display_name %></strong><br/>
+		  <%= f.profile.city %>, <%= f.profile.state.name %><br />
 			<div style="font-size: .8em; margin-top: 18px;">
-			<%= link_to "View Profile", url_for(view_profile_sitter_ac_parent_path(f.friend.id)) %>
+			<%= link_to "View Profile", url_for(view_profile_sitter_ac_parent_path(f.id)) %>
 			|
-		    <%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => Sitter.find(f.friend.id).id), :class => "lbOn-405-390" %>
+		    <%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => f.id), :class => "lbOn-405-390" %>
 				|
-		    <%= link_to "Remove Sitter", url_for(:controller => 'connections', :action => 'decline', :id => f.friend.id), :confirm => "Are you sure you want to remove this sitter?" %>
+		    <%= link_to "Remove Sitter", url_for(:controller => 'connections', :action => 'decline', :id => f.id), :confirm => "Are you sure you want to remove this sitter?" %>
 		 	</div>
 		 </td>
 		</tr>
 		</table>
 			</div>
 			<% end %>
-		<% end %>
 		</div>
 
 			<!-- Column 2 end -->

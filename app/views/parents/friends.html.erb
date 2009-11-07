@@ -124,32 +124,30 @@
 			<% end %>
 
 			<% @unconfirmed_friends.each do |f| %>
-				<% unless f.friend.profile.nil? %>
-					<% if f.friend.is_a?Parent %>
+				<% unless f.profile.nil? %>
 						<div style="width: 98%; border: 1px solid #ADACAD; padding: 5px; margin-bottom: 5px; background-color: #FFFFFF">
 							<table>
 								<tr>
 									<td>
-						  		<%= image_tag(f.friend.avatar_photo_url) %>
+						  		<%= image_tag(f.avatar_photo_url) %>
 
 									</td>
 					  			<td style="padding: 5px;" valign="top">
-						    <span style=" font-size: 1em; font-weight: bold;"><%= f.friend.profile.first_name %>&nbsp;<%= f.friend.profile.last_name %></span><br/>
+						    <span style=" font-size: 1em; font-weight: bold;"><%= f.profile.first_name %>&nbsp;<%= f.profile.last_name %></span><br/>
 
-									<%= f.friend.profile.city %>, <%= f.friend.profile.state.name %><br />
+									<%= f.profile.city %>, <%= f.profile.state.name %><br />
 
 						  		<div style=" font-size: .8em; margin-top: 18px;">
-								<%= link_to "View Profile", url_for(view_profile_friend_ac_parent_path(f.friend.id)) %>
+								<%= link_to "View Profile", url_for(view_profile_friend_ac_parent_path(f.id)) %>
 								|
-						    <%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => f.friend.id), :class => "lbOn-405-390" %>
+						    <%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => f.id), :class => "lbOn-405-390" %>
 						  	|
-						    <%= link_to "Remove Friend", url_for(:controller => 'connections', :action => 'decline', :id => f.friend.id), :confirm => "Are you sure you want to remove this friend?" %>
+						    <%= link_to "Remove Friend", url_for(:controller => 'connections', :action => 'decline', :id => f.id), :confirm => "Are you sure you want to remove this friend?" %>
 								</div>
 								</td>
 							</tr>
 							</table>
 						</div>
-					<% end %>
 			  <% end %>
 			<% end %>
 
