@@ -445,11 +445,11 @@ class SittersController < ApplicationController
       end
     end
     @unconfirmed_friends = []
-    current_user.pending_friendships.each do |f|
-      if f.friend.is_a?Parent
-        @unconfirmed_friends << f
-      end
-    end  
+#    current_user.pending_friendships.each do |f|
+#      if f.friend.is_a?Parent
+#        @unconfirmed_friends << f
+#      end
+#    end  
     
      pending_friendship_parent_ids = current_user.pending_friendships.select {|f| f.friend.is_a?Parent}.collect {|f| f.friend.id}  
       @unconfirmed_friends = Parent.find(:all, :include => [:photo], :conditions => ["users.id in (?) ", pending_friendship_parent_ids])
