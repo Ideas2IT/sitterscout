@@ -458,8 +458,9 @@ class SittersController < ApplicationController
   
   def search_friends
      if params[:user]
-       @search_friends = Profile.find_by_sql("select * from profiles where full_name LIKE '%#{params[:user][:search].to_s}%' OR first_name LIKE '%#{params[:user][:search].to_s}%' OR last_name LIKE '%#{params[:user][:search].to_s}%' AND not_searchable = 1")
+#       @search_friends = Profile.find_by_sql("select * from profiles where full_name LIKE '%#{params[:user][:search].to_s}%' OR first_name LIKE '%#{params[:user][:search].to_s}%' OR last_name LIKE '%#{params[:user][:search].to_s}%' AND not_searchable = 1")
      
+     @search_friends = Profile.find(:all, :include => [:sitter],:conditions => ("full_name LIKE  '%#{params[:user][:search].to_s}%' OR first_name LIKE '%#{params[:user][:search].to_s}%' OR last_name LIKE  '%#{params[:user][:search].to_s}%' AND not_searchable = 1"))
 
        @ret = []
        @search_friends.concat Profile.tagged_with_and_parent(params[:user][:search])
@@ -468,11 +469,7 @@ class SittersController < ApplicationController
              @ret << p unless p.not_searchable == false
            end
        end
- 
- 
 
-     
-     
       end
       
       respond_to do |format|
@@ -494,7 +491,10 @@ class SittersController < ApplicationController
   
   def search_families
     if params[:user]
-      @search_friends = Profile.find_by_sql("select * from profiles where full_name LIKE '%#{params[:user][:search].to_s}%' OR first_name LIKE '%#{params[:user][:search].to_s}%' OR last_name LIKE '%#{params[:user][:search].to_s}%' AND not_searchable = 1")
+#      @search_friends = Profile.find_by_sql("select * from profiles where full_name LIKE '%#{params[:user][:search].to_s}%' OR first_name LIKE '%#{params[:user][:search].to_s}%' OR last_name LIKE '%#{params[:user][:search].to_s}%' AND not_searchable = 1")
+      
+      @search_friends = Profile.find(:all, :include => [:parent],:conditions => ("full_name LIKE  '%#{params[:user][:search].to_s}%' OR first_name LIKE '%#{params[:user][:search].to_s}%' OR last_name LIKE  '%#{params[:user][:search].to_s}%' AND not_searchable = 1"))
+      
       @ret = []
       @search_friends.concat Profile.tagged_with_and_parent(params[:user][:search])
       @search_friends.each do |p|
