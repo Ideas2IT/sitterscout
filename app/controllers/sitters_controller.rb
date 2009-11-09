@@ -374,14 +374,18 @@ class SittersController < ApplicationController
   end
   
   def your_friends
-    plist = Profile.sitters_you_may_know(current_user.profile).collect(&:id)
-    @friends = []
-     plist.each do |p|
-        unless current_user.id == p 
-          @friends << Sitter.find(p)
-        end
-      end
-    render :layout => "no_search"
+    
+    @friends = Profile.sitters_you_may_know(current_user.profile)
+    render :layout=> "no_search"
+    
+#    plist = Profile.sitters_you_may_know(current_user.profile).collect(&:id)
+#    @friends = []
+#     plist.each do |p|
+#        unless current_user.id == p 
+#          @friends << Sitter.find(p)
+#        end
+#      end
+#    render :layout => "no_search"
     
   end
   
