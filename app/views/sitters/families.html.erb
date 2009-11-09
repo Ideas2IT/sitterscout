@@ -110,31 +110,29 @@
 		<div style="width: 465px; font-size: .8em;margin-bottom: 50px;">
 			<% unless @unconfirmed_friends.blank? %>
 			<% @unconfirmed_friends.each do |f| %>
-				<% if f.friend.is_a?Parent %>
 				<div style="width: 98%; border: 1px solid #ADACAD; padding: 5px; margin-top: 4px; background-color: #FFFFFF">
 				<table>
 			<tr>
 			  <td>
-			  <%= image_tag(f.friend.avatar_photo_url, :class => "right" ) %>
+			  <%= image_tag(f.avatar_photo_url, :class => "right" ) %>
 			  </td>
 
 			  <td  style="padding: 5px;" valign="top">
-			    <strong style=" font-size: 13pt; font-weight: bold;"><%= truncate(f.friend.profile.first_name + " " + f.friend.profile.last_name, 22) %></strong><br/>
-			  <%= f.friend.profile.city %>, <%= f.friend.profile.state.name %><br />
+			    <strong style=" font-size: 13pt; font-weight: bold;"><%= truncate(f.profile.first_name + " " + f.profile.last_name, 22) %></strong><br/>
+			  <%= f.profile.city %>, <%= f.profile.state.name %><br />
 
 			  <div valign="top" style=" font-size: .8em;  margin-top: 18px;">
-			 	<%= link_to "View Profile", url_for(view_profile_family_ac_sitter_path(f.friend.id)) %> 
+			 	<%= link_to "View Profile", url_for(view_profile_family_ac_sitter_path(f.id)) %> 
 				|
-			    <%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => f.friend.id), :class => "lbOn-405-390" %>
+			    <%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => f.id), :class => "lbOn-405-390" %>
 			  	|
-			    <%= link_to "Remove Family", url_for(:controller => 'connections', :action => 'decline', :id => f.friend.id), :confirm => "Are you sure you want to remove this friend?" %>
+			    <%= link_to "Remove Family", url_for(:controller => 'connections', :action => 'decline', :id => f.id), :confirm => "Are you sure you want to remove this friend?" %>
 			 </div>
 			 </td>
 			
 			</tr>
 			</table>
 			</div>
-				<% end %>
 			<% end %>
 			<% else %>
 		You currently have no unconfirmed families.

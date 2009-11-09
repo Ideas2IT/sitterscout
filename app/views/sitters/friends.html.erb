@@ -108,31 +108,29 @@
 			<div style="width: 465px; font-size: .8em;margin-bottom: 50px;">
 			<% unless @unconfirmed_friends.blank? %>
 			<% @unconfirmed_friends.each do |f| %>
-					<% if f.friend.is_a?Sitter %>
 						<div style="width: 98%; border: 1px solid #ADACAD; padding: 5px; margin-bottom: 5px; background-color: #FFFFFF">
 							<table>
 								<tr>
 									<td>
-						  		<%= image_tag(f.friend.avatar_photo_url) %>
+						  		<%= image_tag(f.avatar_photo_url) %>
 
 									</td>
 					  			<td style="padding: 5px;" valign="top">
-						    <span style="font-size: 13pt; font-weight: bold;"><%= f.friend.profile.first_name %>&nbsp;<%= f.friend.profile.last_name %></span><br/>
+						    <span style="font-size: 13pt; font-weight: bold;"><%= f.profile.first_name %>&nbsp;<%= f.profile.last_name %></span><br/>
 
-									<%= f.friend.profile.city %>, <%= f.friend.profile.state.name %><br />
+									<%= f.profile.city %>, <%= f.profile.state.name %><br />
 
 						  		<div style="font-size: .8em; margin-top: 18px;">
-								<%= link_to "View Profile", url_for(view_profile_friend_ac_sitter_path(f.friend.id)) %>
+								<%= link_to "View Profile", url_for(view_profile_friend_ac_sitter_path(f.id)) %>
 								|
-						    	<%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => f.friend.id), :class => "lbOn-405-390" %>
+						    	<%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => f.id), :class => "lbOn-405-390" %>
 						  		|
-						    	<%= link_to "Remove Friend", url_for(:controller => 'connections', :action => 'decline', :id => f.friend.id), :confirm => "Are you sure you want to remove this friend?" %>
+						    	<%= link_to "Remove Friend", url_for(:controller => 'connections', :action => 'decline', :id => f.id), :confirm => "Are you sure you want to remove this friend?" %>
 								</div>
 								</td>
 							</tr>
 							</table>
 						</div>
-					<% end %>
 			<% end %>
 			<% else %>
 			You are not awaiting confirmation from any friends.
