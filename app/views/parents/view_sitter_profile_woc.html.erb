@@ -92,9 +92,12 @@
 								<%=render :partial => "profiles/profile_sitter_skills"%>
 							</div>
 							<label class="small_link">
+								<% if @awaiting == 'awt_conf'%>
+												<a href="javascript:history.back();"> < Back to "Connection Request" </a> 
+												<%else%>
 						<%=link_to '< Back to "Your Sitters"',sitters_parent_path(self.current_user)%>
+						<%end%>	
 						</label>
-				
 				</td>
 				</tr>
 				</table>
@@ -102,9 +105,7 @@
 		</tr>
 	</table>	
 	</div>
-	
 </div>
-
 <div style="top: 450px; position: absolute; margin-left: 18%; color: #8F8F8F;  font-size: 10pt; width: 960px; height:auto;">
 </div>
 </div>

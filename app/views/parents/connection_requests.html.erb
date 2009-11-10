@@ -38,12 +38,9 @@ nothing
 									<td style="padding: 5px;" valign="top">
 									<strong style=" font-size: 1em; color: #333333;"><%= link_to(f.friend.profile.first_name + " " + f.friend.profile.last_name, url_for(view_profile_parent_path(f.friend.id))) %></strong><br/>
 									<%= f.friend.profile.city %>, <%= f.friend.profile.state.name %><br />
-
-
-
 									<div valign="top" style=" font-size: .8em; color: #333333; margin-top: 18px;">
 									
-									 <%= link_to "View profile", url_for(:controller => 'parents', :action => 'view_profile', :id => f.friend.id , :from => "awt_conf") %> |
+									 <%= link_to "View profile", url_for(:controller => 'parents', :action => 'view_profile_woc', :id => f.friend.id , :from => "awt_conf") %> |
 
 									<%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => f.friend.id), :class => "lbOn-405-390" %> |
 
@@ -65,12 +62,9 @@ nothing
 								<td style="padding: 5px;" valign="top">
 									<strong style=" font-size: 1em; color: #333333;"><%= link_to(f.friend.profile.first_name + " " + f.friend.profile.last_name, url_for(view_sitter_profile_parent_path(f.friend.id))) %></strong><br/>
 								<%= f.friend.profile.city %>, <%= f.friend.profile.state.name %><br />
-
-
-
 									<div valign="top" style=" font-size: .8em; color: #333333; margin-top: 18px;">
 									
-									<%= link_to "View profile", url_for(:controller => 'parents', :action => 'view_sitter_profile', :id => f.friend.id , :from => "awt_conf") %> |
+									<%= link_to "View profile", url_for(:controller => 'parents', :action => 'view_sitter_profile_woc', :id => f.friend.id , :from => "awt_conf") %> |
 
 									<%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => f.friend.id), :class => "lbOn-405-390" %> |
 

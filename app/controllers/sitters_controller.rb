@@ -105,43 +105,52 @@ class SittersController < ApplicationController
   end
 
   def view_parent_profile 
-    @pawaitingconf=params[:from]
-    @user = Parent.find_by_id(params[:id])
+#    @user = Parent.find_by_id(params[:id])
+    @user = Parent.find(params[:id])
     @profile = @user.profile
   end
 
     
   def view_friend_profile
-    @pawaitingconf=params[:from]
-    @user = Sitter.find_by_id(params[:id])
-    @profile = @user.profile
+    
+#    @user = Sitter.find_by_id(params[:id])
+     @user = Sitter.find(params[:id])
+     @profile = @user.profile
   end
     
   def view_parent_profile_search
-    @user = Parent.find_by_id(params[:id])
+#    @user = Parent.find_by_id(params[:id])
+     @user = Parent.find(params[:id])
     @profile = @user.profile
   end
   
   def view_friend_profile_search
-     @user = Sitter.find_by_id(params[:id])
+#     @user = Sitter.find_by_id(params[:id])
+     @user = Sitter.find(params[:id])
     @profile = @user.profile
   end
   def view_friend_profile_woc
-   @user = Sitter.find_by_id(params[:id])
+    @awaitingconf=params[:from]
+#   @user = Sitter.find_by_id(params[:id])
+    @user = Sitter.find(params[:id])
     @profile = @user.profile
   end
   def view_parent_profile_woc
-   @user = Parent.find_by_id(params[:id])
+    @awaitingconf=params[:from]
+#   @user = Parent.find_by_id(params[:id])
+   @user = Parent.find(params[:id])
     @profile = @user.profile 
   end
   
   def view_profile_friend_ac
-    @user = Sitter.find_by_id(params[:id])
+#    @user = Sitter.find_by_id(params[:id])
+    @user = Sitter.find(params[:id])
     @profile = @user.profile
   end
   
   def view_profile_family_ac
-    @user = Parent.find_by_id(params[:id])
+#    @user = Parent.find_by_id(params[:id])
+    @user = Parent.find(params[:id])
     @profile = @user.profile 
   end
   
@@ -402,6 +411,8 @@ class SittersController < ApplicationController
       ulist = current_user.pending_friendships.collect(&:friend_id)
       dlist = current_user.denied_friendships.collect(&:friend_id)
       
+      puts "#{plist}++++++++++++++++++++++++++++++++++"
+      
       @sitters = []
       
       removed_people = RemovedPeople.find_users_removed_people_ids(current_user.id)
@@ -437,16 +448,18 @@ class SittersController < ApplicationController
   end
   
   def families
-    plist = Profile.parents_you_may_know(current_user.profile).collect(&:id)
+    plist = Profile.parents_you_may_know(current_user.profile).collect(&:id) #just return the 30 values in the distance order
     #.find(:all, :conditions => ["profile_public = ?", true]).collect(&:id)
-    alist = current_user.accepted_friendships.collect(&:friend_id)
-    ulist = current_user.pending_friendships.collect(&:friend_id)
-    dlist = current_user.denied_friendships.collect(&:friend_id)
+    alist = current_user.accepted_friendships.collect(&:friend_id) # just return who are accepted in the friend ship
+    ulist = current_user.pending_friendships.collect(&:friend_id) # just return who are pending friends
+    dlist = current_user.denied_friendships.collect(&:friend_id) # just return who are denied friends
+    
     @parents = []
     
     parent_ids = []
     
     removed_people = RemovedPeople.find_users_removed_people_ids(current_user.id)
+    
     plist.each do |p|
       unless current_user.id == p || alist.include?(p) || ulist.include?(p) || dlist.include?(p) || removed_people.include?(p)
         parent_ids << Parent.find(p) if parent_ids.length < 5

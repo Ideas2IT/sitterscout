@@ -73,11 +73,7 @@
 										<td>
 											<%=render :partial => "profiles/profile_sitter_skills"%>
 											<label class="small_link">
-												<% if @pawaitingconf == 'awt_conf' %>
-												<a href="javascript:history.back();"> < Back to "Connection Requests" </a>
-												<%else%>
 												<%= link_to "< Back to \"Your Friends\"", friends_sitter_path(current_user) %>
-												<%end%>
 											</label>
 											</td>
 									</tr>

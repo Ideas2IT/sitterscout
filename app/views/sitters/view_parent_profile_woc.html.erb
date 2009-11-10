@@ -83,7 +83,11 @@
 									<tr>
 										<td>
 											<label class="small_link">
-												<%= link_to "< Back to \"Your Families\"", families_sitter_path(@user) %>
+												<% if @awaitingconf == 'awt_conf' %>
+													<a href="javascript:history.back();"> < Back to "Connection Requests" </a>
+												<%else%>
+													<%= link_to "< Back to \"Your Families\"", families_sitter_path(@user) %>
+												<%end%>
 											</label>
 										</td>
 									</tr>

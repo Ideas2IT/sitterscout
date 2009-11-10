@@ -723,10 +723,7 @@ end
     
   	def inbox
   		@needs_ext = 1
-
   		@type = (params[:type]) ? params[:type] : 'received'
-
-  	
   	end
     
     def profile
@@ -743,52 +740,60 @@ end
     end
     
     def view_profile
-      @awaiting = params[:from]
-      @user = Parent.find_by_id(params[:id])
+      
+#      @user = Parent.find_by_id(params[:id])
+       @user = Parent.find(params[:id])
       @profile = @user.profile
     end
     
     def view_sitter_profile
-      @awaiting = params[:from]
-      @user = Sitter.find_by_id(params[:id])
+      
+#     @user = Sitter.find_by_id(params[:id])
+      @user = Sitter.find(params[:id])
       @profile = @user.profile
     end
     
     def view_profile_search
-      @user = Parent.find_by_id(params[:id])
+#     @user = Parent.find_by_id(params[:id])
+      @user = Parent.find(params[:id])
       @profile = @user.profile
     end
     
     def view_sitter_profile_search
-      @user = Sitter.find_by_id(params[:id])
+#      @user = Sitter.find_by_id(params[:id])
+      @user = Sitter.find(params[:id])
       @profile = @user.profile
     end
     
     def view_profile_woc
-      @user = Parent.find_by_id(params[:id])
+      @awaiting = params[:from]
+#      @user = Parent.find_by_id(params[:id])
+       @user = Parent.find(params[:id])
       @profile = @user.profile
     end
     
     def view_sitter_profile_woc
-      @user = Sitter.find_by_id(params[:id])
+      @awaiting = params[:from]
+#      @user = Sitter.find_by_id(params[:id])
+       @user = Sitter.find(params[:id])
       @profile = @user.profile
     end
     
     def view_profile_sitter_ac 
-      @user = Sitter.find_by_id(params[:id])
+#      @user = Sitter.find_by_id(params[:id])
+       @user = Sitter.find(params[:id])
       @profile = @user.profile
     end
     
     def view_profile_friend_ac
-      @user = Parent.find_by_id(params[:id])
+#      @user = Parent.find_by_id(params[:id])
+       @user = Parent.find(params[:id])
       @profile = @user.profile
     end
     
     def view_connections
       @user = User.find(params[:id])
       @profile = @user.profile
-      
-      
 
       @families = []
       @sitters = []
@@ -799,6 +804,12 @@ end
           @sitters << User.find(af.friend.id)
         end
       end
+      
+#     accepted_friendships = @user.accepted_friendships.select {|f| f.friend.is_a?Parent}.collect {|f| f.friend.id}  
+#     @families = User.find(:all, :include => [:photo], :conditions => ["users.id in (?) ", accepted_friendships])
+#     
+#     accepted_friendship = @user.accepted_friendship.select {|f| f.friend.is_a?Sitter}.collect {|f| f.friend.id}  
+#     @sitters = User.find(:all, :include => [:photo], :conditions => ["users.id in (?) ", accepted_friendship])
       
     end
     
