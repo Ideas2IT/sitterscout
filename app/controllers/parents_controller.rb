@@ -51,12 +51,15 @@ class ParentsController < ApplicationController
     
     
     @confirmed_sitters = []
-    current_user.accepted_friendships.each do |f|
-      if f.friend.is_a?Sitter
-        @confirmed_sitters << f
-      end
-    end
+#    current_user.accepted_friendships.each do |f|
+#      if f.friend.is_a?Sitter
+#        @confirmed_sitters << f
+#      end
+#    end
     
+      accepted_friendship_sitter_ids = current_user.accepted_friendships.select {|f| f.friend.is_a?Sitter}.collect {|f| f.friend.id}
+      @confirmed_sitters = Sitter.find(:all, :include => [:photo], :conditions => ["users.id in (?) ", accepted_friendship_sitter_ids])
+
 #    @unconfirmed_sitters = []
 #    current_user.pending_friendships.each do |f|
 #      if f.friend.is_a?Sitter
@@ -65,7 +68,6 @@ class ParentsController < ApplicationController
 #    end
     
     pending_friendship_sitter_ids = current_user.pending_friendships.select {|f| f.friend.is_a?Sitter}.collect {|f| f.friend.id}
-    
     @unconfirmed_sitters = Sitter.find(:all, :include => [:photo], :conditions => ["users.id in (?) ", pending_friendship_sitter_ids])
   end
 
@@ -228,12 +230,7 @@ class ParentsController < ApplicationController
       end
       
       booked_sitters = []
-      
 
-   
-      
-      
-      
       sitters.each do |sitter|
         unless sitter.profile.nil?
           j = Job.find(:all, :conditions => ["jobs.sitter_id = ? AND ((jobs.date_from between ? AND ?) OR (jobs.date_to between ? AND ?) OR (? between jobs.date_from AND jobs.date_to) OR (? between jobs.date_from AND jobs.date_to) OR (jobs.date_from = ?) OR (jobs.date_to = ?))", sitter.id, dt.to_datetime.to_s(:db), dt_to.to_datetime.to_s(:db), dt.to_datetime.to_s(:db), dt_to.to_datetime.to_s(:db), dt.to_datetime.to_s(:db), dt_to.to_datetime.to_s(:db), dt.to_datetime.to_s(:db), dt_to.to_datetime.to_s(:db)])
@@ -554,11 +551,15 @@ end
       @parents = Parent.find(:all, :include => [:photo], :conditions => ["users.id in (?) ", parent_ids])    
       
       @confirmed_friends = []
-      current_user.accepted_friendships.each do |f|
-        if f.friend.is_a?Parent
-          @confirmed_friends << f
-        end
-      end
+#      current_user.accepted_friendships.each do |f|
+#        if f.friend.is_a?Parent
+#          @confirmed_friends << f
+#        end
+#      end
+      
+      accepted_friendship_parent_ids = current_user.accepted_friendships.select {|f| f.friend.is_a?Parent}.collect {|f| f.friend.id}  
+      @confirmed_friends = Parent.find(:all, :include => [:photo], :conditions => ["users.id in (?) ", accepted_friendship_parent_ids])
+      
      @unconfirmed_friends = []
 #      current_user.pending_friendships.each do |f|
 #        if f.friend.is_a?Parent
