@@ -544,7 +544,7 @@ end
       parent_ids = []
       plist.each do |p|
         unless current_user.id == p || alist.include?(p) || ulist.include?(p) || dlist.include?(p) || removed_people.include?(p)
-          parent_ids << p if @parents.length < 5
+          parent_ids << p if parent_ids.length < 5
         end
       end
 
