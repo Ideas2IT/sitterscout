@@ -401,13 +401,19 @@ class SittersController < ApplicationController
       alist = current_user.accepted_friendships.collect(&:friend_id)
       ulist = current_user.pending_friendships.collect(&:friend_id)
       dlist = current_user.denied_friendships.collect(&:friend_id)
+      
       @sitters = []
+      
       removed_people = RemovedPeople.find_users_removed_people_ids(current_user.id)
+      
+      sitter_ids=[]
       plist.each do |p|
         unless current_user.id == p || alist.include?(p) || ulist.include?(p) || dlist.include?(p) || removed_people.include?(p)
-          @sitters << Sitter.find(p) if @sitters.length < 5
+          sitter_ids << Sitter.find(p) if sitter_ids.length < 5
         end
       end
+      
+      @sitters = Sitter.find(:all, :include => [:photo], :conditions => ["users.id in (?) ", sitter_ids])    
           
       @confirmed_friends = []
 #        current_user.accepted_friendships.each do |f|
@@ -438,12 +444,16 @@ class SittersController < ApplicationController
     dlist = current_user.denied_friendships.collect(&:friend_id)
     @parents = []
     
+    parent_ids = []
+    
     removed_people = RemovedPeople.find_users_removed_people_ids(current_user.id)
     plist.each do |p|
       unless current_user.id == p || alist.include?(p) || ulist.include?(p) || dlist.include?(p) || removed_people.include?(p)
-        @parents << Parent.find(p) if @parents.length < 5
+        parent_ids << Parent.find(p) if parent_ids.length < 5
       end
     end
+  
+    @parents = Parent.find(:all, :include => [:photo], :conditions => ["users.id in (?) ", parent_ids])
   
     @confirmed_friends = []
 #    current_user.accepted_friendships.each do |f|
