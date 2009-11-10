@@ -58,50 +58,45 @@
 			<!-- Column 1 end -->
 		</div>
 		<div class="col2">
-
-			<span style="font-size: .9em; font-weight: bold;">Your Friends:</span>
-			<div style="width: 465px; margin-top: 4px; font-size: .8em">
-				<% unless @confirmed_friends.blank? %>
+		<span style="font-size: .9em; font-weight: bold;">Your Friends:</span>
+		<div style="width: 465px; margin-top: 4px; font-size: .8em">
+			<% unless @confirmed_friends.blank? %>
 				<% @confirmed_friends.each do |f| %>
-				<% unless f.friend.profile.nil? %>
-					<% if f.friend.is_a?Sitter %>
-					<div style="width: 98%; border: 1px solid #ADACAD; padding: 5px; margin-bottom: 5px; background-color: #FFFFFF">
-				<table>
-				<tr>
-				  <td>
-				  <%= link_to(image_tag(f.friend.avatar_photo_url, :class => "right", :border => 0),url_for(view_friend_profile_sitter_path(f.friend.id)))  %>
-				  </td>
+					<% unless f.profile.nil? %>
+							<div style="width: 98%; border: 1px solid #ADACAD; padding: 5px; margin-bottom: 5px; background-color: #FFFFFF">
+								<table>
+									<tr>
+				  						<td>
+				  							<%= link_to(image_tag(f.avatar_photo_url, :class => "right", :border => 0),url_for(view_friend_profile_sitter_path(f.id)))  %>
+				  						</td>
+						  			    <td style="padding: 5px;" valign="top">
+				   							<strong style="font-size: 1em;">
+												<%= link_to(f.profile.first_name + " " + f.profile.last_name, url_for(view_friend_profile_sitter_path(f.id))) %>
+											</strong><br/>
+				  							<%= f.profile.city %>, <%= f.profile.state.name %><br />
+											<strong>Tags: </strong><%= truncate(f.profile.tag_list.to_s, 38, "...") %>
+				 							<% if(f.profile.tag_list.to_s.size > 38) %>
+												<%= link_to "More", "#", :onmouseover =>"TagToTip('#{f.id}_tip', ABOVE, true, BALLOON, true)", :onmouseout => "UnTip()", :style => "color: #C21D7F;" %>
+												<div id="<%= f.id %>_tip" style="display: none;"><%= f.profile.tag_list.to_s %></div>
+											<% end %>
+											<div valign="top" style="font-size: .8em;  margin-top: 18px;">
+				    							<%= link_to "View Profile", url_for(view_friend_profile_sitter_path(f.id)) %> |
 
-				  <td style="padding: 5px;" valign="top">
-				   <strong style="font-size: 1em;"><%= link_to(f.friend.profile.first_name + " " + f.friend.profile.last_name, url_for(view_friend_profile_sitter_path(f.friend.id))) %></strong><br/>
-				  <%= f.friend.profile.city %>, <%= f.friend.profile.state.name %><br />
-				<strong>Tags: </strong><%= truncate(f.friend.profile.tag_list.to_s, 38, "...") %>
-				 <% if(f.friend.profile.tag_list.to_s.size > 38) %>
-				
-					<%= link_to "More", "#", :onmouseover =>"TagToTip('#{f.friend.id}_tip', ABOVE, true, BALLOON, true)", :onmouseout => "UnTip()", :style => "color: #C21D7F;" %>
-					<div id="<%= f.friend.id %>_tip" style="display: none;"><%= f.friend.profile.tag_list.to_s %></div>
-										<% end %>
+				    							<%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => f.id), :class => "lbOn-405-390" %> |
+	
+												<%= link_to "Send Message", compose_sitter_path(current_user, :to_id => f.id) %> |	
 
-
-
-				  <div valign="top" style="font-size: .8em;  margin-top: 18px;">
-				    <%= link_to "View Profile", url_for(view_friend_profile_sitter_path(f.friend.id)) %> |
-
-				    <%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => f.friend.id), :class => "lbOn-405-390" %> |
-
-					<%= link_to "Send Message", compose_sitter_path(current_user, :to_id => f.friend.id) %> |
-
-				    <%= link_to "Remove Friend", url_for(:controller => 'connections', :action => 'decline', :id => f.friend.id), :confirm => "Are you sure you want to remove this friend?" %>
-				  </div>
-				</tr>
-				</table>
-				</div>
-					<% end %>
-					<% end %>
+				    							<%= link_to "Remove Friend", url_for(:controller => 'connections', :action => 'decline', :id => f.id), :confirm => "Are you sure you want to remove this friend?" %>
+				  							</div>
+										</td>
+									</tr>
+								</table>
+							</div>
 				<% end %>
-				<% else %>
+			<% end %>
+		<% else %>
 				You currently have no friends.
-				<% end %>
+		<% end %>
 		</div>
 		<br />
 		<span style="font-size: .9em; font-weight: bold;">Awaiting Confirmation:</span>
@@ -133,7 +128,7 @@
 						</div>
 			<% end %>
 			<% else %>
-			You are not awaiting confirmation from any friends.
+				You are not awaiting confirmation from any friends.
 			<% end %>
 		</div>
 

@@ -62,49 +62,42 @@
 		</div>
 		<div class="col2">
 			<span style="font-size: .9em; font-weight: bold;">Your Families:</span>
-			<div style="width: 465px; font-size: .8em">
-				<% unless @confirmed_friends.blank? %>
-				<% @confirmed_friends.each do |f| %>
-
-					<% if f.friend.is_a?Parent %>
-					<div style="width: 98%; border: 1px solid #ADACAD; padding: 5px; margin-top: 4px; background-color: #FFFFFF">
-
-				<table>
-				<tr>
-				  <td>
-				  <%= link_to(image_tag(f.friend.avatar_photo_url, :class => "right", :border => 0),url_for(view_parent_profile_sitter_path(f.friend.id)))  %>
-				  </td>
-
-				  <td style="padding: 5px;" valign="top">
-				   <strong style=" font-size: 1em; ">
-				   <%= link_to(truncate(f.friend.profile.first_name + " " + f.friend.profile.last_name, 22), url_for(view_parent_profile_sitter_path(f.friend.id))) %></strong><br/>
-				  <%= f.friend.profile.city %>, <%= f.friend.profile.state.name %><br />
-				<strong>Tags: </strong><%= truncate(f.friend.profile.tag_list.to_s, 38, "...") %>
-				 <% if(f.friend.profile.tag_list.to_s.size > 38) %>
-					<%= link_to "More", "#", :onmouseover =>"TagToTip('#{f.friend.id}_tip', ABOVE, true, BALLOON, true)", :onmouseout => "UnTip()", :style => "color: #C21D7F;" %>
-					<div id="<%= f.friend.id %>_tip" style="display: none;"><%= f.friend.profile.tag_list.to_s %></div>
-					
-										<% end %>
-			
-					<div valign="top" style=" font-size: .8em;  margin-top: 18px;">
-				    <%= link_to "View Profile", url_for(view_parent_profile_sitter_path(f.friend.id)) %> |
-
-				    <%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => f.friend.id), :class => "lbOn-405-390" %> |
-
-					<%= link_to "Send Message", compose_sitter_path(current_user, :to_id => f.friend.id) %> |
-
-				    <%= link_to "Remove Family", url_for(:controller => 'connections', :action => 'decline', :id => f.friend.id), :confirm => "Are you sure you want to remove this friend?" %>
-				  </div>
-				</td>
-				</tr>
-					</table>
-					</div>
+				<div style="width: 465px; font-size: .8em">
+					<% unless @confirmed_friends.blank? %>
+						<% @confirmed_friends.each do |f| %>
+							<div style="width: 98%; border: 1px solid #ADACAD; padding: 5px; margin-top: 4px; background-color: #FFFFFF">
+								<table>
+									<tr>
+				  						<td>
+				  							<%= link_to(image_tag(f.avatar_photo_url, :class => "right", :border => 0),url_for(view_parent_profile_sitter_path(f.id)))  %>
+				  						</td>
+										<td style="padding: 5px;" valign="top">
+					   						<strong style=" font-size: 1em; ">
+					   						<%= link_to(truncate(f.profile.first_name + " " + f.profile.last_name, 22), url_for(view_parent_profile_sitter_path(f.id))) %></strong><br/>
+					  						<%= f.profile.city %>, <%= f.profile.state.name %><br />
+											<strong>Tags: </strong><%= truncate(f.profile.tag_list.to_s, 38, "...") %>
+					 						<% if(f.profile.tag_list.to_s.size > 38) %>
+												<%= link_to "More", "#", :onmouseover =>"TagToTip('#{f.id}_tip', ABOVE, true, BALLOON, true)", :onmouseout => "UnTip()", :style => "color: #C21D7F;" %>
+												<div id="<%= f.id %>_tip" style="display: none;"><%= f.profile.tag_list.to_s %></div>
+											<% end %>
+											<div valign="top" style=" font-size: .8em;  margin-top: 18px;">
+					    						<%= link_to "View Profile", url_for(view_parent_profile_sitter_path(f.id)) %> |
+	
+					    						<%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => f.id), :class => "lbOn-405-390" %> |
+	
+												<%= link_to "Send Message", compose_sitter_path(current_user, :to_id => f.id) %> |
+	
+					    						<%= link_to "Remove Family", url_for(:controller => 'connections', :action => 'decline', :id => f.id), :confirm => "Are you sure you want to remove this friend?" %>
+					  						</div>
+										</td>
+									</tr>
+								</table>
+							</div>
+						<% end %>
+					<% else %>
+						You currently have no families.
 					<% end %>
-				<% end %>
-				<% else %>
-				You currently have no families.
-				<% end %>
-		</div>
+			</div>
 		<br />
 		<span style="font-size: .9em; font-weight: bold;">Awaiting Confirmation:</span>
 		<div style="width: 465px; font-size: .8em;margin-bottom: 50px;">
