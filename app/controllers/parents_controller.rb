@@ -496,7 +496,7 @@ end
   end
 
   def your_friends
-   @friends = Profile.parents_you_may_know(current_user.profile)   
+   @friends = Profile.parents_you_may_know(current_user.profile,30)   
     render :layout => "no_search"
   end
 
@@ -588,8 +588,6 @@ end
           
       end
       
-      
-      
       respond_to do |format|
          format.html
          format.js do
@@ -641,7 +639,7 @@ end
     end
   end
   def your_sitters
-   @sitters = Profile.sitters_you_may_know(current_user.profile)   
+   @sitters = Profile.sitters_you_may_know(current_user.profile, 30)   
     render :layout => "no_search"
   end
   

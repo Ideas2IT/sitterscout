@@ -114,7 +114,7 @@ class Profile < ActiveRecord::Base
   end
   
   
-  def self.parents_you_may_know(uid)
+  def self.parents_you_may_know(uid,limit= -1)
     begin
       ret_array = []
       ret = find(:all, :conditions => ["not_searchable = ? AND parent_id <> ? AND parent_id IS NOT NULL", true, uid ],:origin => "#{uid.zipcode.to_s}", :within=>10, :order=>'distance asc')
@@ -128,14 +128,16 @@ class Profile < ActiveRecord::Base
         end
       end
       
-      puts my_ret_a.inspect
+      my_ret_a = my_ret_a.first(limit) unless limit == -1
       
-      my_ret_array = Parent.find(:all, :include => [:photo], :conditions => ["users.id in (?) ", my_ret_a.first(30)])
+      my_ret_array = Parent.find(:all, :include => [:photo], :conditions => ["users.id in (?) ", my_ret_a])
       
+      
+      puts my_ret_array.collect{|x| x.id }.uniq.sort.inspect
       
       my_ret_hash = my_ret_array.to_hash_values {|v| v.id}
       ordered_ret_array = Array.new
-      my_ret_a.first(30).each do |id|
+      my_ret_a.each do |id|
         ordered_ret_array << my_ret_hash[id] unless my_ret_hash[id].nil?
       end
       
@@ -152,7 +154,7 @@ class Profile < ActiveRecord::Base
     return ordered_ret_array
   end
   
-  def self.sitters_you_may_know(uid)
+  def self.sitters_you_may_know(uid, limit = -1)
     begin
       ret_array = []
       ret = find(:all, :conditions => ["not_searchable = ? AND sitter_id <> ? AND sitter_id IS NOT NULL", true, uid ],:origin => "#{uid.zipcode.to_s}", :within=>10, :order=>'distance asc')
@@ -166,10 +168,12 @@ class Profile < ActiveRecord::Base
         end
       end
       
-      my_ret_array = Sitter.find(:all, :include => [:photo], :conditions => ["users.id in (?) ", my_ret_a.first(30)])
+      my_ret_a = my_ret_a.first(limit) unless limit == -1
+      
+      my_ret_array = Sitter.find(:all, :include => [:photo], :conditions => ["users.id in (?) ", my_ret_a])
       my_ret_hash = my_ret_array.to_hash_values {|v| v.id}
       ordered_ret_array = Array.new
-      my_ret_a.first(30).each do |id|
+      my_ret_a.each do |id|
         ordered_ret_array << my_ret_hash[id] unless my_ret_hash[id].nil?
       end
       

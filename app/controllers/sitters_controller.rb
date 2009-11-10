@@ -378,13 +378,13 @@ class SittersController < ApplicationController
 
 
   def your_families
-    @families = Profile.parents_you_may_know(current_user.profile)
+    @families = Profile.parents_you_may_know(current_user.profile,30)
     render :layout => "no_search"
   end
   
   def your_friends
     
-    @friends = Profile.sitters_you_may_know(current_user.profile)
+    @friends = Profile.sitters_you_may_know(current_user.profile,30)
     render :layout=> "no_search"
     
 #    plist = Profile.sitters_you_may_know(current_user.profile).collect(&:id)
@@ -410,8 +410,6 @@ class SittersController < ApplicationController
       alist = current_user.accepted_friendships.collect(&:friend_id)
       ulist = current_user.pending_friendships.collect(&:friend_id)
       dlist = current_user.denied_friendships.collect(&:friend_id)
-      
-      puts "#{plist}++++++++++++++++++++++++++++++++++"
       
       @sitters = []
       
