@@ -1,12 +1,12 @@
 <div id='content' style="padding-top: 0px;">
-<% form_tag "/search", :name => 'search_form' do %>
+<% form_tag "/search", :name => 'search_form', :method=>'get' do %>
 	<table border="0" cellpadding="0" cellspacing="0" align="right" style='background: #F8F8F9; z-index: 900;' >
 		<tr>
 			<td  align='left' valign='bottom' style='font-size:0.8em;font-family:"Verdana",sans-serif' >I'm looking for a:</td>
 			<td  align='left' valign='bottom'>
 				<select id='searchoption' name='searchoption' style='font-size:0.8em; width:70px;height:21px'>
 					<option value="sitter">Sitter</option>
-					<option value="Family">Family</option>
+					<option value="parent">Family</option>
 				</select>
 			</td>
 			<td>&nbsp;</td>
