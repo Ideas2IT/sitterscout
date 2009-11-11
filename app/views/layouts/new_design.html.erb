@@ -79,14 +79,14 @@
 		</div>
 		<div id='navbar' <%= current_page?(:controller => "home", :action => "index") ? "class='home'" : nil %>>
 			<div id='searchbar' style="background: #F8F8F9;z-index: 900;">
-				<% form_tag "/search", :name => 'search_form' do %>
+				<% form_tag "/search", :name => 'search_form',:method=>'get' do %>
 				<table border="0" cellpadding="0" cellspacing="0" style="margin-top:10px">
 					<tr>
 						<td  align='left' valign='bottom' style='font-size:0.8em;font-family:"Verdana",sans-serif' >I'm looking for a:</td>
 						<td  align='left' valign='bottom'>
 							<select id='searchoption' name='searchoption' style='font-size:0.8em; width:70px;height:21px'>
 								<option value="sitter">Sitter</option>
-								<option value="Family">Family</option>
+								<option value="parent">Family</option>
 							</select>
 						</td>
 						<td>&nbsp;</td>
