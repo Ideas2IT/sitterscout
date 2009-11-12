@@ -16,7 +16,7 @@ ActionController::Routing::Routes.draw do |map|
   #   :view_profile => :get
   # }
 
-  map.resources :parents, :collection => {:search => :get }, :member => { 
+  map.resources :parents, :collection => {:search => :post }, :member => { 
     :invite => :get,
     :welcome => :get,
     :welcome_screen => :get,
@@ -72,7 +72,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resource :sessions
   
-  map.resources :sitters, :collection => {:search => :get }, :member => { 
+  map.resources :sitters, :collection => {:search => :post }, :member => { 
     :invite => :get,
     :welcome => :get,
     :your_friends => :get,
