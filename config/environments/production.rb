@@ -22,7 +22,7 @@ config.action_mailer.raise_delivery_errors = true
 APP_URL = "http://www.sitterscout.com" #(or whatever your URL will be for that particular environment)
 
 ##Exception Notificaiton settings
-ExceptionNotifier.exception_recipients = %w(heidi@sitterscout.com akvmurlai@gmail.com)
+ExceptionNotifier.exception_recipients = %w(ilangoinfotech@gmail.com akvmurlai@gmail.com bhavanikr@gmail.com ranjeetrajasekar@gmail.com)
 
 ExceptionNotifier.sender_address = %("Application Error" <app.error@sitterscout.com>)  
 ##Email settings
