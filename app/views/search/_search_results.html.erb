@@ -2,7 +2,12 @@
 	<% unless search.nil? %>
 		<div class="horiz_li" style="font-size: .8em;border: 1px #AFAFAF solid; background-color: #F7F7F7; padding: 5px; margin-bottom: 5px; height: 150px; width: <%= logged_in? ? "640px" : "605px" %>" >
 			<div style="float: left; padding: 5px;">
-				<%= image_tag(search.avatar_photo_url, :class => "right" ) %>			
+			 <%folder = search.avatar_photo_url.split('_')%>
+			<%if File.exist?("#{RAILS_ROOT}/public/#{folder[0]}_#{folder[1]}")%>
+			<%= image_tag(search.avatar_photo_url, :class => "right" ) %>
+			<%else%>
+			<img class="right" src="/images/DefaultPhoto_80x80.gif?1254807982" alt="Defaultphoto"/>
+			<%end%>
 			</div>
 			<div style="float:left;">
 				<table>
@@ -84,7 +89,7 @@
 						<% end %>
 					<% else%>
 						<% if search.profile.sitter %>
-						> <%= link_to "View Profile", url_for(:controller => 'parents' , :action => 'view_sitter_profile_search' , :id => search.id) %>  
+						> <%= link_to "View Profile", url_for(:controller => 'parents' , :action => 'view_sitter_profile_search' , :id => search.id)%>  
 						<br /> 
 	    				> <%= link_to "Add to Your Sitters", url_for(:controller => 'connections', :action => 'add_friend', :id => search.id),:class => "lbOn-300-260", :style => 'padding-right: 10px; margin-bottom: 5px; border-bottom: 1px #AFAFAF solid;' %>
 						<% else %>
