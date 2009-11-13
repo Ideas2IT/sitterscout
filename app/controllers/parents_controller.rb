@@ -738,10 +738,9 @@ end
     end
     
     def view_profile
-      
 #      @user = Parent.find_by_id(params[:id])
        @user = Parent.find(params[:id])
-      @profile = @user.profile
+       @profile = @user.profile
     end
     
     def view_sitter_profile
@@ -759,8 +758,8 @@ end
     
     def view_sitter_profile_search
 #      @user = Sitter.find_by_id(params[:id])
-      @user = Sitter.find(params[:id])
-      @profile = @user.profile
+       @user = Sitter.find(params[:id])
+       @profile = @user.profile
     end
     
     def view_profile_woc
