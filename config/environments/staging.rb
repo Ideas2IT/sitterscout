@@ -23,5 +23,4 @@ APP_URL = "http://sitterscout.falat.speedyrails.ca"
 ExceptionNotifier.exception_recipients = %w(akvmurlai@gmail.com ilangoinfotech@gmail.com ranjeetrajasekar@gmail.com)
 
 ExceptionNotifier.sender_address = %("Application Error" <app.error@sitterscout.com>)  
-##Email settings
-require 'smtp_tls'
+

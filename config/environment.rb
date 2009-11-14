@@ -61,8 +61,6 @@ Rails::Initializer.run do |config|
   # Make Active Record use UTC-base instead of local time
   # config.active_record.default_timezone = :utc
   
-  config.action_mailer.delivery_method = :sendmail
-  
 end
 
 Comatose.configure do |config|
@@ -92,10 +90,8 @@ end
 
 
 ##Email settings
-require 'smtp_tls'
 
-
-ActionMailer::Base.delivery_method = :sendmail
+ActionMailer::Base.delivery_method = :smtp
 
  ActionMailer::Base.smtp_settings = {
    :address => "smtp.sendgrid.net",
@@ -103,7 +99,7 @@ ActionMailer::Base.delivery_method = :sendmail
    :domain => "sitterscout.com",
    :authentication => :plain,
    :user_name => "notifications@sitterscout.com",
-   :password => "ChiefScout"
+   :password => "chiefscout"
  }
 
 
