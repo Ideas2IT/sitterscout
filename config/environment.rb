@@ -95,16 +95,16 @@ end
 require 'smtp_tls'
 
 
+ActionMailer::Base.delivery_method = :sendmail
 
-#ActionMailer::Base.delivery_method = :sendmail
-# ActionMailer::Base.smtp_settings = {
-#   :address => "smtp.gmail.com",
-#   :port => "587",
-#   :domain => "sitterscout.com",
-#   :authentication => :plain,
-#   :user_name => "notifications@sitterscout.com",
-#   :password => "ChiefScout"
-# }
+ ActionMailer::Base.smtp_settings = {
+   :address => "smtp.sendgrid.net",
+   :port => "25",
+   :domain => "sitterscout.com",
+   :authentication => :plain,
+   :user_name => "notifications@sitterscout.com",
+   :password => "ChiefScout"
+ }
 
 
 #require "#{RAILS_ROOT}/vendor/plugins/community_engine/engine_config/boot.rb"
@@ -172,6 +172,8 @@ module ApplicationConfiguration
 
   ::AppConfig = OpenStruct.new config_hash
 end
+
+
 
 
 ENV['INLINEDIR'] = File.join(RAILS_ROOT,'tmp','ruby_inline')
