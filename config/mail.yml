@@ -2,7 +2,7 @@ development:
   type: smtp
   server: 'smtp.sendgrid.net'
   username: 'notifications@sitterscout.com'
-  password: 'ChiefScout'
+  password: 'chiefscout'
   port: 25
   ssl: true
   
@@ -16,7 +16,7 @@ production:
     type: smtp
     server: 'smtp.sendgrid.net'
     username: 'notifications@sitterscout.com'
-    password: 'ChiefScout'
+    password: 'chiefscout'
     port: 25
     authentication: true
 
