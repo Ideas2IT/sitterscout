@@ -19,7 +19,7 @@
 					<table width="260px" style="border: 1px solid #ADACAD; margin-top: 4px; padding: 3px; background-color: #FFFFFF" id="person_<%=search.id %>_table" >
 						<tr>
 							<td colspan="2">
-							<strong style="font-size: .8em;"><%= truncate(search.profile.first_name + " " + search.profile.last_name, 22) %></strong>
+							<strong style="font-size: .8em;"><%= truncate(search.profile.first_name + " " + search.profile.last_name.to_s.first+".", 22) %></strong>
 							</td>
 						</tr>
 						<tr>

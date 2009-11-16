@@ -1,5 +1,4 @@
 
-
 <%= render :partial => 'nav_menu', :locals => {:selected => "friend"} %>
 <div id="sub_menu_gradient">
 	
@@ -15,12 +14,15 @@
 			<% for search in @parents do %>
 				<% unless search.nil? || search.profile.nil? %>
 				<div id="person_<%=search.id %>" >
-						<div style="position: absolute; left: 210px; margin-top: 10px"><%= link_to_remote(image_tag("default/qtip/close.gif", :border => 0), :url => remove_person_parent_path(search.id))  %></div>
+						<div style="position: absolute; left: 210px; margin-top: 10px">
+							<%= link_to_remote(image_tag("default/qtip/close.gif", :border => 0), :url => remove_person_parent_path(search.id))  %>
+						</div>
 			<table style="border:1px solid #ADACAD; margin-top: 5px; padding: 3px; background-color: #FFFFFF" id="person_<%=search.id %>_table" >
 			<tr>
 				<td colspan="2">
 					<strong style=" font-size: .8em;">
-					<%= search.profile.first_name %>&nbsp;<%= search.profile.last_name %></strong>
+						<%= search.profile.first_name %>&nbsp;<%= search.profile.last_name.to_s.first+"." %>
+					</strong>
 				</td>
 			</tr>
 			<tr>
@@ -45,7 +47,9 @@
 				</td>
 			<tr>
 				<td colspan="2" style=" font-size: .6em; padding-left: 5px " >
-				<%= link_to "View Profile", url_for(view_profile_woc_parent_path(search.id)) %> | <%= link_to "Add to Your Friends", url_for(:controller => 'connections', :action => 'add_friend', :id => search.id), :class => 'lbOn-300-270' %>
+				<%= link_to "View Profile", url_for(view_profile_woc_parent_path(search.id)) %>
+				 
+				| <%= link_to "Add to Your Friends", url_for(:controller => 'connections', :action => 'add_friend', :id => search.id), :class => 'lbOn-300-270' %>
 					<% if current_user.connected?(search) %> 
 						|<br/> <%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => search.id), :class => "lbOn-405-390" %>
 					<% end %>
