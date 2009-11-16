@@ -23,7 +23,7 @@
 							<strong>
 								<font class="username_heading">
 								<%unless @profile.first_name.nil? and @profile.last_name.nil?%>
-									<%= @profile.first_name + " " + @profile.last_name %>
+									<%= @profile.first_name + " " + @profile.last_name.to_s.first+"." %>
 								<%end%>
 								</font>
 							</strong>
