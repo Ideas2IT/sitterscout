@@ -83,51 +83,49 @@
 	    <p>Using an iPhone? <a href="http://iphone.localhost.com:3000/">Use the optimized version</a>.</p>
 	</div>
 	<% end -%> -->
-	
-		<div id='headerwrapper'>
-			<div id='mainlogo' onclick='location.href="<%= current_path %>"'></div>
-			<div id='logorsign'>
-				<div class='loginsignup <%= logged_in? ? 'out' : 'carbon' %>' <%= logged_in? ? nil : "onmouseover='document.getElementById(\"loginmenu\").style.display=\"block\";'" %> ></div><div class='loginsignup magenta' onclick='location.href="/sitters/new"'></div>OR</div>
-
-			<div id='navbar' <%= current_page?(:controller => "home", :action => "index") ? "class='home'" : nil %>
-				<%= current_page?(:controller => 'home', :action => "how_it_works") ? "class='works'" : nil %>
-				<%= current_page?(:controller => "home", :action => "about_us") ? "class='about'" : nil %>
-				<%= current_page?(:controller => "home", :action => "faq") ? "class='faq'" : nil %>>
-				<ul id='globalnav'>
-					<li id="home" <%= current_page?(:controller => "parents", :action => "index") ? "class='selected'" : nil %>><%= link_to("home", home_page_path) %></li>
-					<li id="works"><%= link_to("works", how_it_works_path) %></li>
-					<li id="about"><%= link_to("about", about_us_path) %></li>
-					<li id="faq"><%= link_to("faq", :controller => 'home', :action => 'faq') %></li>
-				</ul>	
+	<div id='headerwrapper'>
+		<div id='mainlogo' onclick='location.href="<%= current_path %>"'></div>
+		<div id='logorsign'>
+			<div class='loginsignup <%= logged_in? ? 'out' : 'carbon' %>' <%= logged_in? ? nil : "onmouseover='document.getElementById(\"loginmenu\").style.display=\"block\";'" %>> 
 			</div>
+			<div class='loginsignup magenta' onclick='location.href="/sitters/new"'></div>
+			OR
+		</div>
+		<div id='navbar' <%= current_page?(:controller => "home", :action => "index") ? "class='home'" : nil %>
+			<%= current_page?(:controller => 'home', :action => "how_it_works") ? "class='works'" : nil %>
+			<%= current_page?(:controller => "home", :action => "about_us") ? "class='about'" : nil %>
+			<%= current_page?(:controller => "home", :action => "faq") ? "class='faq'" : nil %>>
+			<ul id='globalnav'>
+				<li id="home" <%= current_page?(:controller => "parents", :action => "index") ? "class='selected'" : nil %>><%= link_to("home", home_page_path) %></li>
+				<li id="works"><%= link_to("works", how_it_works_path) %></li>
+				<li id="about"><%= link_to("about", about_us_path) %></li>
+				<li id="faq"><%= link_to("faq", :controller => 'home', :action => 'faq') %></li>
+			</ul>	
+		</div>
 		<div id='loginmenu'>
 			<div style='top: 40px; position: absolute;'>
 				<% form_tag sessions_path, :id=>"login_form" do -%>
 					<%= text_field_tag 'login','email address',:class=>'loginmenuinput', :onfocus=>"if(this.value=='email address'){this.value=''; this.style.color='#000';};", :onblur=>"if(this.value==''){this.value='email address'; this.style.color='#999'; }" %>
 					<%= password_field_tag 'password', 'password', :class=>'loginmenuinput',  :onfocus=>"if(this.value=='password'){this.value=''; this.style.color='#000';};", :onblur=>"if(this.value==''){this.value='password'; this.style.color='#999'; }"%>
-							<br /><%= check_box_tag 'remember_me', :style=>'margin-left: 0;' %><label for="remember" style='font-size: 11px; color: #fff;'>Remember Me</label>
-							
-				<div class="logmenubutton in" onclick="$('login_form').submit();"></div>
-							<a href='<%= url_for(:controller => "sessions", :action => "forgot_password") %>' style='font-size: 11px; c/olor:#fff; border-bott/om: 1px dotted #fff; padding-left: 1px;'>forgot password?</a>
+					<br /><%= check_box_tag 'remember_me', :style=>'margin-left: 0;' %><label for="remember" style='font-size: 11px; color: #fff;'>Remember Me</label>
+					<div class="logmenubutton in" onclick="$('login_form').submit();"></div>
+					<a href='<%= url_for(:controller => "sessions", :action => "forgot_password") %>' style='font-size: 11px; c/olor:#fff; border-bott/om: 1px dotted #fff; padding-left: 1px;'>forgot password?</a>
 				<% end %>
 			</div>
 			<div class='logmenubutton signup' onclick='location.href="<%= new_sitter_path %>"'></div>	
 		</div>
 		<div id="flash_notice">
-			
-		<% flash.each do |key, msg| %>
-			<%= content_tag('div', flash[:error], :onload => 'gberror();', :id => "notice_#{key}", :style => "padding: 5px;") if flash[:error] %>
-			<%= content_tag('div', flash[:notice], :onload => 'gberror();',:id => "notice_#{key}", :style => "padding: 5px;") if flash[:notice] %>	
-		<% end %>
-	</div>
-
+			<% flash.each do |key, msg| %>
+				<%= content_tag('div', flash[:error], :onload => 'gberror();', :id => "notice_#{key}", :style => "padding: 5px;") if flash[:error] %>
+				<%= content_tag('div', flash[:notice], :onload => 'gberror();',:id => "notice_#{key}", :style => "padding: 5px;") if flash[:notice] %>	
+			<% end %>
 		</div>
-
 	</div>
+</div>
 		<%= yield %>
 		
 <div id='footer'>
-	<p>&copy; 2008 Sitterscout, Inc.&nbsp;&nbsp;All Rights Reserved.&nbsp;&nbsp;|&nbsp;&nbsp;Email: info@sitterscout.com&nbsp;&nbsp;|&nbsp;&nbsp;<a href='/privacy'>Your Privacy<a/>&nbsp;&nbsp;|&nbsp;&nbsp;<a href='/tou'>Terms of Use</a>&nbsp;&nbsp;<a>|</a>&nbsp;&nbsp;<a href='/faq'>FAQ</a>&nbsp;&nbsp;<a>|</a>&nbsp;&nbsp;<a href='/how_it_works'>How it Works</a>
+	<p>&copy; 2008 Sitterscout, Inc.&nbsp;&nbsp;All Rights Reserved.&nbsp;&nbsp;|&nbsp;&nbsp;Email: info@sitterscout.com&nbsp;&nbsp;|&nbsp;&nbsp;<a href='/privacy'>Your Privacy</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href='/tou'>Terms of Use</a>&nbsp;&nbsp;<a>|</a>&nbsp;&nbsp;<a href='/faq'>FAQ</a>&nbsp;&nbsp;<a>|</a>&nbsp;&nbsp;<a href='/how_it_works'>How it Works</a>
 		</p>
 </div>
 
@@ -140,6 +138,6 @@ try {
 var pageTracker = _gat._getTracker("UA-6137367-1");
 pageTracker._trackPageview();
 } catch(err) {}</script>
-
+</body>
 </body>
 </html>
