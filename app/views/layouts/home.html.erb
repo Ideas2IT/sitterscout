@@ -83,13 +83,16 @@
 	    <p>Using an iPhone? <a href="http://iphone.localhost.com:3000/">Use the optimized version</a>.</p>
 	</div>
 	<% end -%> -->
-	<div id='headerwrapper'>
-		<div id='mainlogo' onclick='location.href="<%= current_path %>"'></div>
+	
+		<div id='headerwrapper'>
+			<div style="height:130px;">
+		<div id='mainlogo' onclick="location.href='<%= current_path %>'"></div>
 		<div id='logorsign'>
 			<div class='loginsignup <%= logged_in? ? 'out' : 'carbon' %>' <%= logged_in? ? nil : "onmouseover='document.getElementById(\"loginmenu\").style.display=\"block\";'" %>> 
 			</div>
 			<div class='loginsignup magenta' onclick='location.href="/sitters/new"'></div>
 			OR
+		</div>
 		</div>
 		<div id='navbar' <%= current_page?(:controller => "home", :action => "index") ? "class='home'" : nil %>
 			<%= current_page?(:controller => 'home', :action => "how_it_works") ? "class='works'" : nil %>
@@ -121,6 +124,7 @@
 			<% end %>
 		</div>
 	</div>
+
 </div>
 		<%= yield %>
 		

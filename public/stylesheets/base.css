@@ -3,10 +3,10 @@ body { background: #f8f8f9; margin: 0; padding: 0; height: 100%; font-family: "V
 a, a.tooltip:visited, a:active { color: #C31880; text-decoration: none; }
 a:hover { border-bottom: none; }
 
-#header { height: 190px; width: 100%; background: url(http://www.sitterscout.com/images/header-gradient.jpg) repeat-x; position: static; }
+#header { height: 190px; width: 100%; background: url(../images/header-gradient.jpg) repeat-x;  }
 #headerwrapper { height: 190px; width: 800px; margin: 0 auto; }
 
-#mainlogo { height: 80px; width: 220px; margin: 35px 0 15px 0; background: url(../images/sitterscout-logo.jpg) no-repeat; position: static; float: left; cursor: pointer; }
+#mainlogo { height: 80px; width: 220px; margin: 35px 0 15px 0; background: url(../images/sitterscout-logo.jpg) no-repeat;  float: left; cursor: pointer; }
 #logorsign { height: 40px; width: 180px; background: none; color: #000; opacity: 1.5; margin: 45px 0 25px 0; float: right; text-align: center; line-height: 40px; font-size: 9px; }
 
 #footer { height: 28px; width: 100%; background: url(../images/footer-gradient.jpg) repeat-x; position: fixed; bottom: 0; right: 0; overflow: hidden; }
@@ -14,7 +14,7 @@ a:hover { border-bottom: none; }
 #footer a { color: #fff; }
 #footer a:hover { text-decoration: none; }
 
-#content { width: 850px; height: auto; margin: 5px auto 0 auto; background-color:#F8F8F9 }
+#content { width: 800px; height: auto; margin: 5px auto 0 auto; background-color:#F8F8F9 }
 
 /*#content {
 	background-color: #F7F7F7;
@@ -75,7 +75,7 @@ a:hover { border-bottom: none; }
 
 
 /* navbar */
-#navbar { width: 720px; height: 60px; margin: 0 auto 0 auto; position: relative; top: 130px;}
+#navbar { width: 720px; height: 60px; margin: 0 auto 0 auto; }
 
 #globalnav { margin: 0; padding: 0; position: absolute; }
 #globalnav li { display: inline; }
@@ -162,7 +162,7 @@ ul.howlistb { margin: 0; padding: 0; list-style: square; color: #222; }
 ul.howlistb li { padding-bottom: 8px; font-size: 14px; line-height: 20px;  }
 
 
-#loginmenu { width: 150px; height: 213px; background: url(../images/loginmenu-bg.png); position: relative; z-index: 9999; left: 619px; top: -6px; display: none; padding: 14px 16px; }
+#loginmenu { width: 150px; height: 213px; background: url(../images/loginmenu-bg.png); position: absolute; z-index: 9999; left: 1010px; top: 50px; display: none; padding: 14px 16px; }
 
 
 
