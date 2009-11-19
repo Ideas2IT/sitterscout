@@ -75,7 +75,8 @@ a:hover { border-bottom: none; }
 
 
 /* navbar */
-#navbar { width: 720px; height: 60px; margin: 0 auto 0 auto; }
+#navbars { width: 720px; height: 60px; margin: 0 auto 0 auto; }
+#navbar { width: 720px; height: 60px; margin: 0 auto 0 auto; position: relative; top: 131px;}
 
 #globalnav { margin: 0; padding: 0; position: absolute; }
 #globalnav li { display: inline; }
@@ -95,10 +96,10 @@ a:hover { border-bottom: none; }
 #globalnav li#faq a:hover { background-position: -276px -60px; width: 60px; }
 
 /* buttons selected */
-#navbar.home #globalnav li#home a { background-position: 0 0; width: 64px; }
-#navbar.works #globalnav li#works a { background-position: -64px 0; width: 118px; }
-#navbar.about #globalnav li#about a { background-position: -182px 0; width: 94px; }
-#navbar.faq #globalnav li#faq a { background-position: -276px 0; width: 60px; }
+#navbars.home #globalnav li#home a { background-position: 0 0; width: 64px; }
+#navbars.works #globalnav li#works a { background-position: -64px 0; width: 118px; }
+#navbars.about #globalnav li#about a { background-position: -182px 0; width: 94px; }
+#navbars.faq #globalnav li#faq a { background-position: -276px 0; width: 60px; }
 
 
 #nav_header { width: 640px; height: 29px; position: relative: top: 180px; margin: 0 auto; margin-left: 0;}
