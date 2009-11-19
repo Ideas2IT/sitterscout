@@ -72,9 +72,11 @@
 
 <div id='header'>
 	<div id='headerwrapper'>
-		<div id='mainlogo' onclick='location.href="<%= current_path %>"'></div>
-		<div id='logorsign'>
-			<div class='loginsignup <%= logged_in? ? 'out' : 'carbon' %>' <%= logged_in? ? nil : "onmouseover='document.getElementById(\"loginmenu\").style.display=\"block\";'" %> onclick='<%= logged_in? ? "location.href=\"/logout\";" : nil %>'>
+		<div style="height:135px;">
+			<div id='mainlogo' onclick='location.href="<%= current_path %>"'></div>
+			<div id='logorsign'>
+				<div class='loginsignup <%= logged_in? ? 'out' : 'carbon' %>' <%= logged_in? ? nil : "onmouseover='document.getElementById(\"loginmenu\").style.display=\"block\";'" %> onclick='<%= logged_in? ? "location.href=\"/logout\";" : nil %>'>
+				</div>
 			</div>
 		</div>
 		<div id='navbar' <%= current_page?(:controller => "home", :action => "index") ? "class='home'" : nil %>>
