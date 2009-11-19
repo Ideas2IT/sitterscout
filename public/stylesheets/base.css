@@ -76,7 +76,7 @@ a:hover { border-bottom: none; }
 
 /* navbar */
 #navbars { width: 720px; height: 60px; margin: 0 auto 0 auto; }
-#navbar { width: 720px; height: 60px; margin: 0 auto 0 auto; position: relative; top: 131px;}
+#navbar { width: 720px; height: 50px; margin: 0 auto 0 auto; position: absolute; top: 131px;}
 
 #globalnav { margin: 0; padding: 0; position: absolute; }
 #globalnav li { display: inline; }
