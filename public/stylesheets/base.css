@@ -1,20 +1,20 @@
-body { background: #f8f8f9; margin: 0; padding: 0; height: 100%; fo/nt-family: "Verdana"; fo/nt-size: 15px; color: #6d6e71; font: 100%/1.25 "Verdana",sans-serif; }
+body { background: #f8f8f9; margin: 0; padding: 0; height: 100%; font-family: "Verdana"; font-size: 15px; color: #6d6e71; font: 100%/1.25 "Verdana",sans-serif; }
 
 a, a.tooltip:visited, a:active { color: #C31880; text-decoration: none; }
 a:hover { border-bottom: none; }
 
-#header { height: 190px; width: 100%; background: url(../images/header-gradient.jpg) repeat-x; po/sition: fixed; }
+#header { height: 190px; width: 100%; background: url(../images/header-gradient.jpg) repeat-x; position: fixed; }
 #headerwrapper { height: 190px; width: 800px; margin: 0 auto; }
 
-#mainlogo { height: 80px; width: 220px; margin: 35px 0 15px 0; background: url(../images/sitterscout-logo.png) no-repeat; positi/on: absolute; float: left; cursor: pointer; }
-#logorsign { height: 40px; width: 180px; backgr/ound: #999; color: #000; opac/ity: 0.5; margin: 45px 0 25px 0; float: right; text-align: center; line-height: 40px; font-size: 9px; }
+#mainlogo { height: 80px; width: 220px; margin: 35px 0 15px 0; background: url(../images/sitterscout-logo.png) no-repeat; position: absolute; float: left; cursor: pointer; }
+#logorsign { height: 40px; width: 180px; background: #999; color: #000; opacity: 0.5; margin: 45px 0 25px 0; float: right; text-align: center; line-height: 40px; font-size: 9px; }
 
 #footer { height: 28px; width: 100%; background: url(../images/footer-gradient.jpg) repeat-x; position: fixed; bottom: 0; right: 0; overflow: hidden; }
 #footer p { width: 800px; padding:0; margin: 0 auto; line-height: 28px; font-size: 11px; color: #111; }
 #footer a { color: #fff; }
 #footer a:hover { text-decoration: none; }
 
-#content { width: 800px; height: auto; margin: 5px auto 0 auto; background-color:#F8F8F9 }
+#content { width: 850px; height: auto; margin: 5px auto 0 auto; background-color:#F8F8F9 }
 
 /*#content {
 	background-color: #F7F7F7;
