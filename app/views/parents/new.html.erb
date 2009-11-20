@@ -121,7 +121,7 @@
 					<br />
 					<p style="margin-bottom: 5px;"><%= f.label "birthdate",  "Birthday: (You must be at least 13 years old to sign up.)" %><br/>
 					<p><%= f.date_select :birthday, :start_year => 75.years.ago.year, :end_year => Time.now.year-13, :default => {:year => "1990", :day => "1", :month => "1"}, :order => [:month, :day, :year] %></p>
-					<br />
+					<br />--------parent
 						<div><%= show_simple_captcha %></div>
 							<input type="submit" id="hidden_submit" style="display: none;">						
 								<% end -%>

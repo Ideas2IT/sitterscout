@@ -122,7 +122,7 @@
 					<br />
 					<p style="margin-bottom: 5px;"><%= f.label "birthdate",  "Birthday: (You must be at least 13 years old to sign up.)" %><br/>
 					<p><%= f.date_select :birthday, :start_year => 75.years.ago.year, :end_year => Time.now.year-13, :default => {:year => "1990", :day => "1", :month => "1"}, :order => [:month, :day, :year] %></p>
-					<br />
+					<br />sadfasdfasdf
 						<div><%= show_simple_captcha %></div>
 						<br />	
 						<input type="submit" id="hidden_submit" style="display: none;">						
@@ -142,10 +142,9 @@
 	
 		function check_parent()
 		{
-			
-			$('parent_email_label').style.color = "#000000;";
-			$('parent_password_label').style.color = "#000000;";
-			$('parent_password_confirmation_label').style.color = "#000000;";
+			$('parent_email_label').style.color = "#000000";
+			$('parent_password_label').style.color = "#000000";
+			$('parent_password_confirmation_label').style.color = "#000000";
 			$('flash_notice').innerHTML = '';
 			
 			var fail;
