@@ -7,12 +7,13 @@
 	<strong style=' font-size: 1.1em; font-weight: bold'>Sitters You May Know:</strong>
 <div style="margin: 10px;">
 	
-	<div style="border: 1px #AFAFAF solid; background-color: #E2EED3; stroke: #AFAFAF; padding: 5px; width: 420px; height: 285px; float: left; margin-right:20px;	 overflow-y: auto;">
+	<div style="border: 1px #AFAFAF solid; background-color: #E2EED3;  padding: 5px; width: 420px; height: 285px; float: left; margin-right:20px;overflow-y: auto;">
+	
 			<div style='font-size: .9em; margin-bottom: 4px;'>SitterScout has identified the following sitter(s) based on your ZIP code and profile tags.</div>
 		<% if !(@sitters.size == 1 && @sitters[0].nil?) %>	
 			<% @sitters.each do |friend| %>
 				<% unless friend.profile.nil? %>
-				<div style="width: 99%; height: 125px; float: left; border: 1px #AFAFAF solid; background-color: #FFF; margin-top: 4px;">
+				<div style="width: 98%; height: 120px; float: left; border: 1px #AFAFAF solid; background-color: #FFF; margin-top: 4px; margin-left:0px;margin-right:0px">
 
 						<div style="width: 55px; float: left; padding: 5px; ">
 							<%= image_tag(friend.avatar_photo_url(:thumb), :class => "right" ) %>
@@ -24,16 +25,8 @@
 								<div style=' font-size: .7em;'><%= friend.profile.city %>, <%= friend.profile.state.name %></div>
 		
 							<font style=' font-size: .7em;'>Profile Tags:
-							<%= truncate(friend.profile.tag_list.to_s, 25, "...") %>
-							<% begin %>
-							<% if(friend.profile.tag_list.to_s.size > 25) && (!friend.profile.tag_list.to_s.size < 1) %>
-							<%= link_to "More", "#", :title => friend.profile.tag_list.to_s  %>
-							<% end %>
-							<% rescue %>
-							<% end %>
 							<br />
-										
-								<p style=' font-size: .9em; width: 300px;'>
+								<div style=' font-size: .9em; width: 300px;'>
 									<% unless friend.description.nil? %>	
 										<% if friend.description.to_s.size < 25 && (!friend.description.to_s.size == 0)  && !friend.description.to_s.size.nil? && !friend.description.to_s.size.blank? %>
 										<%= friend.description + " " + link_to("more...", "#", :title => friend.description) %>
@@ -43,7 +36,7 @@
 
 										<% end %>
 								<% end %>
-								</p><br />
+								</div><br />
 							> <%= link_to "Add to Your Sitters", url_for(:controller => 'connections', :action => 'add_sitter', :id => friend.id), :class => "lbOn-300-270" %> 
 								<% if current_user.connected?(friend) %>
 							 
