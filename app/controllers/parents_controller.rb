@@ -654,7 +654,7 @@ end
     @metro_areas, @states = setup_locations_for(@parent)
   end
   
-    def create_friendship_with_inviter(user, options = {})
+   def create_friendship_with_inviter(user, options = {})
       unless options[:inviter_code].blank? or options[:inviter_id].blank?
         friend = Parent.find(options[:inviter_id])
         if friend && friend.valid_invite_code?(options[:inviter_code])

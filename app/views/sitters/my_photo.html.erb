@@ -14,19 +14,13 @@
 			<%= image_tag '/images/parent_home/SaveChanges_bttn.gif', :style=> "margin: 10px 0 0 275px;" %>
 		</div>
 	</div>
-</div>		
-
-<%#= render :partial => 'shared/profile_percentage' %>	
-
+</div>	
 <script type="text/javascript">
-
 
 function validate()
 {
-	
 		$('flash_notice').innerHTML = '';
 		
-	
 		if($('avatar_uploaded_data').value != '' && !$('photo_permission').checked)
 		{
 			$('flash_notice').innerHTML = '<div id="notice_error">Please certify that you have the right to distribute this picture and that it does not violate the Terms of Use.</div>';
@@ -44,5 +38,7 @@ function validate()
 		$('profile_submit').click();
 	
 }
+</script>	
 
-</script>
+<% #= render :partial => 'shared/profile_percentage' %>	
+

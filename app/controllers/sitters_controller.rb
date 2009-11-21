@@ -105,14 +105,13 @@ class SittersController < ApplicationController
   end
 
   def view_parent_profile 
-#    @user = Parent.find_by_id(params[:id])
+#   @user = Parent.find_by_id(params[:id])
     @user = Parent.find(params[:id])
     @profile = @user.profile
   end
 
     
   def view_friend_profile
-    
 #    @user = Sitter.find_by_id(params[:id])
      @user = Sitter.find(params[:id])
      @profile = @user.profile
@@ -121,13 +120,13 @@ class SittersController < ApplicationController
   def view_parent_profile_search
 #    @user = Parent.find_by_id(params[:id])
      @user = Parent.find(params[:id])
-    @profile = @user.profile
+     @profile = @user.profile
   end
   
   def view_friend_profile_search
-#     @user = Sitter.find_by_id(params[:id])
+#    @user = Sitter.find_by_id(params[:id])
      @user = Sitter.find(params[:id])
-    @profile = @user.profile
+     @profile = @user.profile
   end
   def view_friend_profile_woc
     @awaitingconf=params[:from]
@@ -649,7 +648,6 @@ class SittersController < ApplicationController
       					}}
       				end
 
-
     				return_data[:total] = messages.size
     				return_data[:unreadTotal] = current_user.unread_received_messages.size
     				render :json => return_data.to_json
@@ -680,6 +678,47 @@ class SittersController < ApplicationController
           reverse_friendship.save
         end
       end
+    end
+    
+    def my_profile_delete
+      
+    end
+    
+    def delete_profile
+    
+      puts "#{params[:profdel][:manage]}------------------------"
+      
+      
+      if params[:profdel][:manage] == "inactive"
+          @user = User.find(params[:id])
+          @user.active = true
+          if @user.save 
+            flash[:notice] = 'Profile updated successfully.'
+            redirect_to :back
+          else
+            flash[:error] = "There was a problem saving your changes."
+            redirect_to :back
+          end
+      elsif params[:profdel][:manage] == "cancel"
+          user = User.find(current_user)
+          if user.destroy
+            respond_to do |format|
+              format.html { redirect_to("/") }
+              format.xml  { head :ok }
+            end
+        end
+      elsif params[:profdel][:manage] == "active"
+        @user = User.find(params[:id])
+        @user.active= false
+        if @user.save 
+          flash[:notice] = 'Profile updated successfully.'
+          redirect_to :back
+          else
+            flash[:error] = "There was a problem saving your changes."
+            redirect_to :back
+         end
+      end     
+      
     end
     
   def activate
