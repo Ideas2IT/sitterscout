@@ -680,16 +680,13 @@ class SittersController < ApplicationController
       end
     end
     
-    def my_profile_delete
+    def my_profile_manage
       
     end
     
     def delete_profile
     
-      puts "#{params[:profdel][:manage]}------------------------"
-      
-      
-      if params[:profdel][:manage] == "inactive"
+      if params[:profdel][:manage] == "deactive"
           @user = User.find(params[:id])
           @user.active = true
           if @user.save 
@@ -707,7 +704,7 @@ class SittersController < ApplicationController
               format.xml  { head :ok }
             end
         end
-      elsif params[:profdel][:manage] == "active"
+      elsif params[:profdel][:manage] == "reactive"
         @user = User.find(params[:id])
         @user.active= false
         if @user.save 

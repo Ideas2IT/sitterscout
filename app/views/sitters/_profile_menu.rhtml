@@ -8,6 +8,6 @@
 	<td width="<%= ("skills" == @current_action) ? '95' : '80' %>"><%= ("skills" == @current_action) ? current_link : '' %><%= link_to "Your Skills", skills_sitter_path(current_user),:class => ("skills" == @current_action) ? "grey_link_selected" : "grey_link"	 %></td>
 	<td width="<%= ("availability" == @current_action) ? '130' : '130' %>"><%= ("availability" == @current_action) ? current_link : '' %><%= link_to "Your Availability",availability_sitter_path(current_user),:class => ("availability" == @current_action) ? "grey_link_selected" : "grey_link"	 %></td>
 	<td width="<%= ("my_photo" == @current_action) ? '95': '80' %>"><%= ("my_photo" == @current_action) ? current_link : '' %><%= link_to "Your Photo", my_photo_sitter_path(current_user),:class => ("my_photo" == @current_action) ? "grey_link_selected" : "grey_link" %></td>
-	<td width="<%= ("my_profile_delete" == @current_action) ? '145': '150' %>"><%= ("my_profile_delete" == @current_action) ? current_link : '' %><%= link_to "Manage Membership", my_profile_delete_sitter_path(current_user),:class => ("my_profile_delete" == @current_action) ? "grey_link_selected" : "grey_link" %></td>
+	<td width="<%= ("my_profile_manage" == @current_action) ? '145': '150' %>"><%= ("my_profile_manage" == @current_action) ? current_link : '' %><%= link_to "Manage Membership", my_profile_manage_sitter_path(current_user),:class => ("my_profile_manage" == @current_action) ? "grey_link_selected" : "grey_link" %></td>
 	</tr>
 </table>
