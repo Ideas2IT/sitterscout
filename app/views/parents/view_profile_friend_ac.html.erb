@@ -54,19 +54,11 @@
 									<%if @user.childs.size > 0%>
 									<tr>
 										<td>
-											<strong>Children:</strong>
-										</td>
-										<td>
 											<strong>Age:</strong>
 										</td>
 									</tr>
 									<%@user.childs.each do |child|%>
 										<tr>
-											<td>
-												<ul style="padding-left:12px;">
-													<li ><%=child.name%></li>
-												</ul>
-											</td>
 											<td>
 												<%=Date.today.year - child.age.year%>
 											</td>
