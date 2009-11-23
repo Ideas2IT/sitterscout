@@ -44,6 +44,10 @@
 						<td colspan="2">
 							<div class="profile_border1" style="width:600px;background-color: rgb(255, 255, 255);">
 								<table width="60%">
+									<tr>
+										<td><strong>Profile Tags:</strong></td>
+										<td><%= @profile.tag_list %></td>
+									</tr>
 								</table>
 							</div>
 							<div class="profile_border2" style="width:600px;background-color: rgb(255, 255, 255);">
@@ -63,11 +67,6 @@
 									</tr>
 									<%@user.childs.each do |child|%>
 										<tr>
-											<td>
-												<ul style="padding-left:12px;">
-													<li ><%=child.name%></li>
-												</ul>
-											</td>
 											<td>
 												<%=Date.today.year - child.age.year%>
 											</td>
