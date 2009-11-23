@@ -1,0 +1,80 @@
+<%= render :partial => 'nav_menu',  :locals => {:selected => "profile"} %>
+<div id="sub_menu_gradient">
+	<div class="sub_menu_gradient_center">
+		<%= render :partial => 'profile_menu' %>
+	</div>
+	
+<div>
+<div style="height:30px;"></div>	
+<div id="content" style="height: 300px;">	
+	<div class='box alt first_alt'>
+	 <%form_for :profdel, :url => {:controller => "sitters" , :action => "delete_profile" ,:id=> current_user.id} do |f|%>
+		<h4 style="font-size:0.9em">Manage your membership</h4>
+		<div style="margin-left:50px;margin-top:15px;font-size:0.8em;">
+			<table>
+				<% if current_user.active %>
+					<tr>
+						<td><%= f.radio_button:manage, "reactive" ,:checked=> true,:onclick=>'on_chk();',:id=>"r_actid" %></td>
+						<td id="fnt_active">&nbsp;&nbsp;Reactive my membership</td>
+					</tr>
+					<tr><td>&nbsp;</td></tr>
+					<tr>
+						<td>&nbsp;&nbsp;</td>
+						<td>Your profile will not be displayed in search results and you will able to receive babysitting requests.</td>
+					</tr>
+				<%else%>
+					<tr>
+						<td><%= f.radio_button :manage, "deactive" ,:checked=> true,:onclick=>'on_chk();', :id=> "r_actid" %></td>
+						<td id="fnt_active">&nbsp;&nbsp;Deactive my membership</td>
+					</tr>
+					<tr><td>&nbsp;</td></tr>
+					<tr>
+						<td>&nbsp;&nbsp;</td>
+						<td>Your profile will not be displayed in search results and you will not receive babysitting requests. You may reactiveate your membership at any time.</td>
+					</tr>
+				<%end%>
+				<tr><td>&nbsp;</td></tr>
+				<tr>
+					<td><%= f.radio_button :manage, "cancel",:onclick=>'on_chk();', :id=>"rdo_cnl" %></td>
+					<td id="fnt_cnl">&nbsp;&nbsp;Cancel my membership</td>
+				</tr>
+				<tr><td>&nbsp;</td></tr>
+				<tr>
+					<td>&nbsp;&nbsp;</td>
+					<td>Your information will be removed from our database.</td>
+				</tr>
+			</table>
+			
+		</div>
+		<div style="cursor: pointer;">
+			<%= image_submit_tag '/images/parent_home/SaveChanges_bttn.gif', :style=> "margin: 10px 0 0 275px;" %>
+		</div>
+		<% end %>
+		
+		
+	</div>
+</div>
+<script type="text/javascript">
+	
+	function on_chk(){
+		
+		if (document.getElementById("r_actid").checked) {
+			document.getElementById("fnt_active").style.fontWeight = "bold";
+			document.getElementById("fnt_cnl").style.fontWeight = "normal";
+			
+		}
+		if (document.getElementById("rdo_cnl").checked) {
+			document.getElementById("fnt_active").style.fontWeight = "normal";
+			document.getElementById("fnt_cnl").style.fontWeight = "bold";
+			
+		}
+	}
+	document.getElementById("fnt_active").style.fontWeight = "bold";
+	
+</script>
+
+	
+<% #= render :partial => 'shared/profile_percentage' %>	
+
+
+
