@@ -12,6 +12,7 @@
 				<span style='font-size: .9em; font-weight: bold'>Sitters You May Know:</span>
 				<% for search in @sitters do %>
 					<% unless search.nil? || search.profile.nil? %>
+					<%unless search.active %>
 					<div id="person_<%=search.id %>">
 							<div style="position: absolute; left: 210px; margin-top: 10px">
 								<%= link_to_remote(image_tag("default/qtip/close.gif", :border => 0), :url => remove_person_parent_path(search.id))  %>
@@ -54,6 +55,7 @@
 								</td>
 						</table>
 						</div>
+						<%end%>
 					<% end %>
 				<% end %>
 			<!-- Column 1 end -->
@@ -83,7 +85,11 @@
 					     					:frequency => 2,
 					     					:with => "'sitter_id=#{f.id}&hide_connection='+value"
 					    				%>
-		    							<strong style="font-size: 1em; "><%= link_to(f.profile.first_name + " " + f.profile.last_name, url_for(view_sitter_profile_parent_path(f.id))) %></strong>
+										<%if f.active %>
+										<strong style="font-size: 1em; "><%= link_to(f.profile.first_name + " " + f.profile.last_name, url_for(view_sitter_profile_parent_path(f.id))) %>&nbsp;- INACTIVE</strong>
+										<%else%>
+										<strong style="font-size: 1em; "><%= link_to(f.profile.first_name + " " + f.profile.last_name, url_for(view_sitter_profile_parent_path(f.id))) %></strong>
+										<%end%>
 										<br/>
 								        <%= f.profile.city %>, <%= f.profile.state.name %><br />
 		  								<strong>Tags: </strong><%= truncate(f.profile.tag_list.to_s, 38, "...") %>
