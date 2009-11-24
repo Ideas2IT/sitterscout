@@ -15,17 +15,17 @@
 				<% if current_user.active %>
 					<tr>
 						<td><%= f.radio_button:manage, "reactive" ,:checked=> true,:onclick=>'on_chk();',:id=>"r_actid" %></td>
-						<td id="fnt_active">&nbsp;&nbsp;Reactive my membership</td>
+						<td id="fnt_active">&nbsp;&nbsp;Reactivate my membership</td>
 					</tr>
 					<tr><td>&nbsp;</td></tr>
 					<tr>
 						<td>&nbsp;&nbsp;</td>
-						<td>Your profile will not be displayed in search results and you will able to receive babysitting requests.</td>
+						<td>Your profile will be displayed in search results (if selected) and you will once again be able to receive babysitting requests.</td>
 					</tr>
 				<%else%>
 					<tr>
 						<td><%= f.radio_button :manage, "deactive" ,:checked=> true,:onclick=>'on_chk();', :id=> "r_actid" %></td>
-						<td id="fnt_active">&nbsp;&nbsp;Deactive my membership</td>
+						<td id="fnt_active">&nbsp;&nbsp;Deactivate my membership</td>
 					</tr>
 					<tr><td>&nbsp;</td></tr>
 					<tr>
@@ -34,7 +34,7 @@
 					</tr>
 				<%end%>
 				<tr><td>&nbsp;</td></tr>
-				<tr>
+				<!--<tr>
 					<td><%= f.radio_button :manage, "cancel",:onclick=>'on_chk();', :id=>"rdo_cnl" %></td>
 					<td id="fnt_cnl">&nbsp;&nbsp;Cancel my membership</td>
 				</tr>
@@ -42,7 +42,7 @@
 				<tr>
 					<td>&nbsp;&nbsp;</td>
 					<td>Your information will be removed from our database.</td>
-				</tr>
+				</tr>-->
 			</table>
 			
 		</div>

@@ -696,14 +696,14 @@ class SittersController < ApplicationController
             flash[:error] = "There was a problem saving your changes."
             redirect_to :back
           end
-      elsif params[:profdel][:manage] == "cancel"
-          user = User.find(current_user)
-          if user.destroy
-            respond_to do |format|
-              format.html { redirect_to("/") }
-              format.xml  { head :ok }
-            end
-        end
+#      elsif params[:profdel][:manage] == "cancel"
+#          user = User.find(current_user)
+#          if user.destroy
+#            respond_to do |format|
+#              format.html { redirect_to("/") }
+#              format.xml  { head :ok }
+#            end
+#        end
       elsif params[:profdel][:manage] == "reactive"
         @user = User.find(params[:id])
         @user.active= false
