@@ -14,7 +14,7 @@
 			<table>
 				<% if current_user.active %>
 					<tr>
-						<td><%= f.radio_button:manage, "reactive" ,:checked=> true,:onclick=>'on_chk();',:id=>"r_actid" %></td>
+						<td><%= f.radio_button :manage, "reactive" ,:checked=> true,:onclick=>'on_chk();',:id=>"r_actid" %></td>
 						<td id="fnt_active">&nbsp;&nbsp;Reactivate my membership</td>
 					</tr>
 					<tr><td>&nbsp;</td></tr>
