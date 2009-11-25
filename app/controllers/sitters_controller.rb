@@ -685,8 +685,6 @@ class SittersController < ApplicationController
     end
     
     def delete_profile
-        puts "#{params[:profdel][:reactive]}-----------------------------"
-        puts "#{params[:profdel][:deactive]}-----------------------------"
        
       if params[:profdel][:deactive] 
         @user = User.find(params[:id])
