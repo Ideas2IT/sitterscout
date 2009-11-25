@@ -14,7 +14,8 @@
 			<table>
 				<% if current_user.active %>
 					<tr>
-						<td><%= f.radio_button :manage, "reactive" ,:checked=> true,:onclick=>'on_chk();',:id=>"r_actid" %></td>
+						<!--<td><%= f.radio_button :manage, "reactive" ,:checked=> true,:onclick=>'on_chk();',:id=>"r_actid" %></td>-->
+						<td><%= f.check_box :reactive,:id=>"r_actid" %></td>
 						<td id="fnt_active">&nbsp;&nbsp;Reactivate my membership</td>
 					</tr>
 					<tr><td>&nbsp;</td></tr>
@@ -24,13 +25,14 @@
 					</tr>
 				<%else%>
 					<tr>
-						<td><%= f.radio_button :manage, "deactive" ,:checked=> true,:onclick=>'on_chk();', :id=> "r_actid" %></td>
+						<!--<td><%= f.radio_button :manage, "deactive" ,:checked=> true,:onclick=>'on_chk();', :id=> "r_actid" %></td>-->
+						<td><%= f.check_box :deactive, :id=>"r_actid" %></td>
 						<td id="fnt_active">&nbsp;&nbsp;Deactivate my membership</td>
 					</tr>
 					<tr><td>&nbsp;</td></tr>
 					<tr>
 						<td>&nbsp;&nbsp;</td>
-						<td>Your profile will not be displayed in search results and you will not receive babysitting requests. You may reactiveate your membership at any time.</td>
+						<td>Your profile will not be displayed in search results and you will not receive babysitting requests. You may reactivate your membership at any time.</td>
 					</tr>
 				<%end%>
 				<tr><td>&nbsp;</td></tr>
@@ -47,7 +49,7 @@
 			
 		</div>
 		<div style="cursor: pointer;">
-			<%= image_submit_tag '/images/parent_home/SaveChanges_bttn.gif', :style=> "margin: 10px 0 0 275px;" %>
+			<%= image_submit_tag '/images/parent_home/SaveChanges_bttn.gif', :style=> "margin: 10px 0 0 275px;",:onclick=>"return on_chk();"  %>
 		</div>
 		<% end %>
 		
@@ -59,14 +61,18 @@
 	function on_chk(){
 		
 		if (document.getElementById("r_actid").checked) {
-			document.getElementById("fnt_active").style.fontWeight = "bold";
-			document.getElementById("fnt_cnl").style.fontWeight = "normal";
+				
+				return true;
 			
 		}
-		if (document.getElementById("rdo_cnl").checked) {
-			document.getElementById("fnt_active").style.fontWeight = "normal";
-			document.getElementById("fnt_cnl").style.fontWeight = "bold";
-			
+		else {
+				$('flash_notice').innerHTML = '<div id="notice_error">Please make sure that you click the check box</div>';
+				path_to_root_dir = "<%= APP_URL %>/";
+				var myBox = new GlassBox();
+				myBox.init( 'notice_error', '360px', '100px', 'hidden', 'facebookstyle', true, true );
+				myBox.lbo( false, 0.01 ); 
+				myBox.appear(5000);
+				return false;				
 		}
 	}
 	document.getElementById("fnt_active").style.fontWeight = "bold";

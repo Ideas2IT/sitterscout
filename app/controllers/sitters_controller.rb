@@ -685,17 +685,41 @@ class SittersController < ApplicationController
     end
     
     def delete_profile
-    
-      if params[:profdel][:manage] == "deactive"
+        puts "#{params[:profdel][:reactive]}-----------------------------"
+        puts "#{params[:profdel][:deactive]}-----------------------------"
+       
+      if params[:profdel][:deactive] 
+        @user = User.find(params[:id])
+        @user.active = true
+        if @user.save 
+          flash[:notice] = 'Profile updated successfully.'
+          redirect_to :back
+        else
+          flash[:error] = "There was a problem saving your changes."
+          redirect_to :back
+        end
+        
+      elsif params[:profdel][:reactive]
           @user = User.find(params[:id])
-          @user.active = true
-          if @user.save 
-            flash[:notice] = 'Profile updated successfully.'
-            redirect_to :back
-          else
-            flash[:error] = "There was a problem saving your changes."
-            redirect_to :back
+          @user.active= false
+           if @user.save 
+              flash[:notice] = 'Profile updated successfully.'
+              redirect_to :back
+           else
+             flash[:error] = "There was a problem saving your changes."
+             redirect_to :back
           end
+      end 
+#      if params[:profdel][:manage] == "deactive"
+#          @user = User.find(params[:id])
+#          @user.active = true
+#          if @user.save 
+#            flash[:notice] = 'Profile updated successfully.'
+#            redirect_to :back
+#          else
+#            flash[:error] = "There was a problem saving your changes."
+#            redirect_to :back
+#          end
 #      elsif params[:profdel][:manage] == "cancel"
 #          user = User.find(current_user)
 #          if user.destroy
@@ -704,17 +728,17 @@ class SittersController < ApplicationController
 #              format.xml  { head :ok }
 #            end
 #        end
-      elsif params[:profdel][:manage] == "reactive"
-        @user = User.find(params[:id])
-        @user.active= false
-        if @user.save 
-          flash[:notice] = 'Profile updated successfully.'
-          redirect_to :back
-          else
-            flash[:error] = "There was a problem saving your changes."
-            redirect_to :back
-         end
-      end     
+#      elsif params[:profdel][:manage] == "reactive"
+#        @user = User.find(params[:id])
+#        @user.active= false
+#        if @user.save 
+#          flash[:notice] = 'Profile updated successfully.'
+#          redirect_to :back
+#          else
+#            flash[:error] = "There was a problem saving your changes."
+#            redirect_to :back
+#         end
+#      end     
       
     end
     
