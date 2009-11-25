@@ -13,11 +13,10 @@
 			</div>	
 		</div>
 		<div id="signup" style="padding: 25px 45px;">
-		
 			<div id="grad">
-					<div id="parent" style="display: none; padding: 5px;">
-						<% form_for :parent, :url => parents_path do |f| -%>		
-							<table>
+				<div id="parent" style="display: none; padding: 5px;">
+					<% form_for :parent, :url => parents_path do |f| -%>		
+						<table>
 							<tr>
 								<td>
 									<label for="email"><span id="parent_email_label">Email Address:</span></label>
@@ -43,7 +42,7 @@
 									<td><label for="password_confirmation"><span id="parent_password_confirmation_label">Confirm password:</span></label></td>
 								  <td><%= f.password_field :password_confirmation %></td>
 							</tr>
-							</table>
+						</table>
 						<br />
 						<p style="margin-bottom: 5px;">
 							<%= f.check_box :terms_of_use %><label for="terms_of_use"> I have read and agree with the <strong><%= link_to "Terms of Use", "#{APP_URL}/tou", :target =>"_blank" %></strong> of this website.</label>
@@ -51,94 +50,111 @@
 						
 						<p style="margin-bottom: 5px;"><%= check_box_tag "profile[old_enough]" %> <%= f.label "birthdate",  "I verify that I am 13 years of age or older." %></p>
 						<br />
-							<div><%= show_simple_captcha %></div>
-							<br />							
+						<div><%= show_simple_captcha %></div>
+						<br />							
 						
-							<input type="submit" id="parent_hidden_submit" style="display: none;">						
-							
-
+						<input type="submit" id="parent_hidden_submit" style="display: none;">						
 					<% end -%>
+					
 					<div style="margin-left: 150px; width: 100px; cursor: pointer;" onclick="check_parent()"><%= image_tag "JoinNow_bttn.gif" %></div>
-							
-					</div>
-					
+				</div>
+			
 				<div id="sitter"  style="padding: 5px;">
-					
 					<% form_for :sitter, :url => sitters_path, :onsubmit => 'check_age();' do |f| -%>
-					<table>
-					<tr>
-						<td>
-							<label for="email"><span id="sitter_email_label">Email Address:</span></label>
-						</td>
-						<td>
-							<%= f.text_field :email %>
-						</td>
-					</tr>
-					<tr>
-						<td colspan="2"><span>This email address will be our primary way of contacting you.</span></td>
-					</tr>
-					<tr>
-						<td colspan="2">&nbsp;</td>
-					</tr>
-					<tr>
-						<td colspan="2"><span>Your password is case sensitive and must be at least 6 characters long.</span></td>
-					</tr>
-					<tr>
-						<td>
-							<label for="password"><span id="sitter_password_label">Create password:</span></label>
-						</td>
-						<td>
-							<%= f.password_field :password %>
-						</td>
-					</tr>
-
-						<tr><td><label for="password_confirmation"><span id="sitter_password_confirmation_label">Confirm password:</label></td>
-						<td><%= f.password_field :password_confirmation %></td></tr>
-
-					</table>
-					<br />
-					<table id="parent_consent" style="display:none;">
-						<tr><td colspan="2">
-							
-							For your protection, sitters under 18 must have parental <br />consent. Please provide your name
-							and one of your parents' <br />names and email address below.<br />
-						</td></tr>
-					<tr><td><label for="minor_first_name"><span id="minor_first_name_label">Your First Name:</span></label></td><td>
-					<%= text_field_tag "minor_first_name" %></td></tr>
-
-					<tr><td><label for="minor_last_name"><span id="minor_last_name_label">Your Last Name:</span></label></td>
-					<td><%= text_field_tag "minor_last_name" %></td></tr>
-					<tr><td colspan="2">&nbsp;</td></tr>
-						<tr><td><label for="parents_name"><span id="parents_name_label">Parent's Name:</span></label></td>
-						<td><%= text_field_tag "parents_name" %></td></tr>
-						<tr><td><label for="parents_email"><span id="parents_email_label">Parent's Email:</span></label></td>
-						<td><%= text_field_tag "parents_email" %></td></tr>
-					</table>
-
-
-					<br />
-			        <p><%= f.check_box :terms_of_use %>  <label for="terms_of_use"> I have read and agree with the <strong><%= link_to "Terms of Use", "#{APP_URL}/tou", :target =>"_blank" %></strong> of this website.</label>
-					</p>
-					<br />
-					<p style="margin-bottom: 5px;"><%= f.label "birthdate",  "Birthday: (You must be at least 13 years old to sign up.)" %><br/>
-					<p><%= f.date_select :birthday, :start_year => 75.years.ago.year, :end_year => Time.now.year-13, :default => {:year => "1990", :day => "1", :month => "1"}, :order => [:month, :day, :year] %></p>
-					<br />
+						<table>
+							<tr>
+								<td>
+									<label for="email"><span id="sitter_email_label">Email Address:</span></label>
+								</td>
+								<td>
+									<%= f.text_field :email %>
+								</td>
+							</tr>
+							<tr>	
+								<td colspan="2">
+									<span>This email address will be our primary way of contacting you.</span>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2">&nbsp;</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<span>Your password is case sensitive and must be at least 6 characters long.</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label for="password"><span id="sitter_password_label">Create password:</span></label>
+								</td>
+								<td>
+									<%= f.password_field :password %>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label for="password_confirmation"><span id="sitter_password_confirmation_label">Confirm password:</span></label>
+								</td>
+								<td>
+									<%= f.password_field :password_confirmation %>
+								</td>
+							</tr>
+						</table>
+						<br />
+						<table id="parent_consent" style="display:none;">
+							<tr>
+								<td colspan="2">
+									For your protection, sitters under 18 must have parental <br />consent. Please provide your name
+									and one of your parents' <br />names and email address below.<br />
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label for="minor_first_name"><span id="minor_first_name_label">Your First Name:</span></label>
+								</td>
+								<td>
+									<%= text_field_tag "minor_first_name" %>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label for="minor_last_name"><span id="minor_last_name_label">Your Last Name:</span></label>
+								</td>
+								<td><%= text_field_tag "minor_last_name" %></td>
+							</tr>
+							<tr>
+								<td colspan="2">&nbsp;</td>
+							</tr>
+							<tr>
+								<td><label for="parents_name"><span id="parents_name_label">Parent's Name:</span></label></td>
+								<td><%= text_field_tag "parents_name" %></td>
+							</tr>
+							<tr>
+								<td><label for="parents_email"><span id="parents_email_label">Parent's Email:</span></label></td>
+								<td><%= text_field_tag "parents_email" %></td>
+							</tr>
+						</table>
+						<br />
+				        <p><%= f.check_box :terms_of_use %>  <label for="terms_of_use"> I have read and agree with the <strong><%= link_to "Terms of Use", "#{APP_URL}/tou", :target =>"_blank" %></strong> of this website.</label>
+						</p>
+						<br />
+						<p style="margin-bottom: 5px;"><%= f.label "birthdate",  "Birthday: (You must be at least 13 years old to sign up.)" %><br/>
+						<p><%= f.date_select :birthday, :start_year => 75.years.ago.year, :end_year => Time.now.year-13, :default => {:year => "1990", :day => "1", :month => "1"}, :order => [:month, :day, :year] %></p>
+						<br />
 						<div><%= show_simple_captcha %></div>
 						<br />	
 						<input type="submit" id="hidden_submit" style="display: none;">						
-							<% end -%>
+					<% end -%>
 
-						<div style="margin-left: 150px;"><span onclick="check_age();" style="cursor: pointer;"><%= image_tag "JoinNow_bttn.gif" %></span></div>
-				
+					<div style="margin-left: 150px;"><span onclick="check_age();" style="cursor: pointer;"><%= image_tag "JoinNow_bttn.gif" %></span>
+					</div>
 				</div>
 			</div>
 		</div>
-
-
 	</div>
-	</div>
+</div>
 	
-	<script type="text/javascript">
+<script type="text/javascript">
 	
 		function check_parent()
 		{
@@ -150,19 +166,19 @@
 			var fail;
 			if($('parent_email').value == '')
 			{
-				$('parent_email_label').style.color = "#FF0000"
+				$('parent_email_label').style.color = "#FF0000";
 				fail = true;
 			}
 			
 			if($('parent_password').value == '')
 			{
-				$('parent_password_label').style.color = "#FF0000"
+				$('parent_password_label').style.color = "#FF0000";
 				fail = true;
 			}
 			
 			if($('parent_password_confirmation').value == '')
 			{
-				$('parent_password_confirmation_label').style.color = "#FF0000"
+				$('parent_password_confirmation_label').style.color = "#FF0000";
 				fail = true;
 			}
 			
@@ -220,19 +236,19 @@
 			var fail;
 			if($('sitter_email').value == '')
 			{
-				$('sitter_email_label').style.color = "#FF0000"
+				$('sitter_email_label').style.color = "#FF0000";
 				fail = true;
 			}
 
 			if($('sitter_password').value == '')
 			{
-				$('sitter_password_label').style.color = "#FF0000"
+				$('sitter_password_label').style.color = "#FF0000";
 				fail = true;
 			}
 
 			if($('sitter_password_confirmation').value == '')
 			{
-				$('sitter_password_confirmation_label').style.color = "#FF0000"
+				$('sitter_password_confirmation_label').style.color = "#FF0000";
 				fail = true;
 			}
 
