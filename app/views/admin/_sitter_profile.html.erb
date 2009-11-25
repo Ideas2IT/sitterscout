@@ -89,6 +89,7 @@
 		</tr>
 	</table>
 	<br />
+	<%unless @user.skill.nil? %>
 	<table width="600">
 		<tr>
 			<td width="300">
@@ -100,6 +101,7 @@
 					<% if @user.skill.schoolaged %>  <li>School Aged</li><% end %>
 					<% if @user.skill.specialneeds %>  <li>Special Needs Children</li><% end %>
 					<% if @user.skill.multiples %>  <li>Multiples (Twins, Triplets) </li><% end %>
+				
 				</ul>
 			</td>
 			<td>
@@ -139,5 +141,6 @@
 		</td>
 	</tr>
 	</table>
+	<%end%>
 	<br /><br />
 </div>
