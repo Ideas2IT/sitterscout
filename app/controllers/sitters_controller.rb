@@ -840,7 +840,7 @@ class SittersController < ApplicationController
       unless p.aasm_state == "complete"
         p.aasm_state = "complete"
         p.save
-        Notifications.deliver_sitter_welcome(current_user, params[:invitations_box])
+        Notifications.deliver_sitter_welcome(current_user)
       end
         
       #SitterMailer.deliver_send_welcome_email(current_user)
