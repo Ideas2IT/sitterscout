@@ -42,13 +42,16 @@ class JobsController < ApplicationController
   # POST /jobs.xml
   def create
 
-    @job = Job.new(params[:job])  
+    @job = Job.new(params[:job]) 
+   
+    puts "#{ params[:job]}======================="
+      
     dt_time = params[:job]["date_from(4i)"] + ":" + params[:job]["date_from(5i)"] + " " + (params[:job]["date_from(6i)"].to_i == 0 ? "AM" : "PM")
     dt = params[:parents][:scheduler] + " " + dt_time
     
     date_to = params[:job]["date_to(4i)"] + ":" + params[:job]["date_to(5i)"] + " " + (params[:job]["date_to(6i)"].to_i == 0 ? "AM" : "PM") 
     dt_to = params[:parents][:scheduler] + " " + date_to
-    
+  
     if dt.to_datetime < DateTime.now
       flash[:error] = "A job cannot occur in the past."
       redirect_to :back
@@ -116,7 +119,12 @@ class JobsController < ApplicationController
         
       else
        render :action => "new" 
-      end
+   end
+   
+   rescue 
+    flash[:error]= "Please select at least one sitter!"
+    redirect_to :back
+ 
   end
 
   # PUT /jobs/1
