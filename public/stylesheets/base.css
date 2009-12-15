@@ -10,7 +10,7 @@ a:hover { border-bottom: none; }
 #logorsign { height: 40px; width: 180px; background: none; color: #000; opacity: 1.5; margin: 45px 0 25px 0; float: right; text-align: center; line-height: 40px; font-size: 9px; }
 
 #footer { height: 28px; width: 100%; background: url(../images/footer-gradient.jpg) repeat-x; position: fixed; bottom: 0; right: 0; overflow: hidden; }
-#footer p { width: 800px; padding:0; margin: 0 auto; line-height: 28px; font-size: 11px; color: #111; }
+#footer p { width: 810px; padding:0; margin: 0 auto; line-height: 28px; font-size: 11px; color: #111; }
 #footer a { color: #fff; }
 #footer a:hover { text-decoration: none; }
 
