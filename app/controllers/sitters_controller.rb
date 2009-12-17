@@ -831,7 +831,6 @@ class SittersController < ApplicationController
       
   end
   
- 
   def welcome_screen
     
      p = Sitter.find(current_user)
@@ -851,6 +850,13 @@ protected
     unless Job.find(id).status == 'accepted'
       rs = RequestSitter.find(:first, :include => ["request"], :conditions => ["request_sitters.sitter_id = ? AND requests.job_id = ?", current_user, id])
       rs.request.job.status = "accepted"
+      #To update the job status
+      unless rs.request.job.nil?
+        job = rs.request.job
+        job.status = "accepted"
+        job.save
+      end
+      
       rs.state = "accepted"
       rs.save
       
@@ -894,7 +900,7 @@ protected
   def setup_metro_areas_for_cloud
       @metro_areas_for_cloud = MetroArea.find(:all, :conditions => "users_count > 0", :order => "users_count DESC", :limit => 100)
       @metro_areas_for_cloud = @metro_areas_for_cloud.sort_by{|m| m.name}
-    end  
+  end  
 
   def setup_locations_for(user)
       metro_areas = []
@@ -909,5 +915,7 @@ protected
 
   def admin_or_current_user_required
       current_user && (current_user.admin? || @is_current_user) ? true : access_denied     
-    end
+  end
+  
+  
 end

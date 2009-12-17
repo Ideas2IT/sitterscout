@@ -2,3 +2,14 @@
 :backgroundrb: 
   :port: 11006
   :ip: 0.0.0.0
+  :environment: production 
+  :log: foreground # foreground mode,print log messages on console
+  :debug_log: false # disable log workers and other logging
+  :persistent_disabled: false # turn this off if your application doesn't use backgroundrb's persistent/enqueued tasks system
+  :persistent_delay: 3600 # the time (seconds) between each time backgroundrb checks the database for enqueued tasks
+# You specify your worker schedules here
+:schedules:
+  :notifications_worker: # worker name
+    :sitter_request_remainder: #worker method
+      :trigger_args: */3600 * * * * * * #worker schedule
+    

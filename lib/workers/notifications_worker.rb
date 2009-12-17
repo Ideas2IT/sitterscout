@@ -1,13 +1,17 @@
 class NotificationsWorker < BackgrounDRb::MetaWorker
+
   set_worker_name :notifications_worker
   def create(args = nil)
     # this method is called, when worker is loaded for the first time
-    add_periodic_timer(10) { send_notifications }
-    
+    add_periodic_timer(3600) { 
+#    send_notifications
+     sitter_request_remainder
+    }
   end
   
   def send_notifications
     j = Job.find(:all, :conditions => ["status = ?", "accepted"])
+      
       j.each do |job|
        # # if job.date_from.to_date < Time.now.to_date
        #    if Sitter.find(job.sitter_id).profile.email
@@ -28,6 +32,38 @@ class NotificationsWorker < BackgrounDRb::MetaWorker
         #end#job.date
       end#j.each
     end#j=job
+    
+    def sitter_request_remainder
+  
+    jobs_to_send = Job.find(:all, :conditions => ["date_from <= ? AND notification_sent IS NOT true", 2.days.from_now])
+    
+    jobs_to_send.each do |j|
+      unless j.parent_id.nil? || j.sitter_id.nil? || (j.status == 'cancelled')
+          parent = Parent.find(j.parent_id)
+          sitter = Sitter.find(j.sitter_id)
+          
+          if parent.profile.text_message
+            #Notifications.deliver_parent_job_sms_reminder(parent, sitter, j)  
+          end
+          
+          if parent.profile.email
+            Notifications.deliver_parent_job_reminder(parent, sitter, j)
+          end
+          
+          if sitter.profile.text_message
+            #Notifications.deliver_sitter_job_sms_reminder(parent, sitter, j)
+            
+          end
+          
+          if sitter.profile.email
+            Notifications.deliver_sitter_job_reminder(parent, sitter, j)
+          end
+          
+          j.notification_sent = true
+          j.save
+      end
+    end
+  end
   
 end#notifications
 
