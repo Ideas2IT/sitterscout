@@ -182,7 +182,7 @@ class ParentsController < ApplicationController
     @sitters = []
     current_user.accepted_friendships.each do |f|
       if f.friend.is_a?Sitter
-        @sitters << f.friend
+        @sitters << f.friend if f.friend.active? and !f.friend.profile.nil?
       end
     end
 
@@ -216,15 +216,17 @@ class ParentsController < ApplicationController
       sitters = []
       alist.each do |p|
         if User.find(p).is_a?Sitter
-          sitters << Sitter.find(p)
+          sitters << Sitter.find(p)  
         end
       end
       
       available = []
       sitters.each do |s|
-        unless s.profile.nil?
-          if s.profile[week_day] == shift || s.profile[week_day] == "All Day"
-            available << s.id
+        unless s.active
+          unless s.profile.nil?
+            if s.profile[week_day] == shift || s.profile[week_day] == "All Day"
+              available << s.id
+            end
           end
         end
       end
@@ -232,7 +234,8 @@ class ParentsController < ApplicationController
       booked_sitters = []
 
       sitters.each do |sitter|
-        unless sitter.profile.nil?
+        unless sitter.active
+        unless sitter.profile.nil? 
           j = Job.find(:all, :conditions => ["jobs.sitter_id = ? AND ((jobs.date_from between ? AND ?) OR (jobs.date_to between ? AND ?) OR (? between jobs.date_from AND jobs.date_to) OR (? between jobs.date_from AND jobs.date_to) OR (jobs.date_from = ?) OR (jobs.date_to = ?))", sitter.id, dt.to_datetime.to_s(:db), dt_to.to_datetime.to_s(:db), dt.to_datetime.to_s(:db), dt_to.to_datetime.to_s(:db), dt.to_datetime.to_s(:db), dt_to.to_datetime.to_s(:db), dt.to_datetime.to_s(:db), dt_to.to_datetime.to_s(:db)])
             unless j.blank?
               j.each do |r|
@@ -246,15 +249,19 @@ class ParentsController < ApplicationController
              end
            end
         end
+       end
       end
             
       respond_to do |format|
          format.js do
            render :update do |page|
               sitters.each do |s|
-                page.call "change_text_color", "sitter_#{s.id}", "#000000"
-                page <<	"$('sitter_checkbox_#{s.id}').disabled=false;"
-
+                unless s.active
+                  unless s.profile.nil? 
+                    page.call "change_text_color", "sitter_#{s.id}", "#000000"
+                    page <<	"$('sitter_checkbox_#{s.id}').disabled=false;"
+                  end
+                end
               end
               
               available.each do |a|
@@ -696,7 +703,7 @@ end
       @sitters = []
       current_user.accepted_friendships.each do |f|
         if f.friend.is_a?Sitter
-          @sitters << f.friend
+          @sitters << f.friend if f.friend.active and !f.friend.profile.nil?
         end
       end
 
