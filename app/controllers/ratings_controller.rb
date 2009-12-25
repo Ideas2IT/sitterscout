@@ -18,9 +18,9 @@ class RatingsController < ApplicationController
 #      sitter_ratings.size > 0
       unless sitter_no.size.nil?
         if rating.rating_average <= 0.0 
-            calc = (sum / 20)*5.to_f
+            calc = (sum / 20.0)*5.0.to_f
         else
-            calc = (sum / 20)*5.to_f
+            calc = (sum / 20.0)*5.0.to_f
             calc = calc+rating.rating_average / sitter_no.size
         end
       end 
