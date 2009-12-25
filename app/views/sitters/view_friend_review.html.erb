@@ -1,0 +1,111 @@
+<div class="view_prof" style="height:1500px;">
+	<div style="height:10px">
+		</div>
+<div id="content" style="height:auto;">
+	<div class="div_border">
+		<table height="100%">
+			<tr>
+				<td valign="top">
+					<%= image_tag(@user.avatar_photo_url(:large), :class => "right" ,:height=> 150 ,:width=> 130) %>			
+				</td>
+				<td>&nbsp;</td>
+				<td valign="top">
+					<table border="0" cellpadding="0" cellspacing="0">
+						<tr>
+							<td>
+								<strong>
+									<font class="username_heading">
+									<%unless @profile.first_name.nil? and @profile.last_name.nil?%>
+										<%= @profile.first_name + " " + @profile.last_name.to_s.first+"." %>
+									<%end%>
+									</font>
+								</strong>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+		<table>
+			<tr>
+				<td>
+					<table>
+						<tr>
+							<td>
+								&nbsp;
+							</td>
+							</tr>
+							<tr>
+								<td><%= @profile.first_name %>'s SitterScout Rating:</td>
+							</tr>
+							<tr>
+								<td>
+									<% stars = rate_calc(@user)%>
+									<%for i in 0..(stars[0].to_i)-1%>
+										<%= image_tag "rating/star_orange.png"%>
+									<%end%>
+									<%for i in 0..(stars[1].to_i)-1%>
+										<%= image_tag "rating/star_yellow.png"%>
+									<%end%>
+									<%for i in 0..(stars[2].to_i)-1%>
+										<%= image_tag "rating/star_white.png"%>
+									<%end%>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									&nbsp;
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Comments about <%= @profile.first_name %>:
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									&nbsp;
+								</td>
+							</tr>
+							<% @review.each do |d| %>
+								<%unless d.comment.nil? or d.comment.empty?%>
+									<tr>
+										<td>
+											<%= d.comment%>										
+										</td>
+									</tr>
+									<tr>
+										<td>
+											&nbsp;
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<%= d.parent.profile.first_name+ " " +d.parent.profile.last_name.first+"."%>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											&nbsp;
+										</td>
+									</tr>
+								<%end%>
+							<%end%>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label class="small_link">
+						<a href="javascript:history.back();"> < Back to "Your Search" </a> 
+					</label>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+<div style="top: 450px; position: absolute; margin-left: 18%; color: #8F8F8F;  font-size: 10pt; width: 960px; height:auto;">
+</div>								
+</div>												
+												

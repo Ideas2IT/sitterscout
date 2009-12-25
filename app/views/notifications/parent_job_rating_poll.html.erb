@@ -1,0 +1,24 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+</head>
+<body>
+<%= image_tag("#{APP_URL}/images/email_signature.jpg", :alt=>"SitterScout.com") %>
+
+<font face="Arial, Helvetica, Geneva">
+
+<p>Dear <%= @parent.profile.full_name %>,</p>
+
+<p>Hello from SitterScout!  Please take a moment to rate your experience with <%= @sitter.profile.full_name %>.</p>
+
+<p>Your feedback is important, both to other parents needing to book a sitter and to <%= @sitter.profile.first_name %>, as better ratings will help <%= @sitter.profile.first_name %> polish her sitter resume.</p>
+
+<p>Click<%= link_to "here", APP_URL + "/parents/#{@sitter.profile.sitter_id}/rating_sitter" %> now to add your rating. It only takes a moment.</p>
+
+<p>Thanks for using SitterScout!</p>
+
+<p>The SitterScout Team</p>
+
+</font>
+</body>
+</html>

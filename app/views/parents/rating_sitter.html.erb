@@ -1,0 +1,171 @@
+<div>
+	<%= render :partial => 'nav_menu', :locals => {:selected => ""} %>
+</div>
+<div id="sub_menu_gradient">
+	<div class="sub_menu_gradient_center">
+	
+	</div>
+</div>
+<div class="view_prof" style="height:900px;">
+	<div style="height:10px">
+	
+	</div>
+<div id="content" style="height:auto;">
+	<div class="div_border">
+		<table height="100%">
+		<tr>
+			
+			
+			<td valign="top">
+				<table border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td style="font-size:14px">
+							Please rate your experience with  <strong>
+								<%unless @profile.first_name.nil? and @profile.last_name.nil?%>
+									<%= @profile.first_name + " " + @profile.last_name%>
+								<%end%></strong>. Rating are on a scale of 1-4, with 4 being the best.
+							<br/><br/>
+							Sitters will be assigned a "Star" rating of 1 to 4 stars based on their reviews. Please be candid in your assessment.
+							<br> <br>
+							Responded promptly to my request:
+							<%form_for :rating, :url => {:controller => "ratings" , :action => "create" ,:id=> current_user.id,:sitter_id => @profile.sitter_id} do |f|%>
+							<table>
+								<tr>
+									<td> 
+										<%= f.radio_button :my_request, "1" ,:checked=> true, :onclick=>'on_chk();', :id=> "r_prompty" %> &nbsp;
+									
+									 	<%= f.radio_button :my_request, "2" ,:onclick=>'on_chk();', :id=> "r_prompty" %>&nbsp;
+									 								
+									 	<%= f.radio_button :my_request, "3" ,:onclick=>'on_chk();', :id=> "r_prompty" %>&nbsp;
+									
+								 		<%= f.radio_button :my_request, "4" ,:onclick=>'on_chk();', :id=> "r_prompty" %>&nbsp;
+								 
+									 	<%= f.radio_button :my_request, "0" ,:onclick=>'on_chk();', :id=> "r_prompty" %>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										&nbsp;1 &nbsp;&nbsp; 2 &nbsp; 3 &nbsp; 4 &nbsp; n/a
+										
+									</td>
+								</tr>
+							</table>
+							<br>
+							Arrived on time:
+							<table>
+								<tr>
+									<td> 
+										<%= f.radio_button :arr_time, "1" ,:checked=> true, :onclick=>'on_chk();', :id=> "r_arrive" %> &nbsp;
+									
+									 	<%= f.radio_button :arr_time, "2" ,:onclick=>'on_chk();', :id=> "r_arrive" %>&nbsp;
+									 								
+									 	<%= f.radio_button :arr_time, "3" ,:onclick=>'on_chk();', :id=> "r_arrive" %>&nbsp;
+									
+								 		<%= f.radio_button :arr_time, "4" ,:onclick=>'on_chk();', :id=> "r_arrive" %>&nbsp;
+								 
+									 	<%= f.radio_button :arr_time, "0" ,:onclick=>'on_chk();', :id=> "r_arrive" %>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										&nbsp;1 &nbsp;&nbsp; 2 &nbsp; 3 &nbsp; 4 &nbsp; n/a
+										
+									</td>
+								</tr>
+							</table>
+							<br>
+							Did what i asked:
+							<table>
+								<tr>
+									<td> 
+										<%= f.radio_button :asked, "1" ,:checked=> true, :onclick=>'on_chk();', :id=> "r_asked" %> &nbsp;
+									
+									 	<%= f.radio_button :asked, "2" ,:onclick=>'on_chk();', :id=> "r_asked" %>&nbsp;
+									 								
+									 	<%= f.radio_button :asked, "3" ,:onclick=>'on_chk();', :id=> "r_asked" %>&nbsp;
+									
+								 		<%= f.radio_button :asked, "4" ,:onclick=>'on_chk();', :id=> "r_asked" %>&nbsp;
+								 
+									 	<%= f.radio_button :asked, "0" ,:onclick=>'on_chk();', :id=> "r_asked" %>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										&nbsp;1 &nbsp;&nbsp; 2 &nbsp; 3 &nbsp; 4 &nbsp; n/a
+										
+									</td>
+								</tr>
+							</table>
+							<br>
+							Left the house neat/in good condition:
+							<table>
+								<tr>
+									<td> 
+										<%= f.radio_button :condition, "1" ,:checked=> true, :onclick=>'on_chk();', :id=> "r_good" %> &nbsp;
+									
+									 	<%= f.radio_button :condition, "2" ,:onclick=>'on_chk();', :id=> "r_good" %>&nbsp;
+									 								
+									 	<%= f.radio_button :condition, "3" ,:onclick=>'on_chk();', :id=> "r_good" %>&nbsp;
+									
+								 		<%= f.radio_button :condition, "4" ,:onclick=>'on_chk();', :id=> "r_good" %>&nbsp;
+								 
+									 	<%= f.radio_button :condition, "0" ,:onclick=>'on_chk();', :id=> "r_good" %>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										&nbsp;1 &nbsp;&nbsp; 2 &nbsp; 3 &nbsp; 4 &nbsp; n/a
+										
+									</td>
+								</tr>
+							</table>
+							<br>
+							Was liked by my children:
+							<table>
+								<tr>
+									<td> 
+										<%= f.radio_button :my_child, "1" ,:checked=> true, :onclick=>'on_chk();', :id=> "r_children" %> &nbsp;
+									
+									 	<%= f.radio_button :my_child, "2" ,:onclick=>'on_chk();', :id=> "r_children" %>&nbsp;
+									 								
+									 	<%= f.radio_button :my_child, "3" ,:onclick=>'on_chk();', :id=> "r_children" %>&nbsp;
+									
+								 		<%= f.radio_button :my_child, "4" ,:onclick=>'on_chk();', :id=> "r_children" %>&nbsp;
+								 
+									 	<%= f.radio_button :my_child, "0" ,:onclick=>'on_chk();', :id=> "r_children" %>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										&nbsp;1 &nbsp;&nbsp; 2 &nbsp; 3 &nbsp; 4 &nbsp; n/a
+										
+									</td>
+								</tr>
+							</table>
+							<br>
+							Want to add some <b>Kudos</b> of your own?  Enter in them in the box below. (Please keep negative comments to yourself and instead use the ratings to communicate your displeasure.)
+							<br>
+							<br>
+							<%= f.text_area  "comment", :style => "width: 600px; height: 50px;" %>
+							<br><br>
+							
+							<center>
+								<div style="clear: both; ">
+									<%=f.submit "Rating"%>
+								</div>
+							</center>
+							<%end%>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">&nbsp;</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>	
+	</div>
+</div>
+<div style="top: 450px; position: absolute; margin-left: 18%; color: #8F8F8F;  font-size: 10pt; width: 960px; height:auto;">
+</div>
+</div>
