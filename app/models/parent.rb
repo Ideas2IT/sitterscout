@@ -2,6 +2,7 @@ class Parent < User
   acts_as_paranoid
   has_one :profile, :dependent => :destroy
   has_many :jobs
+  has_many :sitter_ratings
   has_many :confirmed_sitters
   has_many :sitters, :through => :confirmed_sitters
   has_many :children

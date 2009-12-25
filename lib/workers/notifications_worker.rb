@@ -6,6 +6,7 @@ class NotificationsWorker < BackgrounDRb::MetaWorker
     add_periodic_timer(3600) { 
 #    send_notifications
      sitter_request_remainder
+     sitter_rating
     }
   end
   
@@ -33,6 +34,8 @@ class NotificationsWorker < BackgrounDRb::MetaWorker
       end#j.each
     end#j=job
     
+    
+    #job remainder email
     def sitter_request_remainder
   
     jobs_to_send = Job.find(:all, :conditions => ["date_from <= ? AND notification_sent IS NOT true", 2.days.from_now])
@@ -61,6 +64,27 @@ class NotificationsWorker < BackgrounDRb::MetaWorker
           
           j.notification_sent = true
           j.save
+      end
+    end
+  end
+  
+  #rating notification email
+  
+  def sitter_rating
+    
+    rate_to_send = Job.find(:all, :conditions => ["? >= (date_from + INTERVAL 12 HOUR) AND rate_notification IS NOT TRUE",Time.now])
+      
+    rate_to_send.each do |r|
+      unless r.parent_id.nil? || r.sitter_id.nil?
+         parent = Parent.find(r.parent_id)
+         sitter = Sitter.find(r.sitter_id)
+          unless parent.profile.nil?
+            if parent.profile.email?
+              Notifications.deliver_parent_job_rating_poll(parent, sitter, r)
+            end
+          end
+        r.rate_notification = true
+        r.save
       end
     end
   end

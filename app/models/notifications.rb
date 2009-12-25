@@ -34,6 +34,16 @@ class Notifications < ActionMailer::Base
     @body[:user] = user
   end
   
+  def parent_job_rating_poll(parent, sitter, job)
+    content_type "text/html"
+    setup_sender_info
+    @recipients = parent.email
+    @subject = 'SitterScout rating Sitter'
+    @body[:sitter] = sitter
+    @body[:parent] = parent
+    @body[:job] = job
+  end
+  
   def parent_job_reminder(parent, sitter, job)
     content_type "text/html"
     setup_sender_info

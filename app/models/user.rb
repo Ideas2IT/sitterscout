@@ -10,15 +10,16 @@ class User < ActiveRecord::Base
 
   attr_protected :admin, :featured, :role_id
   
+    
   before_save :encrypt_password, :whitelist_attributes, :create_login
   before_create :make_activation_code
   after_create :update_last_login
-
+  
   # Virtual attribute for the unencrypted password
   attr_accessor :password
   acts_as_taggable 
   acts_as_paranoid 
-
+  
   #validation
   validates_presence_of     :email, :terms_of_use
   validates_presence_of     :password,                   :if => :password_required?

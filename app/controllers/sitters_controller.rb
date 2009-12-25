@@ -128,6 +128,13 @@ class SittersController < ApplicationController
      @user = Sitter.find(params[:id])
      @profile = @user.profile
   end
+  
+  def view_friend_review
+    @user = Sitter.find(params[:id])
+    @review = SitterRating.find(:all,:conditions => ['sitter_id = ?',params[:id]])
+    @profile = @user.profile
+  end
+  
   def view_friend_profile_woc
     @awaitingconf=params[:from]
 #   @user = Sitter.find_by_id(params[:id])

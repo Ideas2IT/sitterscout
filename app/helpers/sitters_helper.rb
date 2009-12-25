@@ -9,6 +9,10 @@ module SittersHelper
     	return str
  end
  
+# def ratings_for
+#  image_tag "/images/ajaxful_rating/star.png"
+# end
+ 
  def referring_url
     if request.env["HTTP_REFERER"]
       return request.env["HTTP_REFERER"]

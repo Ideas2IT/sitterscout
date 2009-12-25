@@ -11,7 +11,10 @@ RAILS_GEM_VERSION = '2.0.2' unless defined? RAILS_GEM_VERSION
 require File.join(File.dirname(__FILE__), 'boot')
 #require File.join(File.dirname(__FILE__), '../vendor/plugins/engines/boot')
 
+
+
 Rails::Initializer.run do |config|
+  
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
   # -- all .rb files in that directory are automatically loaded.
@@ -60,11 +63,12 @@ Rails::Initializer.run do |config|
   config.active_record.observers = :message_observer
   # Make Active Record use UTC-base instead of local time
   # config.active_record.default_timezone = :utc
-  
+  # config.gem "edgarjs-ajaxful_rating", :lib => "ajaxful_rating", :source => "http://gems.github.com"
 end
 
 Comatose.configure do |config|
   # Includes AuthenticationSystem in the ComatoseController
+  
   config.includes << :authenticated_system
 
   # admin 
@@ -78,6 +82,7 @@ Comatose.configure do |config|
     current_user.login
   end
 end
+
 
 ##Exception Notificaiton settings
 
@@ -101,6 +106,7 @@ ActionMailer::Base.delivery_method = :smtp
    :user_name => "notifications@sitterscout.com",
    :password => "chiefscout"
  }
+
 
 
 #require "#{RAILS_ROOT}/vendor/plugins/community_engine/engine_config/boot.rb"
@@ -155,6 +161,7 @@ GeoKit::Geocoders::geocoder_ca = false
 # geocoder you are going to use.
 GeoKit::Geocoders::provider_order = [:yahoo, :google,:us]
 
+
 module ApplicationConfiguration
   require 'ostruct'
   require 'yaml'  
@@ -168,8 +175,6 @@ module ApplicationConfiguration
 
   ::AppConfig = OpenStruct.new config_hash
 end
-
-
 
 
 ENV['INLINEDIR'] = File.join(RAILS_ROOT,'tmp','ruby_inline')

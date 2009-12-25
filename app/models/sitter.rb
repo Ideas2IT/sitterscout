@@ -1,11 +1,11 @@
 class Sitter < User
-  
   acts_as_paranoid
   has_one :profile, :dependent => :destroy
   has_one :skill
   has_many :confirmed_sitters
   has_many :parents, :through => :confirmed_sitters
   has_many :request_sitters
+  has_many :sitter_ratings
   has_many :requests, :through => :request_sitters
   has_many :accepted_jobs, :class_name => "Job", :conditions => "status = 'accepted'"
 

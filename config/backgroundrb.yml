@@ -12,4 +12,6 @@
   :notifications_worker: # worker name
     :sitter_request_remainder: #worker method
       :trigger_args: */3600 * * * * * * #worker schedule
+    :sitter_rating: #Worker method
+        :trigger_args: */3600 * * * * * * #worker schedule
     

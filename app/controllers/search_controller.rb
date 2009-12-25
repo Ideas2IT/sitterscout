@@ -12,6 +12,8 @@ class SearchController < ApplicationController
      end
     @check= params[:search]
     
+    
+    
     if @check.to_i >=1 
       @profiles = Profile.paginate(:origin => params[:search], :include => [:sitter, :parent], :order => 'distance asc', :within => '15', :conditions => "#{cont.to_s} is null AND not_searchable = 1",:joins=> "INNER JOIN users ON users.id = profiles.#{jcont.to_s}", :per_page => 10, :page => params[:page])
       @zipcode = params[:search]

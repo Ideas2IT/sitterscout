@@ -757,6 +757,12 @@ end
       @profile = @user.profile
     end
     
+    def view_sitter_review
+      @user = Sitter.find(params[:id])
+      @review = SitterRating.find(:all,:conditions => ['sitter_id = ?',params[:id]])
+      @profile = @user.profile
+    end
+    
     def view_profile_search
 #     @user = Parent.find_by_id(params[:id])
       @user = Parent.find(params[:id])
@@ -793,6 +799,11 @@ end
 #      @user = Parent.find_by_id(params[:id])
        @user = Parent.find(params[:id])
       @profile = @user.profile
+    end
+    
+    def rating_sitter
+        @user = Sitter.find(params[:id])
+        @profile = @user.profile
     end
     
     def view_connections

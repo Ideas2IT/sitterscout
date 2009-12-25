@@ -16,6 +16,8 @@ ActionController::Routing::Routes.draw do |map|
   #   :view_profile => :get
   # }
 
+#  map.resources :ratings
+  
   map.resources :parents, :collection => {:search => :post }, :member => { 
     :invite => :get,
     :welcome => :get,
@@ -53,10 +55,12 @@ ActionController::Routing::Routes.draw do |map|
     :view_sitter_profile_search => :get,
     :view_profile_sitter_ac => :get,
     :view_profile_friend_ac => :get,
+    :view_sitter_review => :get,
     :view_connections => :get,
     :hide_sitter_connection => :post,
     :connection_requests => :get,
     :check_availability => :post,
+    :rating_sitter => :get,
     :remove_person => :post
     } do |parent|
       parent.resources :jobs
@@ -111,11 +115,13 @@ ActionController::Routing::Routes.draw do |map|
     :view_parent_profile_woc => :get,
     :view_profile_family_ac => :get,
     :view_profile_friend_ac => :get,
+    :view_friend_review => :get,
     :consent_sent => :get,
     :view_connections => :get,
     :connection_requests => :get,
     :skills => :get,
     :update_skills => :post,
+    :rate => :post,
     :remove_person => :post
     }
     

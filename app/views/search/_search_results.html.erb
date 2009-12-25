@@ -12,7 +12,7 @@
 			<div style="float:left;">
 				<table>
 					<tr>
-						<td>
+						<td valign="top">
 							<p>
 								Name:
 							</p>
@@ -20,6 +20,31 @@
 						<td>
 							<p>
 								<strong><%= search.profile.first_name %>&nbsp;<%= search.profile.sitter? ? search.profile.last_name.to_s.first + "." : search.profile.last_name %></strong>
+								<br>
+								<% if logged_in? %>
+									<%if search.sitter_ratings.size > 0 %>
+										<%unless search.profile.parent? %>
+											<% stars = rate_calc(search)%>
+											<%for i in 1..stars[0].to_i%>
+												<%= image_tag "rating/star_orange.png"%>
+											<%end%>
+											<%for i in 1..stars[1].to_i%>
+												<%= image_tag "rating/star_yellow.png"%>
+											<%end%>
+											<%for i in 1..stars[2].to_i%>
+												<%= image_tag "rating/star_white.png"%>
+											<%end%>
+										 	&nbsp;
+											<%if @count !=0 %>
+												<% if current_user.type == 'Parent' %>
+													<%= link_to "("+@count.to_s+"reviews)", url_for(:controller => 'parents' , :action => 'view_sitter_review', :id => search.id) %>
+												<%else%>
+													<%= link_to "("+@count.to_s+"reviews)", url_for(:controller => 'sitters' , :action => 'view_friend_review', :id => search.id) %>	
+												<%end%>
+											<%end%>
+									<%end%>
+								<%end%>
+							<%end%>
 							</p>
 						</td>
 					</tr>
@@ -99,7 +124,7 @@
 						<% end %>
 						<% if current_user.connected?(search) %>
 						<br />
-	    					> <%= link_to "View Connections    ", url_for(:controller => 'connections', :action => 'show', :id => search.id), :class => "lbOn-405-390", :style => 'padding-right: 10px; border-bottom: 1px #AFAFAF solid;' %>
+	    					> <%= link_to "View Connections ", url_for(:controller => 'connections', :action => 'show', :id => search.id), :class => "lbOn-405-390", :style => 'padding-right: 10px; border-bottom: 1px #AFAFAF solid;' %>
 						<% end %>
 					<% end %>
 				<% else %>
