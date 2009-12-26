@@ -218,9 +218,9 @@
 		{
 			
 			<% @sitters.each do |s| %>
-			<%unless s.active%>
-			    $('sitter_checkbox_<%= s.id %>').disabled=true;
-			<%end%>
+				<%unless s.active%>
+				    $('sitter_checkbox_<%= s.id %>').disabled=true;
+				<%end%>
 			<% end %>
 			var date = $('parents_scheduler').value;
 			

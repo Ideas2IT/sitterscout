@@ -703,7 +703,7 @@ end
       @sitters = []
       current_user.accepted_friendships.each do |f|
         if f.friend.is_a?Sitter
-          @sitters << f.friend if f.friend.active and !f.friend.profile.nil?
+          @sitters << f.friend if f.friend.active? and !f.friend.profile.nil?
         end
       end
 
