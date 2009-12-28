@@ -3,19 +3,18 @@ class SearchController < ApplicationController
 
  def index
      @profiles = []
-     if params[:searchoption] == 'sitter'
+     
+     if params[:searchoption] == "sitter"
       cont = 'parent_id'
       jcont ='sitter_id'
      else
       cont = 'sitter_id'
       jcont='parent_id'
-     end
+    end
+    
     @check= params[:search]
-    
-    
-    
-    if @check.to_i >=1 
-      @profiles = Profile.paginate(:origin => params[:search], :include => [:sitter, :parent], :order => 'distance asc', :within => '15', :conditions => "#{cont.to_s} is null AND not_searchable = 1",:joins=> "INNER JOIN users ON users.id = profiles.#{jcont.to_s}", :per_page => 10, :page => params[:page])
+    if @check.to_i >= 1 
+      @profiles = Profile.paginate(:origin => params[:search], :include => [:sitter, :parent], :order => 'distance asc', :within => '15', :conditions => "zipcode = #{params[:search]} or #{cont.to_s} is null AND not_searchable = 1",:joins=> "INNER JOIN users ON users.id = profiles.#{jcont.to_s} AND users.active != #{true}", :per_page => 10, :page => params[:page])
       @zipcode = params[:search]
     else
       @profiles = Profile.paginate(:include => [:sitter, :parent],:order => 'full_name asc',:conditions => "(profiles.full_name LIKE '%#{params[:search].to_s}%' OR profiles.first_name LIKE '%#{params[:search].to_s}%' OR profiles.last_name LIKE '%#{params[:search].to_s}%')  AND profiles.#{cont.to_s} is null AND profiles.not_searchable = 1 ",:joins=> "INNER JOIN users ON users.id = profiles.#{jcont.to_s} AND users.active != #{true} ", :per_page => 10, :page => params[:page])
