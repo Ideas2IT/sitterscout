@@ -72,7 +72,7 @@ class NotificationsWorker < BackgrounDRb::MetaWorker
   
   def sitter_rating
     
-    rate_to_send = Job.find(:all, :conditions => ["? >= (date_from + INTERVAL 12 HOUR) AND rate_notification IS NOT TRUE",Time.now])
+    rate_to_send = Job.find(:all, :conditions => ["? >= (date_to + INTERVAL 12 HOUR) AND rate_notification IS NOT TRUE",Time.now])
       
     rate_to_send.each do |r|
       unless r.parent_id.nil? || r.sitter_id.nil?
