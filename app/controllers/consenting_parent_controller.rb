@@ -1,7 +1,9 @@
 class ConsentingParentController < ApplicationController
   skip_before_filter :login_required
   skip_before_filter :direct_to_current_state
- layout 'new_design'
+  
+  layout 'no_search'
+  
   def index
     if request.post?
         @sitter = Sitter.find_by_birthday_and_email(params[:sitter]["birthday(1i)"] + "-" + params[:sitter]["birthday(2i)"] + "-" + params[:sitter]["birthday(3i)"], params[:sitter][:email])
