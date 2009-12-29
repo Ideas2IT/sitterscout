@@ -31,7 +31,7 @@ class SittersController < ApplicationController
   def create
 
   if simple_captcha_valid?  
-  #    
+      
     @sitter = Sitter.new(params[:sitter])
     @sitter.role = Role[:sitter]  
     

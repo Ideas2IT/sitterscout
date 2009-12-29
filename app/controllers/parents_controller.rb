@@ -130,8 +130,7 @@ class ParentsController < ApplicationController
   # POST /Parents
   # POST /Parents.xml
   def create
-    
-    
+
   if simple_captcha_valid?  
     
     @parent = Parent.new(params[:parent])
@@ -216,7 +215,7 @@ class ParentsController < ApplicationController
       sitters = []
       alist.each do |p|
         if User.find(p).is_a?Sitter
-          sitters << Sitter.find(p)  
+          sitters << Sitter.find(p)
         end
       end
       
@@ -235,20 +234,20 @@ class ParentsController < ApplicationController
 
       sitters.each do |sitter|
         unless sitter.active
-        unless sitter.profile.nil? 
-          j = Job.find(:all, :conditions => ["jobs.sitter_id = ? AND ((jobs.date_from between ? AND ?) OR (jobs.date_to between ? AND ?) OR (? between jobs.date_from AND jobs.date_to) OR (? between jobs.date_from AND jobs.date_to) OR (jobs.date_from = ?) OR (jobs.date_to = ?))", sitter.id, dt.to_datetime.to_s(:db), dt_to.to_datetime.to_s(:db), dt.to_datetime.to_s(:db), dt_to.to_datetime.to_s(:db), dt.to_datetime.to_s(:db), dt_to.to_datetime.to_s(:db), dt.to_datetime.to_s(:db), dt_to.to_datetime.to_s(:db)])
-            unless j.blank?
-              j.each do |r|
-                temp_request = Request.find_by_job_id(r.id)
-                unless temp_request.nil?
-                  temp2 = RequestSitter.find_by_sql("SELECT state AS status FROM request_sitters WHERE request_id = '#{temp_request.id}'")[0]
-                  if temp2.status == 'accepted'
-                    booked_sitters << sitter
+          unless sitter.profile.nil? 
+            j = Job.find(:all, :conditions => ["jobs.sitter_id = ? AND ((jobs.date_from between ? AND ?) OR (jobs.date_to between ? AND ?) OR (? between jobs.date_from AND jobs.date_to) OR (? between jobs.date_from AND jobs.date_to) OR (jobs.date_from = ?) OR (jobs.date_to = ?))", sitter.id, dt.to_datetime.to_s(:db), dt_to.to_datetime.to_s(:db), dt.to_datetime.to_s(:db), dt_to.to_datetime.to_s(:db), dt.to_datetime.to_s(:db), dt_to.to_datetime.to_s(:db), dt.to_datetime.to_s(:db), dt_to.to_datetime.to_s(:db)])
+              unless j.blank?
+                j.each do |r|
+                  temp_request = Request.find_by_job_id(r.id)
+                  unless temp_request.nil?
+                    temp2 = RequestSitter.find_by_sql("SELECT state AS status FROM request_sitters WHERE request_id = '#{temp_request.id}'")[0]
+                    if temp2.status == 'accepted'
+                      booked_sitters << sitter
+                   end
                  end
                end
              end
-           end
-        end
+          end
        end
       end
             
@@ -694,7 +693,7 @@ end
     
     def schedule_sitter
       if session[:booked_sitters]
-        @booked_sitters = session[:booked_sitters]
+        @booked_sitters = session[:booked_sitters]  
         session[:booked_sitters] = nil
       else
         @booked_sitters = []
@@ -710,6 +709,7 @@ end
       @j = Job.find(:all, :conditions => ["parent_id = ? AND date_from > ?",current_user, Time.now])
       #@cancelledj = Job.find(:all, :conditions => ["status = ? AND parent_id = ?", "cancelled", current_user])
     end
+    
     def compose
       @people = []
 

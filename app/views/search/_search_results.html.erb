@@ -35,14 +35,16 @@
 												<%= image_tag "rating/star_white.png"%>
 											<%end%>
 										 	&nbsp;
-											<%if @count !=0 %>
-												<% if current_user.type == 'Parent' %>
-													&nbsp;<%= link_to "("+@count.to_s+" reviews)", url_for(:controller => 'parents' , :action => 'view_sitter_review', :id => search.id) %>
+											<%if @count != 0 %>
+												<%if !@comment.nil? %>
+													<% if current_user.type == 'Parent' %>
+														&nbsp;<%= link_to "("+@count.to_s+" reviews)", url_for(:controller => 'parents' , :action => 'view_sitter_review', :id => search.id) %>
+													<%else%>
+														&nbsp;<%= link_to "("+@count.to_s+" reviews)", url_for(:controller => 'sitters' , :action => 'view_friend_review', :id => search.id) %>	
+													<%end%>
 												<%else%>
-													&nbsp;<%= link_to "("+@count.to_s+" reviews)", url_for(:controller => 'sitters' , :action => 'view_friend_review', :id => search.id) %>	
-												<%end%>
-											<%else%>
 													&nbsp;(<%= @count.to_s%> reviews)
+												<%end%>
 											<%end%>
 									<%end%>
 								<%end%>

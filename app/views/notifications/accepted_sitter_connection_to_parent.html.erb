@@ -6,16 +6,16 @@
 </head>
 <body>
 <%= image_tag("#{APP_URL}/images/email_signature.jpg", :alt=>"SitterScout.com") %>
-<font face="Arial, Helvetica, Geneva">
+<font face="Arial, Helvetica, Geneva" style="font-size:11px;">
+<br/><br/>
+To the parents of <%= @sitter.profile.full_name %>,<br/><br/>
 
-<p>To the parents of <%= @sitter.profile.full_name %>,</p>
+<%= @sitter.profile.full_name %> has added <%= @accepted_user.profile.full_name %> to their network on SitterScout.<br/><br/>
 
-<p> <%= @sitter.profile.full_name %> has added <%= @accepted_user.profile.full_name %> to their network on SitterScout.</p>
+This message has been sent to you because you chose to be notified of all of <%= @sitter.profile.full_name %>’s new network requests. To change these settings at any time, click <%= link_to "here", APP_URL + url_for(:controller => 'consenting_parent', :action => 'index') %>.<br/><br/>
 
-<p>This message has been sent to you because you chose to be notified of all of <%= @sitter.profile.full_name %>’s new network requests. To change these settings at any time, click <%= link_to "here", APP_URL + url_for(:controller => 'consenting_parent', :action => 'index') %>.</p>
-
-<p>Thank you,</p>
-<p>The SitterScout Team</p>
+Thank you,<br/>
+The SitterScout Team<br/>
 
 </font>
 </body>

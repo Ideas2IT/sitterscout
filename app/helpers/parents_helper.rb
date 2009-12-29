@@ -45,7 +45,12 @@ module ParentsHelper
     rate = SitterRating.find(:all,:conditions => ['sitter_id = ?',f.id])
     
     @count=rate.size
-
+    @comment=0
+    rate.each do |d|
+      if !d.comment.nil? and !d.comment.empty?
+        @comment+=1
+      end
+    end
     return_avg[0] = full_star
     return_avg[1] = half_star
     return_avg[2] = empty_star
