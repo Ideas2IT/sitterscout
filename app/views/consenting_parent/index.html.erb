@@ -5,7 +5,6 @@
 		<br />
 		<div style="padding-left: 45px; padding-right: 45px;">
 			<span>SitterScout is the easiest way for babysitters to connect with the families they know and trust. Here are some things you should know:</span><br /><br />
-			
 			<span>
 				<ul style="padding-left:15px;"><li>Your child controls who is part of their network and whether or not they want others in the SitterScout community to be able to search for them.</li></ul>
 				<ul style="padding-left:15px;"><li>Only the people in your child’s network will be able to contact them and request them for babysitting jobs.</li></ul>
@@ -15,15 +14,11 @@
 			<span>We care about our sitters and recommend that their parents stay in the loop. That’s why we provide you with the option of being notified whenever your child is added to a parent’s list of sitters and/or when they receive babysitting requests.</span><br /><br />
 			<span>You control the information you receive, so you can always stay on top of your child’s business. Should you have a question at any time, please contact us at <%= mail_to "info@sitterscout.com" %>.</span>
 		</div>
-
-		<div id="signup" style="padding: 45px;">
-		
+		<div id="signup" style="padding: 30px;">
 			<div id="grad">
 				<div id="sitter" style="padding: 5px;">
-				
 					<% form_for :consenting_parent, :url => url_for(:action => :index) do |f| -%>
 					<table>
-						
 						<tr>
 							<td>
 								<label for="email">Your Child's Date of Birth:</label><br /><br />
@@ -32,69 +27,52 @@
 								<%= date_select :sitter, :birthday, :start_year => 75.years.ago.year, :end_year => Time.now.year-13, :default => {:year => "1990", :day => "1", :month => "1"}, :order => [:month, :day, :year] %><br /><br />
 							</td>
 						</tr>
-					<tr>
-						<td>
-							<label for="email">Your Child's Email Address:<br /><br /></label>
-						</td>
-						<td>
-							<%= text_field :sitter, :email %><br /><br />
-						</td>
-					</tr>
-					<tr>
-						<td colspan="2"><span>This is the email address that your child used to join SitterScout.</span></td>
-					</tr>
-
+						<tr>
+							<td>
+								<label for="email">Your Child's Email Address:<br /></label>
+							</td>
+							<td>
+								<%= text_field :sitter, :email %>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2"><span>This is the email address your child used when signing up.</span></td>
+						</tr>
 					</table>
 					<br />
-				
-
-				
-						<div style="margin-left: 150px;"><%= submit_tag "Submit" %></div>
-				
+					<div style="margin-left: 150px;"><%= submit_tag "Submit" %></div>
 				</div>
 			</div>
 		</div>
 
-		<div id="new_login" style="padding: 45px; margin-left: 420px;">	
-			
+		<div id="new_login" style="padding: 30px; margin-left: 420px;">	
 			<div style="background-color: #F7F7F7;">
-		
 			<table>
 					<tr><td colspan='2'><h4>Parental Consent</h4></td></tr>
 				<tr>
-					<td><%= f.radio_button(:approved, true) %>&nbsp;&nbsp;&nbsp;</td>
-					<td>I allow my child to sign up with SitterScout. I have
+					<td valign="top"><%= f.radio_button(:approved, true) %>&nbsp;&nbsp;&nbsp;</td>
+					<td align="justify">I allow my child to sign up with SitterScout. I have
 					read and agree with the <%= link_to "Terms & Conditions", "#{APP_URL}/tou" %> of
 					this website</td>
 				</tr>
 				<tr>
-			<td><%= f.radio_button(:approved, false) %>&nbsp;&nbsp;&nbsp;</td>
-			<td>I do NOT allow my child to sign up with SitterScout</td>
+					<td valign="top"><%= f.radio_button(:approved, false) %>&nbsp;&nbsp;&nbsp;</td>
+					<td align="justify">I do NOT allow my child to sign up with SitterScout</td>
 				</tr>
 						<tr><td colspan="2">&nbsp;</td></tr>
 					<tr><td colspan='2'><h4>Stay on top of their business:</h4></td></tr>
 				<tr>
-
-				<td><%= f.check_box :notify_child_added %>&nbsp;&nbsp;&nbsp;</td>
-				<td><label>I want to be notified when parents add my child to their
-				list of sitters.</label></td>
+					<td valign="top"><%= f.check_box :notify_child_added %>&nbsp;&nbsp;&nbsp;</td>
+					<td align="justify"><label>I want to be notified when parents add my child to their list of sitters.</label></td>
 				</tr>
-
 				<tr>
-
-				<td><%= f.check_box :notify_parent_request %>&nbsp;&nbsp;&nbsp;</td>
-				<td><label>I want to be notified when my child receives a babysitting request.</label></td>
+					<td valign="top"><%= f.check_box :notify_parent_request %>&nbsp;&nbsp;&nbsp;</td>
+					<td align="justify"><label>I want to be notified when my child receives a babysitting request.</label></td>
 				</tr>
-
-			
-
 			</table>
 			</div>
 			<% end -%>
-			
-
 		</div>
-
 	</div>
 </div>	
 	
