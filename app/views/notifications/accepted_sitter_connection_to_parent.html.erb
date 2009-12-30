@@ -6,24 +6,16 @@
 </head>
 <body>
 <%= image_tag("#{APP_URL}/images/email_signature.jpg", :alt=>"SitterScout.com") %>
-<font face="Arial, Helvetica, Geneva" style="font-size:15px;">
-<br/><br/>
-To the parents of <%= @sitter.profile.full_name %>,<br/><br/>
+<font face="Arial, Helvetica, Geneva">
 
-<%= @sitter.profile.full_name %> is interested in joining SitterScout, an online community that helps parents connect with babysitters. Because your child is under 18, we need your consent.<br/><br/>
+<p>To the parents of <%= @sitter.profile.full_name %>,</p>
 
-At SitterScout, babysitters build an online network of trusted families. When those families make a babysitting request <%= @sitter.profile.first_name %> is contacted by text message or e-mail. As a parent, you can choose to be notified whenever <%= @sitter.profile.first_name %> is asked to babysit and/or when a new parent wants to join her network.<br/><br/>
+<p> <%= @sitter.profile.full_name %> has added <%= @accepted_user.profile.full_name %> to their network on SitterScout.</p>
 
-Your child’s full profile information is restricted to the members of your child’s network. Your child controls whether or not they want to be searchable on SitterScout and who can see their list of connections. <br/><br/>
+<p>This message has been sent to you because you chose to be notified of all of <%= @sitter.profile.full_name %>’s new network requests. To change these settings at any time, click <%= link_to "here", APP_URL + url_for(:controller => 'consenting_parent', :action => 'index') %>.</p>
 
-click <%= link_to "here", APP_URL + url_for(:controller => 'consenting_parent', :action => 'index') %> to learn more and give <%= @sitter.profile.first_name %> permission to join the SitterScout community.<br/><br/> 
-
-If you have any questions, please contact us at <a href="mailto:info@sitterscout.com">info@sitterscout.com</a>.<br/><br/>
-
-Thank you,<br/>
-The SitterScout Team<br/><br/>
-
-SitterScout is simply the easiest way for babysitters to connect with the families they know and trust.<br/>
+<p>Thank you,</p>
+<p>The SitterScout Team</p>
 
 </font>
 </body>
