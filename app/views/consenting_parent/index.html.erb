@@ -1,20 +1,20 @@
 <div id='content' style="font-size: .9em;">
 	<%= error_messages_for :consenting_parent %>
 	<div class="login_wrapper">
-		<h4 style="padding-left: 45px;">Parental Consent</h4>
+		<h4 style="padding-left: 30px;">Parental Consent</h4>
 		<br />
-		<div style="padding-left: 40px; padding-right: 45px;">
-			<span>SitterScout is the easiest way for babysitters to connect with the families they know and trust. Here are some things you should know:</span><br /><br />
-			<span>
+		<div style="padding-left: 30px; padding-right: 45px;">
+			<p align="justify">SitterScout is the easiest way for babysitters to connect with the families they know and trust. Here are some things you should know:</p><br />
+			<p align="justify">
 				<ul style="padding-left:15px;"><li>Your child controls who is part of their network and whether or not they want others in the SitterScout community to be able to search for them.</li></ul><br>
 				<ul style="padding-left:15px;"><li>Only the people in your child’s network will be able to contact them and request them for babysitting jobs.</li></ul><br>
 				<ul style="padding-left:15px;"><li>Your child’s last name will only be displayed to members of their network.</li></ul>
-			</span>
+			</p>
 			<br/>
-			<span>We care about our sitters and recommend that their parents stay in the loop. That’s why we provide you with the option of being notified whenever your child is added to a parent’s list of sitters and/or when they receive babysitting requests.</span><br /><br />
-			<span>You control the information you receive, so you can always stay on top of your child’s business. Should you have a question at any time, please contact us at <%= mail_to "info@sitterscout.com" %>.</span>
+			<p align="justify">We care about our sitters and recommend that their parents stay in the loop. That’s why we provide you with the option of being notified whenever your child is added to a parent’s list of sitters and/or when they receive babysitting requests.</p><br />
+			<p align="justify">You control the information you receive, so you can always stay on top of your child’s business. Should you have a question at any time, please contact us at <%= mail_to "info@sitterscout.com" %>.</p>
 		</div>
-		<div id="signup" style="padding: 30px;">
+		<div id="signup" style="padding: 20px;">
 			<div id="grad">
 				<div id="sitter" style="padding: 5px;">
 					<% form_for :consenting_parent, :url => url_for(:action => :index) do |f| -%>
@@ -36,7 +36,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td colspan="2"><span>This is the email address your child used when signing up.</span></td>
+							<td colspan="2"><span>This is the email address that your child used to join SitterScout.</span></td>
 						</tr>
 					</table>
 					<br />
@@ -45,7 +45,7 @@
 			</div>
 		</div>
 
-		<div id="new_login" style="padding: 30px; margin-left: 420px;">	
+		<div id="new_login" style="padding: 20px; margin-left: 420px;">	
 			<div style="background-color: #F7F7F7;">
 			<table>
 					<tr><td colspan='2'><h4>Parental Consent</h4></td></tr>
