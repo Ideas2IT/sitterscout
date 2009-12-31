@@ -1,4 +1,4 @@
-<div id='content' style="font-size: .9em;height:580px;">
+<div id='content' style="font-size: .9em;height:600px;">
 	<%= error_messages_for :consenting_parent %>
 	<div class="login_wrapper">
 		<h4 style="padding-left: 30px;">Parental Consent</h4>
@@ -14,7 +14,7 @@
 			<p align="justify">We care about our sitters and recommend that their parents stay in the loop. That’s why we provide you with the option of being notified whenever your child is added to a parent’s list of sitters and/or when they receive babysitting requests.</p><br />
 			<p align="justify">You control the information you receive, so you can always stay on top of your child’s business. Should you have a question at any time, please contact us at <%= mail_to "info@sitterscout.com" %>.</p>
 		</div>
-		<div id="signup" style="padding: 20px;">
+		<div id="signup" style="padding: 20px;padding-right: 45px;">
 			<div id="grad">
 				<div id="sitter" style="padding: 5px;">
 					<% form_for :consenting_parent, :url => url_for(:action => :index) do |f| -%>
@@ -36,7 +36,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td colspan="2"><span>This is the email address that your child used to join SitterScout.</span></td>
+							<td colspan="2"><span style="font-size:12px;">This is the email address that your child used to join SitterScout.</span></td>
 						</tr>
 					</table>
 					<br />
@@ -45,7 +45,7 @@
 			</div>
 		</div>
 
-		<div id="new_login" style="padding: 20px; margin-left: 420px;">	
+		<div id="new_login" style="padding: 20px; margin-left: 420px;padding-right: 45px;">	
 			<div style="background-color: #F7F7F7;">
 			<table>
 					<tr><td colspan='2'><h4>Parental Consent</h4></td></tr>
