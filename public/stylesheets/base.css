@@ -9,6 +9,8 @@ a:hover { border-bottom: none; }
 #mainlogo { height: 80px; width: 220px; margin: 35px 0 15px 0; background: url(../images/sitterscout-logo.jpg) no-repeat;  float: left; cursor: pointer; }
 #logorsign { height: 40px; width: 180px; background: none; color: #000; opacity: 1.5; margin: 45px 0 25px 0; float: right; text-align: center; line-height: 40px; font-size: 9px; }
 
+#logorsigns { height: 40px; width: 180px; background: none; color: #000; opacity: 1.5; margin: 45px 0 25px 0; float: right; }
+
 #footer { height: 28px; width: 100%; background: url(../images/footer-gradient.jpg) repeat-x; position: fixed; bottom: 0; right: 0; overflow: hidden; }
 #footer p { width: 820px; padding:0; margin: 0 auto; line-height: 28px; font-size: 11px; color: #111; }
 #footer a { color: #fff; }
@@ -163,11 +165,11 @@ ul.howlistb { margin: 0; padding: 0; list-style: square; color: #222; }
 ul.howlistb li { padding-bottom: 8px; font-size: 14px; line-height: 20px;  }
 
 
-#loginmenu { width: 150px; height: 213px; background: url(../images/loginmenu-bg.png); position: absolute; z-index: 9999; left: 1010px; top: 50px; display: none; padding: 14px 16px; }
+#loginmenu { width: 150px; height: 213px; background: url(../images/loginmenu-bg.png); position: absolute; z-index: 9999;  top: 45px; display: none; padding: 14px 16px; }
 
 
 
-.logmenubutton { background: url(../images/loginmenu-buttons.png); height: 18px; cursor: pointer; m/argin: 14px 18px; }
+.logmenubutton { background: url(../images/loginmenu-buttons.png); height: 18px; cursor: pointer;  }
 .logmenubutton.in { background-position: 0 0; width: 64px; margin-top: 10px; }
 .logmenubutton.in:hover { background-position: 0 -18px; }
 .logmenubutton.signup { background-position: -64px 0; width: 142px; bottom: 14px; position: absolute; }

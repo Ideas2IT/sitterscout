@@ -73,41 +73,33 @@
 <div id='beta'></div>
 
 <div id='header' style="height:130px">
-	
-		<div id='headerwrapper'>
-			<div id='mainlogo' onclick='location.href="<%= current_path %>"'></div>
-			<div id='logorsign'>
-				<div class='loginsignup <%= logged_in? ? 'out' : 'carbon' %>' <%= logged_in? ? nil : "onmouseover='document.getElementById(\"loginmenu\").style.display=\"block\";'" %> onclick='<%= logged_in? ? "location.href=\"/logout\";" : nil %>'>
-				</div>
-
-			</div>
-
-
-		<div id='loginmenu'>
-			<div style='top: 40px; position: absolute;'>
-				<% form_tag sessions_path, :id=>"login_form" do -%>
-					<%= text_field_tag 'login','email address',:class=>'loginmenuinput', :onfocus=>"if(this.value=='email address'){this.value=''; this.style.color='#000';};", :onblur=>"if(this.value==''){this.value='email address'; this.style.color='#999'; }" %>
-					<%= password_field_tag 'password', 'password', :class=>'loginmenuinput',  :onfocus=>"if(this.value=='password'){this.value=''; this.style.color='#000';};", :onblur=>"if(this.value==''){this.value='password'; this.style.color='#999'; }"%>
+	<div id='headerwrapper'>
+		<div id='mainlogo' onclick='location.href="<%= current_path %>"'></div>
+		<div id='logorsigns'>
+			<div class='loginsignup <%= logged_in? ? 'out' : 'carbon' %>' <%= logged_in? ? nil : "onmouseover='document.getElementById(\"loginmenu\").style.display=\"block\";'" %> onclick='<%= logged_in? ? "location.href=\"/logout\";" : nil %>'>
+				<div id='loginmenu'>
+					<div style='top: 40px; position: absolute;'>
+						<% form_tag sessions_path, :id=>"login_form" do -%>
+							<%= text_field_tag 'login','email address',:class=>'loginmenuinput', :onfocus=>"if(this.value=='email address'){this.value=''; this.style.color='#000';};", :onblur=>"if(this.value==''){this.value='email address'; this.style.color='#999'; }" %>
+							<%= password_field_tag 'password', 'password', :class=>'loginmenuinput',  :onfocus=>"if(this.value=='password'){this.value=''; this.style.color='#000';};", :onblur=>"if(this.value==''){this.value='password'; this.style.color='#999'; }"%>
 							<br /><%= check_box_tag 'remember_me', :style=>'margin-left: 0;' %><label for="remember" style='font-size: 11px; color: #fff;'>Remember Me</label>
-							
-				<div class="logmenubutton in" onclick="$('login_form').submit();"></div>
+							<div class="logmenubutton in" onclick="$('login_form').submit();"></div>
 							<a href='<%= url_for(:controller => "sessions", :action => "forgot_password") %>' style='font-size: 11px; c/olor:#fff; border-bott/om: 1px dotted #fff; padding-left: 1px;'>forgot password?</a>
-				<% end %>
+						<% end %>
+					</div>
+					<div class='logmenubutton signup' onclick='location.href="<%= new_sitter_path %>"'></div>	
+				</div>
 			</div>
-			<div class='logmenubutton signup' onclick='location.href="<%= new_sitter_path %>"'></div>	
 		</div>
 		<div id="flash_notice">
-			
 			<% flash.each do |key, msg| %>
 				<%= content_tag('div', flash[:error], :id => "notice_#{key}") if flash[:error] %>
 				<%= content_tag('div', flash[:notice], :id => "notice_#{key}") if flash[:notice] %>	
 			<% end %>
-	</div>
-
 		</div>
-
 	</div>
-		<%= yield %>
+</div>
+<%= yield %>
 <div id='footer'>
 	<p>
 		&copy; 2008 Sitterscout, Inc.&nbsp;&nbsp;All Rights Reserved.&nbsp;&nbsp;|&nbsp;&nbsp;Email: info@sitterscout.com&nbsp;&nbsp;|&nbsp;&nbsp;<a href='/privacy'>Your Privacy</a>&nbsp;&nbsp;<a>|</a>&nbsp;&nbsp;<a href='/tou'>Terms of Use</a>&nbsp;&nbsp;<a>|</a>&nbsp;&nbsp;<a href='/faq'>FAQ</a>&nbsp;&nbsp;<a>|</a>&nbsp;&nbsp;<a href='/how_it_works'>How it Works</a>&nbsp;&nbsp;<a>|</a>&nbsp;&nbsp;<a target="_blank" href='http://www.sitterscout.com/blog'>Blog</a>
