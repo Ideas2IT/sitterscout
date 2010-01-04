@@ -9,7 +9,7 @@ class RatingsController < ApplicationController
       @sitter = Sitter.find(params[:sitter_id])
       @rating.sitter = @sitter
       if @rating.save
-        flash[:notice] = "Rating updated successfully"
+        flash[:notice] = "Thank you for submitting your rating."
       end
                  
       sitter_no = SitterRating.find(:all,:conditions => ['sitter_id = ?',params[:sitter_id]])

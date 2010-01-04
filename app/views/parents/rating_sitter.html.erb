@@ -23,7 +23,7 @@
 							Please rate your experience with<strong>
 								<%unless @profile.first_name.nil? and @profile.last_name.nil?%>
 									<%= @profile.first_name + " " + @profile.last_name%>.
-								<%end%></strong> Rating are on a scale of 1-4, with 4 being the best.
+								<%end%></strong> Ratings are on a scale of 1-4, with 4 being the best.
 							<br/><br/>
 							Sitters will be assigned a "Star" rating of 1 to 4 stars based on their reviews. Please be candid in your assessment.
 							<br> <br>
@@ -151,7 +151,7 @@
 							
 							<center>
 								<div style="clear: both; ">
-									<%=f.submit "Rating"%>
+									<%=f.submit "Submit"%>
 								</div>
 							</center>
 							<%end%>
