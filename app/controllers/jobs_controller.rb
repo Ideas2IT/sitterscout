@@ -68,8 +68,6 @@ class JobsController < ApplicationController
     @request = @job.requests.build
     @parent = Parent.find(params[:parent_id])
     
-    
-    
     booked_sitters = []
     params[:sitters].each do |s|
       
@@ -94,7 +92,6 @@ class JobsController < ApplicationController
       return
     end
     
-    
     @job.parent = @parent
       if @job.save && @request.save
         params[:sitters].each do |s|
@@ -107,13 +104,8 @@ class JobsController < ApplicationController
             end
           end
         end    
-
         redirect_back_or_default(dashboard_parent_path(current_user))
-
         flash[:notice] = 'Job was successfully created.'
-        
-
-        
       else
        render :action => "new" 
    end
