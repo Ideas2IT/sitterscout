@@ -49,9 +49,13 @@ class JobsController < ApplicationController
     
     date_to = params[:job]["date_to(4i)"] + ":" + params[:job]["date_to(5i)"] + " " + (params[:job]["date_to(6i)"].to_i == 0 ? "AM" : "PM") 
     dt_to = params[:parents][:scheduler] + " " + date_to
+    
+    puts "#{dt}==================#{dt_to}========="
+  
+    puts "#{dt.to_datetime}===================#{DateTime.now}"
   
     if dt.to_datetime < DateTime.now
-      flash[:error] = "A job cannot occur in the past."
+      flash[:error] = "#{dt.to_datetime}=======#{DateTime.now}=#{Time.now}=="
       redirect_to :back
       return  
     end
