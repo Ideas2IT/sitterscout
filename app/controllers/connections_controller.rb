@@ -61,6 +61,18 @@ class ConnectionsController < ApplicationController
     @profile = @user.profile
     render :layout => 'lightbox'
   end
+  
+  def view_friends_profile
+    @user = Parent.find_by_id(params[:id])
+    @profile = @user.profile
+    render :layout => 'lightbox'
+  end
+  
+  def view_sitter_profile
+    @user = Sitter.find_by_id(params[:id])
+    @profile = @user.profile
+    render :layout => 'lightbox'
+  end
 
   def show
     @user = User.find(params[:id])

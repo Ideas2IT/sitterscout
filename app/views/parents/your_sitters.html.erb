@@ -36,16 +36,16 @@
 
 										<% end %>
 								<% end %>
-								</div><br />
-							> <%= link_to "Add to Your Sitters", url_for(:controller => 'connections', :action => 'add_sitter', :id => friend.id), :class => "lbOn-300-270" %> 
+								</div>
+							> <%= link_to "View Profile",  url_for(:controller => 'connections' , :action => 'view_sitter_profile' , :id => friend.id), :class => "lbOn-850-570" %>
+							&nbsp; > <%= link_to "Add to Your Sitters", url_for(:controller => 'connections', :action => 'add_sitter', :id => friend.id), :class => "lbOn-300-270" %> 
 								<% if current_user.connected?(friend) %>
-							 
-						&nbsp;	><%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => friend.id), :class => "lbOn-405-390" %>
+							<br> 
+							><%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => friend.id), :class => "lbOn-405-390" %>
 						<% end %>
 						</font>	
 						
 						</div>
-
 				</div>	
 				<% end %>	
 			<% end %>
