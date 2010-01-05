@@ -1,0 +1,13 @@
+<h3><center><%= @user.profile.first_name %>
+	&nbsp;<%= @user.profile.sitter? ? @user.profile.last_name.to_s.first + "." : @user.profile.last_name %>'s Profile</center></h3>
+<div style="border: 0px #AFAFAF solid; background-color: #E9EDFE; padding: 5px; width: 840px; height: 510px; margin-right:20px; overflow-y: auto;">
+<%= render :partial => 'parents/profile_sitter', :collection => @friends %>
+</div>
+
+<div style="text-align: center; text-align: center; padding: 5px 0; width: 100%;">
+<a href="#" class="lbAction" rel="deactivate">Close Window</a>
+</div>
+
+<script type="text/javascript">
+	initialize();
+</script>
