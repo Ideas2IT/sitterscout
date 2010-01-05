@@ -124,7 +124,7 @@
 						<% else %>
 						> <%= link_to "View Profile", url_for(:controller => 'parents' , :action => 'view_profile_search' , :id => search.id) %>				
 						<br />
-	  					> <%= link_to "Add to Your Parents", url_for(:controller => 'connections', :action => 'add_friend', :id => search.id),:class => "lbOn-300-260", :style => 'padding-right: 10px; border-bottom: 1px #AFAFAF solid;' %>
+	  					> <%= link_to "Add to Your Friends", url_for(:controller => 'connections', :action => 'add_friend', :id => search.id),:class => "lbOn-300-260", :style => 'padding-right: 10px; border-bottom: 1px #AFAFAF solid;' %>
 						<% end %>
 						<% if current_user.connected?(search) %>
 						<br />
