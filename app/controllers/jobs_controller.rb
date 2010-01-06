@@ -47,21 +47,21 @@ class JobsController < ApplicationController
     dt_time = params[:job]["date_from(4i)"] + ":" + params[:job]["date_from(5i)"] + " " + (params[:job]["date_from(6i)"].to_i == 0 ? "AM" : "PM")
     dt = params[:parents][:scheduler] + " " + dt_time
     
-    puts "#{dt}================dt=="
-    
-    puts "#{dt_time}========st_time"
+    puts "#{dt_time}================dt_time=="
+    puts "#{dt}===============dt"
     
     date_to = params[:job]["date_to(4i)"] + ":" + params[:job]["date_to(5i)"] + " " + (params[:job]["date_to(6i)"].to_i == 0 ? "AM" : "PM") 
     dt_to = params[:parents][:scheduler] + " " + date_to
     
     puts "#{date_to}=======date_to======="
-    puts "#{dt_to}==========dt_to========"   
-    puts "#{dt}==================#{dt_to}========="
-  
-    puts "#{dt.to_datetime}===================#{DateTime.now.to_datetime}"
-  
-    if dt.to_datetime < DateTime.now
-      flash[:error] = "#{dt.to_datetime}=======#{DateTime.now.to_datetime}=#{Time.now}=="
+    puts "#{dt_to}==========dt_to========"  
+    
+    puts "#{dt}====dt==============#{dt_to}=======dt_to=="
+    puts "#{dt.to_datetime}====sss===#{Time.now.to_s(:long).to_datetime}==ss===#{Time.now}====ss="
+
+   
+    if dt.to_datetime < Time.now.to_s(:long).to_datetime
+      flash[:error] = "#{dt.to_datetime}===dt.to_datetime===#{Time.now.to_s(:long).to_datetime}===Time.now.to_s(:long).to_datetime====#{Time.now}====Time.now="
       redirect_to :back
       return  
     end
@@ -120,10 +120,11 @@ class JobsController < ApplicationController
       else
         render :action => "new" 
       end
-   rescue 
-    flash[:error]= "Please select at least one sitter!"
-    redirect_to :back
- 
+   
+#   rescue 
+#    flash[:error]= "Please select at least one sitter!"
+#    redirect_to :back
+# 
   end
 
   # PUT /jobs/1
