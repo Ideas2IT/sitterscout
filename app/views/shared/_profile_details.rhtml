@@ -1,15 +1,14 @@
-		<table style="padding-bottom: 25px;">
-				<tr>
-					<td colspan='4'>
-						<h3>Your Contact Information</h3>
-					</td>
-				</tr>
-				<tr><td width="130" ><label for="profile_first_name"><span id="profile_first_name_label">First Name</span></label><span style="color: #FF0000">*</span></td><td colspan='3'><%= text_field :profile, :first_name, :style=>"margin-top: 5px" %></td></tr>
-				<tr><td width="130" ><label for="profile_last_name"><span id="profile_last_name_label">Last Name</span></label><span style="color: #FF0000">*</span></td><td colspan='3'><%= text_field :profile, :last_name, :style=>"margin-top: 5px"  %></td></tr>
-				<tr><td width="130" ><label for="profile_address1"><span id="profile_address1_label">Address Line 1</span></label><span style="color: #FF0000">*</span>&nbsp;</td><td colspan='3'><%= text_field :profile, :address1, :style=>"margin-top: 5px"  %></td></tr>
-				<tr><td width="130" ><label for="profile_address2">Address Line 2</label></td><td colspan='3'><%= text_field :profile, :address2, :style=>"margin-top: 5px"  %></td></tr>
-				<tr><td width="130" ><label for="profile_city"><span id="profile_city_label">City</span></label><span style="color: #FF0000">*</span></td><td colspan='3'><%= text_field :profile, :city, :style=>"margin-top: 5px"  %></td></tr>
-				<tr><td width="130" ><label for="profile_state">State</label><span style="color: #FF0000">*</span></td><td><%= collection_select(:profile, :state_id, State.find(:all), :id, :name) %>	</td>
-				<td>&nbsp;<label for="profile_zipcode"><span id="profile_zipcode_label">ZIP code:</span></label><span style="color: #FF0000">*</span></td><td>&nbsp; <%= text_field :profile, :zipcode, :size => 8, :style=>"margin-top: 5px"  %></td></tr>
-
-			</table>
+<table style="padding-bottom: 25px;">
+	<tr>
+		<td colspan='4'>
+			<h3>Your Contact Information</h3>
+		</td>
+	</tr>
+	<tr><td width="130" ><label for="profile_first_name"><span id="profile_first_name_label">First Name</span></label><span style="color: #FF0000">*</span></td><td colspan='3'><%= text_field :profile, :first_name, :style=>"margin-top: 5px" %></td></tr>
+	<tr><td width="130" ><label for="profile_last_name"><span id="profile_last_name_label">Last Name</span></label><span style="color: #FF0000">*</span></td><td colspan='3'><%= text_field :profile, :last_name, :style=>"margin-top: 5px"  %></td></tr>
+	<tr><td width="130" ><label for="profile_address1"><span id="profile_address1_label">Address Line 1</span></label><span style="color: #FF0000">*</span>&nbsp;</td><td colspan='3'><%= text_field :profile, :address1, :style=>"margin-top: 5px"  %></td></tr>
+	<tr><td width="130" ><label for="profile_address2">Address Line 2</label></td><td colspan='3'><%= text_field :profile, :address2, :style=>"margin-top: 5px"  %></td></tr>
+	<tr><td width="130" ><label for="profile_city"><span id="profile_city_label">City</span></label><span style="color: #FF0000">*</span></td><td colspan='3'><%= text_field :profile, :city, :style=>"margin-top: 5px"  %></td></tr>
+	<tr><td width="130" ><label for="profile_state">State</label><span style="color: #FF0000">*</span></td><td><%= collection_select(:profile, :state_id, State.find(:all), :id, :name) %>	</td>
+	<td>&nbsp;<label for="profile_zipcode"><span id="profile_zipcode_label">ZIP code:</span></label><span style="color: #FF0000">*</span></td><td>&nbsp; <%= text_field :profile, :zipcode, :size => 8, :style=>"margin-top: 5px"  %></td></tr>
+</table>
