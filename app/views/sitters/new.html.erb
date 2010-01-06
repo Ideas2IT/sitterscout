@@ -60,7 +60,7 @@
 				</div>
 			
 				<div id="sitter"  style="padding: 5px;">
-					<% form_for :sitter, :url => sitters_path, :onsubmit => 'check_age();' do |f| -%>
+					<% form_for :sitter, :url => sitters_path  do |f| -%>
 						<table>
 							<tr>
 								<td>
@@ -138,16 +138,15 @@
 				        <p><%= f.check_box :terms_of_use %>  <label for="terms_of_use"> I have read and agree with the <strong><%= link_to "Terms of Use", "#{APP_URL}/tou", :target =>"_blank" %></strong> of this website.</label>
 						</p>
 						<br />
-						<p style="margin-bottom: 5px;"><%= f.label "birthdate",  "Birthday: (You must be at least 13 years old to sign up.)" %><br/>
+						<p style="margin-bottom: 5px;"><%= f.label "birthdate",  "Birthday: (You must be at least 13 years old to sign up.)" %> </p> <br/>
 						<p><%= f.date_select :birthday, :start_year => 75.years.ago.year, :end_year => Time.now.year-13, :default => {:year => "1990", :day => "1", :month => "1"}, :order => [:month, :day, :year] %></p>
 						<br />
 						<div><%= show_simple_captcha %></div>
 						<br />	
-						<input type="submit" id="hidden_submit" style="display: none;">						
-					<% end -%>
-
-					<div style="margin-left: 150px;"><span onclick="check_age();" style="cursor: pointer;"><%= image_tag "JoinNow_bttn.gif" %></span>
+						
+					<div style="margin-left: 150px;"><span style="cursor: pointer;"><%= image_submit_tag "JoinNow_bttn.gif" ,{:onclick =>'return check_age();'}%></span>
 					</div>
+					<% end -%>
 				</div>
 			</div>
 		</div>
@@ -312,7 +311,8 @@
 			}
 			else
 			{
-				$('hidden_submit').click()
+				return true;
+				//$('hidden_submit').click()
 			}
 
 		}
