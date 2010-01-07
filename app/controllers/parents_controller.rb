@@ -33,7 +33,8 @@ class ParentsController < ApplicationController
   end
   
   def sitters
-    plist = Profile.sitters_you_may_know(current_user.profile).collect(&:id)
+    limit = 10
+    plist = Profile.sitters_you_may_know(current_user.profile, limit).collect(&:id) 
     #find(:all, :conditions => ["profile_public = ?", true]).collect(&:id)
     alist = current_user.accepted_friendships.collect(&:friend_id)
     ulist = current_user.pending_friendships.collect(&:friend_id)
@@ -42,11 +43,22 @@ class ParentsController < ApplicationController
     
     
     sitter_ids = []
-    plist.each do |p|
-      unless current_user.id == p || alist.include?(p) || ulist.include?(p) || removed_people.include?(p)
-        sitter_ids << p if sitter_ids.length < 5
-      end
-    end
+    
+    
+#    puts "#{plist.size}============"
+    
+#    plist.each do |p|
+#      unless current_user.id == p || alist.include?(p) || ulist.include?(p) || removed_people.include?(p)
+#        sitter_ids << p if sitter_ids.length < 5
+#      end
+#    end
+    
+    plist -= alist
+    plist -= ulist
+    sitter_ids = plist.first(5)
+    
+#    puts "#{plist.first(5).size}============#{sitter_ids.size}============#{sitter_ids.class}="
+    
     @sitters = Sitter.find(:all, :include => [:photo], :conditions => ["users.id in (?) ", sitter_ids])    
     
     
@@ -60,7 +72,7 @@ class ParentsController < ApplicationController
       accepted_friendship_sitter_ids = current_user.accepted_friendships.select {|f| f.friend.is_a?Sitter}.collect {|f| f.friend.id}
       @confirmed_sitters = Sitter.find(:all, :include => [:photo], :conditions => ["users.id in (?) ", accepted_friendship_sitter_ids])
 
-#    @unconfirmed_sitters = []
+    @unconfirmed_sitters = []
 #    current_user.pending_friendships.each do |f|
 #      if f.friend.is_a?Sitter
 #        @unconfirmed_sitters << f

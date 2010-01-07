@@ -12,56 +12,59 @@
 				<span style='font-size: .9em; font-weight: bold'>Sitters You May Know:</span>
 				<% for search in @sitters do %>
 					<% unless search.nil? || search.profile.nil? %>
-					<%unless search.active %>
-					<div id="person_<%=search.id %>">
-							<div style="position: absolute; left: 210px; margin-top: 10px">
-								<%= link_to_remote(image_tag("default/qtip/close.gif", :border => 0), :url => remove_person_parent_path(search.id))  %>
+						<%unless search.active %>
+							<div id="person_<%=search.id %>">
+								<div style="position: absolute; left: 210px; margin-top: 10px">
+									<%= link_to_remote(image_tag("default/qtip/close.gif", :border => 0), :url => remove_person_parent_path(search.id))  %>
+								</div>
+								<table style="border: 1px solid #ADACAD; margin-top: 5px; padding: 3px; width: 235px; background-color: #FFFFFF" id="person_<%=search.id %>_table">
+									<tr>
+										<td colspan='2'>
+											<strong style="font-size: .8em; ">
+												<%= search.profile.first_name %>&nbsp;<%= search.profile.last_name.to_s.first + "." %>
+											</strong>
+										</td>
+									</tr>
+									<tr>
+										<td width="52">
+											<%= image_tag(search.avatar_photo_url(:thumb), :border => 0) %>
+										</td>
+										<td>
+											<table>
+												<tr>
+													<td valign="top" width="163" style=" font-size: .6em;  padding-left: 2px">
+														<h4>Connections You Share:</h4>
+														<%= current_user.shared_connections(search).collect(&:full_name).join(", ") %>
+													</td>
+												</tr>
+												<tr>
+													<td valign="top" width="163" style=" font-size: .6em;  padding-left: 2px">
+														<h4>Tags You Share:</h4>
+														<%= current_user.shared_tags(search).collect(&:name).join(", ") %>
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td valign="top" colspan="2" style="font-size: .6em;  padding-left: 2px" width="100%">
+											<%= link_to "View Profile", url_for(view_sitter_profile_woc_parent_path(search.id)) %> |
+											<%= link_to "Add to Your Sitters", url_for(:controller => 'connections', :action => 'add_sitter', :id => search.id), :class => "lbOn-300-270", :style => 'padding-bottom: 5px;' %>
+											<% if current_user.connected?(search) %> 
+						         				|<br/> <%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => search.id), :class => "lbOn-405-390" %>
+											<% end %>
+										</td>
+									</tr>
+								</table>
 							</div>
-						<table style="border: 1px solid #ADACAD; margin-top: 5px; padding: 3px; width: 235px; background-color: #FFFFFF" id="person_<%=search.id %>_table">
-							<tr>
-								<td colspan='2'>
-								<strong style="font-size: .8em; ">
-									<%= search.profile.first_name %>&nbsp;<%= search.profile.last_name.to_s.first + "." %>
-									</strong>
-								</td>
-							</tr>
-							<tr>
-								<td width="52">
-									<%= image_tag(search.avatar_photo_url(:thumb), :border => 0) %>
-								</td>
-								<td>
-									<table>
-										<tr>
-											<td valign="top" width="163" style=" font-size: .6em;  padding-left: 2px">
-											<h4>Connections You Share:</h4>
-											<%= current_user.shared_connections(search).collect(&:full_name).join(", ") %>
-											</td>
-										</tr>
-										<tr>
-											<td valign="top" width="163" style=" font-size: .6em;  padding-left: 2px">
-												<h4>Tags You Share:</h4>
-												<%= current_user.shared_tags(search).collect(&:name).join(", ") %>
-											</td>
-										</tr>
-									</table>
-							</tr>
-							<tr>
-								<td valign="top" colspan="2" style="font-size: .6em;  padding-left: 2px" width="100%">
-								<%= link_to "View Profile", url_for(view_sitter_profile_woc_parent_path(search.id)) %> |
-								<%= link_to "Add to Your Sitters", url_for(:controller => 'connections', :action => 'add_sitter', :id => search.id), :class => "lbOn-300-270", :style => 'padding-bottom: 5px;' %>
-								<% if current_user.connected?(search) %> 
-						         |<br/> <%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => search.id), :class => "lbOn-405-390" %>
-									<% end %>
-								</td>
-						</table>
-						</div>
 						<%end%>
 					<% end %>
 				<% end %>
-			<!-- Column 1 end -->
-		</div>
-		<div class="col2">
-			<span style='font-size: .9em; font-weight: bold'>Your Sitters:</span>
+					<!-- Column 1 end -->
+			</div>
+			<div class="col2">
+				<span style='font-size: .9em; font-weight: bold'>Your Sitters:</span>
+				
 				<div style="width: 465px; margin-top: 5px; font-size: .8em">
 					<% if @confirmed_sitters.size < 1 %>
 						You currently have no sitters.
@@ -70,39 +73,40 @@
 						<div style="width: 98%; border: 1px solid #ADACAD; padding: 5px; margin-bottom: 5px; background-color: #FFFFFF">
 							<table>
 								<tr>
-			  						<td>
-			  							<%= link_to(image_tag(f.avatar_photo_url, :class => "right", :border => 0 ), url_for(view_sitter_profile_parent_path(f.id))) %>
-			  						</td>
+		  							<td>
+		  								<%= link_to(image_tag(f.avatar_photo_url, :class => "right", :border => 0 ), url_for(view_sitter_profile_parent_path(f.id))) %>
+		  							</td>
 									<td style="padding: 5px;" valign="top">
 										<%
-										hide_connection = Friendship.find(:first, :conditions => ["user_id = ? AND friend_id = ?", current_user, f.id], :limit => 1).hide_connection
-										checked = hide_connection ? "checked='checked'" : ""
+											hide_connection = Friendship.find(:first, :conditions => ["user_id = ? AND friend_id = ?", current_user, f.id], :limit => 1).hide_connection
+											checked = hide_connection ? "checked='checked'" : ""
 										%>
 										<div id="hide_<%= f.id %>_div" style="float: right; margin-top: -6px;"><input name="hide_<%= f.id %>" <%=checked %> id="hide_<%= f.id %>" type="checkbox" value='1' /> Hide Sitter 
 											<a href="#" title="If you check the box, this sitter will not be displayed when others “View Your Connections”."><img src="/images/QuestionMark_transp.gif" border=0></a>
 										</div>
 										<%= observe_field "hide_#{f.id}", :url => hide_sitter_connection_parent_path(current_user),
-					     					:frequency => 2,
-					     					:with => "'sitter_id=#{f.id}&hide_connection='+value"
-					    				%>
+				     						:frequency => 2,
+				     						:with => "'sitter_id=#{f.id}&hide_connection='+value"
+				    					%>
 										<%if f.active %>
-										<strong style="font-size: 1em; "><%= link_to(f.profile.first_name + " " + f.profile.last_name, url_for(view_sitter_profile_parent_path(f.id))) %>&nbsp;- INACTIVE</strong>
+											<strong style="font-size: 1em; "><%= link_to(f.profile.first_name + " " + f.profile.last_name, url_for(view_sitter_profile_parent_path(f.id))) %>&nbsp;- INACTIVE</strong>
 										<%else%>
-										<strong style="font-size: 1em; "><%= link_to(f.profile.first_name + " " + f.profile.last_name, url_for(view_sitter_profile_parent_path(f.id))) %></strong>
+											<strong style="font-size: 1em; "><%= link_to(f.profile.first_name + " " + f.profile.last_name, url_for(view_sitter_profile_parent_path(f.id))) %></strong>
 										<%end%>
 										<br/>
-								        <%= f.profile.city %>, <%= f.profile.state.name %><br />
-		  								<strong>Tags: </strong><%= truncate(f.profile.tag_list.to_s, 38, "...") %>
-		 								<% if(f.profile.tag_list.to_s.size > 38) %>
+							        	
+										<%= f.profile.city %>, <%= f.profile.state.name %><br />
+	  									<strong>Tags: </strong><%= truncate(f.profile.tag_list.to_s, 38, "...") %>
+	 									<% if(f.profile.tag_list.to_s.size > 38) %>
 											<%= link_to "More", "#", :onmouseover =>"TagToTip('#{f.id}_tip', ABOVE, true, BALLOON, true)", :onmouseout => "UnTip()", :style => "color: #C21D7F;" %>
 											<div id="<%= f.id %>_tip" style="display: none;"><%= f.profile.tag_list.to_s %></div>
 										<% end %>
-									  	<div valign="top" style=" font-size: .8em;  margin-top: 18px;">
-		 	  								<%= link_to "View Profile", url_for(view_sitter_profile_parent_path(f.id)) %> | 
+								  		<div valign="top" style=" font-size: .8em;  margin-top: 18px;">
+	 	  									<%= link_to "View Profile", url_for(view_sitter_profile_parent_path(f.id)) %> | 
 											<%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => f.id), :class => "lbOn-405-390" %> |
 											<%= link_to "Send Message", compose_parent_path(current_user, :to_id => f.id) %> | 
-			  								<%= link_to "Remove Sitter", url_for(:controller => 'connections', :action => 'decline', :id => f.id), :confirm => "Are you sure you want to remove this sitter?" %>
-		  								</div>
+		  									<%= link_to "Remove Sitter", url_for(:controller => 'connections', :action => 'decline', :id => f.id), :confirm => "Are you sure you want to remove this sitter?" %>
+	  									</div>
 									</td>
 								</tr>
 							</table>
@@ -141,14 +145,11 @@
 			<!-- Column 2 end -->
 		</div>
 	</div>
-			
 </div>
-
-
 
 <div style="position: absolute; margin-left: 775px;top: 275px;">
 		<%= render :partial => '/shared/share_a_sale' %>
-		</div>
+</div>
 </div>
 
 
