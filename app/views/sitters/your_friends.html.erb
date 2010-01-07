@@ -36,14 +36,16 @@
 						<br/>	><%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => friend.id), :class => "lbOn-405-390" %>
 						<% end %>
 						</font>	
-						
 						</div>
-
 				</div>		
 				<% end %>
 			<% end %>
 		<% end %>
 	</div>
+	
+	<script type="text/javascript">
+		initialize();
+	</script>
 	
 	<div id="friends_search" style="float: left; width: 450px; margin-top: -30px">
 			<span style='font-size: 13pt; font-weight: bold;'>Search For Other People:</span>

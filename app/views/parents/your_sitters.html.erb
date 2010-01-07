@@ -37,7 +37,7 @@
 										<% end %>
 								<% end %>
 								</div>
-							> <%= link_to "View Profile",  url_for(:controller => 'connections' , :action => 'view_sitter_profile' , :id => friend.id), :class => "lbOn-850-570" %>
+							> <%= link_to "View Profile",  url_for(:controller => 'connections' , :action => 'view_sitter_profile' , :id => friend.id), :class => "lbOn-850-570"%>
 							&nbsp; > <%= link_to "Add to Your Sitters", url_for(:controller => 'connections', :action => 'add_sitter', :id => friend.id), :class => "lbOn-300-270" %> 
 								<% if current_user.connected?(friend) %>
 							<br> 
@@ -51,6 +51,10 @@
 			<% end %>
 		<% end %>
 	</div>
+	
+	<script type="text/javascript">
+		initialize();
+	</script>
 	
 	<div id="friends_search" style="float: left; width: 450px; margin-top: -30px;">
 		<span style='font-size: 1.1em; font-weight: bold;'>Search For Other Sitters:</span>
