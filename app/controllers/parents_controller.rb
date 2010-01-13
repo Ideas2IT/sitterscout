@@ -40,22 +40,17 @@ class ParentsController < ApplicationController
     ulist = current_user.pending_friendships.collect(&:friend_id)
     @sitters = []
     removed_people = RemovedPeople.find_users_removed_people_ids(current_user.id)
-    
-    
+``    
     sitter_ids = []
     
     
 #    puts "#{plist.size}============"
     
-#    plist.each do |p|
-#      unless current_user.id == p || alist.include?(p) || ulist.include?(p) || removed_people.include?(p)
-#        sitter_ids << p if sitter_ids.length < 5
-#      end
-#    end
-    
-    plist -= alist
-    plist -= ulist
-    sitter_ids = plist.first(5)
+    plist.each do |p|
+      unless current_user.id == p || alist.include?(p) || ulist.include?(p) || removed_people.include?(p)
+        sitter_ids << p if sitter_ids.length < 5
+      end
+    end
     
 #    puts "#{plist.first(5).size}============#{sitter_ids.size}============#{sitter_ids.class}="
     

@@ -7,7 +7,7 @@
 				</td>
 				<td>&nbsp;</td>
 				<td valign="top">
-					<table border="0" cellpadding="0" cellspacing="0">
+					<table border="0" cellpadding="0" cellspacing="0" border="2">
 						<tr>
 							<td>
 								<strong>
@@ -17,6 +17,37 @@
 										<%end%>
 									</font>
 								</strong>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<table>
+									<tr>
+										<% if logged_in? %>
+											<%if @user.sitter_ratings.size > 0 %>
+												<%unless @user.profile.parent? %>
+													<% stars = rate_calc(@user)%>
+													<%for i in 1..stars[0].to_i%>
+													<td>
+														<%= image_tag "rating/star_orange.png"%>
+													</td>
+													<%end%>
+													<%for i in 1..stars[1].to_i%>
+													<td>
+														<%= image_tag "rating/star_yellow.png"%>
+													</td>
+													<%end%>
+													<%for i in 1..stars[2].to_i%>
+													<td>
+														<%= image_tag "rating/star_white.png"%>
+													</td>
+													<%end%>
+												 	&nbsp;
+												<%end%>
+											<%end%>
+										<%end%>
+									</tr>
+								</table>
 							</td>
 						</tr>
 						<tr>
