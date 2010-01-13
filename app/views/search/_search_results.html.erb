@@ -17,7 +17,7 @@
 								Name:
 							</p>
 						</td>
-						<td>
+						<td valign="top">
 							<p>
 								<strong><%= search.profile.first_name %>&nbsp;<%= search.profile.sitter? ? search.profile.last_name.to_s.first + "." : search.profile.last_name %></strong>
 								<br>
@@ -46,9 +46,9 @@
 													&nbsp;(<%= @count.to_s%> reviews)
 												<%end%>
 											<%end%>
+										<%end%>
 									<%end%>
 								<%end%>
-							<%end%>
 							</p>
 						</td>
 					</tr>
@@ -88,10 +88,10 @@
 							<td>
 								<p style="width: 290px;line-height: 15px;">
 									<% unless search.description.blank? %>	
-										<% if search.description.to_s.size < 130 %>
+										<% if search.description.to_s.size < 46 %>
 										<%= search.description + " " + link_to("more...", "#", :title=> search.description) %>
 										<% else %>
-											<%= truncate(search.description, 130, " ") + link_to("more...", "#", :title=>search.description) %>
+											<%= truncate(search.description, 46, " ") + link_to("more...", "#", :title=>search.description) %>
 										<% end %>
 								<% end %>
 								</p>
