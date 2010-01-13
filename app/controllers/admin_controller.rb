@@ -4,11 +4,49 @@ class AdminController < ApplicationController
   layout 'no_search'
   
   def index
+    
     @total_sitters = Sitter.count()
     @total_parents = Parent.count()
     @approved_minor_sitters = Sitter.count(:include => [:consenting_parent],:conditions => ["users.minor = true and consenting_parents.approved = true"])
     @declined_minor_sitters = Sitter.count(:include => [:consenting_parent],:conditions => ["users.minor = true and (consenting_parents.approved = false) "])
     @minor_sitters_awaiting_response = Sitter.count(:include => [:consenting_parent],:conditions => ["users.minor = true and (consenting_parents.approved IS NULL)"])
+    
+    @total_sitters_month = Sitter.signup_month
+    @total_parents_month = Parent.signup_month
+    @sitting_request = Job.job_all.size
+    
+    user_id_coll = []
+    friend_coll_month = []
+    friend_coll = Friendship.friends_parent
+    user_id_coll = friend_coll.collect(&:user_id)
+    parent_sitter_request = User.find(:all, :conditions => ['users.id IN (?) AND users.type="Sitter"',user_id_coll])
+    
+    friend_coll.each do |fc|
+      if fc.created_at.to_date > Date.today<<1 
+        friend_coll_month << fc.user_id
+      end
+    end
+    parent_sitter_request_month = User.find(:all, :conditions => ['users.id IN (?) AND users.type="Sitter"',friend_coll_month])
+    
+    job_filled = []
+    job_unfilled = []
+    job_all_month = []
+    
+    Job.job_all.each do |j|
+      if !j.sitter_id.nil?
+        job_filled << j.sitter_id
+      else
+        job_unfilled << j.parent_id
+      end
+      if j.created_at.to_date > Date.today<<1 
+        job_all_month << j.parent_id 
+      end
+    end
+    @sitting_request_filled = job_filled.size
+    @sitting_reqeust_unfilled = job_unfilled.size
+    @sitting_request_month = job_all_month.size
+    @parent_sitter_connection = parent_sitter_request.size
+    @parent_sitter_connection_month = parent_sitter_request_month.size
   end
   
   def compose

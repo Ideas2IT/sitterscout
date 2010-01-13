@@ -11,6 +11,9 @@ class Job < ActiveRecord::Base
   # state :accepted
   # state :declined
   # state :cancelled
-  # 
+  
+  def self.job_all
+    Job.find(:all)
+  end
   
 end

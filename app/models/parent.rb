@@ -36,6 +36,18 @@ class Parent < User
     transitions :from => :add_sitters, :to => :complete
   end
   
+  def self.signup_month
+    Parent.count(:all, :conditions => ['? < created_at',Date.today<<1])
+  end
+  
+#  def self.parent_find
+#    Parent.find(:all)
+#  end
+  
+#  def self.parent_connection
+#    Parent.find(:all, :joins=> ['INNER JOIN friendships ON friendships.friend_id = ?',parent.parent_id])
+#  end
+  
  # after_create {|user| ParentMailer.deliver_signup_notification(user) }
   #after_save   {|user| ParentMailer.deliver_activation(user) if user.recently_activated? }
   

@@ -31,7 +31,11 @@ class Sitter < User
 
    def all_unconfirmed_families
     ConfirmedSitter.find(:all, :conditions => ["sitter_id = ? and aasm_state = ?", self.id, "awaiting"])
-   end
+  end
+  
+  def self.signup_month
+    Sitter.count(:all, :conditions => ['? < created_at', Date.today<<1])
+  end
 
    def underage?
      unless self.birthday.nil?

@@ -4,48 +4,112 @@
 	</div>
 	<br />
 	<span style="font-weight: bold;">User Stats</span>
-	<table cellspacing=0 style="margin: 5px 0 0 5px;">
-	<tr>
-		<td align="right" style="border: 1px solid #000000; padding: 4px;">	
-			Parents:
+	<table width="50%" height="100%" cellspacing=0 style="margin: 5px 0 0 5px; ">
+		<tr>
+			<td align="right" style="border: 1px solid #000000; padding: 4px;">	
+				Parents - Total:
+				</td>
+				<td  align="right" style="border-top: 1px solid #000000; border-right: 1px solid #000000;  border-bottom: 1px solid #000000; padding: 4px;">
+				<%= @total_parents %>
 			</td>
-			<td  align="right" style="border-top: 1px solid #000000; border-right: 1px solid #000000;  border-bottom: 1px solid #000000; padding: 4px;">
-			<%= @total_parents %>
-		</td>
-	</tr>
-	<tr>
-		<td align="right" style="border-left: 1px solid #000000; border-right: 1px solid #000000; border-bottom: 1px solid #000000; padding: 4px;">
-			Sitters:
-		</td>
-		<td align="right" style=" border-bottom: 1px solid #000000; border-right: 1px solid #000000; padding: 4px;">	
-			<%= @total_sitters %>
-		</td>
-	</tr>
-	<tr>
-		<td align="right" style="border-left: 1px solid #000000; border-right: 1px solid #000000; border-bottom: 1px solid #000000; padding: 4px;">
-			Approved Minor Sitters:
-		</td>
-		<td align="right" style=" border-bottom: 1px solid #000000; border-right: 1px solid #000000; padding: 4px;">	
-			<%= @approved_minor_sitters %>
-		</td>
-	</tr>
-	<tr>
-		<td align="right" style="border-left: 1px solid #000000; border-right: 1px solid #000000; border-bottom: 1px solid #000000; padding: 4px;">
-			Declined Minor Sitters:
-		</td>
-		<td align="right" style=" border-bottom: 1px solid #000000; border-right: 1px solid #000000; padding: 4px;">	
-			<%= @declined_minor_sitters %>
-		</td>
-	</tr>
-	<tr>
-		<td align="right" style="border-left: 1px solid #000000; border-right: 1px solid #000000; border-bottom: 1px solid #000000; padding: 4px;">
-			Minor Sitters Awaiting Response:
-		</td>
-		<td align="right" style=" border-bottom: 1px solid #000000; border-right: 1px solid #000000; padding: 4px;">	
-			<%= @minor_sitters_awaiting_response %>
-		</td>
-	</tr>
-  </table>
+		</tr>
+		<tr>
+			<td align="right" style="border-left: 1px solid #000000; border-right: 1px solid #000000; border-bottom: 1px solid #000000; padding: 4px;">
+				Parents - New this month:
+			</td>
+			<td align="right" style=" border-bottom: 1px solid #000000; border-right: 1px solid #000000; padding: 4px;">	
+				<%= @total_parents_month %> 
+			</td>
+		</tr>
+		<tr>
+			<td align="right" style="border-left: 1px solid #000000; border-right: 1px solid #000000; border-bottom: 1px solid #000000; padding: 4px;">
+				Sitters - Total:
+			</td>
+			<td align="right" style=" border-bottom: 1px solid #000000; border-right: 1px solid #000000; padding: 4px;">	
+				<%= @total_sitters %>
+			</td>
+		</tr>
+		<tr>
+			<td align="right" style="border-left: 1px solid #000000; border-right: 1px solid #000000; border-bottom: 1px solid #000000; padding: 4px;">
+				Sitters - New this month:
+			</td>
+			<td align="right" style=" border-bottom: 1px solid #000000; border-right: 1px solid #000000; padding: 4px;">	
+				<%= @total_sitters_month %> 
+			</td>
+		</tr>
+		<tr>
+			<td align="right" style="border-left: 1px solid #000000; border-right: 1px solid #000000; border-bottom: 1px solid #000000; padding: 4px;">
+				Approved Minor Sitters:
+			</td>
+			<td align="right" style=" border-bottom: 1px solid #000000; border-right: 1px solid #000000; padding: 4px;">	
+				<%= @approved_minor_sitters %>
+			</td>
+		</tr>
+		<tr>
+			<td align="right" style="border-left: 1px solid #000000; border-right: 1px solid #000000; border-bottom: 1px solid #000000; padding: 4px;">
+				Declined Minor Sitters:
+			</td>
+			<td align="right" style=" border-bottom: 1px solid #000000; border-right: 1px solid #000000; padding: 4px;">	
+				<%=@declined_minor_sitters %>
+			</td>
+		</tr>
+		<tr>
+			<td align="right" style="border-left: 1px solid #000000; border-right: 1px solid #000000; border-bottom: 1px solid #000000; padding: 4px;">
+				Minor Sitters Awaiting Response:
+			</td>
+			<td align="right" style=" border-bottom: 1px solid #000000; border-right: 1px solid #000000; padding: 4px;">	
+				<%= @minor_sitters_awaiting_response %> 
+			</td>
+		</tr>
+		<tr>
+			<td align="right" style="border-left: 1px solid #000000; border-right: 1px solid #000000; border-bottom: 1px solid #000000; padding: 4px;">
+				Number of babysitting requestes - Total:
+			</td>
+			<td align="right" style=" border-bottom: 1px solid #000000; border-right: 1px solid #000000; padding: 4px;">	
+				<%= @sitting_request  %>
+			</td>
+		</tr>
+		<tr>
+			<td align="right" style="border-left: 1px solid #000000; border-right: 1px solid #000000; border-bottom: 1px solid #000000; padding: 4px;">
+				Number of babysitting requested filled - Total:
+			</td>
+			<td align="right" style=" border-bottom: 1px solid #000000; border-right: 1px solid #000000; padding: 4px;">	
+				<%= @sitting_request_filled %>
+			</td>
+		</tr>
+		<tr>
+			<td align="right" style="border-left: 1px solid #000000; border-right: 1px solid #000000; border-bottom: 1px solid #000000; padding: 4px;">
+				Number of babysitting requested unfilled - Total:
+			</td>
+			<td align="right" style=" border-bottom: 1px solid #000000; border-right: 1px solid #000000; padding: 4px;">	
+				<%=@sitting_reqeust_unfilled  %>
+			</td>
+		</tr>
+		<tr>
+			<td align="right" style="border-left: 1px solid #000000; border-right: 1px solid #000000; border-bottom: 1px solid #000000; padding: 4px;">
+				Number of babysitting request filled in last 30 days:
+			</td>
+			<td align="right" style=" border-bottom: 1px solid #000000; border-right: 1px solid #000000; padding: 4px;">	
+				<%= @sitting_request_month %>
+			</td>
+		</tr>
+		<tr>
+			<td align="right" style="border-left: 1px solid #000000; border-right: 1px solid #000000; border-bottom: 1px solid #000000; padding: 4px;">
+				Number of parent to sitter connections - Total:
+			</td>
+			<td align="right" style=" border-bottom: 1px solid #000000; border-right: 1px solid #000000; padding: 4px;">	
+				<%=@parent_sitter_connection %>
+			</td>
+		</tr>
+		<tr>
+			<td align="right" style="border-left: 1px solid #000000; border-right: 1px solid #000000; border-bottom: 1px solid #000000; padding: 4px;">
+				Number of parent to sitter connections - last 30 days:
+			</td>
+			<td align="right" style=" border-bottom: 1px solid #000000; border-right: 1px solid #000000; padding: 4px;">	
+				<%=@parent_sitter_connection_month%>
+			</td>
+		</tr>
+  	</table>
 </div>
-
+<div style="height:100px;"></div>
 <%#= render :partial => 'admin_info' %>

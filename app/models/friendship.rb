@@ -46,4 +46,10 @@ class Friendship < ActiveRecord::Base
     request.accepted_at = accepted_at
     request.save!
   end
+  
+  def self.friends_parent
+    Friendship.find(:all ,:joins => "inner join users u on u.id = friendships.friend_id where u.type = 'Parent'")
+#    :select => "DISTINCT(friendships.friend_id)"
+#   Friendship.find_by_sql("SELECT * from friendships f WHERE  f.friend_id  IN (SELECT DISTINCT (f.friend_id) FROM friendships f INNER JOIN users u on u.id = f.friend_id WHERE u.type = 'Parent')")
+  end
 end
