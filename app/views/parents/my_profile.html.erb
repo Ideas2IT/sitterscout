@@ -134,6 +134,11 @@ function validate()
 		$('cell_phone_name_label').style.color = "#FF0000";
 		fail = true;
 	}
+	if ($('profile_text_message_false').checked ) {
+			$('cell_phone_name_label').style.color = "gray";
+			$('profile_cell_phone_carrier_label').style.color = "gray";
+			fail = false;
+	}
 	if(fail)
 	{
 		$('flash_notice').innerHTML = '<div id="notice_error">Oops. You’re missing something. Please review the fields in red.</div>';
