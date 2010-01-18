@@ -75,7 +75,24 @@
 	<div style="height:135px;">
 			<div id='mainlogo' onclick='location.href="<%= current_path %>"'></div>
 			<div id='logorsigns'>
-				<div class='loginsignup <%= logged_in? ? 'out' : 'carbon' %>' <%= logged_in? ? nil : "onmouseover='document.getElementById(\"loginmenu\").style.display=\"block\";'" %> onclick='<%= logged_in? ? "location.href=\"/logout\";" : nil %>'></div>
+				<div class='loginsignup <%= logged_in? ? 'out' : 'carbon' %>' <%= logged_in? ? nil : "onmouseover='document.getElementById(\"loginmenu\").style.display=\"block\";'" %> onclick='<%= logged_in? ? "location.href=\"/logout\";" : nil %>'>
+					<div id='loginmenu'>
+						<div style='top: 40px; position: absolute;'>
+							<% form_tag sessions_path, :id=>"login_form" do -%>
+								<%= text_field_tag 'login','email address',:class=>'loginmenuinput', :onfocus=>"if(this.value=='email address'){this.value=''; this.style.color='#000';};", :onblur=>"if(this.value==''){this.value='email address'; this.style.color='#999'; }" %>
+								<%= password_field_tag 'password', 'password', :class=>'loginmenuinput',  :onfocus=>"if(this.value=='password'){this.value=''; this.style.color='#000';};", :onblur=>"if(this.value==''){this.value='password'; this.style.color='#999'; }"%>
+								<br /><%= check_box_tag 'remember_me', :style=>'margin-left: 0;' %><label for="remember" style='font-size: 11px; color: #fff;'>Remember Me</label>
+								<div class="logmenubutton in" onclick="$('login_form').submit();"></div>
+								<a href='<%= url_for(:controller => "sessions", :action => "forgot_password") %>' style='font-size: 11px; c/olor:#fff; border-bott/om: 1px dotted #fff; padding-left: 1px;'>forgot password?</a>
+							<% end %>
+						</div>
+						<div class='logmenubutton signup' onclick='location.href="<%= new_sitter_path %>"'></div>	
+					</div>
+				</div>
+				<%if !logged_in? %>
+				<div  style="float:left;padding-top:15px;padding-left:6px;font-size:9px;">OR</div>
+				<div class='loginsignup magenta' onclick='location.href="/sitters/new"'></div>
+				<%end%>
 			</div>
 		</div>
 		<div id='navbar' <%= current_page?(:controller => "home", :action => "index") ? "class='home'" : nil %>>
