@@ -20,21 +20,20 @@
 						<td valign="top">
 							<p>
 								<strong><%= search.profile.first_name %>&nbsp;<%= search.profile.sitter? ? search.profile.last_name.to_s.first + "." : search.profile.last_name %></strong>
-								<br>
-								<% if logged_in? %>
-									<%if search.sitter_ratings.size > 0 %>
-										<%unless search.profile.parent? %>
-											<% stars = rate_calc(search)%>
-											<%for i in 1..stars[0].to_i%>
-												<%= image_tag "rating/star_orange.png"%>
-											<%end%>
-											<%for i in 1..stars[1].to_i%>
-												<%= image_tag "rating/star_yellow.png"%>
-											<%end%>
-											<%for i in 1..stars[2].to_i%>
-												<%= image_tag "rating/star_white.png"%>
-											<%end%>
-										 	&nbsp;
+								<br/>
+								<%if search.sitter_ratings.size > 0 %>
+									<%unless search.profile.parent? %>
+										<% stars = rate_calc(search)%>
+										<%for i in 1..stars[0].to_i%>
+											<%= image_tag "rating/star_orange.png"%>
+										<%end%>
+										<%for i in 1..stars[1].to_i%>
+											<%= image_tag "rating/star_yellow.png"%>
+										<%end%>
+										<%for i in 1..stars[2].to_i%>
+											<%= image_tag "rating/star_white.png"%>
+										<%end%>
+									 	<% if logged_in? %>
 											<%if @count != 0 %>
 												<%if !@comment.nil? %>
 													<% if current_user.type == 'Parent' %>
@@ -46,6 +45,8 @@
 													&nbsp;(<%= @count.to_s%> reviews)
 												<%end%>
 											<%end%>
+										<%else%>
+											&nbsp;(<%= @count.to_s%> reviews)
 										<%end%>
 									<%end%>
 								<%end%>
