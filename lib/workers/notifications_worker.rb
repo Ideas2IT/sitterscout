@@ -5,6 +5,7 @@ class NotificationsWorker < BackgrounDRb::MetaWorker
     # this method is called, when worker is loaded for the first time
     add_periodic_timer(3600) { 
 #    send_notifications
+     puts "this is called jobs======================="
      sitter_request_remainder
      sitter_rating
     }
@@ -37,7 +38,7 @@ class NotificationsWorker < BackgrounDRb::MetaWorker
     
     #job remainder email
     def sitter_request_remainder
-  
+    puts "puts remainder====================="
     jobs_to_send = Job.find(:all, :conditions => ["date_from <= ? AND notification_sent IS NOT true", 2.days.from_now])
     
     jobs_to_send.each do |j|
@@ -66,28 +67,34 @@ class NotificationsWorker < BackgrounDRb::MetaWorker
           j.save
       end
     end
+    
   end
   
   #rating notification email
   
   def sitter_rating
-    
+    puts "calling====rating================"
     rate_to_send = Job.find(:all, :conditions => ["? >= (date_to + INTERVAL 12 HOUR) AND rate_notification IS NOT TRUE",Time.now])
       
-    rate_to_send.each do |r|
-      unless r.parent_id.nil? || r.sitter_id.nil?
-         parent = Parent.find(r.parent_id)
-         sitter = Sitter.find(r.sitter_id)
-          unless parent.profile.nil?
-            if parent.profile.email?
-              Notifications.deliver_parent_job_rating_poll(parent, sitter, r)
-            end
+    rate_to_send.each do |rate|
+         unless rate.parent.nil?
+#            puts "parent=================="
+            unless rate.sitter.nil?
+#                puts "sitter================="
+                parent = Parent.find(rate.parent_id)
+                sitter = Sitter.find(rate.sitter_id)
+                if parent.profile.email?
+                      Notifications.deliver_parent_job_rating_poll(parent, sitter, rate)
+#                     puts "called from this email========================="
+                end
+            end 
           end
-        r.rate_notification = true
-        r.save
-      end
     end
-  end
+    
+    r.rate_notification = true
+    r.save
+    
+   end
   
-end#notifications
+end #notifications
 
