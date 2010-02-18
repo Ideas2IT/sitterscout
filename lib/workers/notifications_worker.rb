@@ -5,7 +5,7 @@ class NotificationsWorker < BackgrounDRb::MetaWorker
     # this method is called, when worker is loaded for the first time
     add_periodic_timer(3600) { 
 #    send_notifications
-     puts "this is called jobs======================="
+#     puts "this is called jobs======================="
      sitter_request_remainder
      sitter_rating
     }
@@ -38,7 +38,7 @@ class NotificationsWorker < BackgrounDRb::MetaWorker
     
     #job remainder email
     def sitter_request_remainder
-    puts "puts remainder====================="
+#    puts "puts remainder====================="
     jobs_to_send = Job.find(:all, :conditions => ["date_from <= ? AND notification_sent IS NOT true", 2.days.from_now])
     
     jobs_to_send.each do |j|
@@ -73,7 +73,7 @@ class NotificationsWorker < BackgrounDRb::MetaWorker
   #rating notification email
   
   def sitter_rating
-    puts "calling====rating================"
+#    puts "calling====rating================"
     rate_to_send = Job.find(:all, :conditions => ["? >= (date_to + INTERVAL 12 HOUR) AND rate_notification IS NOT TRUE",Time.now])
       
     rate_to_send.each do |rate|
