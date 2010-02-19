@@ -84,17 +84,15 @@ class NotificationsWorker < BackgrounDRb::MetaWorker
                 parent = Parent.find(rate.parent_id)
                 sitter = Sitter.find(rate.sitter_id)
                 if parent.profile.email?
-                      Notifications.deliver_parent_job_rating_poll(parent, sitter, rate)
-#                     puts "called from this email========================="
+                    Notifications.deliver_parent_job_rating_poll(parent, sitter, rate)
+  #                 puts "called from this email========================="
                 end
             end 
           end
+         rate.rate_notification = true
+         rate.save
     end
-    
-    r.rate_notification = true
-    r.save
-    
-   end
+  end
   
 end #notifications
 
