@@ -73,25 +73,25 @@ class NotificationsWorker < BackgrounDRb::MetaWorker
   #rating notification email
   
   def sitter_rating
-#    puts "calling====rating================"
+#    puts "=====sitter_rating================"
     rate_to_send = Job.find(:all, :conditions => ["? >= (date_to + INTERVAL 12 HOUR) AND rate_notification IS NOT TRUE",Time.now])
-      
+#    puts "========rate_object_size: #{rate_to_send.size}===================" 
     rate_to_send.each do |rate|
          unless rate.parent.nil?
-#            puts "parent=================="
+#            puts "====#{rate.parent.id}==================="
             unless rate.sitter.nil?
-#                puts "sitter================="
+#                puts "====#{rate.sitter.id}================"
                 parent = Parent.find(rate.parent_id)
                 sitter = Sitter.find(rate.sitter_id)
                 if parent.profile.email?
                     Notifications.deliver_parent_job_rating_poll(parent, sitter, rate)
-  #                 puts "called from this email========================="
+                    rate.rate_notification = true
+                    rate.save
+                   puts "=mail succesfully sent to parent:#{parent.id}===for rating sitter:#{sitter.id}===rate:#{rate.id}========="
                 end
             end 
           end
-         rate.rate_notification = true
-         rate.save
-    end
+      end
   end
   
 end #notifications
