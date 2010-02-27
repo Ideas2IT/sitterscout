@@ -1,0 +1,26 @@
+=== x.x.x / 2008-xx-xx
+
+r224
+* user.profile_main_fbml sets the profile_main for the left side of main pages on the new profile [dnite]
+* added facebook_session.set_fbml. Takes hash of items you wish to set. :uid must be included. [dnite]
+
+r223
+* Added profile.setInfoOptions and profile.getInfoOptions [dnite]
+* Added view helper for <fb:add-section-button /> [dnite]
+
+r222
+* Added option in Facebooker.yml for using api.new.facebook.com (just add api: new) [dnite]
+* Added profile.setInfo and profile.getInfo [dnite]
+* facebook_session.user.profile_info returns an InfoSection object with an array of 
+  InfoField objects with an array of InfoItem objects [dnite]
+
+r221
+* fixed typo in set app properties parser [Andrew Grim, shane]
+* Removed actor_id param from templatized feed [shane]
+* Added admin.get_allocation [shane]
+* Added data.get_cookies and data.set_cookie [shane]
+* Added admin.get_app_properties and admin.set_app_properties [shane]
+
+=== 0.9.5 / 2008-02-13
+
+* Next release of documentation
