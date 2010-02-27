@@ -6,8 +6,6 @@
 </div>
 </div>
 <div id="content" style="height: 600px;">
-
-
 <% form_tag parent_path(@parent), :method => 'put', :multipart =>true, :class => 'MainForm' do %>
 <%= hidden_field_tag :update_profile, true%>
 <%= error_messages_for :user %>

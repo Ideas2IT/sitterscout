@@ -162,6 +162,28 @@ class UsersController < ApplicationController
   # def admin_or_current_user_required
   #   current_user && (current_user.admin? || @is_current_user) ? true : access_denied     
   # end
+  
+
+  
+  def link_user_accounts
+    
+  if self.current_user.nil?
+    set_facebook_session
+    #register with fb
+     if facebook_session and facebook_session.secured? and !request_is_facebook_tab?
+ puts "sesssssssssion"
+    fb_user=User.for(facebook_session.user.id, facebook_session)
+    User.create_from_fb_connect(fb_user)
+  else
+    puts "no sesssssion"
+    end
+  else
+    #connect accounts
+    self.current_user.link_fb_connect(facebook_session.user.id) unless self.current_user.fb_user_id == facebook_session.user.id
+  end
+  redirect_to :back
+end
+
   def top_bar_metro_area_update
     return unless request.xhr?
      if params[:topstate_id]
@@ -182,5 +204,9 @@ class UsersController < ApplicationController
       metro_areas = MetroArea.find_all_by_state_id(MetroArea.find(params[:metro_area_id]).state_id, :order => "name")
       render :partial => 'shared/location_chooser', :locals => {:states => State.find(:all), :selected_state => State.find(MetroArea.find(params[:metro_area_id]).state_id).id, :metro_areas => metro_areas, :selected_metro_area => params[:metro_area_id].to_i }      
      end
-  end
+ end
+ 
+ def new_to_connect
+   render :layout => 'lightbox'
+ end
 end

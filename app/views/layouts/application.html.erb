@@ -1,8 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<html>
 <head>
+	<%= javascript_include_tag :defaults%>
+
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <meta name="description" content="SitterScout connects parents and sitters through trusted referrals. Parents can book sitters with the click of a mouse. Sitters get more jobs via text or e-mail."/>
   <meta name="keywords" content="<%= strip_tags(render(:comatose=>'keywords')) %>" />
@@ -15,7 +18,10 @@
 	<%= javascript_include_tag 'lightbox' %>
 	<%= calendar_date_select_includes "green" %>
 </head>
-<body>
+<body>	
+<%= fb_connect_javascript_tag %>
+<%= init_fb_connect "XFBML"%>
+
 	<%= javascript_include_tag 'wz_tooltip' %>
 	<%= javascript_include_tag 'tip_balloon' %>
 
@@ -35,14 +41,13 @@
 	<% end %>
 </div>
 		
-	<div style="width: 720px; float: left; margin-bottom: 25px;">
+	<div style="width: 750px; float: left; margin-bottom: 25px;">
 		<%= yield  %>
 	</div>
 
 
 
-		<div id="footer">
-			&copy; 2008 Sitterscout, Inc.&nbsp;&nbsp;All Rights Reserved.&nbsp;&nbsp;|&nbsp;&nbsp;Email: info@sitterscout.com&nbsp;&nbsp;|&nbsp;&nbsp;<a href='/privacy'>Your Privacy</a>&nbsp;&nbsp;<a>|</a>&nbsp;&nbsp;<a href='/tou'>Terms of Use</a>&nbsp;&nbsp;<a>|</a>&nbsp;&nbsp;<a href='/faq'>FAQ</a>&nbsp;&nbsp;<a>|</a>&nbsp;&nbsp;<a href='/how_it_works'>How it Works</a>&nbsp;&nbsp;<a>|</a>&nbsp;&nbsp;<a target="_blank" href='http://www.sitterscout.com/blog'>Blog</a> 
-		</div>
+		<div id="footer">2008 Sitterscout, Inc. All Rights Reserved | Email: info@sitterscout.com | <%= link_to "Your Privacy", "/privacy" %> | <%= link_to "Terms of Use", "/tou", :target => 'blank' %> | <%= link_to "FAQ", "/faq", :target => 'blank' %> | <%= link_to "How it Works", "/how_it_works", :target => 'blank' %> 
+		</div>		
 		</body>
 		</html>

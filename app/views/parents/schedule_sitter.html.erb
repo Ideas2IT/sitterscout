@@ -29,6 +29,9 @@
 <div id="content">
 <!-- <div id="content"> -->
 	<br />
+	<div style="position: absolute; margin-left: -150px;top: 275px;">
+					<%= render :partial => '/shared/share_a_sale' %>
+				</div>
 	<% form_tag parent_jobs_path(current_user) do %>
 		<div id="request" style="height: 600px;">
 			<div style="height: 420px;">
@@ -101,8 +104,9 @@
 					<%= image_submit_tag "/images/parent_home/SubmitSitterReq_bttn.gif" %>	
 				</div>
 				<div style="position: absolute; margin-left: 750px;top: 275px;">
-					<%= render :partial => '/shared/share_a_sale' %>
-				</div>
+					<!--<%= render :partial => '/shared/share_a_sale' %>-->
+					<%= render :partial => '/shared/facebook' %>
+			</div>
 			</div>
 		<% end %>
 		
@@ -126,61 +130,62 @@
 						</tr>
 						<% x = 0; %>
 						<% for job in @j %>
-							<tr>
-								<td style="padding: 3px;"><%= job.date_from.strftime("%B %d, %Y")	 %><br />
-									<%= job.date_from.strftime("%I:%M %p") + "-" + job.date_to.strftime("%I:%M %p")	 %>
-								</td>
-								<td>
-									<% for r in job.requests %>
-										<% r.sitters.each do |s| %> 
-											<%= s.profile.first_name %>&nbsp;<%= s.profile.last_name%><br />
+						<tr>
+							<td style="padding: 3px;"><%= job.date_from.strftime("%B %d, %Y")	 %><br />
+								<%= job.date_from.strftime("%I:%M %p") + "-" + job.date_to.strftime("%I:%M %p")	 %>
+							</td>
+							<td>
+								<% for r in job.requests %>
+									<% r.sitters.each do |s| %> 
+										<%= s.profile.first_name %>&nbsp;<%= s.profile.last_name%><br />
+									<% end %>
+								<% end %>
+							</td>
+							<td>
+								<div id="status_<%= job.id %>">
+									<% if job.status == "cancelled" %>
+										Cancelled
+									<% else %>
+										<% for r in job.requests %>
+											<% r.sitters.each do |s| %>
+												<%if s.active %>
+													Currently Inactive
+												<%else%> 
+													<%= RequestSitter.find_by_sitter_id_and_request_id(s, r).state.capitalize unless RequestSitter.find_by_sitter_id_and_request_id(s, r).state == "filled" %><br />
+												<%end%>
+											<% end %>
 										<% end %>
 									<% end %>
-								</td>
-								<td>
-									<div id="status_<%= job.id %>">
-										<% if job.status == "cancelled" %>
-											Cancelled
-										<% else %>
-											<% for r in job.requests %>
-												<% r.sitters.each do |s| %>
-													<%if s.active %>
-														Currently Inactive
-													<%else%> 
-														<%= RequestSitter.find_by_sitter_id_and_request_id(s, r).state.capitalize unless RequestSitter.find_by_sitter_id_and_request_id(s, r).state == "filled" %><br />
-													<%end%>
-												<% end %>
-											<% end %>
+								</div>
+							</td>
+							<td width="25%">
+								<div id="job_<%= job.id %>">
+									<% unless job.status == "cancelled" %>
+										<% form_remote_tag :url => cancel_job_parent_path(job) do  %>
+											&nbsp; <a href="#" title="You may use this button to cancel a request 24 hours or more before the sitter is scheduled. Sitters that have accepted or have yet to respond will be notified that the job has been cancelled. If you want to cancel less than 24 hours prior, you must contact the sitter directly." class="tt"  style="color: #F7F7F7;"><img src="/images/QuestionMark_transp.gif" border=0></a>
+											<%= image_submit_tag "/images/parent_home/CancelReq_bttn.gif", :confirm => 'Are you sure you want to cancel this request?' %>
 										<% end %>
-									</div>
-								</td>
-								<td width="25%">
-									<div id="job_<%= job.id %>">
-										<% unless job.status == "cancelled" %>
-											<% form_remote_tag :url => cancel_job_parent_path(job) do  %>
-												&nbsp; <a href="#" title="You may use this button to cancel a request 24 hours or more before the sitter is scheduled. Sitters that have accepted or have yet to respond will be notified that the job has been cancelled. If you want to cancel less than 24 hours prior, you must contact the sitter directly." class="tt"  style="color: #F7F7F7;"><img src="/images/QuestionMark_transp.gif" border=0></a>
-												<%= image_submit_tag "/images/parent_home/CancelReq_bttn.gif", :confirm => 'Are you sure you want to cancel this request?' %>
-											<% end %>
-										<% end %>
-									</div>
-								</td>
-							</tr>
-							<%if x < @j.size - 1%>
-								<tr><td colspan="4"><hr /></td></tr>
-							<%	
-								end	
-								x=x+1;
-							%>
-						<% end %>
-						</table>
-					</fieldset>
-				<% end %>
-				
-				<div style="position: absolute; margin-left: 750px;top: 275px;">
-						<%= render :partial => '/shared/share_a_sale' %>
-				</div>
+									<% end %>
+								</div>
+							</td>
+						</tr>
+						<%if x < @j.size - 1%>
+							<tr><td colspan="4"><hr /></td></tr>
+						<%	
+							end	
+							x=x+1;
+						%>
+					<% end %>
+					</table>
+				</fieldset>
+			<% end %>
+			
+			<div style="position: absolute; margin-left: 750px;top: 275px;">
+					<!--<%= render :partial => '/shared/share_a_sale' %>-->
+					<%= render :partial => '/shared/facebook' %>
 			</div>
-		</div>			
+		</div>
+	</div>			
 
 
 	
@@ -219,17 +224,18 @@
 			
 			<% @sitters.each do |s| %>
 				<%unless s.active%>
+					$('sitter_checkbox_<%= s.id %>').checked = false;
 				    $('sitter_checkbox_<%= s.id %>').disabled=true;
 				<%end%>
 			<% end %>
 			var date = $('parents_scheduler').value;
 			
 			var date_from_hour   = $('job_date_from_4i').value;
-			var date_from_min    = $('job_date_from_5i').value
+			var date_from_min    = $('job_date_from_5i').value;
 			var date_from_period = $('job_date_from_6i').options[$('job_date_from_6i').selectedIndex].text;
 			
 			var date_to_hour     = $('job_date_to_4i').value;
-			var date_to_min      = $('job_date_to_5i').value
+			var date_to_min      = $('job_date_to_5i').value;
 			var date_to_period   = $('job_date_to_6i').options[$('job_date_to_6i').selectedIndex].text;
 			
 			var date_from_date = new Date(date + " " + date_from_hour + ":" + date_from_min + " " + date_from_period);
@@ -261,7 +267,6 @@
 			$(id).style.color = color;
 		}
 		
-
 		function show_status()
 		{
 			Element.hide('rss');
@@ -271,9 +276,7 @@
 			$('sitter_link').className = "grey_link_selected";
 			$('status_link').className = "grey_link";	
 			$('sitters_td').width = "125";
-
 		}
-
 
 		function show_sitters()
 		{
@@ -289,10 +292,9 @@
 		function disable_checkboxes()
 		{
 			<% @sitters.each do |s| %>
+			$('sitter_checkbox_<%= s.id %>').checked = false;
 			$('sitter_checkbox_<%= s.id %>').disabled=true;
 			<% end %>
 		}
-
-		
 	</script>
 	

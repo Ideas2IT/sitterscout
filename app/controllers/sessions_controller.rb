@@ -18,8 +18,30 @@ class SessionsController < ApplicationController
       
   end
 
+def create_by_facebook_id  
+  facebook_id=params[:fb_id_hidden]    
+  self.current_user=User.already_connected?(facebook_id)  
+  if self.current_user
+    create
+  else
+    redirect_to :controller=>'home', :action=>'index', :logged=>'false'
+  end
+end
+
   def create
-    self.current_user = User.authenticate(params[:login], params[:password])
+    if !self.current_user      
+      puts params[:fb_login]    
+      puts params[:fb_id_hid]    
+      if params[:fb_id_hid]       
+        self.current_user = User.authenticate(params[:fb_login], params[:fb_password])
+        if self.current_user
+        self.current_user.facebook_id=params[:fb_id_hid]
+      self.current_user.save!
+      end
+    else      
+        self.current_user = User.authenticate(params[:login], params[:password])
+        end    
+    end
     
     if logged_in?
       
@@ -97,7 +119,7 @@ class SessionsController < ApplicationController
   end
   
 
-  def destroy
+  def destroy    
     self.current_user.forget_me if logged_in?
     cookies.delete :auth_token
     reset_session

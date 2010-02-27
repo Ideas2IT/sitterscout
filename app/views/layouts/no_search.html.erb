@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
 
 <head>
 	<title>SitterScout.com - Join today and get out tonight!</title>
@@ -68,13 +68,14 @@
 <% else %>
 	<body onload="gberror()">
 <% end %>
+<script src="http://static.ak.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php" type="text/javascript"></script>
 	<%#= javascript_include_tag 'wz_tooltip' %>
 	<%#= javascript_include_tag 'tip_balloon' %>
 <div id='beta'></div>
 
 <div id='header' style="height:130px">
 	<div id='headerwrapper'>
-		<div id='mainlogo' onclick='location.href="<%= current_path %>"'></div>
+		<div id='mainlogo' onclick='location.href="<%= current_path %>"'></div>		
 		<div id='logorsigns'>
 			<div class='loginsignup <%= logged_in? ? 'out' : 'carbon' %>' <%= logged_in? ? nil : "onmouseover='document.getElementById(\"loginmenu\").style.display=\"block\";'" %> onclick='<%= logged_in? ? "location.href=\"/logout\";" : nil %>'>
 				<div id='loginmenu'>
@@ -95,14 +96,18 @@
 			<div class='loginsignup magenta' onclick='location.href="/sitters/new"'></div>
 			<%end%>
 		</div>
+		<div id="fb_log_out" style="display:none;"><a href = '#' onclick = "FB.Connect.logoutAndRedirect('/logout'); return(false);"><img id = 'fb_logout_image' src = 'http://static.ak.fbcdn.net/images/fbconnect/logout-buttons/logout_small.gif' alt = 'Connect' border='0' /></a></div>		
 		<div id="flash_notice">
 			<% flash.each do |key, msg| %>
 				<%= content_tag('div', flash[:error], :id => "notice_#{key}") if flash[:error] %>
 				<%= content_tag('div', flash[:notice], :id => "notice_#{key}") if flash[:notice] %>	
 			<% end %>
-		</div>
+		</div>		
 	</div>
 </div>
+<%if logged_in? %>
+		<input type="hidden" id="user_facebook_id" value="<%=@current_user.facebook_id.to_i%>" />
+		<%end%>
 <%= yield %>
 <div id='footer'>
 	<p>
@@ -119,5 +124,26 @@ try {
 var pageTracker = _gat._getTracker("UA-6137367-1");
 pageTracker._trackPageview();
 } catch(err) {}</script>
+<script type="text/javascript">	
+	function update_user_box(){	
+	if (document.getElementById('user_facebook_id') && (document.getElementById('user_facebook_id').value == FB.Facebook.apiClient.get_session().uid)) {
+		if (FB.Connect.get_status().result == 1) {
+			var user_box = document.getElementById("logorsigns");
+			user_box.innerHTML = "<span>" + "<fb:profile-pic uid='loggedinuser' facebook-logo='true'></fb:profile-pic>" + "<fb:name uid='loggedinuser' useyou='false'></fb:name>" + document.getElementById('fb_log_out').innerHTML + "</span>"; // because this is XFBML, we need to tell Facebook to re-process the document 
+			FB.XFBML.Host.parseDomTree();
+		}
+	}
+	else {
+		FB.XFBML.Host.parseDomTree();
+		location.href('/logout');
+	}
+		if((document.getElementById('parent_facebook_id'))&&(document.getElementById('sitter_facebook_id'))){			
+			document.getElementById('parent_facebook_id').value = FB.Facebook.apiClient.get_session().uid;
+			document.getElementById('sitter_facebook_id').value = FB.Facebook.apiClient.get_session().uid;
+		}		
+	}
+
+	</script>
+<script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php/en_US" type="text/javascript"></script><script type="text/javascript">FB.init("4ad5b16d7fb269f849ccd05692e05fd2", "xd_receiver.htm",{"ifUserConnected" : update_user_box});</script>
 </body>
 </html>

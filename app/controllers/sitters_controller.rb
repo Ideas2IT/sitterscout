@@ -410,45 +410,50 @@ class SittersController < ApplicationController
     redirect_to invite_sitter_path(current_user)
   end
   
-  def friends
-      plist = Profile.sitters_you_may_know(current_user.profile).collect(&:id)
-      #.find(:all, :conditions => ["profile_public = ?", true]).collect(&:id)
-      alist = current_user.accepted_friendships.collect(&:friend_id)
-      ulist = current_user.pending_friendships.collect(&:friend_id)
-      dlist = current_user.denied_friendships.collect(&:friend_id)
-      
-      @sitters = []
-      
-      removed_people = RemovedPeople.find_users_removed_people_ids(current_user.id)
-      
-      sitter_ids=[]
-      plist.each do |p|
-        unless current_user.id == p || alist.include?(p) || ulist.include?(p) || dlist.include?(p) || removed_people.include?(p)
-          sitter_ids << p if sitter_ids.length < 5
-        end
+   def friends
+    limit = 10
+    plist = Profile.sitters_you_may_know(current_user.profile, limit).collect(&:id) 
+    #find(:all, :conditions => ["profile_public = ?", true]).collect(&:id)
+    alist = current_user.accepted_friendships.collect(&:friend_id)
+    ulist = current_user.pending_friendships.collect(&:friend_id)
+    @sitters = []
+    removed_people = RemovedPeople.find_users_removed_people_ids(current_user.id)
+``    
+    sitter_ids = []
+    
+    
+#    puts "#{plist.size}============"
+    
+    plist.each do |p|
+      unless current_user.id == p || alist.include?(p) || ulist.include?(p) || removed_people.include?(p)
+        sitter_ids << p if sitter_ids.length < 5
       end
-      
-      @sitters = Sitter.find(:all, :include => [:photo], :conditions => ["users.id in (?) ", sitter_ids])    
-          
-      @confirmed_friends = []
-#        current_user.accepted_friendships.each do |f|
-#          if f.friend.is_a?Sitter
-#            @confirmed_friends << f
-#          end
-#        end
-        
-     accepted_friendship_sitter_ids = current_user.accepted_friendships.select {|f| f.friend.is_a?Sitter}.collect {|f| f.friend.id}  
-     @confirmed_friends = Sitter.find(:all, :include => [:photo], :conditions => ["users.id in (?) ", accepted_friendship_sitter_ids])   
-      
-      @unconfirmed_friends = []
-#      current_user.pending_friendships.each do |f|
-#        if f.friend.is_a?Sitter
-#          @unconfirmed_friends << f
-#        end
+    end
+    
+#    puts "#{plist.first(5).size}============#{sitter_ids.size}============#{sitter_ids.class}="
+    
+    @sitters = Sitter.find(:all, :include => [:photo], :conditions => ["users.id in (?) ", sitter_ids])    
+    
+    
+    @confirmed_sitters = []
+#    current_user.accepted_friendships.each do |f|
+#      if f.friend.is_a?Sitter
+#        @confirmed_sitters << f
+#      end
 #    end
     
-     pending_friendship_sitter_ids = current_user.pending_friendships.select {|f| f.friend.is_a?Sitter}.collect {|f| f.friend.id}  
-     @unconfirmed_friends = Sitter.find(:all, :include => [:photo], :conditions => ["users.id in (?) ", pending_friendship_sitter_ids])
+      accepted_friendship_sitter_ids = current_user.accepted_friendships.select {|f| f.friend.is_a?Sitter}.collect {|f| f.friend.id}
+      @confirmed_sitters = Sitter.find(:all, :include => [:photo], :conditions => ["users.id in (?) ", accepted_friendship_sitter_ids])
+
+    @unconfirmed_sitters = []
+#    current_user.pending_friendships.each do |f|
+#      if f.friend.is_a?Sitter
+#        @unconfirmed_sitters << f
+#      end
+#    end
+    
+    pending_friendship_sitter_ids = current_user.pending_friendships.select {|f| f.friend.is_a?Sitter}.collect {|f| f.friend.id}
+    @unconfirmed_sitters = Sitter.find(:all, :include => [:photo], :conditions => ["users.id in (?) ", pending_friendship_sitter_ids])
   end
   
   def families

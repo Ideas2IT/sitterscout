@@ -18,6 +18,8 @@ ActionController::Routing::Routes.draw do |map|
 
 #  map.resources :ratings
   
+#map.resources :users, :collection => {:link_user_accounts => :get}
+
   map.resources :parents, :collection => {:search => :post }, :member => { 
     :invite => :get,
     :welcome => :get,
@@ -74,7 +76,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :friends
 
-  map.resource :sessions
+  map.resource :sessions, :collection => {:create_by_facebook_id=>:post}
   
   map.resources :sitters, :collection => {:search => :post }, :member => { 
     :invite => :get,
@@ -127,7 +129,7 @@ ActionController::Routing::Routes.draw do |map|
     
     # map.resources :messages
  
-    map.resources :users, :member => { 
+    map.resources :users, :collection=>{:new_to_connect => :get}, :member => { 
         :dashboard => :get,
         :assume => :get,
         :toggle_moderator => :put,

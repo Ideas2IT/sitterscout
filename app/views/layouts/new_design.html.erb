@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
 
 <head>
 	<title>SitterScout.com - Join today and get out tonight!</title>
@@ -64,16 +64,20 @@
 	
 </head>
 <% if flash.empty? %>
-	<body>
+	<body onload="update_user_box();">
 <% else %>
-	<body onload="gberror()">
+	<body onload="gberror();">
 <% end %>
+<script src="http://static.ak.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php" type="text/javascript"></script>
 <div id='beta'></div>
 
 <div id='header'>
 	<div id='headerwrapper'>
 	<div style="height:135px;">
-			<div id='mainlogo' onclick='location.href="<%= current_path %>"'></div>
+			<div id='mainlogo' onclick='location.href="<%= current_path %>"'></div>			
+
+		<div id="fb_log_out" style="display:none;"><a href = '#' onclick = "FB.Connect.logoutAndRedirect('/logout'); return(false);"><img id = 'fb_logout_image' src = 'http://static.ak.fbcdn.net/images/fbconnect/logout-buttons/logout_small.gif' alt = 'Connect' border='0' /></a></div>
+
 			<div id='logorsigns'>
 				<div class='loginsignup <%= logged_in? ? 'out' : 'carbon' %>' <%= logged_in? ? nil : "onmouseover='document.getElementById(\"loginmenu\").style.display=\"block\";'" %> onclick='<%= logged_in? ? "location.href=\"/logout\";" : nil %>'>
 					<div id='loginmenu'>
@@ -95,6 +99,9 @@
 				<%end%>
 			</div>
 		</div>
+		<%if logged_in? %>
+		<input type="hidden" id="user_facebook_id" value="<%=@current_user.facebook_id.to_i%>" />
+		<%end%>
 		<div id='navbar' <%= current_page?(:controller => "home", :action => "index") ? "class='home'" : nil %>>
 			<div id='searchbar' style="background: #F8F8F9;z-index: 900;">
 				<% form_tag "/search", :name => 'search_form',:method=>'get' do %>
@@ -162,8 +169,20 @@ pageTracker._trackPageview();
 		document.search_form.submit();
 		}
 	}
-	
+	function update_user_box(){		
+	if (document.getElementById('user_facebook_id').value == FB.Facebook.apiClient.get_session().uid) {
+		if (FB.Connect.get_status().result == 1) {
+			var user_box = document.getElementById("logorsigns");
+			user_box.innerHTML = "<span>" + "<fb:profile-pic uid='loggedinuser' facebook-logo='true'></fb:profile-pic>" + "<fb:name uid='loggedinuser' useyou='false'></fb:name>" + document.getElementById('fb_log_out').innerHTML + "</span>"; // because this is XFBML, we need to tell Facebook to re-process the document 
+			FB.XFBML.Host.parseDomTree();
+		}
+	}
+	else {
+		FB.XFBML.Host.parseDomTree();
+	}
+	}	
 </script>
+<script type="text/javascript">FB.init("4ad5b16d7fb269f849ccd05692e05fd2", "xd_receiver.htm",{"ifUserConnected" : update_user_box});</script>
 </body>
 </body>
 </html>

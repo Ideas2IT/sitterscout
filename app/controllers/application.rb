@@ -13,7 +13,8 @@ class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   helper_method :admin?, :admin_required
 
-
+  protect_from_forgery :secret => '4ad5b16d7fb269f849ccd05692e05fd2'
+  
   # See ActionController::RequestForgeryProtection for details
   # Uncomment the :secret if you're not using the cookie session store
 #  protect_from_forgery :secret => '66e4f871a737d1c50b0d702fd5c311c6'
@@ -24,6 +25,16 @@ class ApplicationController < ActionController::Base
   before_filter :login_from_cookie  
   before_filter :direct_to_current_state
   before_filter :instantiate_controller_and_action_names
+  before_filter :set_facebook_session
+  helper_method :facebook_session 
+  #before_filter :set_facebook_sess
+
+def set_facebook_sess
+  #puts "#{set_facebook_session.user}==============="
+  set_facebook_session
+  
+  puts "#{facebook_session.user}==============="
+end
   # before_filter :adjust_format_for_iphone
   # before_filter :iphone_login_required
   

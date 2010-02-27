@@ -2,7 +2,8 @@ require 'digest/sha1'
 
 class User < ActiveRecord::Base 
 
-  
+  #after_create :register_user_to_fb
+
   include ActionController::UrlWriter
   default_url_options[:host] = APP_URL.sub('http://', '')
   MALE    = 'M'
@@ -68,10 +69,72 @@ class User < ActiveRecord::Base
 
 
 
+ def self.for(facebook_id, facebook_session=nil)
+    returning find_or_create_by_facebook_id(facebook_id) do |user|
+      unless facebook_session.nil?       
+        user.store_session(facebook_session.session_key)
+      end
+    end
+  end
  
+  def store_session(session_key)
+    if self.session_key!=session_key
+      update_attribute(:session_key, session_key)
+    end
+  end
+ 
+  def facebook_session
+    @facebook_session ||=
+    returning Facebooker::Session.create do |session|
+      session.secure_with!(session_key,facebook_id,1.hour.from_now)
+    end
+  end
   def connections
     self.accepted_friendships.collect{|t| t.user}
   end 
+  
+  
+  def self.find_by_fb_user(fb_user)
+  User.find_by_fb_user_id(fb_user.uid) || User.find_by_email_hash(fb_user.email_hashes)
+end
+
+
+def self.create_from_fb_connect(fb_user)
+  new_facebooker = User.new(:name => fb_user.name, :login => "facebooker_#{fb_user.uid}", :password => "", :email => "")
+  new_facebooker.fb_user_id = fb_user.uid.to_i
+  #We need to save without validations
+  new_facebooker.save(false)
+  new_facebooker.register_user_to_fb
+end
+
+
+def link_fb_connect(fb_user_id)
+  unless fb_user_id.nil?
+    #check for existing account
+    existing_fb_user = User.find_by_fb_user_id(fb_user_id)
+    #unlink the existing account
+    unless existing_fb_user.nil?
+      existing_fb_user.fb_user_id = nil
+      existing_fb_user.save(false)
+    end
+    #link the new one
+    self.fb_user_id = fb_user_id
+    save(false)
+  end
+end
+
+
+def register_user_to_fb
+  users = {:email => email, :account_id => id}
+  Facebooker::User.register([users])
+  self.email_hash = Facebooker::User.hash_email(email)
+  save(false)
+end
+def facebook_user?
+  return !fb_user_id.nil? && fb_user_id > 0
+end
+
+
   
   def connections_search(conditions)
     u = Parent.find(:all, :include => [:profile], :conditions => ["profiles.full_name LIKE ?", '%' + conditions + '%'])
@@ -429,6 +492,10 @@ class User < ActiveRecord::Base
     if self.login.nil?
       self.login = self.email.gsub(/[^a-z1-9]+/i, '-')
     end
+  end
+  
+  def self.already_connected?(facebook_id)    
+    User.find_by_facebook_id(facebook_id)    
   end
     
   

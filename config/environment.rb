@@ -11,8 +11,6 @@ RAILS_GEM_VERSION = '2.0.2' unless defined? RAILS_GEM_VERSION
 require File.join(File.dirname(__FILE__), 'boot')
 #require File.join(File.dirname(__FILE__), '../vendor/plugins/engines/boot')
 
-
-
 Rails::Initializer.run do |config|
   
   # Settings in config/environments/* take precedence over those specified here.
@@ -64,6 +62,9 @@ Rails::Initializer.run do |config|
   # Make Active Record use UTC-base instead of local time
   # config.active_record.default_timezone = :utc
   # config.gem "edgarjs-ajaxful_rating", :lib => "ajaxful_rating", :source => "http://gems.github.com"
+  
+  config.action_controller.allow_forgery_protection = false
+  
 end
 
 Comatose.configure do |config|
