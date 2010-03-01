@@ -10,7 +10,7 @@ development:
   api_key: 4ad5b16d7fb269f849ccd05692e05fd2
   secret_key: b2f8788625cff43241b6abb4661cfcf0
   canvas_page_name:
-  callback_url: http://sitterscout.falat.speedyrails.ca
+  callback_url: http://localhost:3001
   tunnel:
     public_host_username: 
     public_host: 
@@ -21,7 +21,7 @@ staging:
   api_key: 4ad5b16d7fb269f849ccd05692e05fd2
   secret_key: b2f8788625cff43241b6abb4661cfcf0
   canvas_page_name:
-  callback_url: http://sitterscout.falat.speedyrails.ca
+  callback_url: http://staging.sitterscout.com
   tunnel:
     public_host_username:
     public_host:
@@ -32,7 +32,7 @@ test:
   api_key: 4ad5b16d7fb269f849ccd05692e05fd2
   secret_key: b2f8788625cff43241b6abb4661cfcf0
   canvas_page_name: 
-  callback_url: http://sitterscout.falat.speedyrails.ca
+  callback_url: http://staging.sitterscout.com
   tunnel:
     public_host_username: 
     public_host: 
@@ -43,7 +43,7 @@ production:
   api_key: 4ad5b16d7fb269f849ccd05692e05fd2
   secret_key: b2f8788625cff43241b6abb4661cfcf0
   canvas_page_name: 
-  callback_url: http://sitterscout.falat.speedyrails.ca
+  callback_url: http://staging.sitterscout.com
   tunnel:
     public_host_username: 
     public_host: 
