@@ -16,6 +16,17 @@ development:
     public_host: 
     public_port: 4007
     local_port: 3002
+    
+staging:
+  api_key: 4ad5b16d7fb269f849ccd05692e05fd2
+  secret_key: b2f8788625cff43241b6abb4661cfcf0
+  canvas_page_name:
+  callback_url: http://sitterscout.falat.speedyrails.ca
+  tunnel:
+    public_host_username:
+    public_host:
+    public_port: 4007
+    local_port: 3000
 
 test:
   api_key: 4ad5b16d7fb269f849ccd05692e05fd2
