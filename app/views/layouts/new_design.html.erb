@@ -171,10 +171,11 @@ pageTracker._trackPageview();
 	}
 	function update_user_box(){	
 	alert("called");
-	alert(document.getElementById('user_facebook_id').value);
-	alert(FB.Facebook.apiClient.get_session().uid);	
+	alert(document.getElementById('user_facebook_id').value);	
 	if (document.getElementById('user_facebook_id').value == FB.Facebook.apiClient.get_session().uid) {
 		alert("id equal");
+		alert(FB.Connect.get_status().result);
+		alert((FB.Connect.get_status().result == 1));
 		if (FB.Connect.get_status().result == 1) {
 			alert("connected");
 			var user_box = document.getElementById("logorsigns");
