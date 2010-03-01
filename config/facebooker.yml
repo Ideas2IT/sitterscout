@@ -29,10 +29,10 @@ test:
     local_port: 3000
 
 production:
-  api_key: 
-  secret_key: 
+  api_key: 4ad5b16d7fb269f849ccd05692e05fd2
+  secret_key: b2f8788625cff43241b6abb4661cfcf0
   canvas_page_name: 
-  callback_url:  
+  callback_url: http://sitterscout.falat.speedyrails.ca
   tunnel:
     public_host_username: 
     public_host: 
