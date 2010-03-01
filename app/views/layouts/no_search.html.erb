@@ -64,7 +64,7 @@
 	
 </head>
 <% if flash.empty? %>
-	<body>
+	<body onload="update_user_box();">
 <% else %>
 	<body onload="gberror()">
 <% end %>
@@ -125,7 +125,7 @@ var pageTracker = _gat._getTracker("UA-6137367-1");
 pageTracker._trackPageview();
 } catch(err) {}</script>
 <script type="text/javascript">	
-	function update_user_box(){	
+	function update_user_box(){		
 	if (document.getElementById('user_facebook_id') && (document.getElementById('user_facebook_id').value == FB.Facebook.apiClient.get_session().uid)) {
 		if (FB.Connect.get_status().result == 1||FB.Facebook.apiClient.get_session()) {
 			var user_box = document.getElementById("logorsigns");
@@ -134,10 +134,9 @@ pageTracker._trackPageview();
 		}
 	}
 	else {
-		FB.XFBML.Host.parseDomTree();
-		location.href('/logout');
+		FB.XFBML.Host.parseDomTree();		
 	}
-		if((document.getElementById('parent_facebook_id'))&&(document.getElementById('sitter_facebook_id'))){			
+		if((document.getElementById('parent_facebook_id'))||(document.getElementById('sitter_facebook_id'))){						
 			document.getElementById('parent_facebook_id').value = FB.Facebook.apiClient.get_session().uid;
 			document.getElementById('sitter_facebook_id').value = FB.Facebook.apiClient.get_session().uid;
 		}		
