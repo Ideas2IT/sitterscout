@@ -170,17 +170,10 @@ pageTracker._trackPageview();
 		}
 	}
 	function update_user_box(){	
-	alert("called");
-	alert(document.getElementById('user_facebook_id').value);	
 	if (document.getElementById('user_facebook_id').value == FB.Facebook.apiClient.get_session().uid) {
-		alert("id equal");
-		alert(FB.Connect.get_status().result);
-		alert((FB.Connect.get_status().result == 1));
 		if (FB.Connect.get_status().result == 1||FB.Facebook.apiClient.get_session()) {
-			alert("connected");
-			alert(loggedinuser);
 			var user_box = document.getElementById("logorsigns");
-			user_box.innerHTML = "<span>" + "<fb:profile-pic uid=loggedinuser facebook-logo='true'></fb:profile-pic>" + "<fb:name uid='loggedinuser' useyou='false'></fb:name>" + document.getElementById('fb_log_out').innerHTML + "</span>"; // because this is XFBML, we need to tell Facebook to re-process the document 
+			user_box.innerHTML = "<span>" + "<fb:profile-pic uid='loggedinuser' facebook-logo='true'></fb:profile-pic>" + "<fb:name uid='loggedinuser' useyou='false'></fb:name>" + document.getElementById('fb_log_out').innerHTML + "</span>"; // because this is XFBML, we need to tell Facebook to re-process the document 
 			FB.XFBML.Host.parseDomTree();
 		}
 	}
