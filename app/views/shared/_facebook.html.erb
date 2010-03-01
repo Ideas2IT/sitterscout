@@ -6,8 +6,45 @@
 		<title>Untitled Document</title>
 	</head>
 	<body>
-		<script src="http://static.ak.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php" type="text/javascript"></script>
-		<fb:fan profile_id="50170270934" stream="0" connections=10></fb:fan>
-		<script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php/en_US" type="text/javascript"></script><script type="text/javascript">FB.init("4ad5b16d7fb269f849ccd05692e05fd2", "xd_receiver.htm");</script>
+		<table>
+			<tr>
+				<td>
+					<table width="100%">
+						<tr>
+							<td align="left"><b>Requests</b></td>
+							<td align="right"><%= link_to "See All" ,connection_requests_parent_path(current_user)%></td>
+						</tr>
+						<tr><td colspan="2"><hr/></td></tr>
+						<tr>
+							<% sitter_count= 0 %> <% friend_count = 0%>
+							<%unless @unconfirmed_friends.nil? %>
+							<% @unconfirmed_friends.each do |f| %>
+								<% unless f.friend.profile.nil? %>
+									<% if f.friend.profile.parent? %>
+										<% friend_count = friend_count+1%>
+									<%else%>
+										<% sitter_count = sitter_count+1%>
+									<%end%>
+								<%end%>
+							<%end%>
+							<%end%>
+							<td><%= friend_count %>&nbsp;<%= link_to "friend request" ,connection_requests_parent_path(current_user)%></td>
+						</tr>
+						<tr>
+							<td><%= sitter_count %>&nbsp;<%= link_to "sitter connecton request" ,connection_requests_parent_path(current_user)%></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr><td>&nbsp;</td></tr>
+			<tr>
+				<td>
+					<script src="http://static.ak.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php" type="text/javascript"></script>
+					<fb:fan profile_id="50170270934" stream="0" connections=10></fb:fan>
+					<script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php/en_US" type="text/javascript"></script><script type="text/javascript">FB.init("064c4bc52963765138d21d8340130958", "xd_receiver.htm");</script>					
+				</td>
+			</tr>
+			
+		</table>
 	</body>
 </html>
