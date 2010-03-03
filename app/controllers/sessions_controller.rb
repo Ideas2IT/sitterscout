@@ -30,8 +30,8 @@ end
 
   def create
     if !self.current_user      
-      puts params[:fb_login]    
-      puts params[:fb_id_hid]    
+#      puts params[:fb_login]    
+#      puts params[:fb_id_hid]    
       if params[:fb_id_hid]       
         self.current_user = User.authenticate(params[:fb_login], params[:fb_password])
         if self.current_user
@@ -109,7 +109,8 @@ end
          
         flash[:notice] = "Your password has been reset and emailed to you."
         flash.discard
-       # redirect_to(home_page_path)
+        
+        redirect_to(home_page_path)
 
       end
     else

@@ -193,6 +193,8 @@ class ParentsController < ApplicationController
     end
 
     @j = Job.find(:all, :conditions => ["parent_id = ? AND date_from > ?", current_user, Time.now])
+    @friends = Profile.parents_you_may_know(current_user.profile,30)
+    @unconfirmed_friends = current_user.pending_friendships_not_initiated_by_me
    # @cancelledj = Job.find(:all, :conditions => ["status = ? AND parent_id = ?", "cancelled", current_user])
     render :action => 'schedule_sitter'
   end
@@ -699,6 +701,8 @@ end
 
     
     def schedule_sitter
+      @friends = Profile.parents_you_may_know(current_user.profile,30)
+      
       if session[:booked_sitters]
         @booked_sitters = session[:booked_sitters]  
         session[:booked_sitters] = nil
@@ -712,7 +716,7 @@ end
           @sitters << f.friend if f.friend.active? and !f.friend.profile.nil?
         end
       end
-
+      @unconfirmed_friends = current_user.pending_friendships_not_initiated_by_me
       @j = Job.find(:all, :conditions => ["parent_id = ? AND date_from > ?",current_user, Time.now])
       #@cancelledj = Job.find(:all, :conditions => ["status = ? AND parent_id = ?", "cancelled", current_user])
     end

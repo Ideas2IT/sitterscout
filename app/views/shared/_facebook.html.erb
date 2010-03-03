@@ -1,50 +1,70 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-		<title>Untitled Document</title>
-	</head>
-	<body>
-		<table>
-			<tr>
-				<td>
-					<table width="100%">
-						<tr>
-							<td align="left"><b>Requests</b></td>
-							<td align="right"><%= link_to "See All" ,connection_requests_parent_path(current_user)%></td>
-						</tr>
-						<tr><td colspan="2"><hr/></td></tr>
-						<tr>
-							<% sitter_count= 0 %> <% friend_count = 0%>
-							<%unless @unconfirmed_friends.nil? %>
-							<% @unconfirmed_friends.each do |f| %>
-								<% unless f.friend.profile.nil? %>
-									<% if f.friend.profile.parent? %>
-										<% friend_count = friend_count+1%>
-									<%else%>
-										<% sitter_count = sitter_count+1%>
-									<%end%>
+<table width="200px;" style="font-size:0.8em">
+	<tr>
+		<td>
+			<table width="100%">
+				<tr>
+					<td align="left"><b>Requests</b></td>
+					<td align="right"><%= link_to "See All" ,connection_requests_parent_path(current_user)%></td>
+				</tr>
+				<tr><td colspan="2"><hr/></td></tr>
+				<% sitter_count= 0 %> <% friend_count = 0%>
+				<%unless @unconfirmed_friends.nil? %>
+					<% @unconfirmed_friends.each do |f| %>
+						<% unless f.friend.profile.nil? %>
+							<% if f.friend.profile.parent? %>
+								<% friend_count = friend_count+1%>
+							<%else%>
+								<% sitter_count = sitter_count+1%>
+							<%end%>
+						<%end%>
+					<%end%>
+				<%end%>
+				<% suggest = @friends.size%>
+				<tr><td><%= image_tag "facebook_images/suggest.png", :alt => 'doublearrow' %>&nbsp;&nbsp;<%= suggest %>&nbsp;<%= link_to "Suggest Friend(s)", url_for(:controller => 'connections', :action => 'suggests'), :class => "lbOn-400-500" %></td></tr>
+				<tr>
+					<td><%= image_tag "facebook_images/doublearrow.png", :alt => 'doublearrow' %>&nbsp;&nbsp;<%= friend_count %>&nbsp;<%= link_to "Friend Request(s)" ,connection_requests_parent_path(current_user)%></td>
+				</tr>
+				<tr>
+					<td><%= image_tag "facebook_images/flag.png", :alt => 'doublearrow' %>&nbsp;&nbsp;<%= sitter_count %>&nbsp;<%= link_to "Sitter Connection Request(s)" ,connection_requests_parent_path(current_user)%></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr><td>&nbsp;</td></tr>
+	<tr>
+		<td>
+			<table width="100%">
+				<tr>
+					<td align="left" width="50%"><b>Suggestions</b></td>
+					<td align="right"><%= link_to "See All", url_for(:controller => 'connections', :action => 'suggests'), :class => "lbOn-400-500" %></td>
+				</tr>
+				<tr><td colspan="2"><hr/></td></tr>
+				<tr><td>&nbsp;</td></tr>
+				<tr>
+					<td>
+						<% i = 0 %>
+						<% for suggest in @friends %>
+							<%unless suggest.nil?%>
+								<%if i < 2 %>
+									<%= render :partial => '/shared/suggestion', :locals => {:suggest  => suggest} %>
+									<% i=i+1 %>
 								<%end%>
 							<%end%>
-							<%end%>
-							<td><%= friend_count %>&nbsp;<%= link_to "friend request" ,connection_requests_parent_path(current_user)%></td>
-						</tr>
-						<tr>
-							<td><%= sitter_count %>&nbsp;<%= link_to "sitter connecton request" ,connection_requests_parent_path(current_user)%></td>
-						</tr>
-					</table>
-				</td>
-			</tr>
-			<tr><td>&nbsp;</td></tr>
-			<tr>
-				<td>
-					<script src="http://static.ak.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php" type="text/javascript"></script>
-					<fb:fan profile_id="50170270934" stream="0" connections=10></fb:fan>
-					<script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php/en_US" type="text/javascript"></script><script type="text/javascript">FB.init("064c4bc52963765138d21d8340130958", "xd_receiver.htm");</script>					
-				</td>
-			</tr>
-			
-		</table>
-	</body>
-</html>
+						<% end %>
+					</td>
+				</tr>
+			</table>			
+		</td>
+	</tr>
+	<tr><td>&nbsp;</td></tr>
+	<tr>
+		<td>
+			<script src="http://static.ak.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php" type="text/javascript"></script>
+			<fb:fan profile_id="50170270934" stream="0" connections=10></fb:fan>
+			<script type="text/javascript">FB.init("4ad5b16d7fb269f849ccd05692e05fd2", "xd_receiver.htm");</script>					
+		</td>
+	</tr>
+</table>
+<script type="text/javascript">
+	initialize();
+</script>

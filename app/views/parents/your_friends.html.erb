@@ -29,7 +29,7 @@
 						<font style='font-size: .7em;'>Profile Tags:
 						<%= truncate(friend.profile.tag_list.to_s, 25, "...") %>
 						<% if(friend.profile.tag_list.to_s.size > 25) %>
-							<%= link_to "More", "#", :onmouseover =>"TagToTip('#{friend.id}_tip', ABOVE, true, BALLOON, true)", :onmouseout => "UnTip()", :style => "color: #C21D7F;" %>
+							<%= link_to "More", "#", :title=>friend.profile.tag_list.to_s,:style => "color: #C21D7F;" %>
 							<div id="<%= friend.id %>_tip" style="display: none;"><%= friend.profile.tag_list.to_s %></div>
 						<% end %>	
 						<br />

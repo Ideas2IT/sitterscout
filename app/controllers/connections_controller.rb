@@ -73,6 +73,12 @@ class ConnectionsController < ApplicationController
     @profile = @user.profile
     render :layout => 'lightbox'
   end
+  
+  def suggests
+     
+     @friends = Profile.parents_you_may_know(current_user.profile,30)
+     render :layout => 'lightbox'
+  end
 
   def show
     @user = User.find(params[:id])
