@@ -168,8 +168,8 @@ pageTracker._trackPageview();
 		}
 	}
 	function update_user_box(){	
-	alert(document.getElementById('user_facebook_id').value);
-	alert(FB.Facebook.apiClient.get_session());
+	//alert(document.getElementById('user_facebook_id').value);
+	//alert(FB.Facebook.apiClient.get_session());
 	if (document.getElementById('user_facebook_id').value == FB.Facebook.apiClient.get_session().uid) {
 		if (FB.Connect.get_status().result == 1||FB.Facebook.apiClient.get_session()) {
 			var user_box = document.getElementById("logorsigns");
