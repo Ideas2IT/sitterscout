@@ -1,0 +1,27 @@
+<center>
+	<table width="100%">
+		<tr>
+			<td align="center">
+				<h3>
+					<center>Suggestions</center> 
+				</h3>	
+			</td>
+			<td align="center">
+				<div align="right" style="padding-right:0px;padding-top:3px;height:15px;width:15px;" >
+					<a href="#" class="lbAction" rel="deactivate" style="color:#AFAFAF;"><img align="right" src="/images/wrong.jpg"></a>
+				</div>
+			</td>
+		</tr>
+	</table>
+	<div style="border: 0px #AFAFAF solid; background-color: #ffffff; padding: 5px; width:380px; height: 430px; margin-right:10px;margin-left:10px;overflow-y: auto;border:1">
+		<% for sgst in @friends %>
+			<%= render :partial => 'parents/suggest_profile', :locals => {:suggest  => sgst} %>
+		<% end %>
+	</div>
+	<div style="text-align: center; text-align: center; padding: 5px 0; width: 100%;border:2px;">
+		<a href="#" class="lbAction" rel="deactivate">Close Window</a>
+	</div>
+</center>
+<script type="text/javascript">
+	initialize();
+</script>

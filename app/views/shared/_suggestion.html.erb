@@ -1,0 +1,15 @@
+<%unless suggest.nil?%>
+<table width="100%">
+	<tr>
+		<td width="20%">
+			<%= image_tag(suggest.avatar_photo_url, :class => "right",:alt=>"photo_small" ) %>
+		</td>
+		<td width="80%">
+			<table width="130px;">
+				<tr><td><strong><%= suggest.profile.first_name %>&nbsp;<%= suggest.profile.last_name.to_s.first + "." %></strong></td></tr>
+				<tr><td><%= image_tag "facebook_images/plus1.png", :alt => 'plus1' %>&nbsp;&nbsp;<%= link_to "Add as friend", url_for(:controller => 'connections', :action => 'add_friend', :id => suggest.id),:class => "lbOn-300-260" %></td></tr>
+			</table>
+		</td>
+	</tr>
+</table>
+<%end%>

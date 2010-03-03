@@ -1,0 +1,28 @@
+<% unless suggest.nil? %>
+	<div style="width: 95%; height: 100px; float: left; border: 1px #AFAFAF solid; background-color: #FFF; margin-left: 2px; margin-bottom: 4px;">
+			<div style="width: 55px;float: left; padding: 5px; ">
+				<%= image_tag(suggest.avatar_photo_url(:thumb), :class => "right", :alt=>"thumb_pic") %>
+			</div>
+
+			<div style="float:left;">
+				<strong style='font-size: 1em;'><%= suggest.profile.first_name rescue nil %>&nbsp;<%= suggest.profile.last_name rescue nil %></strong>
+				<br />
+					<div style='font-size: .7em;'><%= suggest.profile.city %>, <%= suggest.profile.state.name %></div>
+				<font style='font-size: .7em;'>
+					Profile Tags:
+					<%= truncate(suggest.profile.tag_list.to_s, 25, "...") %>
+					<% if(suggest.profile.tag_list.to_s.size > 25) %>
+						<%= link_to "More", "#", :title=>suggest.profile.tag_list.to_s, :style => "color: #C21D7F;" %>
+						<div id="<%= suggest.id %>_tip" style="display: none;"><%= suggest.profile.tag_list.to_s %></div>
+					<% end %>	
+					<br />
+					> <%= link_to "View Profile",  url_for(:controller => 'connections' , :action => 'view_friends_profile' , :id => suggest.id),:class => "lbOn-850-370" %>					
+					&nbsp;	> <%= link_to "Add to Your Friends", url_for(:controller => 'connections', :action => 'add_friend', :id => suggest.id), :class => "lbOn-300-270" %> 
+					<br>
+					<% if current_user.connected?(suggest) %>
+					><%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => suggest.id), :class => "lbOn-405-390" %>
+					<% end %>
+				</font>	
+			</div>
+	</div>	
+<% end %>
