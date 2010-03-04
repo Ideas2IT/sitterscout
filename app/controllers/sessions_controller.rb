@@ -35,13 +35,26 @@ end
       if params[:fb_id_hid]       
         self.current_user = User.authenticate(params[:fb_login], params[:fb_password])
         if self.current_user
-        self.current_user.facebook_id=params[:fb_id_hid]
-      self.current_user.save!
-      end
-    else      
+#          puts "facccccccccccccccccc"
+#          puts self.current_user.facebook_id
+          if self.current_user.facebook_id.to_i==0
+#            puts "this is woring====="
+            self.current_user.facebook_id=params[:fb_id_hid]
+            self.current_user.save!
+          else
+#            cookies.delete :auth_token
+#            reset_session
+            already_linked=true
+#           flash[:notice] = "This account is already linked to another facebook Account"
+#            redirect_to home_page_path
+          end
+        end
+      else      
         self.current_user = User.authenticate(params[:login], params[:password])
-        end    
+      end    
     end
+    
+    if !already_linked
     
     if logged_in?
       
@@ -96,6 +109,14 @@ end
           ##flash.discard
           }
       end
+    end
+    else
+      self.current_user.forget_me if logged_in?
+      cookies.delete :auth_token
+      reset_session
+      #flash.discard
+      flash[:error] = "This account is already linked to another facebook Account!"
+      redirect_to home_page_path
     end
   end
   
