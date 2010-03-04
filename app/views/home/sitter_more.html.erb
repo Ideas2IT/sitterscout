@@ -1,0 +1,40 @@
+<div id="navbars" class="home">
+
+	<ul id="globalnav">
+		<li id="home" <%= current_page?(:controller => "home", :action => "sitter_more") ? "class='selected'" : nil %>><%= link_to("home", home_page_path) %></li>
+		<li id="works"><%= link_to("works", how_it_works_path) %></li>
+		<li id="about"><%= link_to("about", about_us_path) %></li>
+		<li id="faq"><%= link_to("faq", :controller => 'home', :action => 'faq') %></li>
+	</ul>
+
+</div>
+
+<div id="content" style='height: 300px;padding-left:0px;'>
+	<div class='left' style="background: transparent url(images/sitters-art.png) no-repeat scroll 0% 0%;">
+			<font size="5" style="padding-left:30px;">How SitterScout Works</font><br>
+			<font size="5" style="padding-left:90px;">for Sitters</font>
+			<br><br><br>
+			<font>
+				-Get job requests via email or text message
+				<br><br>
+				- no phone calls to return
+				<br><br>
+				- create a sitterscout profile to help find families that would be a god match for you
+				<br><br>
+				- Control your provacy by selecting whether others can search for you or connect only with those families you know already
+				<br><br>
+				- Get more babysitting opportunities by connecting with friends of the families & sitters you know
+				<br>
+			</font>
+			<div style="padding-left:150px;">
+				<div class='signupitsfree green' onclick="location.href='/sitters/new';"></div>
+			</div>
+	</div>
+	<div class='col rightcol' style='padding-left: 60px;'>
+		
+		<script src="http://static.ak.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php" type="text/javascript"></script>
+			<fb:fan profile_id="50170270934" stream="0" connections=10></fb:fan>
+			<script type="text/javascript">FB.init("4ad5b16d7fb269f849ccd05692e05fd2", "xd_receiver.htm");</script>	
+	</div>
+</div>
+
