@@ -40,6 +40,14 @@
 		<% end %>
 		<% end %>
 	</script>
+	<style>
+		#fb_visible{
+			font-size:10px;
+			color:#6D6E71;
+			font-weight:normal;
+		}
+	</style>
+	
 <% unless logged_in?  %>	
 <script type='text/javascript'>
 
@@ -77,7 +85,7 @@
 <div id='header' style="height:130px">
 	<div id='headerwrapper'>
 		<div id='mainlogo' onclick='location.href="<%= current_path %>"'></div>		
-		<div id='logorsigns'>
+		<div id='logorsigns'  style="width:180px;">
 			<div class='loginsignup <%= logged_in? ? 'out' : 'carbon' %>' <%= logged_in? ? nil : "onmouseover='document.getElementById(\"loginmenu\").style.display=\"block\";'" %> onclick='<%= logged_in? ? "location.href=\"/logout\";" : nil %>'>
 				<div id='loginmenu'>
 					<div style='top: 40px; position: absolute;'>
@@ -130,7 +138,7 @@ pageTracker._trackPageview();
 	if (document.getElementById('user_facebook_id') && (document.getElementById('user_facebook_id').value == FB.Facebook.apiClient.get_session().uid)) {
 		if (FB.Connect.get_status().result == 1||FB.Facebook.apiClient.get_session()) {
 			var user_box = document.getElementById("logorsigns");
-			user_box.innerHTML = "<span>" + "<fb:profile-pic uid='loggedinuser' facebook-logo='true'></fb:profile-pic>" + "<fb:name uid='loggedinuser' useyou='false'></fb:name>" + document.getElementById('fb_log_out').innerHTML + "</span>"; // because this is XFBML, we need to tell Facebook to re-process the document 
+			user_box.innerHTML = "<span id='fb_visible'>" + "<fb:profile-pic uid='loggedinuser' facebook-logo='true'></fb:profile-pic>" + "<fb:name uid='loggedinuser' useyou='false'  linked='false'></fb:name>" + document.getElementById('fb_log_out').innerHTML + "</span>"; // because this is XFBML, we need to tell Facebook to re-process the document 
 			FB.XFBML.Host.parseDomTree();
 		}
 	}
@@ -142,8 +150,8 @@ pageTracker._trackPageview();
 			document.getElementById('sitter_facebook_id').value = FB.Facebook.apiClient.get_session().uid;
 		}		
 	}
-
+	//firstnameonly='true'
 	</script>
-<script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php/en_US" type="text/javascript"></script><script type="text/javascript">FB.init("064c4bc52963765138d21d8340130958", "xd_receiver.htm",{"ifUserConnected" : update_user_box});</script>
+<script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php/en_US" type="text/javascript"></script><script type="text/javascript">FB.init("4ad5b16d7fb269f849ccd05692e05fd2", "xd_receiver.htm",{"ifUserConnected" : update_user_box});</script>
 </body>
 </html>

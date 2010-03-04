@@ -125,7 +125,7 @@ class JobsController < ApplicationController
 #   rescue 
 #    flash[:error]= "Please select at least one sitter!"
 #    redirect_to :back
-# 
+
   end
 
   # PUT /jobs/1

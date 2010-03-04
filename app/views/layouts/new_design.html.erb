@@ -25,6 +25,13 @@
 	<!--[if IE]>
 	<%= stylesheet_link_tag 'ie.css' %>
 	<![endif]-->
+	<style>
+		#fb_nots{
+			font-size:10px;
+			color:gray;
+			font-weight:normal ;
+		}
+	</style>
 	<script type="text/javascript">
 		path_to_root_dir = "<%= APP_URL %>/";
 		
@@ -76,7 +83,7 @@
 	<div style="height:135px;">
 			<div id='mainlogo' onclick='location.href="<%= current_path %>"'></div>			
 			<div id="fb_log_out" style="display:none;"><a href = '#' onclick = "FB.Connect.logoutAndRedirect('/logout');"><img id = 'fb_logout_image' src = 'http://static.ak.fbcdn.net/images/fbconnect/logout-buttons/logout_small.gif' alt = 'Connect' border='0' /></a></div>
-			<div id='logorsigns' style="width:300px;">
+			<div id='logorsigns' style="width:200px;">
 				<div class='loginsignup <%= logged_in? ? 'out' : 'carbon' %>' <%= logged_in? ? nil : "onmouseover='document.getElementById(\"loginmenu\").style.display=\"block\";'" %> onclick='<%= logged_in? ? "location.href=\"/logout\";" : nil %>'>
 					<div id='loginmenu'>
 						<div style='top: 40px; position: absolute;'>
@@ -173,7 +180,7 @@ pageTracker._trackPageview();
 	if (document.getElementById('user_facebook_id').value == FB.Facebook.apiClient.get_session().uid) {
 		if (FB.Connect.get_status().result == 1||FB.Facebook.apiClient.get_session()) {
 			var user_box = document.getElementById("logorsigns");
-			user_box.innerHTML = "<span>" + "<fb:profile-pic uid='loggedinuser'></fb:profile-pic>" + "<fb:name uid='loggedinuser' useyou='false'></fb:name>" + document.getElementById('fb_log_out').innerHTML + "</span>"; // because this is XFBML, we need to tell Facebook to re-process the document 
+			user_box.innerHTML = "<span id='fb_nots'>" + "<fb:profile-pic uid='loggedinuser'></fb:profile-pic>" + "<fb:name uid='loggedinuser' useyou='false' linked='false' ></fb:name>" + document.getElementById('fb_log_out').innerHTML + "</span>"; // because this is XFBML, we need to tell Facebook to re-process the document 
 			FB.XFBML.Host.parseDomTree();
 		}
 	}
@@ -181,6 +188,7 @@ pageTracker._trackPageview();
 		FB.XFBML.Host.parseDomTree();
 	}
 	}	
+	// firstnameonly='true'
 </script>
 <script src="http://static.ak.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php" type="text/javascript"></script><script type="text/javascript">FB.init("4ad5b16d7fb269f849ccd05692e05fd2", "xd_receiver.htm",{"ifUserConnected" : update_user_box});</script>
 </body>

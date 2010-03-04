@@ -19,13 +19,13 @@
 						<%end%>
 					<%end%>
 				<%end%>
-				<% suggest = @friends.size%>
-				<tr><td><%= image_tag "facebook_images/suggest.png", :alt => 'doublearrow' %>&nbsp;&nbsp;<%= suggest %>&nbsp;<%= link_to "Suggest Friend(s)", url_for(:controller => 'connections', :action => 'suggests'), :class => "lbOn-400-500" %></td></tr>
+				<% suggest = @sitters_suggest.size%>
+				<tr><td><%= suggest %>&nbsp;<%= link_to "Suggest Siter(s)", url_for(:controller => 'connections', :action => 'suggests'), :class => "lbOn-400-500" %></td></tr>
 				<tr>
-					<td><%= image_tag "facebook_images/doublearrow.png", :alt => 'doublearrow' %>&nbsp;&nbsp;<%= friend_count %>&nbsp;<%= link_to "Friend Request(s)" ,connection_requests_parent_path(current_user)%></td>
+					<td><%= friend_count %>&nbsp;<%= link_to "Friend Request(s)" ,connection_requests_parent_path(current_user)%></td>
 				</tr>
 				<tr>
-					<td><%= image_tag "facebook_images/flag.png", :alt => 'doublearrow' %>&nbsp;&nbsp;<%= sitter_count %>&nbsp;<%= link_to "Sitter Connection Request(s)" ,connection_requests_parent_path(current_user)%></td>
+					<td><%= sitter_count %>&nbsp;<%= link_to "Sitter Connection Request(s)" ,connection_requests_parent_path(current_user)%></td>
 				</tr>
 			</table>
 		</td>
@@ -43,7 +43,7 @@
 				<tr>
 					<td>
 						<% i = 0 %>
-						<% for suggest in @friends %>
+						<% for suggest in @sitters_suggest %>
 							<%unless suggest.nil?%>
 								<%if i < 2 %>
 									<%= render :partial => '/shared/suggestion', :locals => {:suggest  => suggest} %>

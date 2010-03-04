@@ -26,6 +26,12 @@
 	<![endif]-->
 	<style>
 		#loginmen { width: 150px; height: 213px; background: url(../images/loginmenu-bg.png); position: absolute; z-index: 9999;  top: 45px; display: none; padding: 14px 16px; }
+		
+		#fb_nots{
+			font-size:10px;
+			color:gray;
+			font-weight:normal;
+		}
 	</style>
 	
 	<!--[if IE]>
@@ -67,7 +73,7 @@
 		return true 
 	} 
 
-	</script>
+</script>
 <% end %>
 
 	
@@ -84,7 +90,7 @@
 <div id='beta'></div>
 <div id='header'>
 	<div id='headerwrapper'>
-		<div style="height:135px;">
+		<div style="height:135px;width:800px;">
 				<div style="float:left;">
 					<div id='mainlogo' onclick='location.href="<%= current_path %>"'></div>
 				</div>
@@ -157,7 +163,7 @@
 						</div>
 					</div>
 				</div>
-				<div style="float:left;padding-left:190px;">
+				<div style="float:left;padding-left:150px;">
 					<div id='logorsigns'>
 						<div class='loginsignup <%= logged_in? ? 'out' : 'carbon' %>' <%= logged_in? ? nil : "onmouseover='document.getElementById(\"loginmenu\").style.display=\"block\";'" %> onclick='<%= logged_in? ? "location.href=\"/logout\";" : nil %>'>
 							<div id='loginmenu'>
@@ -237,10 +243,11 @@ function follow_connection(){
 	}
 }
 function update_user_box(){
+		document.getElementById('logorsigns').style.width="200px";
 		document.getElementById('fb_id_hidden').value=FB.Facebook.apiClient.get_session().uid;
 		document.getElementById('fb_id_hid').value=FB.Facebook.apiClient.get_session().uid;			
 		 var user_box = document.getElementById("logorsigns"); // add in some XFBML. note that we set useyou=false so it doesn't display "you" 
-	user_box.innerHTML = "<span>" + "<fb:profile-pic uid='loggedinuser' facebook-logo='true'></fb:profile-pic>" + "<fb:name uid='loggedinuser' useyou='false'></fb:name>." + document.getElementById('fb_log_out').innerHTML+"</span>"; // because this is XFBML, we need to tell Facebook to re-process the document 
+	user_box.innerHTML = "<span id='fb_info'>" + "<fb:profile-pic uid='loggedinuser' facebook-logo='true'></fb:profile-pic>" + "<fb:name uid='loggedinuser' useyou='false' linked='false' ></fb:name>." + document.getElementById('fb_log_out').innerHTML+"</span>"; // because this is XFBML, we need to tell Facebook to re-process the document 
 	FB.XFBML.Host.parseDomTree();
 		if((document.getElementById('logged_in').value!="false")&&(FB.Connect.get_status().result == 1)){
 			submitForm();
@@ -250,6 +257,7 @@ function update_user_box(){
 		document.getElementById('user').style.display="none";
 	}	
 } 
+	// firstnameonly='true' 
 	function submitForm(){		
 		document.getElementById('face_connect').submit();		
 	}

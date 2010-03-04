@@ -14,7 +14,7 @@
 		</tr>
 	</table>
 	<div style="border: 0px #AFAFAF solid; background-color: #ffffff; padding: 5px; width:380px; height: 430px; margin-right:10px;margin-left:10px;overflow-y: auto;border:1">
-		<% for sgst in @friends %>
+		<% for sgst in @sitters_suggest %>
 			<%= render :partial => 'parents/suggest_profile', :locals => {:suggest  => sgst} %>
 		<% end %>
 	</div>

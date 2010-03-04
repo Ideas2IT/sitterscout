@@ -29,5 +29,12 @@ class HomeController < ApplicationController
    render :layout => "no_search"
   end
   
+  def sitter_more
+    render :layout => "no_search"
+  end
+  
+  def parent_more
+     render :layout => "no_search"
+  end
   
 end

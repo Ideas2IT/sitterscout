@@ -76,7 +76,7 @@ class ConnectionsController < ApplicationController
   
   def suggests
      
-     @friends = Profile.parents_you_may_know(current_user.profile,30)
+    @sitters_suggest = Profile.sitters_you_may_know(current_user.profile, 30)
      render :layout => 'lightbox'
   end
 

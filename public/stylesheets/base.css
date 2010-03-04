@@ -50,6 +50,8 @@ a:hover { border-bottom: none; }
 #content .col { width: 280px; margin-right: 40px; backg/round: pink; float: left; padding-bottom: 60px; padding-left: 100px; }
 .rightcol { margin: 0 !important; }
 
+#content .left { width: 380px; margin-right: 40px; float: left; padding-bottom: 60px; padding-left: 40px; }
+.rightcol { margin: 0 !important; }
 
 .signupitsfree { background: url(../images/signupitsfree-lgbuttons.png); width: 240px; height: 40px; margin-left: -28px; margin-top: 25px; cursor: pointer; }
 .magenta { background-position: 0 0; }

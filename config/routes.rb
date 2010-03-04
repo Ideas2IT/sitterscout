@@ -176,7 +176,9 @@ ActionController::Routing::Routes.draw do |map|
   
   map.privacy '/privacy', :controller=> 'home', :action => "privacy"
   
+  map.sitter_more '/sitter_more', :controller=> 'home', :action =>'sitter_more'
   
+   map.parent_more '/parent_more', :controller=> 'home', :action =>'parent_more'
   
   # sessions routes
   

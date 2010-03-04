@@ -7,7 +7,7 @@
 		<td width="80%">
 			<table width="130px;">
 				<tr><td><strong><%= suggest.profile.first_name %>&nbsp;<%= suggest.profile.last_name.to_s.first + "." %></strong></td></tr>
-				<tr><td><%= image_tag "facebook_images/plus1.png", :alt => 'plus1' %>&nbsp;&nbsp;<%= link_to "Add as friend", url_for(:controller => 'connections', :action => 'add_friend', :id => suggest.id),:class => "lbOn-300-260" %></td></tr>
+				<tr><td><%= link_to "Add as friend", url_for(:controller => 'connections', :action => 'add_friend', :id => suggest.id),:class => "lbOn-300-260" %></td></tr>
 			</table>
 		</td>
 	</tr>
