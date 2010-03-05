@@ -423,9 +423,11 @@ end
     params[:profile] ||= {}
     @parent = current_user
   
+    puts "#{params[:avatar]}============="
+    
     
     if params[:avatar]
-    if @parent.photo
+      if @parent.photo
         @parent.photo.update_attributes(:uploaded_data => params[:avatar][:uploaded_data])
       else
         @parent.photo = Photo.create(:uploaded_data => params[:avatar][:uploaded_data])
@@ -701,7 +703,7 @@ end
 
     
     def schedule_sitter
-      @friends = Profile.parents_you_may_know(current_user.profile,30)
+      @sitters_suggest = Profile.sitters_you_may_know(current_user.profile, 30)
       
       if session[:booked_sitters]
         @booked_sitters = session[:booked_sitters]  
