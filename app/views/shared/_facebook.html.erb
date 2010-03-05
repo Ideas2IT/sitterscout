@@ -20,7 +20,7 @@
 					<%end%>
 				<%end%>
 				<% suggest = @sitters_suggest.size%>
-				<tr><td><%= suggest %>&nbsp;<%= link_to "Suggest Siter(s)", url_for(:controller => 'connections', :action => 'suggests'), :class => "lbOn-400-500" %></td></tr>
+				<tr><td><%= suggest %>&nbsp;<%= link_to "Suggested Sitter(s)", url_for(:controller => 'connections', :action => 'suggests'), :class => "lbOn-400-500" %></td></tr>
 				<tr>
 					<td><%= friend_count %>&nbsp;<%= link_to "Friend Request(s)" ,connection_requests_parent_path(current_user)%></td>
 				</tr>
