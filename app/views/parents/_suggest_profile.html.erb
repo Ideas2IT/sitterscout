@@ -16,8 +16,8 @@
 					<div id="<%= suggest.id %>_tip" style="display: none;"><%= suggest.profile.tag_list.to_s %></div>
 				<% end %>	
 				<br />
-				> <%= link_to "View Profile",  url_for(:controller => 'connections' , :action => 'view_sitter_profile' , :id => suggest.id),:class => "lbOn-850-370" %>					
-				&nbsp;	> <%= link_to "Add to your sitters", url_for(:controller => 'connections', :action => 'add_sitter', :id => suggest.id), :class => "lbOn-300-270" %> 
+				> <%= link_to "View Profile",  url_for(:controller => 'connections' , :action => 'view_sitter_profile' , :id => friend.id), :class => "lbOn-850-570"%>				
+				&nbsp;	><%= link_to "Add to Your Sitters", url_for(:controller => 'connections', :action => 'add_sitter', :id => friend.id), :class => "lbOn-300-270" %>  
 				<br>
 				<% if current_user.connected?(suggest) %>
 				><%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => suggest.id), :class => "lbOn-405-390" %>
