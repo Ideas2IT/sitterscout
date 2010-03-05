@@ -423,59 +423,74 @@ end
     params[:profile] ||= {}
     @parent = current_user
   
-    puts "#{params[:avatar]}============="
+#    puts "#{params[:avatar]}==================="
     
+#    puts "#{params[:avatar][:uploaded_data].content_type}=================="
     
-    if params[:avatar]
-      if @parent.photo
-        @parent.photo.update_attributes(:uploaded_data => params[:avatar][:uploaded_data])
+      unless params[:avatar][:uploaded_data].nil? or params[:avatar][:uploaded_data].empty?
+        type = params[:avatar][:uploaded_data].content_type.to_s
       else
-        @parent.photo = Photo.create(:uploaded_data => params[:avatar][:uploaded_data])
+        type = 'image/png'
       end
-    end
-    
-    if @parent.profile.nil?
-      @profile = Profile.new(params[:profile])
-    else
-      @profile = @parent.profile
-    end
-    if params[:profile_setup]
-      @parent.aasm_state = "welcome"
-    end  
-    
-    @profile.save
-    @parent.profile = @profile
-    
-    if params[:user][:password]
-      if params[:user][:password].nil? || params[:user][:password].blank? || params[:user][:password_confirmation].nil? || params[:user][:password_confirmation].blank? 
-        flash[:error] = "Please enter the same password in both fields."
-        redirect_to :back
-        return
-      elsif params[:user][:password] != params[:user][:password_confirmation]
-        flash[:error] = "Passwords do not match confirmation."
-        redirect_to :back
-        return
+          
+        
+        if type == 'image/png' or type == 'image/jpeg' or type == 'image/gif'
+        
+          if params[:avatar]
+            if @parent.photo
+              @parent.photo.update_attributes(:uploaded_data => params[:avatar][:uploaded_data])
+            else
+              @parent.photo = Photo.create(:uploaded_data => params[:avatar][:uploaded_data])
+            end
+          end
+          
+          if @parent.profile.nil?
+            @profile = Profile.new(params[:profile])
+          else
+            @profile = @parent.profile
+          end
+          if params[:profile_setup]
+            @parent.aasm_state = "welcome"
+          end  
+          
+          @profile.save
+          @parent.profile = @profile
+          
+          if params[:user][:password]
+            if params[:user][:password].nil? || params[:user][:password].blank? || params[:user][:password_confirmation].nil? || params[:user][:password_confirmation].blank? 
+              flash[:error] = "Please enter the same password in both fields."
+              redirect_to :back
+              return
+            elsif params[:user][:password] != params[:user][:password_confirmation]
+              flash[:error] = "Passwords do not match confirmation."
+              redirect_to :back
+              return
+            end
+          end
+          
+          if @parent.update_attributes(params[:user]) && @profile.update_attributes(params[:profile])
+             
+              if params["login_update.x"]
+                 flash[:notice] = 'Your password has been changed.'
+                 redirect_to :back
+              elsif params["update_avatar"]
+                flash[:notice] = 'Your photo has been updated.'
+                redirect_to :back
+              elsif params[:update_profile]
+                flash[:notice] = 'Profile updated.'
+                redirect_to :back
+              else
+                redirect_to(your_children_parent_path(current_user))
+              end
+          else
+            flash[:error] = "There was a problem saving your changes."
+            redirect_to :back
+          end
+      
+      else
+          flash[:error] = 'You can only upload images (GIF, JPEG, or PNG)'
+          redirect_to :back
       end
-    end
-    
-    if @parent.update_attributes(params[:user]) && @profile.update_attributes(params[:profile])
-       
-        if params["login_update.x"]
-           flash[:notice] = 'Your password has been changed.'
-           redirect_to :back
-        elsif params["update_avatar"]
-          flash[:notice] = 'Your photo has been updated.'
-          redirect_to :back
-        elsif params[:update_profile]
-          flash[:notice] = 'Profile updated.'
-          redirect_to :back
-        else
-          redirect_to(your_children_parent_path(current_user))
-        end
-    else
-      flash[:error] = "There was a problem saving your changes."
-      redirect_to :back
-    end 
   end
 
   

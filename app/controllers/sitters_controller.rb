@@ -201,60 +201,78 @@ class SittersController < ApplicationController
 
     @sitter = current_user
 
-    if params[:avatar]
-    if @sitter.photo
-        @sitter.photo.update_attributes(:uploaded_data => params[:avatar][:uploaded_data])
-      else
-        @sitter.photo = Photo.create(:uploaded_data => params[:avatar][:uploaded_data])
-      end
-    end
-
-    if @sitter.profile.nil?
-      @profile = Profile.create(params[:profile])
+#    puts "#{params[:avatar]}================================"
+    
+#    puts "#{params[:avatar][:uploaded_data]}============================================"
+    
+#    puts attachment_options[:content_type]
+#    type = params[:avatar][:uploaded_data].content_type
+    
+    unless params[:avatar][:uploaded_data].nil? or params[:avatar][:uploaded_data].empty?
+       type = params[:avatar][:uploaded_data].content_type.to_s
     else
-      @profile = @sitter.profile
-    end
-    if params[:profile_setup]  
-      @sitter.aasm_state = "welcome"
-    end  
-    if !@profile.save
-    	#flash[:error] = "There was a problem saving your profile."
-    	flash[:error] = @profile.errors.full_messages.join(", ")
-    	##flash.discard
-	    redirect_to :back
-	    return
+        type = 'image/png'
     end
     
-    @sitter.profile = @profile
-    
-    if params[:user][:password]
-      if params[:user][:password].nil? || params[:user][:password].blank? || params[:user][:password_confirmation].nil? || params[:user][:password_confirmation].blank? 
-        flash[:error] = "Please enter the same password in both fields."
-        redirect_to :back
-        return
-      elsif params[:user][:password] != params[:user][:password_confirmation]
-        flash[:error] = "Passwords do not match confirmation."
-        redirect_to :back
-        return
-      end
-    end
-    if @sitter.update_attributes(params[:user]) && @profile.update_attributes(params[:profile])
-        if params["login_update.x"]
-           flash[:notice] = 'Your password has been changed.'
-           redirect_to :back
-        elsif params["update_avatar"]
-          flash[:notice] = 'Your photo has been updated.'
-          redirect_to :back
-        elsif params[:update_profile]
-          flash[:notice] = 'Profile updated.'
-          redirect_to :back
-        else
-          redirect_to(your_skills_sitter_path(current_user))
+    if type == 'image/png' or type == 'image/jpeg' or type == 'image/gif'
+        if params[:avatar]
+        if @sitter.photo
+            @sitter.photo.update_attributes(:uploaded_data => params[:avatar][:uploaded_data])
+          else
+            @sitter.photo = Photo.create(:uploaded_data => params[:avatar][:uploaded_data])
+          end
         end
+    
+        if @sitter.profile.nil?
+          @profile = Profile.create(params[:profile])
+        else
+          @profile = @sitter.profile
+        end
+        if params[:profile_setup]  
+          @sitter.aasm_state = "welcome"
+        end  
+        if !@profile.save
+        	#flash[:error] = "There was a problem saving your profile."
+        	flash[:error] = @profile.errors.full_messages.join(", ")
+        	##flash.discard
+    	    redirect_to :back
+    	    return
+        end
+        
+        @sitter.profile = @profile
+        
+        if params[:user][:password]
+          if params[:user][:password].nil? || params[:user][:password].blank? || params[:user][:password_confirmation].nil? || params[:user][:password_confirmation].blank? 
+            flash[:error] = "Please enter the same password in both fields."
+            redirect_to :back
+            return
+          elsif params[:user][:password] != params[:user][:password_confirmation]
+            flash[:error] = "Passwords do not match confirmation."
+            redirect_to :back
+            return
+          end
+        end
+        if @sitter.update_attributes(params[:user]) && @profile.update_attributes(params[:profile])
+            if params["login_update.x"]
+               flash[:notice] = 'Your password has been changed.'
+               redirect_to :back
+            elsif params["update_avatar"]
+              flash[:notice] = 'Your photo has been updated.'
+              redirect_to :back
+            elsif params[:update_profile]
+              flash[:notice] = 'Profile updated.'
+              redirect_to :back
+            else
+              redirect_to(your_skills_sitter_path(current_user))
+            end
+        else
+            flash[:error] = "There was a problem saving your changes."
+            redirect_to :back
+        end 
     else
-        flash[:error] = "There was a problem saving your changes."
+        flash[:error] = 'You can only upload images (GIF, JPEG, or PNG)'
         redirect_to :back
-    end  
+    end
   end
 
   def your_skills
