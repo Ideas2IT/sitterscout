@@ -198,7 +198,7 @@ class SittersController < ApplicationController
   def update
     params[:user] ||= {}
     params[:profile] ||= {}
-
+    foto_flag = true
     @sitter = current_user
 
 #    puts "#{params[:avatar]}================================"
@@ -208,20 +208,36 @@ class SittersController < ApplicationController
 #    puts attachment_options[:content_type]
 #    type = params[:avatar][:uploaded_data].content_type
     
-    unless params[:avatar][:uploaded_data].nil? or params[:avatar][:uploaded_data].empty?
-       type = params[:avatar][:uploaded_data].content_type.to_s
-    else
-        type = 'image/png'
-    end
+#    unless params[:avatar][:uploaded_data].nil? or params[:avatar][:uploaded_data].empty?
+#       type = params[:avatar][:uploaded_data].content_type.to_s
+#    else
+#        type = 'image/png'
+#    end
     
-    if type == 'image/png' or type == 'image/jpeg' or type == 'image/gif'
+      
         if params[:avatar]
-        if @sitter.photo
-            @sitter.photo.update_attributes(:uploaded_data => params[:avatar][:uploaded_data])
-          else
-            @sitter.photo = Photo.create(:uploaded_data => params[:avatar][:uploaded_data])
+          unless params[:avatar][:uploaded_data].class.to_s == 'String'
+            if @parent.photo
+              type = params[:avatar][:uploaded_data].content_type.to_s
+              if type == 'image/png' or type == 'image/jpeg' or type == 'image/gif'
+                @sitter.photo.update_attributes(:uploaded_data => params[:avatar][:uploaded_data])
+                foto_flag = true
+              else
+                foto_flag = false
+              end
+            else
+                type = params[:avatar][:uploaded_data].content_type.to_s
+                if type == 'image/png' or type == 'image/jpeg' or type == 'image/gif'
+                    @sitter.photo = Photo.create(:uploaded_data => params[:avatar][:uploaded_data])
+                    foto_flag = true
+                else
+                     foto_flag = false
+                end
+            end
           end
         end
+    
+#    if type == 'image/png' or type == 'image/jpeg' or type == 'image/gif'
     
         if @sitter.profile.nil?
           @profile = Profile.create(params[:profile])
@@ -269,10 +285,10 @@ class SittersController < ApplicationController
             flash[:error] = "There was a problem saving your changes."
             redirect_to :back
         end 
-    else
-        flash[:error] = 'You can only upload images (GIF, JPEG, or PNG)'
-        redirect_to :back
-    end
+#    else
+#        flash[:error] = 'You can only upload images (GIF, JPEG, or PNG)'
+#        redirect_to :back
+#    end
   end
 
   def your_skills

@@ -422,28 +422,48 @@ end
     params[:user] ||= {}
     params[:profile] ||= {}
     @parent = current_user
+    foto_flag = true
   
 #    puts "#{params[:avatar]}==================="
     
 #    puts "#{params[:avatar][:uploaded_data].content_type}=================="
     
-      unless params[:avatar][:uploaded_data].nil? or params[:avatar][:uploaded_data].empty?
-        type = params[:avatar][:uploaded_data].content_type.to_s
-      else
-        type = 'image/png'
-      end
-          
+#      unless params[:avatar][:uploaded_data].nil? 
+#        type = params[:avatar][:uploaded_data].content_type.to_s
+#      else
+#        type = 'image/png'
+#      end
+#          
+#        
+#        if type == 'image/png' or type == 'image/jpeg' or type == 'image/gif'
         
-        if type == 'image/png' or type == 'image/jpeg' or type == 'image/gif'
+#          puts "#{params[:avatar][:uploaded_data].class.to_s}=====================" 
+        
         
           if params[:avatar]
-            if @parent.photo
-              @parent.photo.update_attributes(:uploaded_data => params[:avatar][:uploaded_data])
-            else
-              @parent.photo = Photo.create(:uploaded_data => params[:avatar][:uploaded_data])
+            unless params[:avatar][:uploaded_data].class.to_s == 'String'
+              if @parent.photo
+                type = params[:avatar][:uploaded_data].content_type.to_s
+                if type == 'image/png' or type == 'image/jpeg' or type == 'image/gif'
+                  @parent.photo.update_attributes(:uploaded_data => params[:avatar][:uploaded_data])
+                  foto_flag = true
+                else
+                  foto_flag = false
+                end
+              else
+                  type = params[:avatar][:uploaded_data].content_type.to_s
+                  if type == 'image/png' or type == 'image/jpeg' or type == 'image/gif'
+                      @parent.photo = Photo.create(:uploaded_data => params[:avatar][:uploaded_data])
+                      foto_flag = true
+                  else
+                       foto_flag = false
+                  end
+              end
             end
-          end
+        end
+        
           
+      if foto_flag == true    
           if @parent.profile.nil?
             @profile = Profile.new(params[:profile])
           else
