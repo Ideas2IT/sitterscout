@@ -122,9 +122,9 @@ class JobsController < ApplicationController
         render :action => "new" 
       end
    
-#   rescue 
-#    flash[:error]= "Please select at least one sitter!"
-#    redirect_to :back
+   rescue 
+    flash[:error]= "Please select at least one sitter!"
+    redirect_to :back
 
   end
 
