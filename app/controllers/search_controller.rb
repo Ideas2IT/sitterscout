@@ -3,7 +3,7 @@ class SearchController < ApplicationController
 
  def index
      @profiles = []
-     
+     @tags = ""
      if params[:searchoption] == "sitter"
       cont = 'parent_id'
       jcont ='sitter_id'
@@ -18,13 +18,22 @@ class SearchController < ApplicationController
     if givchar =='number'
         @profiles = Profile.paginate(:origin => params[:search], :include => [:sitter, :parent], :order => 'distance asc', :within => '15', :conditions => "#{cont.to_s} is null AND not_searchable = 1",:joins=> "INNER JOIN users ON users.id = profiles.#{jcont.to_s} AND users.active != #{true}", :per_page => 10, :page => params[:page])
         @zipcode = params[:search]
+        @tags = 'Search by Zipcode'
     else
       if (params[:search]=~(/\W/)) != nil
 #        flash[:notice] = "Please give only name or zipcode"
       else
+        @tags = 'Search by Name'
         @profiles = Profile.paginate(:include => [:sitter, :parent],:order => 'full_name asc',:conditions => "(profiles.full_name LIKE '%#{params[:search].to_s}%' OR profiles.first_name LIKE '%#{params[:search].to_s}%' OR profiles.last_name LIKE '%#{params[:search].to_s}%')  AND profiles.#{cont.to_s} is null AND profiles.not_searchable = 1 ",:joins=> "INNER JOIN users ON users.id = profiles.#{jcont.to_s} AND users.active != #{true} ", :per_page => 10, :page => params[:page])
         @zipcode = ""
       end
+    end
+  
+    if @profiles.empty?
+      puts "its commig in profile nil condition============================================"
+      @tags = 'Search by profile tag'
+      @profiles = Profile.paginate_by_sql("SELECT * FROM profiles p, taggings tg, tags t WHERE p.#{jcont.to_s} IS NULL AND tg.taggable_id=p.id AND tg.tag_id = t.id AND t.name LIKE '%#{params[:search].to_s}%'", :per_page => 10, :page => params[:page])
+      
     end
   
 #    unless params[:parent_or_sitter]

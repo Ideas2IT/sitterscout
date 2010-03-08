@@ -17,7 +17,7 @@ config.action_view.cache_template_extensions         = false
 # Don't care if the mailer can't send
 config.action_mailer.raise_delivery_errors = false
 
-APP_URL = "http://sitterscout.falat.speedyrails.ca"
+APP_URL = "http://staging.sitterscout.com"
 
 ##Exception Notificaiton settings
 ExceptionNotifier.exception_recipients = %w(akvmurlai@gmail.com ilangoinfotech@gmail.com ranjeetrajasekar@gmail.com)
