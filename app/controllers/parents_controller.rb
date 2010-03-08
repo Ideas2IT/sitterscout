@@ -33,14 +33,14 @@ class ParentsController < ApplicationController
   end
   
   def sitters
-    limit = 10
+    limit = 25
     plist = Profile.sitters_you_may_know(current_user.profile, limit).collect(&:id) 
     #find(:all, :conditions => ["profile_public = ?", true]).collect(&:id)
     alist = current_user.accepted_friendships.collect(&:friend_id)
     ulist = current_user.pending_friendships.collect(&:friend_id)
     @sitters = []
     removed_people = RemovedPeople.find_users_removed_people_ids(current_user.id)
-``    
+   
     sitter_ids = []
     
     

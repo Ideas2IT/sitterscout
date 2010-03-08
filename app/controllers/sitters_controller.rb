@@ -213,11 +213,13 @@ class SittersController < ApplicationController
 #    else
 #        type = 'image/png'
 #    end
-    
       
         if params[:avatar]
+#          puts "photo info================"
+#          puts "#{params[:avatar][:uploaded_data].class.to_s}============================"
           unless params[:avatar][:uploaded_data].class.to_s == 'String'
-            if @parent.photo
+            if @sitter.photo
+#              puts "#{params[:avatar][:uploaded_data].content_type.to_s}====type==displaying====="
               type = params[:avatar][:uploaded_data].content_type.to_s
               if type == 'image/png' or type == 'image/jpeg' or type == 'image/gif'
                 @sitter.photo.update_attributes(:uploaded_data => params[:avatar][:uploaded_data])
@@ -226,6 +228,7 @@ class SittersController < ApplicationController
                 foto_flag = false
               end
             else
+#               puts "#{params[:avatar][:uploaded_data].content_type.to_s}===photo in else====="
                 type = params[:avatar][:uploaded_data].content_type.to_s
                 if type == 'image/png' or type == 'image/jpeg' or type == 'image/gif'
                     @sitter.photo = Photo.create(:uploaded_data => params[:avatar][:uploaded_data])
@@ -445,29 +448,23 @@ class SittersController < ApplicationController
   end
   
    def friends
-    limit = 10
+    limit = 25
     plist = Profile.sitters_you_may_know(current_user.profile, limit).collect(&:id) 
     #find(:all, :conditions => ["profile_public = ?", true]).collect(&:id)
     alist = current_user.accepted_friendships.collect(&:friend_id)
     ulist = current_user.pending_friendships.collect(&:friend_id)
     @sitters = []
     removed_people = RemovedPeople.find_users_removed_people_ids(current_user.id)
-``    
+    
     sitter_ids = []
     
-    
-#    puts "#{plist.size}============"
-    
-    plist.each do |p|
+     plist.each do |p|
       unless current_user.id == p || alist.include?(p) || ulist.include?(p) || removed_people.include?(p)
         sitter_ids << p if sitter_ids.length < 5
       end
-    end
+    end 
     
-#    puts "#{plist.first(5).size}============#{sitter_ids.size}============#{sitter_ids.class}="
-    
-    @sitters = Sitter.find(:all, :include => [:photo], :conditions => ["users.id in (?) ", sitter_ids])    
-    
+    @sitters = Sitter.find(:all, :include => [:photo], :conditions => ["users.id in (?) ", sitter_ids])  
     
     @confirmed_sitters = []
 #    current_user.accepted_friendships.each do |f|
@@ -477,7 +474,9 @@ class SittersController < ApplicationController
 #    end
     
       accepted_friendship_sitter_ids = current_user.accepted_friendships.select {|f| f.friend.is_a?Sitter}.collect {|f| f.friend.id}
+      
       @confirmed_sitters = Sitter.find(:all, :include => [:photo], :conditions => ["users.id in (?) ", accepted_friendship_sitter_ids])
+
 
     @unconfirmed_sitters = []
 #    current_user.pending_friendships.each do |f|

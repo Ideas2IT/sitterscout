@@ -43,7 +43,7 @@
 						</td>
 					<tr>
 						<td colspan="2" style=" font-size: .7em; padding-left: 2px;">
-							<%= link_to "Add to Your Friends", url_for(:controller => 'connections', :action => 'add_friend', :id => search.id), :class => "lbOn-300-270" %>
+							<%= link_to "Add to Your Friends", url_for(:controller => 'connections', :action => 'add_sitter', :id => search.id), :class => "lbOn-300-270" %>
 							
 							<% if current_user.connected?(search) %>
 							 | <%= link_to "View Connections", url_for(:controller => 'connections', :action => 'show', :id => search.id), :class => "lbOn-405-390" %>
@@ -62,8 +62,8 @@
 		<div class="col2">
 		<span style="font-size: .9em; font-weight: bold;">Your Friends:</span>
 		<div style="width: 465px; margin-top: 4px; font-size: .8em">
-			<% unless @confirmed_friends.blank? %>
-				<% @confirmed_friends.each do |f| %>
+			<% unless @confirmed_sitters.nil? %>
+				<% @confirmed_sitters.each do |f| %>
 					<% unless f.profile.nil? %>
 							<div style="width: 98%; border: 1px solid #ADACAD; padding: 5px; margin-bottom: 5px; background-color: #FFFFFF">
 								<table>
@@ -107,8 +107,8 @@
 		<br />
 		<span style="font-size: .9em; font-weight: bold;">Awaiting Confirmation:</span>
 			<div style="width: 465px; font-size: .8em;margin-bottom: 50px;">
-			<% unless @unconfirmed_friends.blank? %>
-			<% @unconfirmed_friends.each do |f| %>
+			<% unless @unconfirmed_sitters.blank? %>
+			<% @unconfirmed_sitters.each do |f| %>
 						<div style="width: 98%; border: 1px solid #ADACAD; padding: 5px; margin-bottom: 5px; background-color: #FFFFFF">
 							<table>
 								<tr>

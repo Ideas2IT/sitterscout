@@ -32,7 +32,7 @@
 										<td style="padding: 5px;" valign="top">
 											<strong style=" font-size: 1em; color: #333333;"><%= link_to(f.friend.profile.first_name + " " + f.friend.profile.last_name, url_for(view_parent_profile_sitter_path(f.friend.id))) %></strong><br/>
 										<%= f.friend.profile.city %>, <%= f.friend.profile.state.name %><br />
-
+										
 
 
 										<div valign="top" style=" font-size: 9pt; color: #333333; margin-top: 18px;">
@@ -45,6 +45,7 @@
 
 										<%= link_to "Decline Request", url_for(:controller => 'connections', :action => 'decline', :id => f.friend.id), :confirm => "Are you sure you want to remove this friend?" %>
 										</div>
+										</td>
 									</tr>
 								</table>
 							</div>
@@ -70,6 +71,7 @@
 
 										<%= link_to "Decline Request", url_for(:controller => 'connections', :action => 'decline', :id => f.friend.id), :confirm => "Are you sure you want to remove this friend?" %>
 										</div>
+										</td>
 									</tr>
 								</table>
 							</div>
