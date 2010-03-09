@@ -32,7 +32,8 @@ class SearchController < ApplicationController
     if @profiles.empty?
       puts "its commig in profile nil condition============================================"
       @tags = 'Search by profile tag'
-      @profiles = Profile.paginate_by_sql("SELECT * FROM profiles p, taggings tg, tags t WHERE p.#{jcont.to_s} IS NULL AND tg.taggable_id=p.id AND tg.tag_id = t.id AND t.name LIKE '%#{params[:search].to_s}%'", :per_page => 10, :page => params[:page])
+      @profiles = Profile.paginate_by_sql("SELECT * FROM profiles p  JOIN taggings tng ON p.id = tng.taggable_id AND p.#{cont.to_s} IS NULL JOIN (SELECT tg.id id FROM tags tg WHERE NAME LIKE '%#{params[:search].to_s}%') t ON tng.tag_id = t.id JOIN users u ON p.#{jcont.to_s} =u.id AND u.active != TRUE ",:per_page => 10, :page => params[:page])
+#      SELECT * FROM profiles p  JOIN taggings tng ON p.id = tng.taggable_id AND p.sitter_id IS NULL JOIN (SELECT tg.id id FROM tags tg WHERE NAME LIKE '%this%') t ON tng.tag_id = t.id
       
     end
   
