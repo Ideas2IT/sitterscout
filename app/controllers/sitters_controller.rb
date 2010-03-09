@@ -240,7 +240,6 @@ class SittersController < ApplicationController
           end
         end
     
-#    if type == 'image/png' or type == 'image/jpeg' or type == 'image/gif'
     
         if @sitter.profile.nil?
           @profile = Profile.create(params[:profile])
