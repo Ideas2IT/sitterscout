@@ -131,6 +131,26 @@ end
         flash[:notice] = "Your password has been reset and emailed to you."
         flash.discard
         
+#        redirect_to(home_page_path)
+
+      end
+    else
+      flash[:error] = "Sorry. We don't recognize that email address."
+      flash.discard
+    end 
+  end
+  
+  def forgot_password_popup 
+    @user = User.find_by_email(params[:email])  
+    return unless request.post?   
+    if @user
+      if @user.reset_password
+        Notifications.deliver_reset_password(@user)
+        @user.save
+         
+        flash[:notice] = "Your password has been reset and emailed to you."
+        flash.discard
+        
         redirect_to(home_page_path)
 
       end
