@@ -102,7 +102,8 @@
 					<div id ='facebook_login' align="center" style="display:none;width:300px;height:300px;align:left;valign:top;font-size:12px;">
 					 <div class="div_border" align="left" width="90%" height="100%" style="background-color:#EDEDED;">
 							<table height="260px;" width="250px" border="0" style="margin-left:15px">
-								<tr><td align="center" colspan="2"><b>Member Login</b></td></tr>
+								<tr><td align="center" colspan="2"><b>SitterScout Login</b></td></tr>
+								<!--tr><td align="center" colspan="2"><b>Member Login</b></td></tr-->
 								<tr><td colspan="2">In order to connect your Facebook account to SitterScout, we need a little more information.</td></tr>
 								<tr><td colspan="2">&nbsp;</td></tr>
 								<tr>
@@ -131,11 +132,10 @@
 								
 								<tr><td>&nbsp;</td></tr>
 								<tr>
-									<td align="center" colspan="2"><b>New to Sitterscout</b></td>
+									<td align="center" colspan="2"><b>Are you new to SitterScout?</b></td>
 								</tr>
 								<tr>&nbsp;</tr>
 								<tr><td colspan="2" align="center" style="padding-right:85px;"><div class='loginsignup magenta'" onclick='location.href="/sitters/new"'></div></td></tr>
-								<tr><td>&nbsp;</td></tr>
 								<tr>
 									<td colspan="2" align="center"><a href="#" class="lbAction" onclick="hide_login();">Close Window</a></td>
 								</tr>
@@ -163,12 +163,12 @@
 						</div>
 					</div>
 				</div>
-				<div style="float:left;padding-left:150px;">
+				<div style="float:left;padding-left:190px;">
 					<table>
 						<tr>
 							<td>
-								<div id="user" style="padding-top:20px;">					
-									<fb:login-button size="small" onlogin="follow_connection();"></fb:login-button>
+								<div id="user" style="padding-top:22px;">					
+									<fb:login-button size="medium" onlogin="follow_connection();"></fb:login-button>
 								</div>
 							</td>
 							<td>&nbsp;</td>
@@ -259,8 +259,8 @@ function update_user_box(){
 		document.getElementById('fb_id_hidden').value=FB.Facebook.apiClient.get_session().uid;
 		document.getElementById('fb_id_hid').value=FB.Facebook.apiClient.get_session().uid;			
 		 var user_box = document.getElementById("logorsigns"); // add in some XFBML. note that we set useyou=false so it doesn't display "you" 
-	user_box.innerHTML = "<span id='fb_info'>" + "<fb:profile-pic uid='loggedinuser' facebook-logo='true'></fb:profile-pic>" + "<fb:name uid='loggedinuser' useyou='false' linked='false' ></fb:name>." + document.getElementById('fb_log_out').innerHTML+"</span>"; // because this is XFBML, we need to tell Facebook to re-process the document 
-	FB.XFBML.Host.parseDomTree();
+		user_box.innerHTML = "<span id='fb_info'>" + "<fb:profile-pic uid='loggedinuser' facebook-logo='true'></fb:profile-pic>" + "<fb:name uid='loggedinuser' useyou='false' linked='false' ></fb:name>." + document.getElementById('fb_log_out').innerHTML+"</span>"; // because this is XFBML, we need to tell Facebook to re-process the document 
+		FB.XFBML.Host.parseDomTree();
 		if((document.getElementById('logged_in').value!="false")&&(FB.Connect.get_status().result == 1)){
 			submitForm();
 		}
