@@ -1,7 +1,8 @@
 class AdminController < ApplicationController
   before_filter :login_required
   before_filter :admin_required
-  layout 'no_search'
+  before_filter :layout_change
+  layout 'home'
   
   def index
     
@@ -311,6 +312,12 @@ class AdminController < ApplicationController
   
   def update_user
     
+  end
+  
+  private
+  
+  def layout_change
+    @layout = "no_search"
   end
   
 end

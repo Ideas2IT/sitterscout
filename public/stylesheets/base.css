@@ -3,8 +3,9 @@ body { background: #f8f8f9; margin: 0; padding: 0; height: 100%; font-family: "V
 a, a.tooltip:visited, a:active { color: #C31880; text-decoration: none; }
 a:hover { border-bottom: none; }
 
-#header { height: 190px; width: 100%; background: url(../images/header-gradient.jpg) repeat-x;  }
-#headerwrapper { height: 190px; width: 800px; margin: 0 auto; }
+#header { height: auto; width: 100%; background: url(../images/header-gradient.jpg) repeat-x;  }
+#headerwrapper { height: auto; width: 800px; margin: 0 auto; }
+#headersearch { height: 190px; width: 800px; margin: 0 auto; }
 
 #mainlogo { height: 80px; width: 220px; margin: 35px 0 15px 0; background: url(../images/sitterscout-logo.jpg) no-repeat;  float: left; cursor: pointer; }
 #logorsign { height: 40px; width: 180px; background: none; color: #000; opacity: 1.5; margin: 45px 0 25px 0; float: right; text-align: center; line-height: 40px; font-size: 9px; }

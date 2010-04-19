@@ -168,7 +168,6 @@ lightbox.prototype = {
 	// Search through new links within the lightbox, and attach click event
 	actions: function(){
 		lbActions = document.getElementsByClassName('lbAction');
-
 		for(i = 0; i < lbActions.length; i++) {
 			Event.observe(lbActions[i], 'click', this[lbActions[i].rel].bindAsEventListener(this), false);
 			lbActions[i].onclick = function(){return false;};
@@ -188,10 +187,13 @@ lightbox.prototype = {
 	 
 	},
 	
+	
+	
 	// Example of creating your own functionality once lightbox is initiated
 	deactivate: function(){
+		alert("called");
 		Element.remove($('lbContent'));
-		
+		alert("called");
 		if (browser == "Internet Explorer"){
 			this.setScroll(0,this.yPos);
 			bod = document.getElementsByTagName('html')[0];
@@ -237,3 +239,19 @@ function addLightboxMarkup() {
 		lightbox_added = true;
 	}
 }
+
+function hideLightbox()
+{
+	
+	Element.remove($('lbContent'));
+	// get objects
+	objOverlay = document.getElementById('overlay');
+	objLightbox = document.getElementById('lightbox');
+
+	// hide lightbox and overlay
+	objOverlay.style.display = 'none';
+	objLightbox.style.display = 'none';
+
+}
+
+

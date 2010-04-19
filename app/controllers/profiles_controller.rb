@@ -3,7 +3,7 @@ class ProfilesController < ApplicationController
   skip_before_filter :direct_to_current_state
   # GET /profiles
   # GET /profiles.xml
-  layout 'new_design'
+  layout 'home'
   
   def index
     @profiles = Profile.find(:all)

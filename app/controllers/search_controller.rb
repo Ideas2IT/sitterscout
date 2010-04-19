@@ -1,7 +1,9 @@
 class SearchController < ApplicationController
-  layout 'new_design'
+  layout 'home'
 
  def index
+#    @layout = 'no_search'
+    @home_bar = "not_needed"
      @profiles = []
      @tags = ""
      if params[:searchoption] == "sitter"

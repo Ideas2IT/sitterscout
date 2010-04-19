@@ -4,7 +4,7 @@ class SittersController < ApplicationController
   skip_before_filter :direct_to_current_state, :only => [:update_families, :welcome, :your_friends, :your_families, :search_families, :search_friends,:search_sitters, :add_sitter, :add_friend, :create, :send_invitations, :invite, :update_sitters, :update_friends,:update_families, :your_friends, :your_families, :add_family, :your_sitters, :your_skills, :create_skills, :update, :welcome, :confirm_email_sent]
    
  # auto_complete_for :profile, :full_name
-  layout 'new_design'
+  layout 'home'
   
   def index
     #render :layout => 'parent'
@@ -17,6 +17,10 @@ class SittersController < ApplicationController
        when "admin"
          redirect_to dashboard_admin_path(current_user)      
        end
+     else
+       puts "its coming"
+       @layout = 'no_search'
+       @home_bar = "not_needed" 
      end
   end
   
@@ -24,12 +28,15 @@ class SittersController < ApplicationController
   end
   
   def new
-    render :layout => 'no_search'
+    @home_bar = "not_needed"
+    @layout = 'no_search'
+#    render :layout => 'no_search'
   end
   
   
   def create
-
+  @layout = 'no_search'
+  @home_bar = "not_needed" 
   if simple_captcha_valid?  
       
     @sitter = Sitter.new(params[:sitter])
@@ -94,6 +101,8 @@ class SittersController < ApplicationController
       
     end
   rescue ActiveRecord::RecordInvalid
+    @layout = 'no_search'
+    @home_bar = "not_needed" 
     render :action => 'new'
   end
 
@@ -297,7 +306,9 @@ class SittersController < ApplicationController
     @user = current_user
     @profile = current_user.profile
     @skill = current_user.skill
-    render :layout => "no_search"
+    @layout = 'no_search'
+   
+#    render :layout => "no_search"
   end
   def update_skills
       if current_user.skill.nil?
@@ -421,13 +432,15 @@ class SittersController < ApplicationController
 
   def your_families
     @families = Profile.parents_you_may_know(current_user.profile,30)
-    render :layout => "no_search"
+    @layout = 'no_search'
+#    render :layout => "no_search"
   end
   
   def your_friends
     
     @friends = Profile.sitters_you_may_know(current_user.profile,30)
-    render :layout=> "no_search"
+    @layout = 'no_search'
+#    render :layout=> "no_search"
     
 #    plist = Profile.sitters_you_may_know(current_user.profile).collect(&:id)
 #    @friends = []
@@ -617,9 +630,10 @@ class SittersController < ApplicationController
       @user = @sitter
       @profile = @sitter.profile || Profile.new
       @metro_areas, @states = setup_locations_for(@sitter)
- 
+      @layout = 'no_search'
       @avatar = Photo.new
-      render :layout => "no_search"
+      
+#      render :layout => "no_search"
     end
     
     	def inbox
@@ -821,7 +835,8 @@ class SittersController < ApplicationController
   end
   
   def invite
-    render :layout => "no_search"
+    @layout = 'no_search'
+#    render :layout => "no_search"
   end
   
   def decline_job_from_email

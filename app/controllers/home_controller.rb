@@ -5,7 +5,8 @@ class HomeController < ApplicationController
   layout 'home'
  
   def index
-    
+    @layout = 'no_search'
+    @home_bar = "needed" 
     if logged_in?
       if current_user.is_a?Parent
         redirect_to dashboard_parent_path(current_user)
@@ -14,7 +15,22 @@ class HomeController < ApplicationController
       end
     end
   end
-
+  
+  def about_us
+    @layout = 'no_search'
+   @home_bar = "needed" 
+  end
+  
+  def faq
+   @layout = 'no_search'
+   @home_bar = "needed" 
+  end
+  
+  def how_it_works
+    @layout = 'no_search'
+    @home_bar = "needed" 
+  end
+  
   def sitter
   end
 
@@ -22,19 +38,24 @@ class HomeController < ApplicationController
   end
 
   def privacy
-   render :layout => "no_search"
+    @layout = 'no_search'
+   
+#   render :layout => "no_search"
   end
   
   def tou
-   render :layout => "no_search"
+    @layout = 'no_search'
+#   render :layout => "no_search"
   end
   
   def sitter_more
-    render :layout => "no_search"
+  @layout = 'no_search'
+#    render :layout => "no_search"
   end
   
   def parent_more
-     render :layout => "no_search"
+    @layout = 'no_search'
+#     render :layout => "no_search"
   end
   
 end

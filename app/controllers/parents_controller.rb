@@ -4,7 +4,7 @@ class ParentsController < ApplicationController
   skip_before_filter :direct_to_current_state, :only => [:search_sitters, :search_friends, :add_sitter, :add_friend, :add_children, :create, :send_invitations, :invite, :update_sitters, :update_children, :update_friends, :your_friends, :your_sitters, :update, :welcome, :update_my_children, :your_children, :insert_children, :confirm_email_sent]
   # auto_complete_for :profile, :full_name
   
-  layout 'new_design'
+  layout 'home'
 
   # GET /Parents
   # GET /Parents.xml
@@ -79,7 +79,8 @@ class ParentsController < ApplicationController
   end
 
   def invite
-    render :layout => "no_search"
+    @layout = 'no_search'
+#    render :layout => "no_search"
   end
 
   def send_invitations
@@ -126,7 +127,9 @@ class ParentsController < ApplicationController
     @parent = Parent.new( {:birthday => Date.parse((Time.now - 25.years).to_s) }.merge(params[:parent] || {}) )
     @inviter_id = params[:id]
     @inviter_code = params[:code]
-    render :layout => "no_search"     
+    @home_bar = "not_needed"
+    @layout = 'no_search'
+#    render :layout => "no_search"     
   end
 
   # GET /Parents/1/edit
@@ -137,7 +140,8 @@ class ParentsController < ApplicationController
   # POST /Parents
   # POST /Parents.xml
   def create
-
+  @layout = 'no_search'
+  @home_bar = "not_needed" 
   if simple_captcha_valid?  
     
     @parent = Parent.new(params[:parent])
@@ -540,16 +544,19 @@ end
     @metro_areas, @states = setup_locations_for(@parent)
   
     @avatar = Photo.new
-    render :layout => "no_search"
+    @layout = 'no_search'
+#    render :layout => "no_search"
   end
   
   def your_children
-    render :layout => "no_search"
+    @layout = 'no_search'
+#    render :layout => "no_search"
   end
 
   def your_friends
-   @friends = Profile.parents_you_may_know(current_user.profile,30)   
-    render :layout => "no_search"
+   @friends = Profile.parents_you_may_know(current_user.profile,30)
+   @layout = 'no_search'
+#    render :layout => "no_search"
   end
 
 
@@ -692,7 +699,8 @@ end
   end
   def your_sitters
    @sitters = Profile.sitters_you_may_know(current_user.profile, 30)   
-    render :layout => "no_search"
+    @layout = 'no_search'
+#    render :layout => "no_search"
   end
   
   def my_profile

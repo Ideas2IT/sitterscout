@@ -4,7 +4,7 @@ class MessageController < ApplicationController
   
 	before_filter :login_required
 
-  layout "new_design"
+  layout "home"
 	
 	def compose
 		@sender = current_user

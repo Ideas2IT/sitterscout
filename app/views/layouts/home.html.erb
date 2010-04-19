@@ -1,21 +1,18 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
 
 <head>
 	<title>SitterScout.com - Join today and get out tonight!</title>
-	<%= stylesheet_link_tag 'application' %>
+		<%= stylesheet_link_tag 'application', 'lightbox' %>
 	<%= stylesheet_link_tag 'base.css' %>
 	<%= stylesheet_link_tag 'bt.css' %>
-	<%= stylesheet_link_tag 'lightbox' %>
-	  <%= javascript_include_tag :defaults%>
-
-
   	<%= javascript_include_tag :defaults %>
+
 	<%#= javascript_include_tag '/js/BubbleTooltips' %>
 	<%= javascript_include_tag 'quicksilver' %>
 	<%= javascript_include_tag 'lightbox' %>
 	<%= javascript_include_tag 'getRealPopup' %>
+	<%= javascript_include_tag 'glassbox/glassbox.js' %>
 	<%= calendar_date_select_includes "green" %>
 	<link rel="shortcut icon" href="/images/favicon.ico" type="image/ico" />
 	<!--[if lt IE 7]>
@@ -37,7 +34,7 @@
 	<!--[if IE]>
 	<%= stylesheet_link_tag 'ie.css' %>
 	<![endif]-->
-	<%= javascript_include_tag 'glassbox/glassbox.js' %>
+	
 	
 	<% unless flash.empty? %>
 	<script type="text/javascript">
@@ -65,6 +62,7 @@
 		var parent = checkParent(target); 
 		if(parent){obj.style.display='none'} 
 	} 
+	
 	function checkParent(t){ 
 		while(t.parentNode){ 
 			if(t==document.getElementById('loginmenu')){ return false; } 
@@ -88,8 +86,14 @@
 	<%= javascript_include_tag 'wz_tooltip' %>
 	<%= javascript_include_tag 'tip_balloon' %>
 <div id='beta'></div>
+
 <div id='header'>
-	<div id='headerwrapper'>
+<%unless  @layout == 'no_search'%>
+	<%- str = "headersearch"%>
+<%else%>
+	<%- str = "headerwrapper"%>
+<%end%>
+	<div id='<%=str%>'>
 		<div style="height:135px;width:800px;">
 				<div style="float:left;">
 					<div id='mainlogo' onclick='location.href="<%= current_path %>"'></div>
@@ -99,117 +103,119 @@
 					<input id="fb_id_hidden" type="hidden" name="fb_id_hidden" />
 				<%end%>
 				<input type="hidden" id="logged_in" value="<%=params[:logged]%>" />
-					<div id ='facebook_login' align="center" style="display:none;width:300px;height:300px;align:left;valign:top;font-size:12px;">
+				<div id ='facebook_login' align="center" style="display:none;width:300px;height:300px;align:left;valign:top;font-size:12px;">
 					 <div class="div_border" align="left" width="90%" height="100%" style="background-color:#EDEDED;">
-							<table height="260px;" width="250px" border="0" style="margin-left:15px">
-								<tr><td align="center" colspan="2"><b>SitterScout Login</b></td></tr>
-								<!--tr><td align="center" colspan="2"><b>Member Login</b></td></tr-->
-								<tr><td colspan="2">In order to connect your Facebook account to SitterScout, we need a little more information.</td></tr>
-								<tr><td colspan="2">&nbsp;</td></tr>
-								<tr>
-									<td>Email Id &nbsp;&nbsp;</td>
-									<% form_tag sessions_path, :id=>"fb_login_form" do -%>
-									<td>
-										 <%= text_field_tag 'fb_login','email address',:class=>'loginmenuinput', :onfocus=>"if(this.value=='email address'){this.value=''; this.style.color='#000';};", :onblur=>"if(this.value==''){this.value='email address'; this.style.color='#999'; }" %>
-									</td>
-								</tr>
-								<tr>
-									<td>Password &nbsp;&nbsp;</td>				
-									<td>
-										 <%= password_field_tag 'fb_password', 'password', :class=>'loginmenuinput',  :onfocus=>"if(this.value=='password'){this.value=''; this.style.color='#000';};", :onblur=>"if(this.value==''){this.value='password'; this.style.color='#999'; }"%>
-									</td>				
-								</tr>
-								<tr><td colspan="2"><input id="fb_id_hid" type="hidden" name="fb_id_hid" /></td></tr>
-								<tr><td colspan="2"><%= check_box_tag 'remember_me', :style=>'margin-left: 0;' %>&nbsp;<label for="remember" style='font-size: 11px; '>Remember Me</label></td></tr>
-								<tr>
-									<td align="center" colspan="2"> 
-										<div class="logmenubutton in" onclick="$('fb_login_form').submit();"></div>
-									</td>
-								</tr>
-								<% end %>
-								<tr><td align="center" colspan="2"><a href='#' onclick="forget_popup();" style='font-size: 11px; padding-left: 1px;'>forgot password?</a></td></tr>
+						<table height="260px;" width="250px" border="0" style="margin-left:15px">
+							<tr><td align="center" colspan="2"><b>SitterScout Login</b></td></tr>
+							<!--tr><td align="center" colspan="2"><b>Member Login</b></td></tr-->
+							<tr><td colspan="2">In order to connect your Facebook account to SitterScout, we need a little more information.</td></tr>
+							<tr><td colspan="2">&nbsp;</td></tr>
+							<tr>
+								<td>Email Id &nbsp;&nbsp;</td>
+								<% form_tag sessions_path, :id=>"fb_login_form" do -%>
+								<td>
+									 <%= text_field_tag 'fb_login','email address',:class=>'loginmenuinput', :onfocus=>"if(this.value=='email address'){this.value=''; this.style.color='#000';};", :onblur=>"if(this.value==''){this.value='email address'; this.style.color='#999'; }" %>
+								</td>
+							</tr>
+							<tr>
+								<td>Password &nbsp;&nbsp;</td>				
+								<td>
+									 <%= password_field_tag 'fb_password', 'password', :class=>'loginmenuinput',  :onfocus=>"if(this.value=='password'){this.value=''; this.style.color='#000';};", :onblur=>"if(this.value==''){this.value='password'; this.style.color='#999'; }"%>
+								</td>				
+							</tr>
+							<tr><td colspan="2"><input id="fb_id_hid" type="hidden" name="fb_id_hid" /></td></tr>
+							<tr><td colspan="2"><%= check_box_tag 'remember_me', :style=>'margin-left: 0;' %>&nbsp;<label for="remember" style='font-size: 11px; '>Remember Me</label></td></tr>
+							<tr>
+								<td align="center" colspan="2"> 
+									<div class="logmenubutton in" onclick="$('fb_login_form').submit();"></div>
+								</td>
+							</tr>
+							<% end %>
+							<tr><td align="center" colspan="2"><a href='#' onclick="forget_popup();" style='font-size: 11px; padding-left: 1px;'>forgot password?</a></td></tr>
 								
 								
-								<tr><td>&nbsp;</td></tr>
-								<tr>
-									<td align="center" colspan="2"><b>Are you new to SitterScout?</b></td>
-								</tr>
-								<tr>&nbsp;</tr>
-								<tr><td colspan="2" align="center" style="padding-right:85px;"><div class='loginsignup magenta'" onclick='location.href="/sitters/new"'></div></td></tr>
-								<tr>
-									<td colspan="2" align="center"><a href="#" class="lbAction" onclick="hide_login();">Close Window</a></td>
-								</tr>
-							</table>
-						</div>
-					</div> 
-					<div id="forgetpopup" align="center" style="display:none;width:300px;height:300px;align:left;valign:top;font-size:12px;">
-						<div class="div_border" align="left" width="90%" height="100%" style="background-color:#EDEDED;">
-							<%= image_tag "wrong.jpg", :alt => 'wrong', :class  => "cursor_pointer" ,:id => "change_image_cancel_fwd_blog" ,:align => "right" ,:onclick => "hide_remember();" %>
-							<span style=' font-size: 14pt; color: #333333; padding-left: 10px'>Forgot Your Password</span>
-							<div style="height: 215px; padding: 20px 10px;">
-								<% form_tag url_for(:controller => 'sessions',:action => 'forgot_password') do %>
-									To reset your password, enter the email used when registering. We'll send a link to reset your password to that address.
-									<div style="margin-top: 25px; font-size: 14px;padding-top:10px;">
-									<label for="email">What was the email address used to create your account?</label><br />
-									<div style="padding-top:10px;">
-									<%= text_field_tag :email, "", :size => 25, :style=>"margin-top: 4px;" %>
-									</div>
-									<center style="padding-top:10px;">
-										<%= image_submit_tag "/images/parent_home/Submit_bttn.gif", :class => "column-30-margin", :alt => "Reset Password" %>
-									</center>
-									</div>
-								<% end %>
-							</div>
+							<tr><td>&nbsp;</td></tr>
+							<tr>
+								<td align="center" colspan="2"><b>Are you new to SitterScout?</b></td>
+							</tr>
+							<tr>&nbsp;</tr>
+							<tr><td colspan="2" align="center" style="padding-right:85px;"><div class='loginsignup magenta'" onclick='location.href="/sitters/new"'></div></td></tr>
+							<tr>
+								<td colspan="2" align="center"><a href="#" class="lbAction" onclick="hide_login();">Close Window</a></td>
+							</tr>
+						</table>
+					</div>
+				</div> 
+				<div id="forgetpopup" align="center" style="display:none;width:300px;height:300px;align:left;valign:top;font-size:12px;">
+					<div class="div_border" align="left" width="90%" height="100%" style="background-color:#EDEDED;">
+						<%= image_tag "wrong.jpg", :alt => 'wrong', :class  => "cursor_pointer" ,:id => "change_image_cancel_fwd_blog" ,:align => "right" ,:onclick => "hide_remember();" %>
+						<span style=' font-size: 14pt; color: #333333; padding-left: 10px'>Forgot Your Password</span>
+						<div style="height: 215px; padding: 20px 10px;">
+							<% form_tag url_for(:controller => 'sessions',:action => 'forgot_password') do %>
+								To reset your password, enter the email used when registering. We'll send a link to reset your password to that address.
+								<div style="margin-top: 25px; font-size: 14px;padding-top:10px;">
+								<label for="email">What was the email address used to create your account?</label><br />
+								<div style="padding-top:10px;">
+								<%= text_field_tag :email, "", :size => 25, :style=>"margin-top: 4px;" %>
+								</div>
+								<center style="padding-top:10px;">
+									<%= image_submit_tag "/images/parent_home/Submit_bttn.gif", :class => "column-30-margin", :alt => "Reset Password" %>
+								</center>
+								</div>
+							<% end %>
 						</div>
 					</div>
 				</div>
-				<div style="float:left;padding-left:190px;">
-					<table>
-						<tr>
-							<td>
-								<div id="user" style="padding-top:22px;">					
-									<fb:login-button size="medium" onlogin="follow_connection();"></fb:login-button>
-								</div>
-							</td>
-							<td>&nbsp;</td>
-							<td>
-								<div id='logorsigns'>
-									<div class='loginsignup <%= logged_in? ? 'out' : 'carbon' %>' <%= logged_in? ? nil : "onmouseover='document.getElementById(\"loginmenu\").style.display=\"block\";'" %> onclick='<%= logged_in? ? "location.href=\"/logout\";" : nil %>'>
-										<div id='loginmenu'>
-											<div style='top: 40px; position: absolute;padding-right:10px;'>
-												<% form_tag sessions_path, :id=>"login_form" do -%>
-													<%= text_field_tag 'login','email address',:class=>'loginmenuinput', :onfocus=>"if(this.value=='email address'){this.value=''; this.style.color='#000';};", :onblur=>"if(this.value==''){this.value='email address'; this.style.color='#999'; }" %>
-													<%= password_field_tag 'password', 'password', :class=>'loginmenuinput',  :onfocus=>"if(this.value=='password'){this.value=''; this.style.color='#000';};", :onblur=>"if(this.value==''){this.value='password'; this.style.color='#999'; }"%>
-													<br /><%= check_box_tag 'remember_me', :style=>'margin-left: 0;' %><label for="remember" style='font-size: 11px; color: #fff;'>Remember Me</label>
-													<div class="logmenubutton in" onclick="$('login_form').submit();"></div>
-													<a href='<%= url_for(:controller => "sessions", :action => "forgot_password") %>' style='font-size: 11px; c/olor:#fff; border-bott/om: 1px dotted #fff; padding-left: 1px;'>forgot password?</a>
-												<% end %>
-											</div>
-											<div class='logmenubutton signup' onclick='location.href="<%= new_sitter_path %>"'></div>	
+			</div>
+			<div style="float:left;padding-left:190px;">
+				<table>
+					<tr>
+						<td>
+							<div id="user" style="padding-top:22px;">					
+								<fb:login-button size="medium" onlogin="follow_connection();"></fb:login-button>
+							</div>
+						</td>
+						<td>&nbsp;</td>
+						<td>
+							<div id="user_box" style="display:none;">
+								<span id='fb_info'>
+									<fb:profile-pic uid='loggedinuser' facebook-logo='true'></fb:profile-pic>
+									<fb:name uid='loggedinuser' useyou='false' linked='false' ></fb:name>
+								</span>
+								<a href = '#' onclick ="FB.Connect.logoutAndRedirect('/logout'); return(false);"><img id = 'fb_logout_image' src = 'http://static.ak.fbcdn.net/images/fbconnect/logout-buttons/logout_small.gif' alt = 'Connect' border='0' /></a>	
+							</div>
+							<div id='logorsigns'>
+								<div class='loginsignup <%= logged_in? ? 'out' : 'carbon' %>' <%= logged_in? ? nil : "onmouseover='document.getElementById(\"loginmenu\").style.display=\"block\";'" %> onclick='<%= logged_in? ? "location.href=\"/logout\";" : nil %>'>
+									<div id='loginmenu'>
+										<div style='top: 40px; position: absolute;padding-right:10px;'>
+											<% form_tag sessions_path, :id=>"login_form" do -%>
+												<%= text_field_tag 'login','email address',:class=>'loginmenuinput', :onfocus=>"if(this.value=='email address'){this.value=''; this.style.color='#000';};", :onblur=>"if(this.value==''){this.value='email address'; this.style.color='#999'; }" %>
+												<%= password_field_tag 'password', 'password', :class=>'loginmenuinput',  :onfocus=>"if(this.value=='password'){this.value=''; this.style.color='#000';};", :onblur=>"if(this.value==''){this.value='password'; this.style.color='#999'; }"%>
+												<br /><%= check_box_tag 'remember_me', :style=>'margin-left: 0;' %><label for="remember" style='font-size: 11px; color: #fff;'>Remember Me</label>
+												<div class="logmenubutton in" onclick="$('login_form').submit();"></div>
+												<a href='<%= url_for(:controller => "sessions", :action => "forgot_password") %>' style='font-size: 11px; c/olor:#fff; border-bott/om: 1px dotted #fff; padding-left: 1px;'>forgot password?</a>
+											<% end %>
 										</div>
+										<div class='logmenubutton signup' onclick='location.href="<%= new_sitter_path %>"'></div>	
 									</div>
-									<%if !logged_in? %>
-									<div  style="float:left;padding-top:15px;padding-left:6px;font-size:9px;">OR</div>
-									<div class='loginsignup magenta' onclick='location.href="/sitters/new"'></div>
-									<%end%>
 								</div>
-								<div id="fb_log_out" style="display:none;"><a href = '#' onclick = "FB.Connect.logoutAndRedirect('/logout'); return(false);"><img id = 'fb_logout_image' src = 'http://static.ak.fbcdn.net/images/fbconnect/logout-buttons/logout_small.gif' alt = 'Connect' border='0' /></a></div>	
-							</td>
-						</tr>
-					</table>
-				</div>
+								<%if !logged_in? %>
+								<div  style="float:left;padding-top:15px;padding-left:6px;font-size:9px;">OR</div>
+								<div class='loginsignup magenta' onclick='location.href="/sitters/new"'></div>
+								<%end%>
+							</div>
+							<!--div id="fb_log_out" style="display:none;"><a href = '#' onclick = "FB.Connect.logoutAndRedirect('/logout'); return(false);"><img id = 'fb_logout_image' src = 'http://static.ak.fbcdn.net/images/fbconnect/logout-buttons/logout_small.gif' alt = 'Connect' border='0' /></a></div-->	
+						</td>
+					</tr>
+				</table>
+			</div>
 		</div>
-		<div id='navbars' <%= current_page?(:controller => "home", :action => "index") ? "class='home'" : nil %>
-			<%= current_page?(:controller => 'home', :action => "how_it_works") ? "class='works'" : nil %>
-			<%= current_page?(:controller => "home", :action => "about_us") ? "class='about'" : nil %>
-			<%= current_page?(:controller => "home", :action => "faq") ? "class='faq'" : nil %>>
-			<ul id='globalnav'>
-				<li id="home" <%= current_page?(:controller => "parents", :action => "index") ? "class='selected'" : nil %>><%= link_to("home", home_page_path) %></li>
-				<li id="works"><%= link_to("works", how_it_works_path) %></li>
-				<li id="about"><%= link_to("about", about_us_path) %></li>
-				<li id="faq"><%= link_to("faq", :controller => 'home', :action => 'faq') %></li>
-			</ul>	
-		</div>
+		<%if @home_bar == "needed"%>
+		 <%= render :partial => 'layouts/home_bar'%>
+		<%end%>
+		<%unless  @layout == 'no_search'%>
+			<%= render :partial => 'layouts/search'%>
+		<%end%>
 		<div id='loginmenu'>
 			<div style='top: 40px; position: absolute;'>
 				<% form_tag sessions_path, :id=>"login_form" do -%>
@@ -224,15 +230,22 @@
 		</div>
 		<div id="flash_notice">
 			<% flash.each do |key, msg| %>
-				<%= content_tag('div', flash[:error], :onload => 'gberror();', :id => "notice_#{key}", :style => "padding: 5px;") if flash[:error] %>
-				<%= content_tag('div', flash[:notice], :onload => 'gberror();',:id => "notice_#{key}", :style => "padding: 5px;") if flash[:notice] %>	
+				<%= content_tag('div', flash[:error], :id => "notice_#{key}") if flash[:error] %>
+				<%= content_tag('div', flash[:notice], :id => "notice_#{key}") if flash[:notice] %>	
+				 <script type="text/javascript">
+		        setTimeout("new Effect.Fade('notice_<%= key %>');", 15000);
+		    </script>
 			<% end %>
 		</div>
 	</div>
 
 </div>
 		<%= yield %>
-		
+<%if logged_in?%>
+<input type="hidden" id="current_person_fb_id" name="current_person_fb_id" value= '<%= current_user.facebook_id.to_i %>'>
+<%else%>
+<input type="hidden" id="current_person_fb_id" name="current_person_fb_id" value= ''>
+<%end%>	
 <div id='footer'>
 	<p>&copy; 2008 Sitterscout, Inc.&nbsp;&nbsp;All Rights Reserved.&nbsp;&nbsp;|&nbsp;&nbsp;Email: info@sitterscout.com&nbsp;&nbsp;|&nbsp;&nbsp;<a href='/privacy'>Your Privacy</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href='/tou'>Terms of Use</a>&nbsp;&nbsp;<a>|</a>&nbsp;&nbsp;<a href='/faq'>FAQ</a>&nbsp;&nbsp;<a>|</a>&nbsp;&nbsp;<a href='/how_it_works'>How it Works</a>
 		</p>
@@ -243,32 +256,67 @@ var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "htt
 document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
 </script>
 <script type="text/javascript">
-try {
-var pageTracker = _gat._getTracker("UA-6137367-1");
-pageTracker._trackPageview();
-} catch(err) {}
-function follow_connection(){
-	document.getElementById('fb_id_hidden').value=FB.Facebook.apiClient.get_session().uid;
-		document.getElementById('fb_id_hid').value=FB.Facebook.apiClient.get_session().uid;
-	if((document.getElementById('logged_in').value!="false")&&(FB.Connect.get_status().result == 1)) {
-		submitForm();
-	}
-}
-function update_user_box(){
-		document.getElementById('logorsigns').style.width="200px";
-		document.getElementById('fb_id_hidden').value=FB.Facebook.apiClient.get_session().uid;
-		document.getElementById('fb_id_hid').value=FB.Facebook.apiClient.get_session().uid;			
-		 var user_box = document.getElementById("logorsigns"); // add in some XFBML. note that we set useyou=false so it doesn't display "you" 
-		user_box.innerHTML = "<span id='fb_info'>" + "<fb:profile-pic uid='loggedinuser' facebook-logo='true'></fb:profile-pic>" + "<fb:name uid='loggedinuser' useyou='false' linked='false' ></fb:name>." + document.getElementById('fb_log_out').innerHTML+"</span>"; // because this is XFBML, we need to tell Facebook to re-process the document 
-		FB.XFBML.Host.parseDomTree();
-		if((document.getElementById('logged_in').value!="false")&&(FB.Connect.get_status().result == 1)){
+	try {
+		var pageTracker = _gat._getTracker("UA-6137367-1");
+		pageTracker._trackPageview();
+	} catch(err) {}
+	
+	function follow_connection(){
+		alert("its comming=-="+FB.Facebook.apiClient.get_session().uid);
+		//document.getElementById('fb_id_hidden').value=FB.Facebook.apiClient.get_session().uid;
+		//document.getElementById('fb_id_hid').value=FB.Facebook.apiClient.get_session().uid;
+		if((document.getElementById('logged_in').value != "false")&&(FB.Connect.get_status().result == 1)) {
+			alert('condition satisfied=====');
 			submitForm();
 		}
-	if((document.getElementById('logged_in').value=="false")&&(FB.Facebook.apiClient.get_session())){		
-		showPop('facebook_login',-800,400);
+	}
+	function update_user_box(){
+		alert(FB.Facebook.apiClient.get_session().uid);
+		//document.getElementById('logorsigns').style.width="200px";
+		
+		id_facebook = FB.Facebook.apiClient.get_session().uid;
+		
+		alert(document.getElementById('current_person_fb_id'));
+		
+		document.getElementById('fb_id_hidden').value = id_facebook;
+		
 		document.getElementById('user').style.display="none";
-	}	
-} 
+		
+		if (document.getElementById('fb_id_hid')){
+			document.getElementById('fb_id_hid').value = id_facebook;
+		}
+		//var user_box = document.getElementById("logorsigns"); // add in some XFBML. note that we set useyou=false so it doesn't display "you" 
+		//user_box.innerHTML = "<span id='fb_info'>" + "<fb:profile-pic uid='loggedinuser' facebook-logo='true'></fb:profile-pic>" + "<fb:name uid='loggedinuser' useyou='false' linked='false' ></fb:name>." + document.getElementById('fb_log_out').innerHTML+"</span>"; // because this is XFBML, we need to tell Facebook to re-process the document 
+		//FB.XFBML.Host.parseDomTree();
+		
+		if ((document.getElementById('logged_in').value == "false") && (FB.Facebook.apiClient.get_session())) {
+			alert("in the if with connected");
+			//document.getElementById('user').style.display="none";
+			document.getElementById('logorsigns').style.display="none";
+			document.getElementById('user_box').style.display="block";
+			showPop('facebook_login',-800,400);
+        }		
+		
+		if (document.getElementById('current_person_fb_id').value == id_facebook) {
+			alert(FB.Facebook.apiClient.get_session().uid);
+			if ((document.getElementById('logged_in').value != "false") && (FB.Connect.get_status().result == 1)) {
+				//alert("in the fi with subm it");
+				//document.getElementById('user_box').innerHTML = "<span id='fb_info'>" + "<fb:profile-pic uid='loggedinuser' facebook-logo='true'></fb:profile-pic>" + "<fb:name uid='loggedinuser' useyou='false' linked='false' ></fb:name> </span>";
+				document.getElementById('logorsigns').style.display="none";
+				document.getElementById('user_box').style.display="block";
+        	}
+		}
+		
+		/*if((document.getElementById('logged_in').value!="false")&&(FB.Connect.get_status().result == 1)){
+			//submitForm();
+			document.getElementById('logorsigns').style.display='none';
+			document.getElementById('user_box').style.display='block';
+		}
+		if((document.getElementById('logged_in').value=="false")&&(FB.Facebook.apiClient.get_session())){
+			document.getElementById('user').style.display="none";		
+			showPop('facebook_login',-800,400);
+		}*/	
+	}
 	// firstnameonly='true' 
 	function submitForm(){		
 		document.getElementById('face_connect').submit();		
@@ -288,6 +336,7 @@ function update_user_box(){
 		hidePop('forgetpopup');
 	}
 </script>
-<script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php/en_US" type="text/javascript"></script><script type="text/javascript">FB.init("4ad5b16d7fb269f849ccd05692e05fd2", "xd_receiver.htm",{"ifUserConnected" : update_user_box});</script>
+<!--script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php/en_US" type="text/javascript"></script-->
+<script type="text/javascript">FB.init("064c4bc52963765138d21d8340130958", "xd_receiver.htm",{"ifUserConnected" : update_user_box});</script>
 </body>
 </html>
