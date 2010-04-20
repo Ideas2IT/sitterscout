@@ -94,15 +94,19 @@
 	<%- str = "headerwrapper"%>
 <%end%>
 	<div id='<%=str%>'>
-		<div style="height:135px;width:800px;">
+		<div style="height:130px;width:800px;">
 				<div style="float:left;">
 					<div id='mainlogo' onclick='location.href="<%= current_path %>"'></div>
 				</div>
+				
 				<div style="float:left;padding-left:100px;padding-top:50px;">			
-				<%form_for :face_connect ,:html => {:id => 'face_connect'}, :url=>{:controller=>'sessions', :action=>'create_by_facebook_id'} do |f|%>
-					<input id="fb_id_hidden" type="hidden" name="fb_id_hidden" />
-				<%end%>
-				<input type="hidden" id="logged_in" value="<%=params[:logged]%>" />
+					<%form_for :face_connect ,:html => {:id => 'face_connect'}, :url=>{:controller=>'sessions', :action=>'create_by_facebook_id'} do |f|%>
+						<input id="fb_id_hidden" type="hidden" name="fb_id_hidden" />
+					<%end%>
+					<input type="hidden" id="logged_in" value="<%=params[:logged]%>" />
+				</div>
+				
+				<!-- popup for the login -->
 				<div id ='facebook_login' align="center" style="display:none;width:300px;height:300px;align:left;valign:top;font-size:12px;">
 					 <div class="div_border" align="left" width="90%" height="100%" style="background-color:#EDEDED;">
 						<table height="260px;" width="250px" border="0" style="margin-left:15px">
@@ -139,13 +143,20 @@
 								<td align="center" colspan="2"><b>Are you new to SitterScout?</b></td>
 							</tr>
 							<tr>&nbsp;</tr>
-							<tr><td colspan="2" align="center" style="padding-right:85px;"><div class='loginsignup magenta'" onclick='location.href="/sitters/new"'></div></td></tr>
+							<tr>
+								<td colspan="2" align="center" style="padding-right:85px;">
+									<div class='loginsignup magenta' onclick="location.href='/sitters/new'"></div>
+								</td>
+							</tr>
 							<tr>
 								<td colspan="2" align="center"><a href="#" class="lbAction" onclick="hide_login();">Close Window</a></td>
 							</tr>
 						</table>
 					</div>
 				</div> 
+				<!--end of the popup for login-->
+			
+				<!--start of the forget popup -->
 				<div id="forgetpopup" align="center" style="display:none;width:300px;height:300px;align:left;valign:top;font-size:12px;">
 					<div class="div_border" align="left" width="90%" height="100%" style="background-color:#EDEDED;">
 						<%= image_tag "wrong.jpg", :alt => 'wrong', :class  => "cursor_pointer" ,:id => "change_image_cancel_fwd_blog" ,:align => "right" ,:onclick => "hide_remember();" %>
@@ -166,7 +177,10 @@
 						</div>
 					</div>
 				</div>
-			</div>
+				<!--end of the forget popup -->
+			
+			
+			<!--sign up button starting divb -->
 			<div style="float:left;padding-left:190px;">
 				<table>
 					<tr>
@@ -177,12 +191,14 @@
 						</td>
 						<td>&nbsp;</td>
 						<td>
-							<div id="user_box" style="display:none;">
+							<div id="user_box" style="display:none;padding-top:40px;">
 								<span id='fb_info'>
 									<fb:profile-pic uid='loggedinuser' facebook-logo='true'></fb:profile-pic>
 									<fb:name uid='loggedinuser' useyou='false' linked='false' ></fb:name>
+									<br />
+									<a href = '#' onclick ="FB.Connect.logoutAndRedirect('/logout'); return(false);"><img id = 'fb_logout_image' src = 'http://static.ak.fbcdn.net/images/fbconnect/logout-buttons/logout_small.gif' alt = 'Connect' border='0' /></a>
 								</span>
-								<a href = '#' onclick ="FB.Connect.logoutAndRedirect('/logout'); return(false);"><img id = 'fb_logout_image' src = 'http://static.ak.fbcdn.net/images/fbconnect/logout-buttons/logout_small.gif' alt = 'Connect' border='0' /></a>	
+									
 							</div>
 							<div id='logorsigns'>
 								<div class='loginsignup <%= logged_in? ? 'out' : 'carbon' %>' <%= logged_in? ? nil : "onmouseover='document.getElementById(\"loginmenu\").style.display=\"block\";'" %> onclick='<%= logged_in? ? "location.href=\"/logout\";" : nil %>'>
@@ -209,6 +225,7 @@
 					</tr>
 				</table>
 			</div>
+			<!-- end of the signup div-->
 		</div>
 		<%if @home_bar == "needed"%>
 		 <%= render :partial => 'layouts/home_bar'%>
@@ -244,7 +261,7 @@
 <%if logged_in?%>
 <input type="hidden" id="current_person_fb_id" name="current_person_fb_id" value= '<%= current_user.facebook_id.to_i %>'>
 <%else%>
-<input type="hidden" id="current_person_fb_id" name="current_person_fb_id" value= ''>
+<input type="hidden" id="current_person_fb_id" name="current_person_fb_id" value= '' >
 <%end%>	
 <div id='footer'>
 	<p>&copy; 2008 Sitterscout, Inc.&nbsp;&nbsp;All Rights Reserved.&nbsp;&nbsp;|&nbsp;&nbsp;Email: info@sitterscout.com&nbsp;&nbsp;|&nbsp;&nbsp;<a href='/privacy'>Your Privacy</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href='/tou'>Terms of Use</a>&nbsp;&nbsp;<a>|</a>&nbsp;&nbsp;<a href='/faq'>FAQ</a>&nbsp;&nbsp;<a>|</a>&nbsp;&nbsp;<a href='/how_it_works'>How it Works</a>
@@ -261,68 +278,6 @@ document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.
 		pageTracker._trackPageview();
 	} catch(err) {}
 	
-	function follow_connection(){
-		alert("its comming=-="+FB.Facebook.apiClient.get_session().uid);
-		//document.getElementById('fb_id_hidden').value=FB.Facebook.apiClient.get_session().uid;
-		//document.getElementById('fb_id_hid').value=FB.Facebook.apiClient.get_session().uid;
-		if((document.getElementById('logged_in').value != "false")&&(FB.Connect.get_status().result == 1)) {
-			alert('condition satisfied=====');
-			submitForm();
-		}
-	}
-	function update_user_box(){
-		alert(FB.Facebook.apiClient.get_session().uid);
-		//document.getElementById('logorsigns').style.width="200px";
-		
-		id_facebook = FB.Facebook.apiClient.get_session().uid;
-		
-		alert(document.getElementById('current_person_fb_id'));
-		
-		document.getElementById('fb_id_hidden').value = id_facebook;
-		
-		document.getElementById('user').style.display="none";
-		
-		if (document.getElementById('fb_id_hid')){
-			document.getElementById('fb_id_hid').value = id_facebook;
-		}
-		//var user_box = document.getElementById("logorsigns"); // add in some XFBML. note that we set useyou=false so it doesn't display "you" 
-		//user_box.innerHTML = "<span id='fb_info'>" + "<fb:profile-pic uid='loggedinuser' facebook-logo='true'></fb:profile-pic>" + "<fb:name uid='loggedinuser' useyou='false' linked='false' ></fb:name>." + document.getElementById('fb_log_out').innerHTML+"</span>"; // because this is XFBML, we need to tell Facebook to re-process the document 
-		//FB.XFBML.Host.parseDomTree();
-		
-		if ((document.getElementById('logged_in').value == "false") && (FB.Facebook.apiClient.get_session())) {
-			alert("in the if with connected");
-			//document.getElementById('user').style.display="none";
-			document.getElementById('logorsigns').style.display="none";
-			document.getElementById('user_box').style.display="block";
-			showPop('facebook_login',-800,400);
-        }		
-		
-		if (document.getElementById('current_person_fb_id').value == id_facebook) {
-			alert(FB.Facebook.apiClient.get_session().uid);
-			if ((document.getElementById('logged_in').value != "false") && (FB.Connect.get_status().result == 1)) {
-				//alert("in the fi with subm it");
-				//document.getElementById('user_box').innerHTML = "<span id='fb_info'>" + "<fb:profile-pic uid='loggedinuser' facebook-logo='true'></fb:profile-pic>" + "<fb:name uid='loggedinuser' useyou='false' linked='false' ></fb:name> </span>";
-				document.getElementById('logorsigns').style.display="none";
-				document.getElementById('user_box').style.display="block";
-        	}
-		}
-		
-		/*if((document.getElementById('logged_in').value!="false")&&(FB.Connect.get_status().result == 1)){
-			//submitForm();
-			document.getElementById('logorsigns').style.display='none';
-			document.getElementById('user_box').style.display='block';
-		}
-		if((document.getElementById('logged_in').value=="false")&&(FB.Facebook.apiClient.get_session())){
-			document.getElementById('user').style.display="none";		
-			showPop('facebook_login',-800,400);
-		}*/	
-	}
-	// firstnameonly='true' 
-	function submitForm(){		
-		document.getElementById('face_connect').submit();		
-	}
-	
-	
 	function forget_popup(){
 		showPop('forgetpopup',-800,400);
 	}
@@ -336,7 +291,53 @@ document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.
 		hidePop('forgetpopup');
 	}
 </script>
-<!--script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php/en_US" type="text/javascript"></script-->
-<script type="text/javascript">FB.init("064c4bc52963765138d21d8340130958", "xd_receiver.htm",{"ifUserConnected" : update_user_box});</script>
+<script type="text/javascript">	
+	function follow_connection(){
+		document.getElementById('fb_id_hidden').value = FB.Facebook.apiClient.get_session().uid;
+		if((document.getElementById('logged_in').value != "false")&&(FB.Connect.get_status().result == 1)) {
+			submitForm();
+		}
+	}
+	function update_user_box(){
+		id_facebook = FB.Facebook.apiClient.get_session().uid;
+		
+		if (document.getElementById('fb_id_hid')){
+			document.getElementById('fb_id_hid').value = id_facebook;
+		}
+		if (document.getElementById('fb_id_hidden')){
+			document.getElementById('fb_id_hidden').value = id_facebook;
+		}
+		
+		if ((document.getElementById('logged_in').value == "false") && (FB.Facebook.apiClient.get_session())) {
+			document.getElementById('user').style.display="none";
+			document.getElementById('logorsigns').style.display="none";
+			document.getElementById('user_box').style.display="block";
+			showPop('facebook_login',-800,400);
+        }
+		
+		if ((document.getElementById('logged_in').value != "false") && (FB.Facebook.apiClient.get_session())) {
+			document.getElementById('user').style.display="none";
+			document.getElementById('logorsigns').style.display="none";
+			document.getElementById('user_box').style.display="block";
+		}
+		
+		if (document.getElementById('current_person_fb_id').value ==  id_facebook){
+			if ((document.getElementById('logged_in').value != "false") && (FB.Connect.get_status().result == 1)) {
+				document.getElementById('logorsigns').style.display="none";
+				document.getElementById('user_box').style.display="block";
+        	}
+		}
+		
+	}	
+	// firstnameonly='true' 
+	function submitForm(){		
+		document.getElementById('face_connect').submit();		
+	}	
+	</script>
+
+<script type="text/javascript">
+	 FB.init("4ad5b16d7fb269f849ccd05692e05fd2", "xd_receiver", {"ifUserConnected": update_user_box});
+</script>
+
 </body>
 </html>

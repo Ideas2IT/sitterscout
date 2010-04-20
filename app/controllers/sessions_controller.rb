@@ -19,12 +19,13 @@ class SessionsController < ApplicationController
   end
   
   def create_by_facebook_id  
-    
-    puts "#created_by_facebook_id=========================================="
-    
+#    puts "#created_by_facebook_id=========================================="
     facebook_id=params[:fb_id_hidden]    
+#    puts "facebooooooooook"+facebook_id
     self.current_user=User.already_connected?(facebook_id)  
     if self.current_user
+#      puts "#{current_user.id}==================current user"
+#      puts "going to creation"
       create
     else
       redirect_to :controller=>'home', :action=>'index', :logged=>'false'

@@ -24,6 +24,10 @@ class SittersController < ApplicationController
      end
   end
   
+  def xd_receiver
+    render :layout => false
+  end
+  
   def consent_sent
   end
   

@@ -8,7 +8,7 @@ class ParentsController < ApplicationController
 
   # GET /Parents
   # GET /Parents.xml
-  def index
+  def index    
     if logged_in?
       case current_user.role.name
       when "sitter"
@@ -21,6 +21,10 @@ class ParentsController < ApplicationController
     end
 
     @metro_areas, @states = setup_locations_for_public_search
+  end
+  
+  def xd_receiver
+    render :layout => false
   end
   
   def update_sitters
@@ -745,7 +749,7 @@ end
     
 
     
-    def schedule_sitter
+    def schedule_sitter     
       @sitters_suggest = Profile.sitters_you_may_know(current_user.profile, 30)
       
       if session[:booked_sitters]

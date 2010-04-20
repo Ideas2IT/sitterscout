@@ -191,9 +191,10 @@ ActionController::Routing::Routes.draw do |map|
 
   map.simple_captcha '/simple_captcha/:action', :controller => 'simple_captcha'
   
+  map.connect ':controller/:id/:action'
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
-  # 
+  
    map.comatose_admin
    map.comatose_root ''
 end
