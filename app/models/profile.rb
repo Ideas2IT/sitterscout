@@ -157,24 +157,26 @@ class Profile < ActiveRecord::Base
   def self.sitters_you_may_know(uid, limit = -1)
     begin
       ret_array = []
-      ret = find(:all, :conditions => ["not_searchable = ? AND sitter_id <> ? AND sitter_id IS NOT NULL ", true, uid ],:origin => "#{uid.zipcode.to_s}", :within=>10, :order=>'distance asc')
+      ret = find(:all, :conditions => ["not_searchable = ? AND sitter_id <> ? AND sitter_id IS NOT NULL ", true, uid.id ],:origin => "#{uid.zipcode.to_s}", :within=>10, :order=>'distance asc')
       
 #      unless ret.size >limit
-        ret2 = find(:all, :conditions => ["not_searchable = ? AND sitter_id <> ? AND sitter_id IS NOT NULL ", true, uid ],:origin => "#{uid.zipcode.to_s}", :order => 'distance asc')
+        ret2 = find(:all, :conditions => ["not_searchable = ? AND sitter_id <> ? AND sitter_id IS NOT NULL ", true, uid.id ],:origin => "#{uid.zipcode.to_s}", :order => 'distance asc')
         ret_a = ret.concat(ret2)
 #      else
 #        ret_a = ret
 #      end  
       
+      puts "#{ret_a}=================================="
+      
       my_ret_a = []
       
-      my_ret_a = ret_a.collect(&:sitter_id).uniq
+#      my_ret_a = ret_a.collect(&:sitter_id).uniq
             
-#      ret_a.uniq.each do |ra|
-#        if ra.id != uid.id
-#          my_ret_a << ra.sitter_id
-#        end
-#      end
+      ret_a.uniq.each do |ra|
+        if ra.id != uid.id
+          my_ret_a << ra.sitter_id
+        end
+      end
       
       my_ret_a = my_ret_a.first(limit) unless limit == -1
       
