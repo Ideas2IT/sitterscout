@@ -7,7 +7,6 @@
 	 
 %>
 <%= render :partial => 'nav_menu', :locals => {:selected => "schedule"} %>
-
 <div id="sub_menu_gradient">
 	<div class="sub_menu_gradient_center">
 		
@@ -184,8 +183,9 @@
 		</div>
 	</div>			
 
-
-	
+	<script type="text/javascript">
+		initialize();
+	</script>
 	
 	<script type="text/javascript">
 		//Event.observe(window, 'load', function() { disable_checkboxes() });
@@ -252,7 +252,7 @@
 				params_hash.set('date_to_min', date_to_min);
 				params_hash.set('date_to_period', date_to_period);
 								
-				new Ajax.Request('/parents/check_availability', {
+				new Ajax.Request('/parents/1/check_availability', {
 				  method: 'post',
 				  parameters: params_hash.toQueryString() 
 				});	
@@ -295,3 +295,4 @@
 		}
 				
 	</script>
+	

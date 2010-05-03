@@ -19,7 +19,7 @@
 						<%end%>
 					<%end%>
 				<%end%>
-				<% suggest = @sitters_suggest.size%>
+				<%unless @sitters_suggest.nil? %> <%suggest = @sitters_suggest.size%> <%else%><%  suggest = 0%><%end%>
 				<tr><td><%= suggest %>&nbsp;<%= link_to "Suggested Sitter(s)", url_for(:controller => 'connections', :action => 'suggests', :id=>current_user.id), :class => "lbOn-400-500" %></td></tr>
 				<tr>
 					<td><%= friend_count %>&nbsp;<%= link_to "Friend Request(s)" ,connection_requests_parent_path(current_user)%></td>
@@ -41,6 +41,7 @@
 				<tr><td colspan="2"><hr/></td></tr>
 				<tr><td>&nbsp;</td></tr>
 				<tr>
+					<%unless @sitters_suggest.nil? %>
 					<td>
 						<% i = 0 %>
 						<% for suggest in @sitters_suggest %>
@@ -52,6 +53,7 @@
 							<%end%>
 						<% end %>
 					</td>
+					<%end%>
 				</tr>
 			</table>			
 		</td>
@@ -59,12 +61,7 @@
 	<tr><td>&nbsp;</td></tr>
 	<tr>
 		<td>
-			
 			<fb:fan profile_id="50170270934" stream="0" connections=10></fb:fan>
-							
 		</td>
 	</tr>
 </table>
-<script type="text/javascript">
-	initialize();
-</script>
