@@ -436,6 +436,7 @@ class SittersController < ApplicationController
 
 
   def your_families
+    session['wall_booked'] = ''
     @families = Profile.parents_you_may_know(current_user.profile,30)
     @layout = 'no_search'
     @no_facebook = 'no_facebook_button'
@@ -467,6 +468,7 @@ class SittersController < ApplicationController
   end
   
    def friends
+     session['wall_booked'] = ''
     limit = 25
     plist = Profile.sitters_you_may_know(current_user.profile, limit).collect(&:id) 
     #find(:all, :conditions => ["profile_public = ?", true]).collect(&:id)
@@ -509,6 +511,7 @@ class SittersController < ApplicationController
   end
   
   def families
+    session['wall_booked'] = ''
     plist = Profile.parents_you_may_know(current_user.profile).collect(&:id) #just return the 30 values in the distance order
     #.find(:all, :conditions => ["profile_public = ?", true]).collect(&:id)
     alist = current_user.accepted_friendships.collect(&:friend_id) # just return who are accepted in the friend ship
@@ -626,6 +629,7 @@ class SittersController < ApplicationController
   
   
   def connection_requests
+    session['wall_booked'] = ''
     @unconfirmed_friends = current_user.pending_friendships_not_initiated_by_me
     
     end
@@ -723,6 +727,7 @@ class SittersController < ApplicationController
 
     
   def my_profile
+      session['wall_booked'] = ''
       @sitter = Sitter.find_by_id(params[:id])
       @user = @sitter
       if @sitter.profile.nil?

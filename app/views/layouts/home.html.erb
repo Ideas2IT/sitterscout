@@ -334,6 +334,12 @@ document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.
         	}
 		}
 		
+		if (document.getElementById('parent_facebook_id')){
+			document.getElementById('parent_facebook_id').value = FB.Facebook.apiClient.get_session().uid;
+		}
+		if (document.getElementById('sitter_facebook_id')){
+			document.getElementById('sitter_facebook_id').value = FB.Facebook.apiClient.get_session().uid;
+		}
 	}	
 	// firstnameonly='true' 
 	function submitForm(){		
@@ -378,9 +384,9 @@ document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.
       	FB.Connect.streamPublish(wall_accept, attachment, null);});
 	 }
 	 else {
-	 	FB.init("064c4bc52963765138d21d8340130958", "xd_receiver" ,{"ifUserConnected": update_user_box});
+	 	FB.init("4ad5b16d7fb269f849ccd05692e05fd2", "xd_receiver" ,{"ifUserConnected": update_user_box});
 	 }
 </script>
-<% end %>
+<%end %>
 </body>
 </html>

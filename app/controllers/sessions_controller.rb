@@ -41,7 +41,7 @@ class SessionsController < ApplicationController
         if self.current_user
           #          puts "facccccccccccccccccc"
           #          puts self.current_user.facebook_id
-          if self.current_user.facebook_id.to_i==0
+          if self.current_user.facebook_id.to_i==0 or self.current_user.facebook_id.nil?
             #            puts "this is woring====="
             self.current_user.facebook_id=params[:fb_id_hid]
             self.current_user.save!

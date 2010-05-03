@@ -37,6 +37,7 @@ class ParentsController < ApplicationController
   end
   
   def sitters
+    session['wall_booked'] = ''
     limit = 25
     plist = Profile.sitters_you_may_know(current_user.profile, limit).collect(&:id) 
     #find(:all, :conditions => ["profile_public = ?", true]).collect(&:id)
@@ -601,6 +602,7 @@ end
   end
   
   def friends
+    session['wall_booked'] = ''
       plist = Profile.parents_you_may_know(current_user.profile).collect(&:id)
       #.find(:all, :conditions => ["profile_public = ?", true]).collect(&:id)
       alist = current_user.accepted_friendships.collect(&:friend_id)
@@ -715,6 +717,7 @@ end
   end
   
   def my_profile
+    session['wall_booked'] = ''
     @parent = current_user
     @user = @parent
     if @parent.profile.nil?
@@ -923,6 +926,7 @@ end
       end
 
     def connection_requests
+      session['wall_booked'] = ''
       @unconfirmed_friends = current_user.pending_friendships_not_initiated_by_me
       
       end  
