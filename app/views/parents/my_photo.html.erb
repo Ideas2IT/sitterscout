@@ -45,6 +45,18 @@ function validate()
 				myBox.appear(5000);
 			return false;
 		}
+		
+		if($('avatar_uploaded_data').value == '')
+		{
+			$('flash_notice').innerHTML = '<div id="notice_error">Please select photo.</div>';
+			
+				path_to_root_dir = "<%= APP_URL %>/";
+				var myBox = new GlassBox();
+				myBox.init( 'notice_error', '360px', '100px', 'hidden', 'facebookstyle', true, true );
+				myBox.lbo( false, 0.01 ); 
+				myBox.appear(5000);
+			return false;
+		}
 	
 	
 		$('profile_submit').click();

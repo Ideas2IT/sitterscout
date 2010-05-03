@@ -158,7 +158,6 @@ class Profile < ActiveRecord::Base
     begin
       ret_array = []
       ret = find(:all, :conditions => ["not_searchable = ? AND sitter_id <> ? AND sitter_id IS NOT NULL ", true, uid.id ],:origin => "#{uid.zipcode.to_s}", :within=>10, :order=>'distance asc')
-      
 #      unless ret.size >limit
         ret2 = find(:all, :conditions => ["not_searchable = ? AND sitter_id <> ? AND sitter_id IS NOT NULL ", true, uid.id ],:origin => "#{uid.zipcode.to_s}", :order => 'distance asc')
         ret_a = ret.concat(ret2)
@@ -166,7 +165,7 @@ class Profile < ActiveRecord::Base
 #        ret_a = ret
 #      end  
       
-      puts "#{ret_a}=================================="
+#      puts "#{ret_a}=================================="
       
       my_ret_a = []
       

@@ -115,9 +115,11 @@ class JobsController < ApplicationController
             end
           end
         end 
-        
-        redirect_back_or_default(dashboard_parent_path(current_user))
+
+        session['wall_booked'] = 'wall_job'
         flash[:notice] = 'Job was successfully created.'
+        redirect_back_or_default(dashboard_parent_path(current_user))
+        
       else
         render :action => "new" 
       end

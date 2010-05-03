@@ -84,6 +84,7 @@ class ParentsController < ApplicationController
 
   def invite
     @layout = 'no_search'
+    @no_facebook = 'no_facebook_button'
 #    render :layout => "no_search"
   end
 
@@ -187,6 +188,7 @@ class ParentsController < ApplicationController
   
   
   def dashboard
+    
     if session[:booked_sitters]
       @booked_sitters = session[:booked_sitters]
       session[:booked_sitters] = nil
@@ -202,6 +204,8 @@ class ParentsController < ApplicationController
 
     @j = Job.find(:all, :conditions => ["parent_id = ? AND date_from > ?", current_user, Time.now])
     @sitters_suggest = Profile.sitters_you_may_know(current_user.profile, 30)
+
+    
     @unconfirmed_friends = current_user.pending_friendships_not_initiated_by_me
    # @cancelledj = Job.find(:all, :conditions => ["status = ? AND parent_id = ?", "cancelled", current_user])
     render :action => 'schedule_sitter'
@@ -520,8 +524,6 @@ end
           redirect_to :back
       end
   end
-
-  
   
 
   # DELETE /Parents/1
@@ -538,6 +540,7 @@ end
   
   
   def welcome
+#    puts "#its comming to the welcome _parent coformation...."
     @parent = current_user
     @user = @parent
     if @parent.profile.nil?
@@ -548,19 +551,22 @@ end
     @metro_areas, @states = setup_locations_for(@parent)
   
     @avatar = Photo.new
+    session['wall_booked'] = 'welcome_parent'
     @layout = 'no_search'
 #    render :layout => "no_search"
   end
   
   def your_children
+    session['wall_booked'] = ''
     @layout = 'no_search'
+    @no_facebook = 'no_facebook_button'
 #    render :layout => "no_search"
   end
 
   def your_friends
-   @friends = Profile.parents_you_may_know(current_user.profile,30)
-   @layout = 'no_search'
-#    render :layout => "no_search"
+    @layout = 'no_search'
+    @no_facebook = 'no_facebook_button'
+    @friends = Profile.parents_you_may_know(current_user.profile,30)
   end
 
 
@@ -704,6 +710,7 @@ end
   def your_sitters
    @sitters = Profile.sitters_you_may_know(current_user.profile, 30)   
     @layout = 'no_search'
+    @no_facebook = 'no_facebook_button'
 #    render :layout => "no_search"
   end
   
@@ -749,8 +756,10 @@ end
     
 
     
-    def schedule_sitter     
+    def schedule_sitter 
       @sitters_suggest = Profile.sitters_you_may_know(current_user.profile, 30)
+      
+      puts "#{@sitters_suggest.size}===sitter======"
       
       if session[:booked_sitters]
         @booked_sitters = session[:booked_sitters]  

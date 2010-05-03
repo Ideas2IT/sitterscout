@@ -307,11 +307,12 @@ class SittersController < ApplicationController
   end
 
   def your_skills
+    session['wall_booked'] = ''
     @user = current_user
     @profile = current_user.profile
     @skill = current_user.skill
     @layout = 'no_search'
-   
+    @no_facebook = 'no_facebook_button'
 #    render :layout => "no_search"
   end
   def update_skills
@@ -437,6 +438,7 @@ class SittersController < ApplicationController
   def your_families
     @families = Profile.parents_you_may_know(current_user.profile,30)
     @layout = 'no_search'
+    @no_facebook = 'no_facebook_button'
 #    render :layout => "no_search"
   end
   
@@ -444,6 +446,7 @@ class SittersController < ApplicationController
     
     @friends = Profile.sitters_you_may_know(current_user.profile,30)
     @layout = 'no_search'
+    @no_facebook = 'no_facebook_button'
 #    render :layout=> "no_search"
     
 #    plist = Profile.sitters_you_may_know(current_user.profile).collect(&:id)
@@ -630,6 +633,7 @@ class SittersController < ApplicationController
 
 
   def welcome
+      session['wall_booked'] = 'welcome_sitter'
       @sitter = current_user
       @user = @sitter
       @profile = @sitter.profile || Profile.new
@@ -821,6 +825,8 @@ class SittersController < ApplicationController
   end
   
   def accept_job
+#    puts "#is comming====================="
+    session['wall_booked'] = 'wall_accept'
     acceptjob(params[:id])
   end
 
@@ -839,6 +845,7 @@ class SittersController < ApplicationController
   end
   
   def invite
+    @no_facebook = 'no_facebook_button'
     @layout = 'no_search'
 #    render :layout => "no_search"
   end
