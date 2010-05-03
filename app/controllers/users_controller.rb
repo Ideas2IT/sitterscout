@@ -171,11 +171,11 @@ class UsersController < ApplicationController
     set_facebook_session
     #register with fb
      if facebook_session and facebook_session.secured? and !request_is_facebook_tab?
- puts "sesssssssssion"
+# puts "sesssssssssion"
     fb_user=User.for(facebook_session.user.id, facebook_session)
     User.create_from_fb_connect(fb_user)
   else
-    puts "no sesssssion"
+#    puts "no sesssssion"
     end
   else
     #connect accounts
