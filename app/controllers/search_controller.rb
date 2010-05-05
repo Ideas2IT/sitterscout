@@ -3,6 +3,7 @@ class SearchController < ApplicationController
 
  def index
 #    @layout = 'no_search'
+    session['wall_booked'] = ''
     @home_bar = "not_needed"
      @profiles = []
      @tags = ""
