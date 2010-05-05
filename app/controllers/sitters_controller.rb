@@ -842,6 +842,7 @@ class SittersController < ApplicationController
   end
   
   def decline_job
+    session['wall_booked'] = ''
     declinejob(params[:id])
   end
   
