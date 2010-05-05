@@ -1,7 +1,7 @@
 class SittersController < ApplicationController
   before_filter :login_required, :except => [:new, :create, :index, :activate, :consent_sent]
   before_filter :sitter_required, :except => [:new, :create, :index, :activate, :consent_sent]
-  skip_before_filter :direct_to_current_state, :only => [:update_families, :welcome, :your_friends, :your_families, :search_families, :search_friends,:search_sitters, :add_sitter, :add_friend, :create, :send_invitations, :invite, :update_sitters, :update_friends,:update_families, :your_friends, :your_families, :add_family, :your_sitters, :your_skills, :create_skills, :update, :welcome, :confirm_email_sent]
+  skip_before_filter :direct_to_current_state, :only => [:update_families, :welcome, :your_friends, :your_families, :search_families, :search_friends,:search_sitters, :add_sitter, :add_friend, :create, :send_invitations, :invite, :update_sitters, :update_friends,:update_families, :your_friends, :your_families, :add_family, :your_sitters, :your_skills, :create_skills, :update, :welcome, :confirm_email_sent, :xd_receiver]
    
  # auto_complete_for :profile, :full_name
   layout 'home'

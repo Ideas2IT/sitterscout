@@ -1,7 +1,7 @@
 class ParentsController < ApplicationController
   before_filter :login_required, :except => [:new, :create, :index, :activate]
   before_filter :parent_required, :except => [:new, :create, :index, :activate]
-  skip_before_filter :direct_to_current_state, :only => [:search_sitters, :search_friends, :add_sitter, :add_friend, :add_children, :create, :send_invitations, :invite, :update_sitters, :update_children, :update_friends, :your_friends, :your_sitters, :update, :welcome, :update_my_children, :your_children, :insert_children, :confirm_email_sent]
+  skip_before_filter :direct_to_current_state, :only => [:search_sitters, :search_friends, :add_sitter, :add_friend, :add_children, :create, :send_invitations, :invite, :update_sitters, :update_children, :update_friends, :your_friends, :your_sitters, :update, :welcome, :update_my_children, :your_children, :insert_children, :confirm_email_sent, :xd_receiver]
   # auto_complete_for :profile, :full_name
   
   layout 'home'
