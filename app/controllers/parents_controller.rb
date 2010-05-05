@@ -189,7 +189,7 @@ class ParentsController < ApplicationController
   
   
   def dashboard
-    
+#    session['wall_booked'] = ''
     if session[:booked_sitters]
       @booked_sitters = session[:booked_sitters]
       session[:booked_sitters] = nil
@@ -209,7 +209,8 @@ class ParentsController < ApplicationController
     
     @unconfirmed_friends = current_user.pending_friendships_not_initiated_by_me
    # @cancelledj = Job.find(:all, :conditions => ["status = ? AND parent_id = ?", "cancelled", current_user])
-    render :action => 'schedule_sitter'
+#    render :action => 'schedule_sitter'
+    redirect_to :action => :schedule_sitter
   end
   
   def check_availability

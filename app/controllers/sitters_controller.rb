@@ -354,6 +354,7 @@ class SittersController < ApplicationController
   end
   
   def dashboard
+#    session['wall_booked'] = ''
     redirect_to :action => :your_requests
   end
   
@@ -842,8 +843,8 @@ class SittersController < ApplicationController
   end
   
   def decline_job
-    session['wall_booked'] = ''
     declinejob(params[:id])
+    session['wall_booked'] = ''
   end
   
   def accept_job_from_email
@@ -956,7 +957,13 @@ protected
   def declinejob(id)
     rs = RequestSitter.find(:first, :include => ["request"], :conditions => ["request_sitters.sitter_id = ? AND requests.job_id = ?", current_user, id])
     Notifications.deliver_job_declined(current_user, Parent.find(rs.request.job.parent_id), Job.find(rs.request.job.id)) unless rs.state == "declined"
-    rs.state = "declined"
+#    rs.request.job.status = "declined"
+    unless rs.request.job.nil?
+      job = rs.request.job
+      job.status = "cancelled"
+      job.save
+    end
+    rs.state = "cancelled"
     rs.save
     redirect_back_or_default(dashboard_sitter_path(current_user))
   end
