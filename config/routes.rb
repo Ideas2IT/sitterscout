@@ -184,6 +184,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.login  '/login',  :controller => 'sessions', :action => 'new'
   map.signup '/signup', :controller => 'users', :action => 'new'
+  map.forgot_password '/forgot_password', :controller=>"sessions", :action=>'forgot_password'
   # map.parent_signup '/parent_signup', :controller => 'parents', :action => 'new'
   # map.sitter_signup '/sitter_signup', :controller => 'sitters', :action => 'new'
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'

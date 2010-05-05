@@ -209,7 +209,7 @@
 												<%= password_field_tag 'password', 'password', :class=>'loginmenuinput',  :onfocus=>"if(this.value=='password'){this.value=''; this.style.color='#000';};", :onblur=>"if(this.value==''){this.value='password'; this.style.color='#999'; }"%>
 												<br /><%= check_box_tag 'remember_me', :style=>'margin-left: 0;' %><label for="remember" style='font-size: 11px; color: #fff;'>Remember Me</label>
 												<div class="logmenubutton in" onclick="$('login_form').submit();"></div>
-												<a href='<%= url_for(:controller => "sessions", :action => "forgot_password") %>' style='font-size: 11px; c/olor:#fff; border-bott/om: 1px dotted #fff; padding-left: 1px;'>forgot password?</a>
+												<a href='/forgot_password' style='font-size: 11px; c/olor:#fff; border-bott/om: 1px dotted #fff; padding-left: 1px;'>forgot password?</a>
 											<% end %>
 										</div>
 										<div class='logmenubutton signup' onclick='location.href="<%= new_sitter_path %>"'></div>	
