@@ -761,9 +761,26 @@ end
 
     
     def schedule_sitter 
-      @sitters_suggest = Profile.sitters_you_may_know(current_user.profile, 30)
+#      @sitters_suggest = Profile.sitters_you_may_know(current_user.profile, 30)
       
-      puts "#{@sitters_suggest.size}===sitter======"
+      plist = Profile.sitters_you_may_know(current_user.profile, 30).collect(&:id) 
+      #find(:all, :conditions => ["profile_public = ?", true]).collect(&:id)
+      alist = current_user.accepted_friendships.collect(&:friend_id)
+      ulist = current_user.pending_friendships.collect(&:friend_id)
+      @sitters = []
+      removed_people = RemovedPeople.find_users_removed_people_ids(current_user.id)
+   
+      sitter_ids = []
+    
+      plist.each do |p|
+        unless current_user.id == p || alist.include?(p) || ulist.include?(p) || removed_people.include?(p)
+          sitter_ids << p 
+        end
+      end
+    
+      @sitters_suggest = Sitter.find(:all, :include => [:photo], :conditions => ["users.id in (?) ", sitter_ids])
+      
+#      puts "#{@sitters_suggest.size}========================"
       
       if session[:booked_sitters]
         @booked_sitters = session[:booked_sitters]  
