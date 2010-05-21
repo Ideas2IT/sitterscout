@@ -264,7 +264,7 @@
 <input type="hidden" id="current_person_fb_id" name="current_person_fb_id" value= '' >
 <%end%>
 <input type="hidden" id="current_method" name="current_method" value="<%= session['wall_booked'] %>">
-
+<input  type="hidden" id="fb_conformation" name="fb_conformation"/>
 <div id='footer'>
 	<p>&copy; 2008 Sitterscout, Inc.&nbsp;&nbsp;All Rights Reserved.&nbsp;&nbsp;|&nbsp;&nbsp;Email: info@sitterscout.com&nbsp;&nbsp;|&nbsp;&nbsp;<a href='/privacy'>Your Privacy</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href='/tou'>Terms of Use</a>&nbsp;&nbsp;<a>|</a>&nbsp;&nbsp;<a href='/faq'>FAQ</a>&nbsp;&nbsp;<a>|</a>&nbsp;&nbsp;<a href='/how_it_works'>How it Works</a>
 	</p>
@@ -294,17 +294,18 @@ document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.
 	}
 </script>
 <% unless @no_facebook == "no_facebook_button" %>
-<script type="text/javascript">	
+<script type="text/javascript">
 	function follow_connection(){
+		document.getElementById('fb_conformation').value = FB.Facebook.apiClient.get_session().uid;
 		document.getElementById('fb_id_hidden').value = FB.Facebook.apiClient.get_session().uid;
 		if((document.getElementById('logged_in').value != "false")&&(FB.Connect.get_status().result == 1)) {
 			submitForm();
 		}
 	}
 	function update_user_box(){
-		//alert('its commiong=========');
-		id_facebook = FB.Facebook.apiClient.get_session().uid;
 		
+		id_facebook = FB.Facebook.apiClient.get_session().uid;
+		document.getElementById('fb_conformation').value = FB.Facebook.apiClient.get_session().uid;
 		if (document.getElementById('fb_id_hid')){
 			document.getElementById('fb_id_hid').value = id_facebook;
 		}
@@ -333,59 +334,58 @@ document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.
 				document.getElementById('user_box').style.display="block";
         	}
 		}
-		
 		if (document.getElementById('parent_facebook_id')){
 			document.getElementById('parent_facebook_id').value = FB.Facebook.apiClient.get_session().uid;
 		}
 		if (document.getElementById('sitter_facebook_id')){
 			document.getElementById('sitter_facebook_id').value = FB.Facebook.apiClient.get_session().uid;
 		}
-	}	
+		
+		wall_comment_post();
+	}
 	// firstnameonly='true' 
-	function submitForm(){		
-		document.getElementById('face_connect').submit();		
-	}	
-</script>
-
-<script type="text/javascript">
-	 var method_test = document.getElementById('current_method').value;
-	 var welcome_parent = "I just joined SitterScout, where parents and sitters connect. Find and connect with great babysitters on SitterScout or use our scheduler to book the sitters you already know and trust.  Find out which sitters your friends are using and see how they rate.";
-	 var wall_job = "I just found a babysitter on SitterScout. Find and connect with great babysitters on SitterScout or use our scheduler to book the sitters you already know and trust. Find out which sitters your friends are using and see how they rate."
-	 
-	 var welcome_sitter = "I just joined SitterScout, where sitters and parents connect. Find and connect with families who are looking for great sitters.  You can choose the jobs you want and you never even have to return a phone call, since you get your requests by email or SMS."
-	 var wall_accept = "I just got a babysitting request from SitterScout. Find and connect with families who are looking for great sitters.  You can choose the jobs you want and you never even have to return a phone call, since you get your requests by email or SMS."
-	 
-	 if ( method_test == "welcome_parent"){
-		FB_RequireFeatures(["XFBML"], function(){ FB.Facebook.init("4ad5b16d7fb269f849ccd05692e05fd2", "xd_receiver", {"ifUserConnected": update_user_box});
-      	var attachment = {'media': [{'type':'image',
-                        'src':'http://www.sitterscout.com/images/sitterscout-logo.jpg',
-                        'href':'http://www.sitterscout.com'}]};
-      	FB.Connect.streamPublish(welcome_parent, attachment, null);});
-	 }
-	 else if (method_test == "wall_job"){
-		FB_RequireFeatures(["XFBML"], function(){ FB.Facebook.init("4ad5b16d7fb269f849ccd05692e05fd2", "xd_receiver", {"ifUserConnected": update_user_box});
-      	var attachment = {'media': [{'type':'image',
-                        'src':'http://www.sitterscout.com/images/sitterscout-logo.jpg',
-                        'href':'http://www.sitterscout.com'}]};
-      	FB.Connect.streamPublish(wall_job, attachment, null);});
-	 }
-	 else if(method_test == "welcome_sitter"){
-	 	FB_RequireFeatures(["XFBML"], function(){ FB.Facebook.init("4ad5b16d7fb269f849ccd05692e05fd2", "xd_receiver", {"ifUserConnected": update_user_box});
-      	var attachment = {'media': [{'type':'image',
-                        'src':'http://www.sitterscout.com/images/sitterscout-logo.jpg',
-                        'href':'http://www.sitterscout.com'}]};
-      	FB.Connect.streamPublish(welcome_sitter, attachment, null);});
-	 }
-	 else if(method_test == "wall_accept") {
-	 	FB_RequireFeatures(["XFBML"], function(){ FB.Facebook.init("4ad5b16d7fb269f849ccd05692e05fd2", "xd_receiver", {"ifUserConnected": update_user_box});
-      	var attachment = {'media': [{'type':'image',
-                        'src':'http://www.sitterscout.com/images/sitterscout-logo.jpg',
-                        'href':'http://www.sitterscout.com'}]};
-      	FB.Connect.streamPublish(wall_accept, attachment, null);});
-	 }
-	 else {
-	 	FB.init("4ad5b16d7fb269f849ccd05692e05fd2", "xd_receiver" ,{"ifUserConnected": update_user_box});
-	 }
+	function submitForm(){
+		document.getElementById('face_connect').submit();
+	}
+	
+	FB.init("064c4bc52963765138d21d8340130958", "xd_receiver" ,{"ifUserConnected": update_user_box});
+	
+	function wall_comment_post(){
+		var method_test = document.getElementById('current_method').value;
+		var welcome_parent = "I just joined SitterScout, where parents and sitters connect. Find and connect with great babysitters on SitterScout or use our scheduler to book the sitters you already know and trust.  Find out which sitters your friends are using and see how they rate.";
+		var wall_job = "I just found a babysitter on SitterScout. Find and connect with great babysitters on SitterScout. Find out which sitters your friends are using and see how they rate."
+		var welcome_sitter = "I just joined SitterScout, where sitters and parents connect. Find and connect with families who are looking for great sitters.  You can choose the jobs you want and you never even have to return a phone call, since you get your requests by email or SMS."
+		var wall_accept = "I just got a babysitting request from SitterScout. Find and connect with families who are looking for great sitters.  You can choose the jobs you want and you never even have to return a phone call, since you get your requests by email or SMS."
+	 	if (method_test == "welcome_parent"){
+			FB_RequireFeatures(["XFBML"], function(){ FB.Facebook.init("064c4bc52963765138d21d8340130958", "xd_receiver", {"ifUserConnected": update_user_box});
+	      	var attachment = {'media': [{'type':'image',
+	                        'src':'http://www.sitterscout.com/images/sitterscout-logo.jpg',
+	                        'href':'http://www.sitterscout.com'}]};
+	      	FB.Connect.streamPublish(welcome_parent, attachment, null);});
+		 }
+		 else if (method_test == "wall_job"){
+			FB_RequireFeatures(["XFBML"], function(){ FB.Facebook.init("064c4bc52963765138d21d8340130958", "xd_receiver", {"ifUserConnected": update_user_box});
+	      	var attachment = {'media': [{'type':'image',
+	                        'src':'http://www.sitterscout.com/images/sitterscout-logo.jpg',
+	                        'href':'http://www.sitterscout.com'}]};
+	      	FB.Connect.streamPublish(wall_job, attachment, null);});
+		 }
+		 else if(method_test == "welcome_sitter"){
+		 	FB_RequireFeatures(["XFBML"], function(){ FB.Facebook.init("064c4bc52963765138d21d8340130958", "xd_receiver", {"ifUserConnected": update_user_box});
+	      	var attachment = {'media': [{'type':'image',
+	                        'src':'http://www.sitterscout.com/images/sitterscout-logo.jpg',
+	                        'href':'http://www.sitterscout.com'}]};
+	      	FB.Connect.streamPublish(welcome_sitter, attachment, null);});
+		 }
+		 else if(method_test == "wall_accept") {
+		 	FB_RequireFeatures(["XFBML"], function(){ FB.Facebook.init("064c4bc52963765138d21d8340130958", "xd_receiver", {"ifUserConnected": update_user_box});
+	      	var attachment = {'media': [{'type':'image',
+	                        'src':'http://www.sitterscout.com/images/sitterscout-logo.jpg',
+	                        'href':'http://www.sitterscout.com'}]};
+	      	FB.Connect.streamPublish(wall_accept, attachment, null);});
+		 }
+	}
+	
 </script>
 <%end %>
 </body>
