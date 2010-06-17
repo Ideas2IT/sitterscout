@@ -4,7 +4,7 @@
 			<table width="100%">
 				<tr>
 					<td align="left"><b>Requests</b></td>
-					<td align="right"><%= link_to "See All" ,connection_requests_parent_path(current_user)%></td>
+					<td align="right"><%= link_to "See All" ,(current_user.is_a?Sitter) ? connection_requests_sitter_path(current_user) : connection_requests_parent_path(current_user)%></td>
 				</tr>
 				<tr><td colspan="2"><hr/></td></tr>
 				<% sitter_count= 0 %> <% friend_count = 0%>
@@ -19,13 +19,21 @@
 						<%end%>
 					<%end%>
 				<%end%>
-				<%unless @sitters_suggest.nil? %> <%suggest = @sitters_suggest.size%> <%else%><%  suggest = 0%><%end%>
-				<tr><td><%= suggest %>&nbsp;<%= link_to "Suggested Sitter(s)", url_for(:controller => 'connections', :action => 'suggests', :id=>current_user.id), :class => "lbOn-400-500" %></td></tr>
+				<%unless @suggest.nil? %> <%suggest = @suggest.size%> <%else%><%  suggest = 0%><%end%>
+				<tr><td><%= suggest %>&nbsp;<%= link_to (current_user.is_a?Sitter) ? "Suggested Family(s)" : "Suggested Sitter(s)", url_for(:controller => 'connections', :action => 'suggests', :id=>current_user.id), :class => "lbOn-400-500" %></td></tr>
 				<tr>
+					<%if current_user.is_a?Sitter %>
+					<td><%= sitter_count %>&nbsp;<%= link_to "Friend Request(s)" ,connection_requests_sitter_path(current_user)%></td>
+					<%else%>
 					<td><%= friend_count %>&nbsp;<%= link_to "Friend Request(s)" ,connection_requests_parent_path(current_user)%></td>
+					<%end%>
 				</tr>
 				<tr>
+					<%if current_user.is_a?Sitter %>
+					<td><%= friend_count %>&nbsp;<%= link_to "Family Connection Request(s)" ,connection_requests_sitter_path(current_user)%></td>
+					<%else%>
 					<td><%= sitter_count %>&nbsp;<%= link_to "Sitter Connection Request(s)" ,connection_requests_parent_path(current_user)%></td>
+					<%end%>
 				</tr>
 			</table>
 		</td>
@@ -41,10 +49,10 @@
 				<tr><td colspan="2"><hr/></td></tr>
 				<tr><td>&nbsp;</td></tr>
 				<tr>
-					<%unless @sitters_suggest.nil? %>
+					<%unless @suggest.nil? %>
 					<td>
 						<% i = 0 %>
-						<% for suggest in @sitters_suggest %>
+						<% for suggest in @suggest %>
 							<%unless suggest.nil?%>
 								<%if i < 2 %>
 									<%= render :partial => '/shared/suggestion', :locals => {:suggest  => suggest} %>

@@ -5,9 +5,15 @@
 			<%= image_tag(suggest.avatar_photo_url, :class => "right",:alt=>"photo_small" ) %>
 		</td>
 		<td width="80%">
-			<table width="130px;">
+			<table width="135px;">
 				<tr><td><strong><%= suggest.profile.first_name %>&nbsp;<%= suggest.profile.last_name.to_s.first + "." %></strong></td></tr>
-				<tr><td><%= link_to "Add to your sitters", url_for(:controller => 'connections', :action => 'add_sitter', :id => suggest.id),:class => "lbOn-300-260" %></td></tr>
+				<tr>
+				<%if current_user.is_a?Sitter %>
+				<td><%= link_to "Add to your Familys", url_for(:controller => 'connections', :action => 'add_friend', :id => suggest.id),:class => "lbOn-300-260" %></td>
+				<%else%>
+				<td><%= link_to "Add to your sitters", url_for(:controller => 'connections', :action => 'add_sitter', :id => suggest.id),:class => "lbOn-300-260" %></td>
+				<%end%>
+				</tr>
 			</table>
 		</td>
 	</tr>

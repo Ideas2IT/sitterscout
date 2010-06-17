@@ -778,7 +778,7 @@ end
         end
       end
     
-      @sitters_suggest = Sitter.find(:all, :include => [:photo], :conditions => ["users.id in (?) ", sitter_ids])
+      @suggest = Sitter.find(:all, :include => [:photo], :conditions => ["users.id in (?) ", sitter_ids])
       
 #      puts "#{@sitters_suggest.size}========================"
       

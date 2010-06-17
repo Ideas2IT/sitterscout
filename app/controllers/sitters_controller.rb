@@ -432,6 +432,27 @@ class SittersController < ApplicationController
       @accepted = RequestSitter.find(:all, :conditions => ["state = ? AND sitter_id = ?", "accepted", current_user])
       @cancelledj = RequestSitter.find(:all, :conditions => ["state = ? AND sitter_id = ?", "cancelled", current_user])
     end #underage
+    
+    @unconfirmed_friends = current_user.pending_friendships_not_initiated_by_me
+    
+    plist = Profile.parents_you_may_know(current_user.profile, 30).collect(&:id) 
+      #find(:all, :conditions => ["profile_public = ?", true]).collect(&:id)
+      alist = current_user.accepted_friendships.collect(&:friend_id)
+      ulist = current_user.pending_friendships.collect(&:friend_id)
+      @sitters = []
+      removed_people = RemovedPeople.find_users_removed_people_ids(current_user.id)
+   
+      sitter_ids = []
+    
+      plist.each do |p|
+        unless current_user.id == p || alist.include?(p) || ulist.include?(p) || removed_people.include?(p)
+          sitter_ids << p 
+        end
+      end
+    
+      @suggest = Parent.find(:all, :include => [:photo], :conditions => ["users.id in (?) ", sitter_ids])
+    
+    
   end
   
 

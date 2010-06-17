@@ -3,7 +3,7 @@
 		<tr>
 			<td align="center">
 				<h3>
-					<center>Suggested Sitter(s)</center> 
+					<center><% if current_user.is_a?Sitter %>Suggested Sitter(s)<%else%>Suggested Family(s)<%end%></center> 
 				</h3>	
 			</td>
 			<td align="center">
@@ -14,9 +14,15 @@
 		</tr>
 	</table>
 	<div style="border: 0px #AFAFAF solid; background-color: #ffffff; padding: 5px; width:380px; height: 430px; margin-right:10px;margin-left:10px;overflow-y: auto;border:1">
-		<% for sgst in @sitters_suggest %>
+		<%if current_user.is_a?Sitter %>
+		<% for sgst in @suggest %>
+			<%= render :partial => 'sitters/suggest_profile', :locals => {:suggest  => sgst} %>
+		<% end %>
+		<%else%>
+		<% for sgst in @suggest %>
 			<%= render :partial => 'parents/suggest_profile', :locals => {:suggest  => sgst} %>
 		<% end %>
+		<%end%>
 	</div>
 	<div style="text-align: center; text-align: center; padding: 5px 0; width: 100%;border:2px;">
 		<a href="javascript:hideLightbox();" class="lbAction" rel="deactivate">Close Window</a>

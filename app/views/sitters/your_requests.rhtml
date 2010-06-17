@@ -1,147 +1,169 @@
 <%= render :partial => 'nav_menu', :locals => {:selected => "schedule"} %>
 <div id="sub_menu_gradient">
-		<div class="sub_menu_gradient_center">
-	<ul style="list-style: none;" id="sub_menu">
-	<li class=""><%= image_tag "pink_arrow.png", :id=>"ras" %><%= link_to "Babysitting Requests", "#", :class => 'grey_link_selected', :onclick => "Element.hide('rss');Element.show('ras');Element.show('request_status'); Element.hide('request'); return false;" %></li>
-<!--	<li class=""><%= image_tag "pink_arrow.png", :id=>"rss", :style=> "display: none;"%><%= link_to ("Hire Me!"), "#", :class => 'grey_link', :onclick => "Element.hide('ras');Element.show('rss');Element.show('request'); Element.hide('request_status'); return false;" %></li>
--->
-</ul>
+    <div class="sub_menu_gradient_center">
+        <ul style="list-style: none;" id="sub_menu">
+            <li class="">
+                <%= image_tag "pink_arrow.png", :id=>"ras" %><%= link_to "Babysitting Requests", "#", :class => 'grey_link_selected', :onclick => "Element.hide('rss');Element.show('ras');Element.show('request_status'); Element.hide('request'); return false;" %>
+            </li>
+            <!--	<li class=""><%= image_tag "pink_arrow.png", :id=>"rss", :style=> "display: none;"%><%= link_to ("Hire Me!"), "#", :class => 'grey_link', :onclick => "Element.hide('ras');Element.show('rss');Element.show('request'); Element.hide('request_status'); return false;" %></li>
+            -->
+        </ul>
+    </div>
 </div>
+<div id="content" style="width:100%">
+    <table width="100%">
+        <tr>
+        	<td width="33%"></td>
+            <td valign="top">
+                <% form_tag your_requests_sitter_path(current_user) do %>
+                <div id="request" style="display:none;">
+                    <div style="height: 600px;">
+                        <div style="float: left; padding: 10px">
+                            <strong style=" font-size: 10pt;color: #333333;">Select Date:</strong>
+                            <div style="height: 300px;">
+                                <div>
+                                    <%= calendar_date_select :hire_me_job, :scheduler, :embedded => true %>
+                                </div>
+                                <br/>
+                                <h2 style=" font-size: 10pt;color: #333333;">Select Time:</h2>
+                                <div style="border: 1px solid #666666; padding:2px;">
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <font style=" font-size: 10pt;color: #333333;">
+                                                    From: 
+                                                </font>
+                                            </td>
+                                            <td>
+                                                <%= time_select :hire_me_job, :date_from, {:twelve_hour => true, :minute_step => 15} %>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <font style=" font-size: 10pt;color: #333333;">
+                                                    To:
+                                                </font>
+                                            </td>
+                                            <td>
+                                                <%= time_select :hire_me_job, :date_to, {:twelve_hour => true, :minute_step => 15} %>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="sitters" style="float: left; padding: 10px;">
+                            <strong style=" font-size: 10pt; color: #333333;">Select up to 10 Families(s):</strong>
+                            <%= image_tag "QuestionMark_transp.gif" %>
+                            <div style="height: 300px; width: 200px; padding: 0px 10px 0px 10px; overflow-y: scroll; border: 1px solid #333333;">
+                                <% unless @parents.nil? %>
+                                <% @parents.each do |s| %>
+                                <% unless s.profile.nil? %>
+                                <%= check_box_tag "families[]", s.id %>&nbsp;
+                                <font style="color: #333333;">
+                                    <%= s.profile.first_name + " " + s.profile.last_name rescue nil %>
+                                </font>
+                                <br/>
+                                <% end %>
+                                <% end %>
+                                <% end %>
+                            </div>
+                        </div>
+                        <div id="special_message" style="float: left; padding: 10px; ">
+                            <strong style=" font-size: 10pt; color: #333333;">Special Message:</strong>
+                            <font style="color: #333333;">
+                                (optional)
+                            </font>
+                            <br/>
+                            <div style="border: 1px solid #333333;">
+                                <%= text_area :message, :message, :style => "width: 200px; height: 300px;" %>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="text-align: center;">
+                        <%= image_submit_tag "/images/parent_home/submitsitterreq_bttn.gif" %>
+                    </div>
+                </div>
+                <% end %>
+                <div id="request_status" style="margin-top: 5px; font-size: 9pt">
+                    <% if @j.nil? || (@j.length < 1) %>
+                    <p>
+                        You have no Sitter Requests
+                    </p>
+                    <% else %>
+                    <fieldset>
+                        <table style="width: 100%">
+                            <tr>
+                                <td>
+                                    <strong>Date and Time</strong>
+                                </td>
+                                <td>
+                                    <strong>Parent's Name</strong>
+                                </td>
+                                <td>
+                                    <strong>Acceptance</strong>
+                                </td>
+                                <td colspan='2'>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="5">
+                                    <hr/>
+                                </td>
+                            </tr><% x = 0 %>
+                            <% for rs in @j %>
+                            <tr>
+                                <td width="150" style="padding: 3px;">
+                                    <%= rs.request.job.date_from.strftime("%B %d, %Y") %>
+                                    <br/>
+                                    <%= rs.request.job.date_from.strftime("%I:%M %p") + "-" + rs.request.job.date_to.strftime("%I:%M %p") %>
+                                </td>
+                                <td>
+                                    <%= rs.request.job.parent.profile.first_name %>&nbsp;<%= rs.request.job.parent.profile.last_name %>
+                                    <br/>
+                                </td>
+                                <td>
+                                    <% if rs.state == "cancelled" || rs.request.job.status == "cancelled" %>
+                                    Canceled<% else %>
+                                    <%= rs.state.capitalize %>
+                                    <br/>
+                                    <% end %>
+                                </td>
+                                <td>
+                                    <% if rs.state != "cancelled" &&  rs.request.job.status != "cancelled" %>
+                                    <% form_tag accept_job_sitter_path(rs.request.job) do %>
+                                    <%= submit_tag "Accept" unless (rs.state == "accepted" || rs.state == "filled") %>
+                                    <% end %>
+                                    <% else %>&nbsp;<% end %>
+                                </td>
+                                <td>
+                                    <% if rs.state != "cancelled" &&  rs.request.job.status != "cancelled" %>
+                                    <% form_tag decline_job_sitter_path(rs.request.job) do %>
+                                    <%= submit_tag "Decline", :confirm => 'Are you sure you want to cancel this request?' unless (rs.state == "accepted" || rs.state == "filled") %>
+                                    <% end %>
+                                    <% else %>&nbsp;<% end %>
+                                </td>
+                            </tr>
+                            <%
+                            if x < @j.size - 1 %>
+                            <tr>
+                                <td colspan="5">
+                                    <hr/>
+                                </td>
+                            </tr><% end
+                            x=x+1; %>
+                            <% end %>
+                        </table>
+                    </fieldset><% end %>
+                </div>
+            </td>
+            <td valign="top">
+                <div style="float:right;top: 175px;width:auto;height:590px;margin-right:100px;">
+                    <!--<%= render :partial => '/shared/share_a_sale' %>-->
+                    <%= render :partial => '/shared/facebook' %>
+                </div>
+            </td>
+        </tr>
+    </table>
 </div>
-<div id="content">
-
-
-
-			<% form_tag your_requests_sitter_path(current_user) do %>
-					<div id="request" style="display:none;">
-						<div style="height: 400px;">	
-						<div style="float: left; padding: 10px">	
-								<strong style=" font-size: 10pt;color: #333333;">Select Date:</strong>
-								<div style="height: 300px;">
-											<div>
-								<%= calendar_date_select :hire_me_job, :scheduler, :embedded => true %>
-								</div>
-								<br />
-												<h2 style=" font-size: 10pt;color: #333333;">Select Time:</h2>
-								<div style="border: 1px solid #666666; padding:2px;">
-					<table>
-						<tr>
-							<td>
-								<font style=" font-size: 10pt;color: #333333;">From: </font>
-							</td>
-							<td>
-									<%= time_select :hire_me_job, :date_from, {:twelve_hour => true, :minute_step => 15} %>
-
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<font style=" font-size: 10pt;color: #333333;">To:</font>
-							</td>
-							<td>
-										<%= time_select :hire_me_job, :date_to, {:twelve_hour => true, :minute_step => 15} %>
-
-
-							</td>
-						</tr>
-					</table>
-										</div>
-								</div>
-							</div>
-							<div id="sitters" style="float: left; padding: 10px;">	
-								<strong style=" font-size: 10pt; color: #333333;">Select up to 10 Families(s):</strong><%= image_tag "QuestionMark_transp.gif" %>
-								<div style="height: 300px; width: 200px; padding: 0px 10px 0px 10px; overflow-y: scroll; border: 1px solid #333333;">
-								<% unless @parents.nil? %>
-								<% @parents.each do |s| %>
-								 	<% unless s.profile.nil? %>
-								<%= check_box_tag "families[]", s.id %>&nbsp;<font style="color: #333333;"><%= s.profile.first_name + " " + s.profile.last_name rescue nil %></font><br />
-									<% end %>
-								<% end %>
-								<% end %>
-								</div>
-
-							</div>
-							<div id="special_message" style="float: left; padding: 10px; ">
-
-									<strong style=" font-size: 10pt; color: #333333;">Special Message:</strong><font style="color: #333333;">(optional)</font><br/>
-									<div style="border: 1px solid #333333;">
-								<%= text_area :message, :message, :style => "width: 200px; height: 300px;" %>
-								</div>
-							</div>
-						</div>
-						<div style="text-align: center;">
-							<%= image_submit_tag "/images/parent_home/submitsitterreq_bttn.gif" %>	
-						</div>
-					</div>
-			<% end %>
-			<div id="request_status" style="margin-top: 5px; font-size: 9pt">
-				<% if @j.nil? || (@j.length < 1) %>
-				<p>You have no Sitter Requests</p>
-				<% else %>
-				
-				<fieldset>
-					
-<table style="width: 100%">
-	<tr>
-		<td>
-		<strong>Date and Time</strong>
-		</td>
-		<td>
-			<strong>Parent's Name</strong>
-		</td>
-		<td>
-			<strong>Acceptance</strong>
-		</td>
-		<td colspan='2'></td>
-	</tr>
-	<tr><td colspan="5"><hr /></td></tr>
-	<% x = 0 %>
-	<% for rs in @j %>
-	<tr>
-		<td width="150" style="padding: 3px;"><%= rs.request.job.date_from.strftime("%B %d, %Y") %><br />
-			<%= rs.request.job.date_from.strftime("%I:%M %p") + "-" + rs.request.job.date_to.strftime("%I:%M %p")	 %>
-			</td><td>
-				<%= rs.request.job.parent.profile.first_name %>&nbsp;<%= rs.request.job.parent.profile.last_name%><br />
-		</td>
-		<td>
-		<% if rs.state == "cancelled" || rs.request.job.status == "cancelled" %>
-		Canceled
-		<% else %>
-			<%= rs.state.capitalize %><br />
-		<% end %>	
-		</td>
-		<td>
-		<% if rs.state != "cancelled" &&  rs.request.job.status != "cancelled" %>	
-			<% form_tag accept_job_sitter_path(rs.request.job) do  %>
-				<%= submit_tag "Accept" unless (rs.state == "accepted" || rs.state == "filled") %>
-			<% end %>
-		<% else %>&nbsp;<% end %>
-		</td>
-		<td>
-			<% if rs.state != "cancelled" &&  rs.request.job.status != "cancelled" %>	
-				<% form_tag decline_job_sitter_path(rs.request.job) do  %>
-					<%= submit_tag "Decline", :confirm => 'Are you sure you want to cancel this request?' unless (rs.state == "accepted" || rs.state == "filled") %>
-				<% end %>
-			<% else %>&nbsp;<% end %>
-		</td>
-	</tr>	
-		<%
-				if x < @j.size - 1
-				%>
-		<tr><td colspan="5"><hr /></td></tr>
-		<% end 	
-			x=x+1; %>
-	<% end %>
-
-
-</table>
-
-
-			</fieldset>
-				<% end %>
-			</div>
-			
-
-	
-</div>
-		<%#= render :partial => 'shared/profile_percentage' %>
+<%#= render :partial => 'shared/profile_percentage' %>
