@@ -266,14 +266,24 @@
 <input type="hidden" id="current_method" name="current_method" value="<%= session['wall_booked'] %>">
 <input  type="hidden" id="fb_conformation" name="fb_conformation"/>
 <div id='footer'>
-	<p>&copy; 2008 Sitterscout, Inc.&nbsp;&nbsp;All Rights Reserved.&nbsp;&nbsp;|&nbsp;&nbsp;Email: info@sitterscout.com&nbsp;&nbsp;|&nbsp;&nbsp;<a href='/privacy'>Your Privacy</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href='/tou'>Terms of Use</a>&nbsp;&nbsp;<a>|</a>&nbsp;&nbsp;<a href='/faq'>FAQ</a>&nbsp;&nbsp;<a>|</a>&nbsp;&nbsp;<a href='/how_it_works'>How it Works</a>
+	<p>&copy; 2008 Sitterscout, Inc.&nbsp;&nbsp;All Rights Reserved.&nbsp;&nbsp;|&nbsp;&nbsp;Email: info@sitterscout.com&nbsp;&nbsp;|&nbsp;&nbsp;<a href='/privacy'>Your Privacy</a>&nbsp;&nbsp;<a>|</a>&nbsp;&nbsp;<a href='/tou'>Terms of Use</a>&nbsp;&nbsp;<a>|</a>&nbsp;&nbsp;<a href='/faq'>FAQ</a>&nbsp;&nbsp;<a>|</a>&nbsp;&nbsp;<a href='/how_it_works'>How it Works</a>&nbsp;&nbsp;<a>|</a>&nbsp;&nbsp;<a target="_blank" href='http://www.sitterscout.com/blog'>Blog</a>
 	</p>
 </div>
 
-<script type="text/javascript">	
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-17014173-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
 </script>
+
 <script type="text/javascript">
 	try {
 		var pageTracker = _gat._getTracker("UA-6137367-1");
@@ -340,7 +350,10 @@ document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.
 		if (document.getElementById('sitter_facebook_id')){
 			document.getElementById('sitter_facebook_id').value = FB.Facebook.apiClient.get_session().uid;
 		}
-		
+		alert(document.getElementById('fb_id_hidden').value + ' this will work ' + document.getElementById('current_person_fb_id').value);
+		if( document.getElementById('fb_id_hidden').value != null && document.getElementById('current_person_fb_id').value == ''){
+			follow_connection();
+		}
 		wall_comment_post();
 	}
 	// firstnameonly='true' 
@@ -348,7 +361,7 @@ document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.
 		document.getElementById('face_connect').submit();
 	}
 	
-	FB.init("4ad5b16d7fb269f849ccd05692e05fd2", "xd_receiver" ,{"ifUserConnected": update_user_box});
+	FB.init("064c4bc52963765138d21d8340130958", "xd_receiver" ,{"ifUserConnected": update_user_box});
 	
 	function wall_comment_post(){
 		var method_test = document.getElementById('current_method').value;
@@ -357,28 +370,28 @@ document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.
 		var welcome_sitter = "I just joined SitterScout, where sitters and parents connect. Find and connect with families who are looking for great sitters.  You can choose the jobs you want and you never even have to return a phone call, since you get your requests by email or SMS."
 		var wall_accept = "I just got a babysitting request from SitterScout. Find and connect with families who are looking for great sitters.  You can choose the jobs you want and you never even have to return a phone call, since you get your requests by email or SMS."
 	 	if (method_test == "welcome_parent"){
-			FB_RequireFeatures(["XFBML"], function(){ FB.Facebook.init("4ad5b16d7fb269f849ccd05692e05fd2", "xd_receiver", {"ifUserConnected": update_user_box});
+			FB_RequireFeatures(["XFBML"], function(){ FB.Facebook.init("064c4bc52963765138d21d8340130958", "xd_receiver", {"ifUserConnected": update_user_box});
 	      	var attachment = {'media': [{'type':'image',
 	                        'src':'http://www.sitterscout.com/images/sitterscout-logo.jpg',
 	                        'href':'http://www.sitterscout.com'}]};
 	      	FB.Connect.streamPublish(welcome_parent, attachment, null);});
 		 }
 		 else if (method_test == "wall_job"){
-			FB_RequireFeatures(["XFBML"], function(){ FB.Facebook.init("4ad5b16d7fb269f849ccd05692e05fd2", "xd_receiver", {"ifUserConnected": update_user_box});
+			FB_RequireFeatures(["XFBML"], function(){ FB.Facebook.init("064c4bc52963765138d21d8340130958", "xd_receiver", {"ifUserConnected": update_user_box});
 	      	var attachment = {'media': [{'type':'image',
 	                        'src':'http://www.sitterscout.com/images/sitterscout-logo.jpg',
 	                        'href':'http://www.sitterscout.com'}]};
 	      	FB.Connect.streamPublish(wall_job, attachment, null);});
 		 }
 		 else if(method_test == "welcome_sitter"){
-		 	FB_RequireFeatures(["XFBML"], function(){ FB.Facebook.init("4ad5b16d7fb269f849ccd05692e05fd2", "xd_receiver", {"ifUserConnected": update_user_box});
+		 	FB_RequireFeatures(["XFBML"], function(){ FB.Facebook.init("064c4bc52963765138d21d8340130958", "xd_receiver", {"ifUserConnected": update_user_box});
 	      	var attachment = {'media': [{'type':'image',
 	                        'src':'http://www.sitterscout.com/images/sitterscout-logo.jpg',
 	                        'href':'http://www.sitterscout.com'}]};
 	      	FB.Connect.streamPublish(welcome_sitter, attachment, null);});
 		 }
 		 else if(method_test == "wall_accept") {
-		 	FB_RequireFeatures(["XFBML"], function(){ FB.Facebook.init("4ad5b16d7fb269f849ccd05692e05fd2", "xd_receiver", {"ifUserConnected": update_user_box});
+		 	FB_RequireFeatures(["XFBML"], function(){ FB.Facebook.init("064c4bc52963765138d21d8340130958", "xd_receiver", {"ifUserConnected": update_user_box});
 	      	var attachment = {'media': [{'type':'image',
 	                        'src':'http://www.sitterscout.com/images/sitterscout-logo.jpg',
 	                        'href':'http://www.sitterscout.com'}]};
