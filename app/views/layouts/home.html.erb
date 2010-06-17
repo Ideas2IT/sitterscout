@@ -361,7 +361,7 @@
 		document.getElementById('face_connect').submit();
 	}
 	
-	FB.init("064c4bc52963765138d21d8340130958", "xd_receiver" ,{"ifUserConnected": update_user_box});
+	FB.init("4ad5b16d7fb269f849ccd05692e05fd2", "xd_receiver" ,{"ifUserConnected": update_user_box});
 	
 	function wall_comment_post(){
 		var method_test = document.getElementById('current_method').value;
@@ -370,28 +370,28 @@
 		var welcome_sitter = "I just joined SitterScout, where sitters and parents connect. Find and connect with families who are looking for great sitters.  You can choose the jobs you want and you never even have to return a phone call, since you get your requests by email or SMS."
 		var wall_accept = "I just got a babysitting request from SitterScout. Find and connect with families who are looking for great sitters.  You can choose the jobs you want and you never even have to return a phone call, since you get your requests by email or SMS."
 	 	if (method_test == "welcome_parent"){
-			FB_RequireFeatures(["XFBML"], function(){ FB.Facebook.init("064c4bc52963765138d21d8340130958", "xd_receiver", {"ifUserConnected": update_user_box});
+			FB_RequireFeatures(["XFBML"], function(){ FB.Facebook.init("4ad5b16d7fb269f849ccd05692e05fd2", "xd_receiver", {"ifUserConnected": update_user_box});
 	      	var attachment = {'media': [{'type':'image',
 	                        'src':'http://www.sitterscout.com/images/sitterscout-logo.jpg',
 	                        'href':'http://www.sitterscout.com'}]};
 	      	FB.Connect.streamPublish(welcome_parent, attachment, null);});
 		 }
 		 else if (method_test == "wall_job"){
-			FB_RequireFeatures(["XFBML"], function(){ FB.Facebook.init("064c4bc52963765138d21d8340130958", "xd_receiver", {"ifUserConnected": update_user_box});
+			FB_RequireFeatures(["XFBML"], function(){ FB.Facebook.init("4ad5b16d7fb269f849ccd05692e05fd2", "xd_receiver", {"ifUserConnected": update_user_box});
 	      	var attachment = {'media': [{'type':'image',
 	                        'src':'http://www.sitterscout.com/images/sitterscout-logo.jpg',
 	                        'href':'http://www.sitterscout.com'}]};
 	      	FB.Connect.streamPublish(wall_job, attachment, null);});
 		 }
 		 else if(method_test == "welcome_sitter"){
-		 	FB_RequireFeatures(["XFBML"], function(){ FB.Facebook.init("064c4bc52963765138d21d8340130958", "xd_receiver", {"ifUserConnected": update_user_box});
+		 	FB_RequireFeatures(["XFBML"], function(){ FB.Facebook.init("4ad5b16d7fb269f849ccd05692e05fd2", "xd_receiver", {"ifUserConnected": update_user_box});
 	      	var attachment = {'media': [{'type':'image',
 	                        'src':'http://www.sitterscout.com/images/sitterscout-logo.jpg',
 	                        'href':'http://www.sitterscout.com'}]};
 	      	FB.Connect.streamPublish(welcome_sitter, attachment, null);});
 		 }
 		 else if(method_test == "wall_accept") {
-		 	FB_RequireFeatures(["XFBML"], function(){ FB.Facebook.init("064c4bc52963765138d21d8340130958", "xd_receiver", {"ifUserConnected": update_user_box});
+		 	FB_RequireFeatures(["XFBML"], function(){ FB.Facebook.init("4ad5b16d7fb269f849ccd05692e05fd2", "xd_receiver", {"ifUserConnected": update_user_box});
 	      	var attachment = {'media': [{'type':'image',
 	                        'src':'http://www.sitterscout.com/images/sitterscout-logo.jpg',
 	                        'href':'http://www.sitterscout.com'}]};
