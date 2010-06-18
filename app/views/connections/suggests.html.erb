@@ -3,7 +3,7 @@
 		<tr>
 			<td align="center">
 				<h3>
-					<center><% if current_user.is_a?Sitter %>Suggested Sitter(s)<%else%>Suggested Family(s)<%end%></center> 
+					<center><%= (current_user.is_a?Sitter) ? 'Suggested Family(s)' : 'Suggested Sitter(s)' %></center> 
 				</h3>	
 			</td>
 			<td align="center">
